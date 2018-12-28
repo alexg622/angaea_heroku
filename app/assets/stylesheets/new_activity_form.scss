@@ -1,0 +1,104 @@
+.create-activity-form-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.edit-activity-form-container {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.edit-rental-form-container {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.create-login-form-container {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.red {
+  color: white;
+  background: black;
+  font-size: 8px;
+}
+
+.red:hover {
+  background: black;
+  color: red;
+}
+
+.create-activity-form-css {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-login-form-css {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-activity-form-css input {
+  width: 100%;
+  height: 30px;
+  text-indent: 5px;
+}
+
+.btn {
+  margin-top: 20px;
+}
+
+.create-activity-form-css textarea {
+  width: 100%;
+  height: 80px;
+  text-indent: 5px;
+}
+
+.create-activity-form-css label {
+  width: 100%;
+  margin-top: 25px;
+}
+
+.create-login-form-css input {
+  width: 100%;
+  height: 30px;
+  text-indent: 5px;
+}
+
+.btn {
+  margin-top: 20px;
+}
+
+.create-login-form-css textarea {
+  width: 100%;
+  height: 80px;
+  text-indent: 5px;
+}
+
+.create-login-form-css label {
+  width: 100%;
+  margin-top: 25px;
+}
+
+.display-it-none {
+  display: none;
+}

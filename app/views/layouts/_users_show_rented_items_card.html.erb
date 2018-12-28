@@ -1,0 +1,28 @@
+<div class="users-rented-items-container">
+  <%if rentals.any?%>
+    <%rentals.each do |rental|%>
+      <%= link_to(rental) do %>
+        <div class="home-activities-card-container">
+          <!-- <img class="home-top-activity-card" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS51NatASNQs7LKejInV8vrYzM1TVZ_4YAtNEIRXrBLaqyg5fQi" /> -->
+          <%if rental.image.attached?%>
+            <%= image_tag(rental.image, class: "home-top-activity-card")%>
+          <%end%>
+          <div class="home-bottom-activity-card">
+            <div class="home-activity-card-name"><%=rental.format_rental_name%></div>
+            <div class="home-activity-details-container">
+              <div class="home-top-margin home-activity-card-date"><%=rental.format_start_date%></div>
+              <div class="home-top-margin home-activity-card-location"><%=rental.format_location%></div>
+              <div class="home-top-margin activity-card-user">By <%=rental.user.name%></div>
+              <div class="home-top-margin home-activity-card-price">$<%=rental.cost%></div>
+            </div>
+            <%if current_user == rental.user%>
+              <a class="activity-edit-link" href="<%=edit_rental_path(rental)%>">edit</a>
+            <%end%>
+          </div>
+        </div>
+      <%end%>
+    <%end%>
+    <%else%>
+    <div class="no-data">No Rented Items</div>
+  <%end%>
+</div>

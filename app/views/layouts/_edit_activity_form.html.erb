@@ -1,0 +1,86 @@
+<div class="edit-activity-form-container">
+  <h1>Update Your Activity</h1>
+  <form enctype="multipart/form-data" class="create-activity-form-css" action="<%= activity_path(activity) %>" method="post">
+    <input class="" type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>"/>
+    <input type="hidden" name="_method" value="patch">
+    <label>
+      <div style="display:flex"><div>Activity Name</div><div style="color:red"> *</div></div>
+      <input class="" type="text" name="activity[activity_name]" value="<%=activity.activity_name%>">
+    </label>
+
+    <label>
+      <div style="display:flex"><div>Description</div><div style="color:red"> *</div></div>
+      <textarea class="" name="activity[content]"><%=activity.content%></textarea>
+    </label>
+
+    <label>
+      Additional Info
+      <textarea class="" type="text" name="activity[additional_info]"><%=activity.additional_info%></textarea>
+    </label>
+
+    <label>
+      Contact Number
+      <input class="" type="text" name="activity[contact_number]" value="<%=activity.contact_number%>">
+    </label>
+
+    <label>
+      <div style="display:flex"><div>Contact Email</div><div style="color:red"> *</div></div>
+      <input class="" type="email" name="activity[contact_email]" value="<%=activity.contact_email%>">
+    </label>
+
+    <label>
+      <div style="display:flex"><div>Price</div><div style="color:red"> *</div></div>
+      <input class="" type="text" name="activity[cost]" value="<%=activity.cost%>">
+    </label>
+
+    <label>
+      <div style="display:flex"><div>Max Number of Attendees</div><div style="color:red"> *</div></div>
+      <input class="" type="text" name="activity[capacity]" value="<%=activity.capacity%>">
+    </label>
+
+    <label>
+      <div style="display:flex"><div>Address 1</div><div style="color:red"> *</div></div>
+      <input class="" type="text" name="activity[addressLN1]" value="<%=activity.addressLN1%>">
+    </label>
+
+    <label>
+      Address 2
+      <input class="" type="text" name="activity[addressLN2]" value="<%=activity.addressLN2%>">
+    </label>
+
+    <label>
+      <div style="display:flex"><div>City</div><div style="color:red"> *</div></div>
+      <input class="" type="text" name="activity[city]" value="<%=activity.city%>">
+    </label>
+
+    <label>
+      <div style="display:flex"><div>State</div><div style="color:red"> *</div></div>
+      <input class="" type="text" name="activity[state]" value="<%=activity.state%>">
+    </label>
+
+    <label>
+      <div style="display:flex"><div>Zipcode</div><div style="color:red"> *</div></div>
+      <input class="" type="text" name="activity[zip]" value="<%=activity.zip%>">
+    </label>
+
+    <label>
+      Start Date - <%=activity.format_start_date%>
+      <input class="start-date" type="datetime-local" name="activity[start_date]" value="">
+    </label>
+
+
+    <label>
+      End Date - <%=activity.format_end_date%>
+      <input class="end-date" type="datetime-local" name="activity[end_date]" value="">
+    </label>
+
+    <label>
+      image
+      <input class="" type="file" name="activity[image]" value="">
+    </label>
+
+    <input class="btn btn-primary" type="submit" value="Update Your Activity">
+  </form>
+  <%= link_to "Delete Activity" , activity_path(activity), method: :delete, class: "red sign-up-button"%>
+
+</div>

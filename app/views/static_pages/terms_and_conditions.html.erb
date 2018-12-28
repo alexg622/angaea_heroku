@@ -1,0 +1,13 @@
+<div class="terms-and-conditions-container">
+  <div class="position-end">
+  <iframe class="terms-and-conditions" width="816px" height="816px" src="https://docs.google.com/document/d/e/2PACX-1vTaszJuYkCtyoF1BC5eeQEgQ88_ECAXmZAbOatFpN8zWLUbSctCAA7lqx2wH-c5HR2JRu0hO7CfARTc/pub?embedded=true"></iframe>
+  <form class="terms-and-conditions-form" action="/termsConditions" method="post">
+    <input class="" type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>"/>
+    <label>
+      By Checking This Box You Agree To the Terms and Conditions
+      <input class="" type="checkbox" name="user[agree_to_terms]" value="true">
+    </label>
+    <input class="submit-terms-and-conditions" type="submit" value="Agree">
+  </form>
+  </div>
+</div>

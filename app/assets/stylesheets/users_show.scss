@@ -1,0 +1,285 @@
+.users-show-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.users-show-title {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.portfolio-container {
+  display: flex;
+  width: 800px;
+  justify-content: space-around;
+  margin-top: 50px;
+}
+
+.users-show-image-container {
+  width: 400px;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+}
+.users-show-image {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 100px;
+  max-width: 100px;
+  border-radius: 50%;
+}
+
+.gravatar {
+  border-radius: 50%;
+}
+
+.users-show-image-div {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 100px;
+  width: 100%;
+}
+
+.users-show-info-container {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin: 5px;
+}
+
+.users-show-name {
+  font-weight: bold;
+}
+
+.toggle-bar {
+  width: 1200px;
+  margin-top: 25px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-around;
+}
+
+.left-toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  border-right: 1px solid black;
+  transition: 0.5s;
+}
+
+.upcoming-activities-toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  border-right: 1px solid black;
+  transition: 0.5s;
+}
+
+.rented-items-toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  border-right: 1px solid black;
+  transition: 0.5s;
+}
+
+.create-activity-toggle {
+  // border-left: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  transition: 0.5s;
+}
+
+.create-rental-toggle {
+  border-left: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  transition: 0.5s;
+}
+
+.left-toggle:hover {
+  cursor: pointer;
+  background: #A6CDDE;
+}
+
+.upcoming-activities-toggle:hover {
+  cursor: pointer;
+  background: #A6CDDE;
+}
+
+.rented-items-toggle:hover {
+  cursor: pointer;
+  background: #A6CDDE;
+}
+
+.right-toggle:hover {
+  cursor: pointer;
+  background: #A6CDDE;
+}
+
+.middle-toggle:hover {
+  cursor: pointer;
+  background: #A6CDDE;
+}
+
+.create-activity-toggle:hover {
+  cursor: pointer;
+  background: #A6CDDE;
+}
+
+.create-rental-toggle:hover {
+  cursor: pointer;
+  background: #A6CDDE;
+}
+
+.right-toggle {
+  display: flex;
+  border-right: 1px solid black;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  transition: 1s;
+}
+
+.users-activities-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 90%;
+  margin-top: 25px;
+}
+
+.users-upcoming-activities-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 90%;
+  margin-top: 25px;
+  display: none;
+}
+
+.activities-card-container {
+  margin-top: 25px;
+  width: 300px;
+  height: 500px;
+  border-radius: 10px 10px 10px 10px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0;
+  transform: scale(0.95);
+  transition: box-shadow 0.5s, transform 0.5s;
+  &:hover{
+    transform: scale(1);
+    box-shadow: 5px 20px 30px rgba(0,0,0,0.2);
+  }
+}
+
+.top-activity-card {
+  width: 100%;
+  height: 80%;
+  object-fit: cover;
+}
+
+.top-activity-card:hover {
+  cursor: pointer;
+}
+
+.bottom-activity-card {
+  height: 20%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid lightgray;
+}
+
+.activity-card-user:hover {
+  cursor: pointer;
+}
+
+.activity-card-name {
+  cursor: pointer;
+}
+
+.users-ratings-container {
+  margin-top: 25px;
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  display: none;
+}
+
+.users-rented-items-container {
+  margin-top: 25px;
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  display: none;
+}
+
+.ratings-card-container {
+  display: flex;
+  justify-content: space-between;
+  width: 500px;
+  height: 200px;
+  margin-top: 25px;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 0;
+  transform: scale(0.95);
+  transition: box-shadow 0.5s, transform 0.5s;
+  &:hover{
+    transform: scale(1);
+    box-shadow: 5px 20px 30px rgba(0,0,0,0.2);
+  }
+}
+
+.ratings-card-picture {
+  display: flex;
+  width: 200px;
+  object-fit:  cover;
+  height: 100%;
+}
+
+.ratings-card-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 300px;
+  height: 100%;
+  border: 1px solid lightgray;
+}
+
+.stars-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.star {
+  margin-left: 5px;
+}
+
+.ratings-comment {
+  margin-left: 5px;
+}
+
+.create-activity-form {
+  display: none;
+}
+
+.display-it-none-rental {
+  display: none;
+}

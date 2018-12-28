@@ -1,0 +1,31 @@
+<div class="users-show-container">
+  <div class="users-show-title">Hi <%=@user.name%>!</div>
+  <div class="portfolio-container">
+    <div class="users-show-image-container">
+      <%if @user.image.attached?%>
+        <div class="users-show-image-div"><%= image_tag(@user.image, class: "users-show-image")%></div>
+      <%else%>
+        <div class="users-show-image-div"><%= gravatar_for @user, size: 100 %></div>
+      <%end%>
+    </div>
+  </div>
+  <div class="toggle-bar">
+    <div class="left-toggle">Your Activities</div>
+    <div class="upcoming-activities-toggle">Your Upcoming Activities</div>
+    <div class="right-toggle">Your Rentals</div>
+    <div class="rented-items-toggle">Your Rented Items</div>
+    <%if current_user == @user%>
+      <div class="create-activity-toggle">Create Activity</div>
+      <div class="create-rental-toggle">Create Rental</div>
+    <%end%>
+  </div>
+  <!-- Activities card -->
+  <%= render "layouts/users_show_activity_card", activities: @activities%>
+  <%= render "layouts/users_show_upcoming_activity_card", activities: @upcoming_activities%>
+  <!-- Ratings card -->
+  <%= render "layouts/user_show_rental_card", rentals: @rentals%>
+  <%= render "layouts/users_show_rented_items_card", rentals: @rented_items%>
+  <%= render "layouts/new_activityTwo_form", activity: @activity%>
+  <%= render "layouts/new_rental_form", rental: @rental%>
+</div>
+<%= render "layouts/javascript_user_show"%>

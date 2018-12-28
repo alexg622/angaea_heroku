@@ -1,0 +1,17 @@
+<% provide(:title, 'All users') %>
+<h1>All users</h1>
+
+
+<div class="users-outer-container">
+  <% @users.each do |user| %>
+    <div class="users-card-container">
+      <div class="user-picture">
+        <%= gravatar_for user, size: 300 %>
+      </div>
+      <div class="user-info">
+        <div class="user-name"><%= link_to user.name, user %></div>
+        <div class="user-contact"><%= user.email%></div>
+      </div>
+    </div>
+  <% end %>
+</div>

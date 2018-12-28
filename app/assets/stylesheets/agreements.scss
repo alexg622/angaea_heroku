@@ -1,0 +1,36 @@
+.agreements {
+  border: 1px solid lightgray;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 25px; 
+}
+
+.agreement-links {
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 10px;
+}
+
+.agreement-links a {
+  color: blue;
+}
+
+.agreement-links a:hover {
+  text-decoration: underline;
+}
+
+.text-agreement {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  width: 80%;
+  align-self: center;
+}

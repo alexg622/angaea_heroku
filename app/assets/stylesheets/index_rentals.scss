@@ -1,0 +1,20 @@
+.users-rentals-container {
+  margin-top: 25px;
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.index-rentals-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.index-rentals-title {
+  font-size: 25px;
+  font-weight: bold;
+}

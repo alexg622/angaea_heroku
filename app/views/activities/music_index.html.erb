@@ -1,0 +1,7 @@
+<% provide(:title, 'Music Activities') %>
+<h1>Dance Activities</h1>
+<div class="users-sctivities-container">
+  <% @activities.where(catagory: 'music') do |activity| %>
+  #display activity
+  <% end %>
+</div>

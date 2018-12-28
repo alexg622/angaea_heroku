@@ -1,0 +1,14 @@
+<div class="users-activities-container">
+  <%activities.each do |activity|%>
+    <%= link_to(activity) do %>
+      <div class="activities-card-container">
+        <img class="top-activity-card" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS51NatASNQs7LKejInV8vrYzM1TVZ_4YAtNEIRXrBLaqyg5fQi" />
+        <div class="bottom-activity-card">
+          <div class="activity-card-name"><%=activity.activity_name%></div>
+          <div class="activity-card-user"><%=activity.user.name%></div>
+          <div class="activity-card-price">$<%=activity.cost%></div>
+        </div>
+      </div>
+    <%end%>
+  <%end%>
+</div>

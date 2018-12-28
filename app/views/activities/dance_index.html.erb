@@ -1,0 +1,11 @@
+<% provide(:title, 'Dance Activities') %>
+<h1>Dance Activities</h1>
+<%= will_paginate %>
+
+<ul class="dance">
+  <% @activities.each do |activity| %>
+    <%= render activity %>
+  <% end %>
+</ul>
+
+<%= will_paginate %>

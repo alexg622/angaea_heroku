@@ -1,0 +1,80 @@
+<div class="edit-rental-form-container">
+  <h1>Update Your Rental</h1>
+  <form enctype="multipart/form-data" class="create-activity-form-css" action="<%= rental_path(rental) %>" method="post">
+    <input class="" type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>"/>
+    <input type="hidden" name="_method" value="patch">
+
+    <label>
+      <div style="display:flex"><div>Activity Name</div><div style="color:red"> *</div></div>
+      <input class="" type="text" name="rental[rental_name]" value="<%=rental.rental_name%>">
+    </label>
+
+    <label>
+      <div style="display:flex"><div>Description</div><div style="color:red"> *</div></div>
+      <textarea class="" name="rental[description]"><%=rental.description%></textarea>
+    </label>
+
+    <label>
+      Additional Info
+      <textarea class="" type="text" name="rental[additional_info]"><%=rental.additional_info%></textarea>
+    </label>
+
+    <label>
+      Contact Number
+      <input class="" type="text" name="rental[contact_number]" value="<%=rental.contact_number%>">
+    </label>
+
+    <label>
+      <div style="display:flex"><div>Contact Email</div><div style="color:red"> *</div></div>
+      <input class="" type="email" name="rental[contact_email]" value="<%=rental.contact_email%>">
+    </label>
+
+    <label>
+      <div style="display:flex"><div>Price</div><div style="color:red"> *</div></div>
+      <input class="" type="text" name="rental[cost]" value="<%=rental.cost%>">
+    </label>
+
+    <label>
+      <div style="display:flex"><div>Address 1</div><div style="color:red"> *</div></div>
+      <input class="" type="text" name="rental[addressLN1]" value="<%=rental.addressLN1%>">
+    </label>
+
+    <label>
+      Address 2
+      <input class="" type="text" name="rental[addressLN2]" value="<%=rental.addressLN2%>">
+    </label>
+
+    <label>
+      <div style="display:flex"><div>City</div><div style="color:red"> *</div></div>
+      <input class="" type="text" name="rental[city]" value="<%=rental.city%>">
+    </label>
+
+    <label>
+      <div style="display:flex"><div>State</div><div style="color:red"> *</div></div>
+      <input class="" type="text" name="rental[state]" value="<%=rental.state%>">
+    </label>
+
+    <label>
+      <div style="display:flex"><div>Zipcode</div><div style="color:red"> *</div></div>
+      <input class="" type="text" name="rental[zipcode]" value="<%=rental.zipcode%>">
+    </label>
+
+    <label>
+      Start Date - <%=rental.format_start_date%>
+      <input class="" type="datetime-local" name="rental[start_date]" value="">
+    </label>
+
+    <label>
+      End Date - <%=rental.format_end_date%>
+      <input class="" type="datetime-local" name="rental[end_date]" value="">
+    </label>
+
+    <label>
+      image
+      <input class="" type="file" name="rental[image]" value="">
+    </label>
+
+    <input class="btn btn-primary" type="submit" value="Create Rental">
+  </form>
+  <%= link_to "Delete Rental" , rental_path(rental), method: :delete, class: "red sign-up-button"%>
+</div>

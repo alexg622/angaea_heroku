@@ -1,0 +1,24 @@
+<div class="<%=classCategory%> home-activities-outer-container">
+  <a href="<%=category_path(category.id)%>" class="home-category"><%=category.category_name.upcase%></a>
+  <div class="home-activities-container">
+    <%activities.each do |activity|%>
+      <%= link_to(activity) do %>
+        <div class="home-activities-card-container">
+          <!-- <img class="home-top-activity-card" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS51NatASNQs7LKejInV8vrYzM1TVZ_4YAtNEIRXrBLaqyg5fQi" /> -->
+          <%if activity.image.attached?%>
+            <%= image_tag(activity.image, class: "home-top-activity-card")%>
+          <%end%>
+          <div class="home-bottom-activity-card">
+            <div class="home-activity-card-name"><%=activity.format_activity_name%></div>
+            <div class="home-activity-details-container">
+              <div class="home-top-margin home-activity-card-date"><%=activity.format_start_date%></div>
+              <div class="home-top-margin home-activity-card-location"><%=activity.format_location%></div>
+              <div class="home-top-margin activity-card-user">By <%=activity.user.name%></div>
+              <div class="home-top-margin home-activity-card-price">$<%=activity.cost%></div>
+            </div>
+          </div>
+        </div>
+      <%end%>
+    <%end%>
+  </div>
+</div>

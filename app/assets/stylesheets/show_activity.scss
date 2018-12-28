@@ -1,0 +1,258 @@
+.show-activities-outer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.show-top-activity-card {
+  display: flex;
+  height: 80%;
+}
+
+.show-activities-card-container {
+  margin-top: 25px;
+  width: 1000px;
+  height: 600px;
+  border-radius: 10px 10px 10px 10px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0;
+  transform: scale(0.95);
+  transition: box-shadow 0.5s, transform 0.5s;
+  &:hover{
+    transform: scale(1);
+    box-shadow: 5px 20px 30px rgba(0,0,0,0.2);
+  }
+}
+
+.show-image-activity-card {
+  max-width: 500px;
+  height: 100%;
+  object-fit: cover;
+}
+
+.show-top-activity-card:hover {
+  cursor: pointer;
+}
+
+.show-info-activity-card {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 25px;
+  border: 1px solid lightgray;
+}
+
+.show-activity-capacity {
+  margin-bottom: 10px;
+  color: red;
+  font-size: 8px;
+}
+
+.show-activity-card-user:hover {
+  cursor: pointer;
+}
+
+.show-activity-card-name {
+  cursor: pointer;
+  font-size: 30px;
+  font-weight: bold;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+}
+
+.show-top-margin {
+  margin-top: 5px;
+}
+
+.show-activity-details-container {
+  height: 50%;
+  display: flex;
+  font-size: 12px;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+  align-items: center;
+  width: 100%;
+}
+
+.show-bottom-activity-card {
+  display: flex;
+  width: 100%;
+  height: 20%;
+}
+
+.show-activity-tags {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding-left: 25px;
+  height: 100%;
+  width: 50%;
+  border-left: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+}
+
+.show-activity-ratings {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 50%;
+  border-right: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+}
+
+.show-activity-ratings-card-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 300px;
+  height: 100%;
+}
+
+.show-activity-stars-container {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 35px;
+}
+
+.show-activity-star {
+  margin-left: 5px;
+}
+
+.show-activity-ratings-comment {
+  margin-left: 5px;
+}
+
+.show-activity-number-ratings {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-left: 15px;
+  font-size: 12px;
+}
+
+.show-activity-number-ratings a:hover {
+  text-decoration: underline;
+}
+
+.show-activity-number-ratings a{
+  color: blue;
+}
+
+.show-activity-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+  width: 50%;
+}
+
+.activity-ticket {
+  width: 300px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  font-size: 25px;
+  background: green;
+}
+
+.activity-ticket:hover {
+  cursor:pointer;
+}
+
+.show-activity-category {
+  border-radius: 40%;
+  border: 1px solid lightgray;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.show-activity-category:hover {
+  border: 1px solid lightblue;
+  cursor: pointer;
+}
+
+.show-activity-tag-title {
+  margin-bottom: 5px;
+}
+
+.about-activity-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 45px;
+}
+
+.about-activity-show-title {
+  font-size: 35px;
+  font-weight: bold;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.about-activity-content-show {
+  width: 80%;
+  text-align: center;
+  overflow-wrap: break-word;
+}
+
+.show-activity-ratings-container {
+  display: flex;
+  align-self: flex-start;
+  width: 50%;
+  justify-content: center;
+}
+
+.show-activity-rating-content {
+  margin-top: 10px;
+  // text-indent: 15px;
+  width: 80%;
+  // text-align: center;
+  margin-left: 15px;
+}
+
+.show-activity-number-ratings {
+  font-weight: bold;
+}
+
+.show-activity-ratings-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 80%;
+  justify-content: center;
+}
+
+.activity-show-user-rating {
+  margin-left: 10px;
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  word-spacing: normal;
+}
+
+.pad-left-username {
+  padding-left: 5px;
+}

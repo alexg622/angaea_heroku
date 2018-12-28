@@ -1,0 +1,49 @@
+<div class="create-login-form-container">
+  <h1>Update Information</h1>
+  <form enctype="multipart/form-data" class="create-login-form-css" action="<%= user_path(user) %>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>"/>
+    <input type="hidden" name="_method" value="patch"/>
+    <label>
+      <div style="display:flex"><div>Name</div><div style="color:red"> *</div></div>
+      <input class="" type="text" name="user[name]" value="<%=user.name%>">
+    </label>
+
+    <label>
+      <div style="display:flex"><div>Email</div><div style="color:red"> *</div></div>
+      <input class="" type="email" name="user[email]" value="<%=user.email%>">
+    </label>
+
+    <label>
+      Profession
+      <input class="" type="text" name="user[profession]" value="<%=user.profession%>">
+    </label>
+
+    <label>
+      Skills
+      <input class="" type="text" name="user[skills]" value="<%=user.skills%>">
+    </label>
+
+    <label>
+      About
+      <textarea class="" type="text" name="user[about]"></textarea>
+    </label>
+
+    <label>
+      image
+      <input class="" type="file" name="user[image]" value="">
+    </label>
+
+    <label>
+      <div style="display:flex"><div>Password</div><div style="color:red"> *</div></div>
+      <input class="" type="password" name="user[password]" value="">
+    </label>
+
+    <label>
+      <div style="display:flex"><div>Confirm Password</div><div style="color:red"> *</div></div>
+      <input class="" type="password" name="user[password_confirmation]" value="">
+    </label>
+
+    <input class="btn btn-primary" type="submit" value="Update Information">
+  </form>
+  <%= link_to "Delete Account" , user_path(current_user), method: :delete, class: "red sign-up-button"%>
+</div>

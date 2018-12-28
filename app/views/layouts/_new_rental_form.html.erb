@@ -1,0 +1,78 @@
+<div class="display-it-none-rental create-activity-form-container">
+  <h1>Create Your Rental</h1>
+  <form enctype="multipart/form-data" class="create-activity-form-css" action="<%= rentals_path %>" method="post">
+    <input class="" type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>"/>
+
+    <label>
+      <div style="display:flex"><div>Rental Name</div><div style="color:red"> *</div></div>
+      <input class="" type="text" name="rental[rental_name]" value="">
+    </label>
+
+    <label>
+      <div style="display:flex"><div>Description</div><div style="color:red"> *</div></div>
+      <textarea class="" name="rental[description]"></textarea>
+    </label>
+
+    <label>
+      Additional Info
+      <textarea class="" type="text" name="rental[additional_info]"></textarea>
+    </label>
+
+    <label>
+      Contact Number
+      <input class="" type="text" name="rental[contact_number]" value="">
+    </label>
+
+    <label>
+      <div style="display:flex"><div>Contact Email</div><div style="color:red"> *</div></div>
+      <input class="" type="email" name="rental[contact_email]" value="">
+    </label>
+
+    <label>
+      <div style="display:flex"><div>Price</div><div style="color:red"> *</div></div>
+      <input class="" type="text" name="rental[cost]" value="">
+    </label>
+
+    <label>
+      <div style="display:flex"><div>Address 1</div><div style="color:red"> *</div></div>
+      <input class="" type="text" name="rental[addressLN1]" value="">
+    </label>
+
+    <label>
+      Address 2
+      <input class="" type="text" name="rental[addressLN2]" value="">
+    </label>
+
+    <label>
+      <div style="display:flex"><div>City</div><div style="color:red"> *</div></div>
+      <input class="" type="text" name="rental[city]" value="">
+    </label>
+
+    <label>
+      <div style="display:flex"><div>State</div><div style="color:red"> *</div></div>
+      <input class="" type="text" name="rental[state]" value="">
+    </label>
+
+    <label>
+      <div style="display:flex"><div>Zipcode</div><div style="color:red"> *</div></div>
+      <input class="" type="text" name="rental[zipcode]" value="">
+    </label>
+
+    <label>
+      Start Date
+      <input class="" type="datetime-local" name="rental[start_date]" value="">
+    </label>
+
+    <label>
+      End Date
+      <input class="" type="datetime-local" name="rental[end_date]" value="">
+    </label>
+
+    <label>
+      image
+      <input class="" type="file" name="rental[image]" value="">
+    </label>
+
+    <input class="btn btn-primary" type="submit" value="Create Rental">
+  </form>
+</div>

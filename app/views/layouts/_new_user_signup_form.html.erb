@@ -1,0 +1,38 @@
+<div class="create-login-form-container">
+  <h1>Sign Up</h1>
+  <form enctype="multipart/form-data" class="create-login-form-css" action="<%= users_path %>" method="post">
+    <input class="" type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>"/>
+    <label>
+      Name
+      <input class="" type="text" name="user[name]" value="">
+    </label>
+
+    <label>
+      Email
+      <input class="" type="email" name="user[email]" value="">
+    </label>
+
+    <label>
+      Password
+      <input class="" type="password" name="user[password]" value="">
+    </label>
+
+    <label>
+      Confirm Password
+      <input class="" type="password" name="user[password_confirmation]" value="">
+    </label>
+
+    <div class="agreements">
+      <div class="agreement-links">
+        <a href="/showTermsConditions">Terms and Conditions Agreement</a>
+        <a href="/showPrivacyAgreement">Privacy Agreement</a>
+      </div>
+      <div class="text-agreement">
+        <div>By Checking This Box You Agree To Having Read and Accepting The Privacy Agreement and Terms and Conditions</div>
+        <input class="agreement-checkbox" type="checkbox" name="user[agree_to_terms]" value="true">
+      </div>
+    </div>
+
+    <input class="btn btn-primary" type="submit" value="Sign Up">
+  </form>
+</div>

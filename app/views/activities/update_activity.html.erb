@@ -1,0 +1,44 @@
+div class="create-activity-form">
+  <% provide(:title, 'New Activity') %>
+  <h1>Edit Activity</h1>
+
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <%= form_for(@activity) do |f| %>
+      <%= f.label :activty, "name" %>
+      <%= f.text_field :activity_name, class: 'form-control' %>
+
+      <%= f.label :City, "Catagory" %>
+      <%= f.text_field :content, catagory: 'form-control' %>
+
+      <%= f.label :Description ,  "Description" %>
+      <%= f.text_field :content, description: 'form-control' %>
+
+      <%= f.label :additional_info,  "Aditional info " %>
+      <%= f.text_field :content, aditional_info: 'form-control' %>
+
+      <%= f.label :price, "How much would you like to charge? " %>
+      <%= f.text_field :content, price: 'form-control' %>
+
+      <%= f.label :Adrress1, "Address line 1" %>
+      <%= f.text_field :content, addresss2: 'form-control' %>
+
+      <%= f.label :Adrress2, "Address line 2" %>
+      <%= f.text_field :content, addresss2: 'form-control' %>
+
+      <%= f.label :City, "City" %>
+      <%= f.text_field :content , city: 'form-control' %>
+
+      <%= f.label :State, "State" %>
+      <%= f.text_field :content, state: 'form-control' %>
+
+      <%= f.label :Picture, "Picture" %>
+      <%= f.file_field :picture %>
+
+
+
+      <%= f.submit "Post Activity", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>

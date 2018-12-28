@@ -1,0 +1,54 @@
+<div class="show-activities-outer-container">
+  <div class="show-activities-card-container">
+    <div class="show-top-activity-card">
+      <!-- <img class="show-image-activity-card" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS51NatASNQs7LKejInV8vrYzM1TVZ_4YAtNEIRXrBLaqyg5fQi" /> -->
+      <%if @rental.image.attached?%>
+        <%=image_tag(@rental.image, class: "show-image-activity-card")%>
+      <%end%>
+      <div class="show-info-activity-card">
+        <div class="show-activity-card-name"><%=@rental.format_rental_name%></div>
+        <div class="show-activity-details-container">
+          <div class="show-top-margin show-activity-card-date"><%=@rental.format_start_date%> - <%=@rental.format_end_date%></div>
+          <div class="show-top-margin show-activity-card-location"><%=@rental.format_location%></div>
+          <div class="show-top-margin activity-card-user">By <%=@rental.user.name%></div>
+          <div class="show-top-margin show-activity-card-price">$<%=@rental.cost%></div>
+          <%if @rental.rental_ratings.any?%>
+            <div class="show-activity-stars-container">
+              <%@rental.get_average_rating.times do |num|%>
+                <div class="show-activity-star"><img width="25px" height="25px" src="https://github.com/hennyhandles/angaea/blob/master/app/assets/images/star.png?raw=true"/></div>
+              <%end%>
+              <div class="show-activity-number-ratings"><a href="#ratings">reviews <%=@rental.rental_ratings.length%></a></div>
+            </div>
+          <%end%>
+        </div>
+      </div>
+    </div>
+    <div class="show-bottom-activity-card">
+      <div class="show-activity-tags">
+      </div>
+      <div class="show-activity-right">
+        <a href="/rentals/<%=@rental.id%>/rental_tickets/new"><div class="activity-ticket"> Rent Item </div></a>
+      </div>
+    </div>
+  </div>
+  <div class="about-activity-container">
+    <div class="about-activity-show-title">About This Rental</div>
+    <div class="about-activity-content-show"><%=@rental.description%> <%=" "%> <%=@rental.additional_info%></div>
+  </div>
+  <%if @rental.rental_ratings.any?%>
+  <%@rental.rental_ratings.each do |rating|%>
+  <div class="show-activity-ratings-card">
+    <div class="show-activity-stars-container">
+      <%rating.stars.to_i.times do |num|%>
+      <div class="show-activity-star"><img width="25px" height="25px" src="https://github.com/hennyhandles/angaea/blob/master/app/assets/images/star.png?raw=true"/></div>
+      <%end%>
+      <div class="show-activity-number-ratings">"<%=rating.comment.split(".")[0]%>"</div>
+    </div>
+    <div class="activity-show-user-rating"><%= gravatar_for rating.user, size: 25, class: "gravatar space-right"%> <div class="pad-left-username"><%=rating.user.name%></div></div>
+    <div class="show-activity-rating-content"><%=rating.comment%></div>
+  </div>
+  <%end%>
+  <%end%>
+  <div id="ratings" class="show-activity-ratings-container">
+  </div>
+</div>

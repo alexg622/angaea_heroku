@@ -1,0 +1,17 @@
+.new-footer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border-top: 1px solid lightgray;
+}
+
+.right-footer-container {
+  display: flex;
+  justify-content: space-between;
+  width: 400px;
+}
+
+.gray-color {
+  color: #555555;
+  font-size: 8px;
+}
