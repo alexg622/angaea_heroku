@@ -21,7 +21,7 @@
             </div>
           <%end%>
         </div>
-        <div class="show-activity-capacity"><%=@activity.capacity.to_i - @activity.attendees.length%> Tickets Left</div>
+        <div class="show-activity-capacity"><%=@activity.capacity.to_i - @activity.attendees.length%> Spots Left</div>
       </div>
     </div>
     <div class="show-bottom-activity-card">
@@ -33,9 +33,9 @@
       </div>
       <div class="show-activity-right">
         <%if (@activity.capacity.to_i - @activity.attendees.length <= 0)%>
-          <div class="activity-ticket"> No Tickets Left </div>
+          <div class="activity-ticket"> No Spots Left </div>
         <%else%>
-          <a href="/activities/<%=@activity.id%>/activity_tickets/new"><div class="activity-ticket"> Purchase Ticket </div></a>
+          <a href="/activities/<%=@activity.id%>/activity_tickets/new"><div class="activity-ticket"> Purchase Spot </div></a>
         <%end%>
       </div>
     </div>
