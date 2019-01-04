@@ -14,6 +14,7 @@
   width: 800px;
   justify-content: space-around;
   margin-top: 50px;
+  align-items: center;
 }
 
 .users-show-image-container {
@@ -22,10 +23,11 @@
   align-items: center;
   margin: 5px;
 }
+
 .users-show-image {
   display:flex;
   justify-content: center;
-  align-items: center;
+  // align-items: center;
   max-height: 100px;
   max-width: 100px;
   border-radius: 50%;
@@ -38,7 +40,7 @@
 .users-show-image-div {
   display:flex;
   justify-content: center;
-  align-items: center;
+  // align-items: center;
   max-height: 100px;
   width: 100%;
 }
@@ -282,4 +284,29 @@
 
 .display-it-none-rental {
   display: none;
+}
+
+.logos-container {
+  display: flex;
+  // justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.logo {
+  object-fit: cover;
+  margin-left: 10px;
+}
+
+.margin-top-users-show {
+  margin-top: 10px;
+}
+
+.bold {
+  font-weight: bold;
+  margin-bottom: 3px; 
+}
+
+.about-user-container {
+  width: 50%;
 }
