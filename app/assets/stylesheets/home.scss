@@ -139,5 +139,22 @@
   margin-bottom: 10px;
   align-items: center;
   width: 100%;
+}
 
+.view-more {
+  color: blue;
+}
+
+.view-more-div {
+  display:flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 50px;
+  width: 100%;
+  margin-right: 30px;
+}
+
+.view-more:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
