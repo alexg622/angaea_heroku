@@ -25,6 +25,15 @@ class Rental < ApplicationRecord
     city = self.city
     state = self.state
     zip = self.zipcode
+    "#{city}, #{state} #{zip}"
+  end
+
+  def format_full_location
+    address_one = self.addressLN1
+    address_two = self.addressLN2 ? " " + self.addressLN2 + "," : ""
+    city = self.city
+    state = self.state
+    zip = self.zipcode
     "#{address_one},#{address_two} #{city}, #{state} #{zip}"
   end
 
