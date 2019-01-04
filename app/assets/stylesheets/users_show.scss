@@ -104,6 +104,7 @@
   transition: 0.5s;
   background: lightgreen;
   border-radius: 12px;
+  margin-right: 25px;
 }
 
 .create-rental-toggle {
@@ -332,8 +333,8 @@
 
 .users-buttons-container {
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
   align-items: center;
-  width: 50%;
-  margin-top: 10px; 
+  // width: 50%;
+  margin-top: 10px;
 }
