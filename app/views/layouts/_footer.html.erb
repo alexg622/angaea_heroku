@@ -3,9 +3,14 @@
     <a href="/">Angaea</a>
   </small>
   <nav>
-    <ul>
-      <li><%= link_to "About",   '/about' %></li>
-      <li><%= link_to "Contact", '/contact' %></li>
+    <ul class="marg-right navbar-right">
+      <li><%= link_to "Activities", root_path %></li>
+      <li><%= link_to "Rentals", rentals_path %></li>
+      <li><%= link_to "About", "/about" %></li>
+      <li><%= link_to "Contact", "/contact" %></li>
+      <% if logged_in? %>
+        <li><%= link_to "Portfolio", user_path(current_user)%></li>
+      <% end %>
     </ul>
   </nav>
 </footer>
