@@ -7,6 +7,8 @@
 .users-show-title {
   font-size: 25px;
   font-weight: bold;
+  display: flex;
+  align-self: center;
 }
 
 .portfolio-container {
@@ -87,7 +89,7 @@
   justify-content: center;
   align-items: center;
   flex: 1;
-  border-right: 1px solid black;
+  // border-right: 1px solid black;
   transition: 0.5s;
 }
 
@@ -96,17 +98,26 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex: 1;
+  // flex: 1;
+  height: 50px;
+  width: 150px;
   transition: 0.5s;
+  background: lightgreen;
+  border-radius: 12px;
 }
 
 .create-rental-toggle {
-  border-left: 1px solid black;
+  // border-left: 1px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex: 1;
+  // flex: 1;
+  height: 50px;
+  width: 150px;
   transition: 0.5s;
+  background: lightgreen;
+  // margin-top: 5px;
+  border-radius: 12px;
 }
 
 .left-toggle:hover {
@@ -304,9 +315,25 @@
 
 .bold {
   font-weight: bold;
-  margin-bottom: 3px; 
+  margin-bottom: 3px;
 }
 
 .about-user-container {
   width: 50%;
+}
+
+.users-top-container {
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.users-buttons-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+  margin-top: 10px; 
 }
