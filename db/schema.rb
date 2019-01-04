@@ -145,6 +145,11 @@ ActiveRecord::Schema.define(version: 2018_12_25_210507) do
     t.string "profession"
     t.text "skills"
     t.text "about"
+    t.string "facebook"
+    t.string "instagram"
+    t.string "youtube"
+    t.string "pinterest"
+    t.string "twitter"
     t.boolean "agree_to_terms"
     t.boolean "agree_to_privacy"
     t.datetime "created_at", null: false

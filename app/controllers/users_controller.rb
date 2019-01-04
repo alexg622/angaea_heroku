@@ -53,11 +53,11 @@ class UsersController < ApplicationController
      @user.image.attach(user_params[:image])
    end
 
-   if @user.image.attached? && @user.update_attributes(about: user_params[:about], name: user_params[:name], email: user_params[:email], profession: user_params[:profession], skills: user_params[:skills]) && @user.authenticate(user_params[:password])
+   if @user.image.attached? && @user.update_attributes(facebook: user_params[:facebook], instagram: user_params[:instagram], twitter: user_params[:twitter], pinterest: user_params[:pinterest], youtube: user_params[:youtube], about: user_params[:about], name: user_params[:name], email: user_params[:email], profession: user_params[:profession], skills: user_params[:skills]) && @user.authenticate(user_params[:password])
      flash[:success] = "Profile updated"
      redirect_to @user
    else
-     flash.now[:error] = @user.errors.full_messages.join(", ") + (@user.errors.full_messages.length == 0 ? "please attach an image" : ", please attach an image")
+     flash.now[:error] = @user.errors.full_messages.join(", ") + (@user.errors.full_messages.length == 0 ? "please attach an image and fill out your password" : ", please attach an image and fill out your password")
      render 'edit'
    end
  end
@@ -77,7 +77,7 @@ end
   private
 
     def user_params
-      params.require(:user).permit(:agree_to_terms, :image, :about, :name, :profession, :skills, :email, :password, :password_confirmation)
+      params.require(:user).permit(:agree_to_terms, :facebook, :instagram, :youtube, :twitter, :pinterest, :image, :about, :name, :profession, :skills, :email, :password, :password_confirmation)
     end
         # Confirms a logged-in user.
    def logged_in_user
