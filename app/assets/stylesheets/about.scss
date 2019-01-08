@@ -4,6 +4,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100vh;
+  // margin-top: 25px;
 }
 
 .mission-title {
@@ -13,11 +15,12 @@
 }
 
 .mission-info {
-  text-align: center;
+  // text-align: center;
   display: flex;
   width: 60%;
   align-items: center;
-  justify-content: center;
+  line-height: 2em;
+  // justify-content: center;
   margin-top: 40px;
 }
 
