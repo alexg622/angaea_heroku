@@ -39,10 +39,10 @@
         <%end%>
       </div>
     </div>
-  </div>
-  <div class="about-activity-container">
-    <div class="about-activity-show-title">About This Activity</div>
-    <div class="about-activity-content-show"><%=@activity.content%> <%=" "%> <%=@activity.additional_info%></div>
+    <div class="about-activity-container">
+      <div class="about-activity-show-title">About This Activity</div>
+      <div class="about-activity-content-show"><%=@activity.content%> <%=" "%> <%=@activity.additional_info%></div>
+    </div>
   </div>
   <%if @activity.ratings.any?%>
   <%@activity.ratings.each do |rating|%>
