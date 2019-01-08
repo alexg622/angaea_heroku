@@ -106,12 +106,13 @@
   background: lightgreen;
   border-radius: 12px;
   margin-right: 25px;
-  margin-top: 25px; 
+  margin-top: 25px;
 }
 
 .create-rental-toggle {
   // border-left: 1px solid black;
   display: flex;
+  align-self: flex-end;
   justify-content: center;
   align-items: center;
   // flex: 1;
@@ -119,8 +120,9 @@
   width: 150px;
   transition: 0.5s;
   background: lightgreen;
-  // margin-top: 5px;
   border-radius: 12px;
+  margin-right: 25px;
+  margin-top: 25px;
 }
 
 .left-toggle:hover {
@@ -234,7 +236,7 @@
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  display: none;
+  display: flex;
 }
 
 .users-rented-items-container {
