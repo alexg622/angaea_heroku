@@ -158,3 +158,10 @@
   text-decoration: underline;
   cursor: pointer;
 }
+
+.users-activities-outer-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

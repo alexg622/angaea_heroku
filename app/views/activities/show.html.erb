@@ -35,7 +35,7 @@
         <%if (@activity.capacity.to_i - @activity.attendees.length <= 0)%>
           <div class="activity-ticket"> No Spots Left </div>
         <%else%>
-          <a href="/activities/<%=@activity.id%>/activity_tickets/new"><div class="activity-ticket"> Purchase Spot </div></a>
+          <a href="/activities/<%=@activity.id%>/activity_tickets/new"><div class="activity-ticket"> Book Spot </div></a>
         <%end%>
       </div>
     </div>

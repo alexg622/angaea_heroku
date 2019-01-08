@@ -4,6 +4,7 @@ class User < ApplicationRecord
   before_save :downcase_email
   before_create :create_activation_digest
   has_many :activities, dependent: :delete_all
+  has_many :cards, dependent: :delete_all 
   has_one_attached :image
 
   has_many :rental_tickets, dependent: :delete_all

@@ -96,6 +96,7 @@
 .create-activity-toggle {
   // border-left: 1px solid black;
   display: flex;
+  align-self: flex-end;
   justify-content: center;
   align-items: center;
   // flex: 1;
@@ -105,6 +106,7 @@
   background: lightgreen;
   border-radius: 12px;
   margin-right: 25px;
+  margin-top: 25px; 
 }
 
 .create-rental-toggle {
