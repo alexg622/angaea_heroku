@@ -12,7 +12,7 @@
 }
 
 .align-elements {
-  width: 90%;
+  width: 100%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -112,7 +112,7 @@
   transition: 0.5s;
   background: lightgreen;
   border-radius: 12px;
-  margin-right: 25px;
+  // margin-right: 25px;
   margin-top: 25px;
 }
 

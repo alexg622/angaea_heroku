@@ -17,6 +17,16 @@ body {
   margin: 0;
 }
 
+.coming-soon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  font-size: 50px;
+  font-weight: bold;
+  width: 100%;
+}
+
 section {
   overflow: auto;
 }
