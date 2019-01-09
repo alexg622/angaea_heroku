@@ -27,9 +27,9 @@
 #  User.create!(name: name, skills: Faker::ChuckNorris.fact, profession: Faker::Job.title, email: (name.split(" ")[0]+counter.to_s+"@mail.com"), about_me: Faker::GameOfThrones.quote, password: "password")
 # end
 
-# art = Category.create!(category_name: "art", user_id: adminUser.id)
-# music = Category.create!(category_name: "music", user_id: adminUser.id)
-# dance = Category.create!(category_name: "dance", user_id: adminUser.id)
+art = Category.create!(category_name: "art", user_id: adminUser.id)
+music = Category.create!(category_name: "music", user_id: adminUser.id)
+dance = Category.create!(category_name: "dance", user_id: adminUser.id)
 
 # categories = [art, music, dance]
 #
