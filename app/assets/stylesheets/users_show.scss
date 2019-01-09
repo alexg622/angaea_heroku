@@ -11,6 +11,13 @@
   align-self: center;
 }
 
+.align-elements {
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 .portfolio-container {
   display: flex;
   width: 800px;

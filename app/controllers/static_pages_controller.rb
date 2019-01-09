@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
   before_action :agreements_signed?, only: [:home]
-  
+
   def home
     @activities = Activity.categorize_activities
     @art_activities = @activities["art"][0..2]
@@ -54,6 +54,9 @@ class StaticPagesController < ApplicationController
 
   def contact
   end
+
+  def dashboard
+  end 
 
   private
   def user_params

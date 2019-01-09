@@ -1,6 +1,8 @@
 <div class="users-rentals-outer-container">
   <%if current_user == @user%>
-    <div class="create-rental-toggle">Create Rental</div>
+    <div class="align-elements">
+      <div class="create-rental-toggle">Create Rental</div>
+    </div>
   <%end%>
   <div class="users-ratings-container">
     <%if rentals.any?%>
