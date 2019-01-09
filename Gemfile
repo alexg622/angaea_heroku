@@ -17,7 +17,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'faker',                   '1.7.3'
 
-# gem "aws-sdk-s3", require: false
+gem "aws-sdk-s3", require: false
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 gem 'bootstrap-sass', '3.3.7'
