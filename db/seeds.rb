@@ -5,16 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.destroy_all
-Category.destroy_all
-Tag.destroy_all
-Rental.destroy_all
-Activity.destroy_all
-Rating.destroy_all
-ActivityTicket.destroy_all
-RentalTicket.destroy_all
-
-adminUser = User.create!(name: "Angaea", email: "mail@mail.com", profession: "Angaea", skills: "Networking, categories, activities", about_me: "help connect people around the world", password: "password")
 # user1 = User.create(name: "Bill", email: "Bill@mail.com", profession: "Computer Engineer", skills: "CSS, HTML, JavaScript, Python, Ruby, React/Redux", about_me: "this is test data to put on the website in place of the about me section asdlfkjsldkj jfdslk; aflskdj fjdlksa;f lsadkjf lsdkaf jlk;asdjf sdl;akj sdafl;kj sdalkfj dsf", password: "password")
 # user2 = User.create(name: "Jill", email: "Jill@mail.com", password: "password")
 # user3 = User.create(name: "Joe", email: "Joe@mail.com", password: "password")
@@ -37,9 +27,9 @@ adminUser = User.create!(name: "Angaea", email: "mail@mail.com", profession: "An
 #  User.create!(name: name, skills: Faker::ChuckNorris.fact, profession: Faker::Job.title, email: (name.split(" ")[0]+counter.to_s+"@mail.com"), about_me: Faker::GameOfThrones.quote, password: "password")
 # end
 
-art = Category.create!(category_name: "art", user_id: adminUser.id)
-music = Category.create!(category_name: "music", user_id: adminUser.id)
-dance = Category.create!(category_name: "dance", user_id: adminUser.id)
+# art = Category.create!(category_name: "art", user_id: adminUser.id)
+# music = Category.create!(category_name: "music", user_id: adminUser.id)
+# dance = Category.create!(category_name: "dance", user_id: adminUser.id)
 
 # categories = [art, music, dance]
 #
