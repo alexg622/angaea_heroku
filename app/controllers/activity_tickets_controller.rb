@@ -1,5 +1,5 @@
 class ActivityTicketsController < ApplicationController
-  before_action :logged_in_user 
+  before_action :logged_in_user
 
   def new
     @activity = Activity.find(params[:activity_id])
@@ -8,6 +8,7 @@ class ActivityTicketsController < ApplicationController
 
   def create
     # Amount in cents
+    p "In create controller"
     @activity = Activity.find(params[:activity_id])
     @amount = @activity.cost.to_i*100
       customer = Stripe::Customer.create(
@@ -22,9 +23,14 @@ class ActivityTicketsController < ApplicationController
         :currency    => 'usd'
       )
       if charge.status == "succeeded"
+        p "In succeeded ---------------------------"
         @activity_ticket = ActivityTicket.new(user_id: current_user.id, activity_id: @activity.id)
-        if @activity_ticket.save
+        if @activity_ticket.save!
+          p "In saved _-----------------------------------------"
           return redirect_to user_path(current_user)
+        else
+          flash[:error] = "I'm sorry your payment did not go through"
+          render :new
         end
       end
     rescue Stripe::CardError => e
