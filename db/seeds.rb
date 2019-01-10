@@ -27,10 +27,13 @@
 #  User.create!(name: name, skills: Faker::ChuckNorris.fact, profession: Faker::Job.title, email: (name.split(" ")[0]+counter.to_s+"@mail.com"), about_me: Faker::GameOfThrones.quote, password: "password")
 # end
 
-art = Category.create!(category_name: "art", user_id: adminUser.id)
-music = Category.create!(category_name: "music", user_id: adminUser.id)
-dance = Category.create!(category_name: "dance", user_id: adminUser.id)
-
+art = Category.create!(category_name: "art", user_id: User.first.id)
+music = Category.create!(category_name: "music", user_id: User.first.id)
+dance = Category.create!(category_name: "dance", user_id: User.first.id)
+theatre = Category.create!(category_name: "theatre", user_id: User.first.id)
+food = Category.create!(category_name: "food", user_id: User.first.id)
+others = Category.create!(category_name: "others", user_id: User.first.id)
+comedy = Category.create!(category_name: "comedy", user_id: User.first.id)
 # categories = [art, music, dance]
 #
 # 10.times do

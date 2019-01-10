@@ -73,9 +73,15 @@ class Activity < ApplicationRecord
    categories_hash = {
      "dance" => [],
      "music" => [],
-     "art" => []
+     "art" => [],
+     "theatre" => [],
+     "comedy" => [],
+     "food" => [],
+     "others" => [],
    }
+
    self.all.each do |activity|
+     
      categories_hash[activity.categories[0].category_name].push(activity)
    end
    return categories_hash

@@ -6,9 +6,17 @@ class StaticPagesController < ApplicationController
     @art_activities = @activities["art"][0..2]
     @dance_activities = @activities["dance"][0..2]
     @music_activities = @activities["music"][0..2]
+    @food_activities = @activities["food"][0..2]
+    @comedy_activities = @activities["comedy"][0..2]
+    @theatre_activities = @activities["theatre"][0..2]
+    @others_activities = @activities["others"][0..2]
     @art = Category.find_by(category_name: "art")
     @music = Category.find_by(category_name: "music")
     @dance = Category.find_by(category_name: "dance")
+    @theatre = Category.find_by(category_name: "theatre")
+    @food = Category.find_by(category_name: "food")
+    @others = Category.find_by(category_name: "others")
+    @comedy = Category.find_by(category_name: "comedy")
   end
 
   def terms_and_conditions
@@ -56,7 +64,7 @@ class StaticPagesController < ApplicationController
   end
 
   def dashboard
-  end 
+  end
 
   private
   def user_params
