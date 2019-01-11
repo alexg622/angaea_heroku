@@ -3,22 +3,67 @@
   <form enctype="multipart/form-data" class="create-login-form-css" action="<%= users_path %>" method="post">
     <input class="" type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>"/>
     <label>
-      Name
-      <input class="" type="text" name="user[name]" value="">
+      <div style="display:flex"><div>Name</div><div style="color:red"> *</div></div>
+      <input class="" type="text" name="user[name]" value="<%=user.name%>">
     </label>
 
     <label>
-      Email
-      <input class="" type="email" name="user[email]" value="">
+      <div style="display:flex"><div>Email</div><div style="color:red"> *</div></div>
+      <input class="" type="email" name="user[email]" value="<%=user.email%>">
     </label>
 
     <label>
-      Password
+      Profession
+      <input class="" type="text" name="user[profession]" value="<%=user.profession%>">
+    </label>
+
+    <label>
+      Skills
+      <input class="" type="text" name="user[skills]" value="<%=user.skills%>">
+    </label>
+
+    <label>
+      About
+      <textarea class="" type="text" name="user[about]"></textarea>
+    </label>
+
+    <label>
+      facebook url
+      <input class="" type="text" name="user[facebook]" value="<%=user.facebook%>">
+    </label>
+
+    <label>
+      instagram url
+      <input class="" type="text" name="user[instagram]" value="<%=user.instagram%>">
+    </label>
+
+    <label>
+      twitter url
+      <input class="" type="text" name="user[twitter]" value="<%=user.twitter%>">
+    </label>
+
+    <label>
+      youtube url
+      <input class="" type="text" name="user[youtube]" value="<%=user.youtube%>">
+    </label>
+
+    <label>
+      pinterest url
+      <input class="" type="text" name="user[pinterest]" value="<%=user.pinterest%>">
+    </label>
+
+    <label>
+      image
+      <input class="" type="file" name="user[image]" value="">
+    </label>
+
+    <label>
+      <div style="display:flex"><div>Password</div><div style="color:red"> *</div></div>
       <input class="" type="password" name="user[password]" value="">
     </label>
 
     <label>
-      Confirm Password
+      <div style="display:flex"><div>Password Confirm</div><div style="color:red"> *</div></div>
       <input class="" type="password" name="user[password_confirmation]" value="">
     </label>
 

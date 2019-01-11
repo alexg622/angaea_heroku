@@ -14,6 +14,8 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :twitter
       t.boolean :agree_to_terms
       t.boolean :agree_to_privacy
+      t.string :routing_number
+      t.string :account_number
 
 
       t.timestamps

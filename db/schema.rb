@@ -163,6 +163,8 @@ ActiveRecord::Schema.define(version: 2019_01_08_021056) do
     t.string "twitter"
     t.boolean "agree_to_terms"
     t.boolean "agree_to_privacy"
+    t.string "routing_number"
+    t.string "account_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"

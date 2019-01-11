@@ -25,11 +25,11 @@ class UsersController < ApplicationController
 
  def create
     if user_params[:agree_to_terms] == "true"
-       @user = User.new(agree_to_terms: "true", agree_to_privacy: "true", name: user_params[:name], email: user_params[:email], password: user_params[:password], password_confirmation: user_params[:password_confirmation])
+       @user = User.new(agree_to_terms: "true", agree_to_privacy: "true", password: user_params[:password], password_confirmation: user_params[:password_confirmation], facebook: user_params[:facebook], instagram: user_params[:instagram], twitter: user_params[:twitter], pinterest: user_params[:pinterest], youtube: user_params[:youtube], about: user_params[:about], name: user_params[:name], email: user_params[:email], profession: user_params[:profession], skills: user_params[:skills])
        if @user.save
          log_in @user
          # flash[:success] = "Welcome to the Sample App!"
-         redirect_to edit_user_path(@user)  #redirect_to user_url(@user)
+         redirect_to user_path(@user)  #redirect_to user_url(@user)
        else
          # flash.now[:error] = @user.errors.full_messages.join(", ")
          redirect_to signup_path, :flash => { :error => @user.errors.full_messages.join(", ") }

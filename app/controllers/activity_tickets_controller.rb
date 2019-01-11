@@ -25,7 +25,7 @@ class ActivityTicketsController < ApplicationController
       if charge.status == "succeeded"
         p "In succeeded ---------------------------"
         @activity_ticket = ActivityTicket.new(user_id: current_user.id, activity_id: @activity.id)
-        if @activity_ticket.save!
+        if @activity_ticket.save
           p "In saved _-----------------------------------------"
           return redirect_to user_path(current_user)
         else
