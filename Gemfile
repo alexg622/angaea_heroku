@@ -5,6 +5,9 @@ ruby '2.5.3'
 
 # gem for stripe checkout
 gem 'stripe'
+
+# facebook sharing button
+gem 'social-share-button'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
 # Use mysql as the database for Active Record
