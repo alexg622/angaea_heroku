@@ -8,10 +8,14 @@
       <div class="show-info-activity-card">
         <div class="show-activity-card-name"><%=@activity.format_activity_name%></div>
         <div class="show-activity-details-container">
-          <div class="show-top-margin show-activity-card-date"><%=@activity.format_start_date%> - <%=@activity.format_end_date%></div>
-          <div class="show-top-margin show-activity-card-location"><%=@activity.format_location%></div>
-          <div class="show-top-margin activity-card-user">By <%=@activity.user.name%></div>
-          <div class="show-top-margin show-activity-card-price">$<%=@activity.cost%></div>
+          <div class="left-activity-details-container">
+            <div class="show-top-margin activity-card-user">By <%=@activity.user.name%></div>
+            <div class="show-top-margin show-activity-card-location"><%=@activity.format_location%></div>
+          </div>
+          <div class="right-activity-details-container">
+            <div class="show-top-margin show-activity-card-date"><%=@activity.show_start_day%> - <%=@activity.show_end_day%></div>
+            <div class="show-top-margin show-activity-card-date"><%=@activity.show_start_time%> - <%=@activity.show_end_time%></div>
+          </div>
           <%if @activity.ratings.any?%>
             <div class="show-activity-stars-container">
               <%@activity.get_average_rating.times do |num|%>
@@ -21,7 +25,7 @@
             </div>
           <%end%>
         </div>
-        <div class="show-activity-capacity"><%=@activity.capacity.to_i - @activity.attendees.length%> Spots Left</div>
+        <div class="show-top-margin show-activity-card-price">$<%=@activity.cost%></div>
       </div>
     </div>
     <div class="show-bottom-activity-card">
@@ -35,6 +39,7 @@
         <%if (@activity.capacity.to_i - @activity.attendees.length <= 0)%>
           <div class="activity-ticket"> No Spots Left </div>
         <%else%>
+          <div class="show-activity-capacity"><%=@activity.capacity.to_i - @activity.attendees.length%> Spots Left</div>
           <a href="/activities/<%=@activity.id%>/activity_tickets/new"><div class="activity-ticket"> Book Spot </div></a>
         <%end%>
       </div>

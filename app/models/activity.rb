@@ -81,7 +81,7 @@ class Activity < ApplicationRecord
    }
 
    self.all.each do |activity|
-     
+
      categories_hash[activity.categories[0].category_name].push(activity)
    end
    return categories_hash
@@ -93,6 +93,22 @@ class Activity < ApplicationRecord
 
  def format_end_date
    self.end_date.strftime("%a, %B %d,%l:%M%p")
+ end
+
+ def show_end_day
+   self.end_date.strftime("%a, %B %d")
+ end
+
+ def show_start_day
+   self.start_date.strftime("%a, %B %d")
+ end
+
+ def show_end_time
+   self.end_date.strftime("%l:%M%p")
+ end
+
+ def show_start_time
+   self.start_date.strftime("%l:%M%p")
  end
 
  def format_location
