@@ -43,7 +43,14 @@
 
     <label>
       <div style="display:flex"><div>Price</div><div style="color:red"> *</div></div>
-      <input class="" type="text" name="activity[cost]" value="">
+      <input class="price-to-add" type="text" name="activity[cost]" value="">
+    </label>
+
+
+
+    <label>
+      <div style="display:flex"><div>We take a small transaction fee of 5% which we will add to the price of each spot so that you wont get charged for it!</div><div style="color:red"> *</div></div>
+      <input class="add-five-percent" type="text" placeholder="" value="">
     </label>
 
     <label>
@@ -105,4 +112,13 @@
 
     <input class="btn btn-primary" type="submit" value="Create Activity">
   </form>
+
+  <script>
+    let price = document.querySelector(".price-to-add")
+    let theInput = document.querySelector(".add-five-percent")
+    price.addEventListener("input", e => {
+      console.log("hi");
+      theInput.value = price.value*1.05
+    })
+  </script>
 </div>

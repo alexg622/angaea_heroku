@@ -7,7 +7,11 @@
         </div>
       <% end %>
       <label class="amount">
-        <span>Amount: $<%=@activity.cost%></span>
+        <div class="transaction-fee">
+          <span>Activity Amount: $<%=(@activity.cost.to_f)%></span>
+          <span>Transaction Fee: $<%=(@activity.cost.to_f*0.05)%></span>
+          <span>Total: $<%=(@activity.cost.to_f*1.05)%></span>
+        </div>
       </label>
     </article>
 
@@ -16,7 +20,7 @@
             data-image='https://github.com/alexg622/angaea_heroku/blob/master/app/assets/images/pangaea_image.png?raw=true'
             data-name='Angaea'
             data-description='Purchase Spots'
-            data-amount="<%=@activity.cost.to_i*100%>"
+            data-amount="<%=((@activity.cost.to_i*100).to_f*1.05)%>"
             data-locale="auto"></script>
   <% end %>
 </div>
