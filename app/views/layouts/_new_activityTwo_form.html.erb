@@ -118,7 +118,8 @@
     let theInput = document.querySelector(".add-five-percent")
     price.addEventListener("input", e => {
       console.log("hi");
-      theInput.value = price.value*1.05
+      // theInput.value = price.value*1.05
+      theInput.value = Math.round(price.value*1.05*100) / 100
     })
   </script>
 </div>

@@ -9,8 +9,8 @@
       <label class="amount">
         <div class="transaction-fee">
           <span>Activity Amount: $<%=(@activity.cost.to_f)%></span>
-          <span>Transaction Fee: $<%=(@activity.cost.to_f*0.05)%></span>
-          <span>Total: $<%=(@activity.cost.to_f*1.05)%></span>
+          <span>Transaction Fee: $<%=((@activity.cost.to_f*0.05 * 10**2).round.to_f / 10**2)%></span>
+          <span>Total: $<%=((@activity.cost.to_f*1.05 * 10**2).round.to_f / 10**2)%></span>
         </div>
       </label>
     </article>

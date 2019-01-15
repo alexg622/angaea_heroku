@@ -14,20 +14,20 @@ class ActivityTicketsController < ApplicationController
       :email => params[:stripeEmail],
       :source  => params[:stripeToken]
     )
-
-    description = "Activity: #{@activity.activity_name} \n Location: #{@activity.format_full_location} \n Date: #{@activity.format_start_date} - #{@activity.format_end_date} \n Activity id: #{@activity.id} \n User id: #{current_user.id} \n User Email: #{current_user.email} \n Activity Amount: #{@activity.cost} \n Transaction Fee: #{@activity.cost.to_f*0.05} \n Total: #{@activity.cost.to_f*1.05}"
-    charge = Stripe::Charge.create(
-      :customer    => customer.id,
-      :amount      => @amount,
+    description = "Activity: #{@activity.activity_name} \n Location: #{@activity.format_full_location} \n Date: #{@activity.format_start_date} - #{@activity.format_end_date} \n Activity id: #{@activity.id} \n User id: #{current_user.id} \n User Email: #{current_user.email} \n Activity Amount: #{@activity.cost} \n Transaction Fee: #{(@activity.cost.to_f*0.05 * 10**2).round.to_f / 10**2} \n Total: #{(@activity.cost.to_f*1.05 * 10**2).round.to_f / 10**2}"
+    charge = Stripe::Charge.create({
+      customer:     customer.id,
+      amount:       @amount,
       # put user id email and activity id
-      :description => description,
-      :currency    => 'usd'
-    )
+      description:  description,
+      currency:     'usd',
+      receipt_email: customer.email
+    })
     # if charge.Paid
     if charge.status == "succeeded"
       @activity_ticket = ActivityTicket.new(user_id: current_user.id, activity_id: @activity.id)
       if @activity_ticket.save
-        return redirect_to user_path(current_user), :flash => { :success => "Purchased 1 spot for $#{@activity.cost.to_f*1.05}"}
+        return redirect_to user_path(current_user), :flash => { :success => "Purchased 1 spot for $#{(@activity.cost.to_f*1.05 * 10**2).round.to_f / 10**2}"}
 
         # redirect_to signup_path, :flash => { :error => @user.errors.full_messages.join(", ") }
 
