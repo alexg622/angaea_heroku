@@ -4,7 +4,7 @@ class User < ApplicationRecord
   before_save :downcase_email
   before_create :create_activation_digest
   has_many :activities, dependent: :delete_all
-  has_many :cards, dependent: :delete_all 
+  has_many :cards, dependent: :delete_all
   has_one_attached :image
 
   has_many :rental_tickets, dependent: :delete_all
@@ -31,6 +31,15 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
+  def user_events
+    events = {}
+    events_arr = []
+    if self.events.any?
+      self.events.each {|event| events[event.id] = event}
+    end
+    events.each {|key, value| events_arr << value}
+    return events_arr
+  end
 
 def User.digest(string)
    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :

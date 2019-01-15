@@ -13,7 +13,7 @@
 
     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
             data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-            data-image='https://cdn.shopify.com/s/files/1/1560/2263/products/Pangaea-series-5.png?v=1546346442'
+            data-image='https://github.com/alexg622/angaea_heroku/blob/master/app/assets/images/pangaea_image.png?raw=true'
             data-name='Angaea'
             data-description='Purchase Spots'
             data-amount="<%=@activity.cost.to_i*100%>"

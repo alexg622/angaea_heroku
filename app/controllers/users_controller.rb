@@ -14,7 +14,7 @@ class UsersController < ApplicationController
    @activity = Activity.new
    @rental = Rental.new
    @rentals = @user.rentals
-   @upcoming_activities = @user.events
+   @upcoming_activities = @user.user_events
    @rented_items = @user.rented_items
    @activities = @user.activities #need on bottom of page
  end
