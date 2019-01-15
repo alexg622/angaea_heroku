@@ -122,7 +122,7 @@ class Activity < ApplicationRecord
 
  def format_full_location
    address_one = self.addressLN1
-   address_two = self.addressLN2 ? " " + self.addressLN2 + "," : ""
+   address_two = self.addressLN2 != "" ? " " + self.addressLN2 + "," : ""
    city = self.city
    state = self.state
    zip = self.zip

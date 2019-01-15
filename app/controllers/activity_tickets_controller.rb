@@ -8,34 +8,34 @@ class ActivityTicketsController < ApplicationController
 
   def create
     # Amount in cents
-    p "In create controller"
     @activity = Activity.find(params[:activity_id])
     @amount = @activity.cost.to_i*100
-      customer = Stripe::Customer.create(
-        :email => params[:stripeEmail],
-        :source  => params[:stripeToken]
-      )
+    customer = Stripe::Customer.create(
+      :email => params[:stripeEmail],
+      :source  => params[:stripeToken]
+    )
 
-      charge = Stripe::Charge.create(
-        :customer    => customer.id,
-        :amount      => @amount,
-        :description => 'Rails Stripe customer',
-        :currency    => 'usd'
-      )
-      # charge.Paid
-      if charge.status == "succeeded"
-        p "In succeeded ---------------------------"
-        @activity_ticket = ActivityTicket.new(user_id: current_user.id, activity_id: @activity.id)
-        if @activity_ticket.save
-          p "In saved _-----------------------------------------"
-          return redirect_to user_path(current_user)
-        else
-          flash[:error] = "I'm sorry your payment did not go through"
-          render :new
-        end
+    description = "Activity: #{@activity.activity_name} \n Location: #{@activity.format_full_location} \n Date: #{@activity.format_start_date} - #{@activity.format_end_date} \n Activity id: #{@activity.id} \n User id: #{current_user.id} \n User Email: #{current_user.email}"
+
+    charge = Stripe::Charge.create(
+      :customer    => customer.id,
+      :amount      => @amount,
+      # put user id email and activity id
+      :description => description,
+      :currency    => 'usd'
+    )
+    # if charge.Paid
+    if charge.status == "succeeded"
+      @activity_ticket = ActivityTicket.new(user_id: current_user.id, activity_id: @activity.id)
+      if @activity_ticket.save
+        return redirect_to user_path(current_user)
+      else
+        flash[:error] = "I'm sorry your payment did not go through"
+        render :new
       end
-    rescue Stripe::CardError => e
-      flash[:error] = e.message
-      return redirect_to :root
     end
+  rescue Stripe::CardError => e
+    flash[:error] = e.message
+    return redirect_to :root
+  end
 end
