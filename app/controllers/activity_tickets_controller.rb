@@ -28,7 +28,10 @@ class ActivityTicketsController < ApplicationController
     if charge.status == "succeeded"
       @activity_ticket = ActivityTicket.new(user_id: current_user.id, activity_id: @activity.id)
       if @activity_ticket.save
-        return redirect_to user_path(current_user)
+        return redirect_to user_path(current_user), :flash => { :success => "Purchased 1 spot for $#{@activity.cost}"}
+
+        # redirect_to signup_path, :flash => { :error => @user.errors.full_messages.join(", ") }
+
       else
         flash[:error] = "I'm sorry your payment did not go through"
         render :new
