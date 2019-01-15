@@ -22,6 +22,7 @@ class ActivityTicketsController < ApplicationController
         :description => 'Rails Stripe customer',
         :currency    => 'usd'
       )
+      # charge.Paid
       if charge.status == "succeeded"
         p "In succeeded ---------------------------"
         @activity_ticket = ActivityTicket.new(user_id: current_user.id, activity_id: @activity.id)

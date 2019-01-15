@@ -5,7 +5,7 @@ ruby '2.5.3'
 
 # gem for stripe checkout
 gem 'stripe'
-
+gem "pry-rails"
 # facebook sharing button
 gem 'social-share-button'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -62,7 +62,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem "pry-rails"
+
   gem 'sqlite3'
 end
 
