@@ -247,7 +247,7 @@
 
 .social-share-buttons {
   padding-left: 10px;
-  margin-top: 30px; 
+  margin-top: 30px;
 }
 
 .show-activity-ratings-container {
@@ -288,4 +288,26 @@
 
 .pad-left-username {
   padding-left: 5px;
+}
+
+.activity-show-images-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 25px;
+  width: 80%;
+}
+
+.image-div {
+  // border: 3px solid black;
+  margin-top: 25px;
+}
+
+.activity-show-bottom-images {
+  max-width: 300px;
+  max-height: 300px;
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
 }

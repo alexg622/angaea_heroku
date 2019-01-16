@@ -66,4 +66,9 @@
   <%end%>
   <div id="ratings" class="show-activity-ratings-container">
   </div>
+  <div class="activity-show-images-container">
+    <% for i in 0...@activity.images.length %>
+      <div class="image-div"><%=image_tag(@activity.images[i], class: "activity-show-bottom-images")%></div>
+    <% end %>
+  </div>
 </div>
