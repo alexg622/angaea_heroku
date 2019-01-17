@@ -10,8 +10,8 @@
         <div class="transaction-fee">
           <span>Amount Per Day: $<%=(@rental.cost.to_f)%></span>
           <span>Days Being Rented: <%=@days.days_renting%></span>
-          <span>Transaction Fee: $<%=((@rental.cost.to_f*0.05 * 10**2).round.to_f / 10**2)*@days.days_renting.to_f%></span>
-          <span>Total: $<%=((@rental.cost.to_f*1.05 * 10**2).round.to_f / 10**2)*@days.days_renting.to_f%></span>
+          <span>Transaction Fee: $<%=@transFee%></span>
+          <span>Total: $<%=@total%></span>
         </div>
       </label>
     </article>

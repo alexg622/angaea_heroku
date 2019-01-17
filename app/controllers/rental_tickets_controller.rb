@@ -32,6 +32,8 @@ class RentalTicketsController < ApplicationController
     @rental = Rental.find(params[:rental_id])
     @rental_ticket = RentalTicket.new
     @days = current_user.rental_tickets.find_by(rental_id: @rental.id)
+    @total = ((@days.days_renting.to_f*@rental.cost.to_f*1.05 * 10**2).round.to_f / 10**2)
+    @transFee = ((@days.days_renting*@rental.cost.to_f*0.05 * 10**2).round.to_f / 10**2)
   end
 
   def create
