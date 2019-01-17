@@ -18,7 +18,8 @@ class ApplicationController < ActionController::Base
 
   def account_activated?
     if current_user.account_activated != "true"
-      AngaeaActivationMailer.send_activation_link(current_user).deliver
+      p "What is happenning ____-----------------------------------------------"
+      p AngaeaActivationMailer.send_activation_link(current_user).deliver
       redirect_to '/users/activation_reminder'
     end
   end
