@@ -2,7 +2,7 @@ class UsersController < ApplicationController
  before_action :logged_in_user, only: [:index, :edit, :update]
  before_action :correct_user, only: [:edit, :update]
  before_action :agreements_signed?, only: [:show, :edit, :update, :index]
- before_action :account_activated?, only: [:show, :edit, :update, :index]
+ # before_action :account_activated?, only: [:show, :edit, :update, :index]
  # before_action :admin_user,     only: :destroy
 
  def index
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     if user_params[:agree_to_terms] == "true"
        @user = User.new(account_activation_secret: SecureRandom.urlsafe_base64(16), agree_to_terms: "true", agree_to_privacy: "true", password: user_params[:password], password_confirmation: user_params[:password_confirmation], facebook: user_params[:facebook], instagram: user_params[:instagram], twitter: user_params[:twitter], pinterest: user_params[:pinterest], youtube: user_params[:youtube], about: user_params[:about], name: user_params[:name], email: user_params[:email], profession: user_params[:profession], skills: user_params[:skills])
        if @user.save
-         AngaeaActivationMailer.send_activation_link(@user).deliver
+         # AngaeaActivationMailer.send_activation_link(@user).deliver
          log_in @user
          # flash[:success] = "Welcome to the Sample App!"
          redirect_to user_path(@user)  #redirect_to user_url(@user)
