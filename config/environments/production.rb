@@ -64,15 +64,12 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "angaea_heroku_#{Rails.env}"
 
-  config.action_mailer.perform_caching = false
 
-  # mailer
-  config.action_mailer.delivery_method = :smtp
-# SMTP settings for gmail
-
+  # ActionMailer
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_url_options = {host: "https://www.angaea.com/"}
-
+  config.action_mailer.delivery_method = :smtp
+# SMTP settings for gmail
   config.action_mailer.smtp_settings = {
    :address              => "smtp.gmail.com",
    :port                 => 587,

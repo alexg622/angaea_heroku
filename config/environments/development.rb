@@ -9,7 +9,9 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
-  # ActionMailer 
+  # ActionMailer
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = {host: "http://localhost:3000/"}
   config.action_mailer.delivery_method = :smtp
 # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
