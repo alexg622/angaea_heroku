@@ -1,0 +1,8 @@
+<div class="activation-form-container">
+  <h1>Welcome To Angaea!</h1>
+  <form enctype="multipart/form-data" class="create-activity-form-css" action="/users/activate_account/<%=@user.account_activation_secret%>" method="post">
+    <input class="" type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>"/>
+    <img src="https://github.com/alexg622/angaea_heroku/blob/master/app/assets/images/the_angaea_final_symbol.png?raw=true" />
+    <input class="btn btn-primary" type="submit" value="Activate Your Account">
+  </form>
+</div>

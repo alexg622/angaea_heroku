@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   # resources :activities
   # root 'static_pages#activities'  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get '/activities', to: 'static_pages#activities'
+  get '/users/activation_reminder', to: "users#activation_reminder"
+  get '/users/activate_account/:activation_id', to: 'users#activate_account'
+  post '/users/activate_account/:activation_id', to: 'users#create_activate_account'
   get '/activities/:activity_id/spots', to: 'activity_tickets#spots'
   post '/activities/:activity_id/spots', to: 'activity_tickets#create_spots'
   post '/rentals/:rental_id/days_renting', to: 'rental_tickets#create_days_renting'
