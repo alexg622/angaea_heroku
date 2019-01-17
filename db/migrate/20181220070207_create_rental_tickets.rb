@@ -4,6 +4,7 @@ class CreateRentalTickets < ActiveRecord::Migration[5.2]
       t.integer :rental_id
       t.integer :user_id
 
+
       t.timestamps
     end
     add_index :rental_tickets, :rental_id

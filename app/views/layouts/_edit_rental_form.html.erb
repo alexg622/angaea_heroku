@@ -70,11 +70,16 @@
     </label>
 
     <label>
-      image
-      <input class="" type="file" name="rental[image]" value="">
+      Main Image
+      <input class="" type="file" name="rental[image]" value="" multiple="multiple">
     </label>
 
-    <input class="btn btn-primary" type="submit" value="Create Rental">
+    <label>
+      Images - Please select all images at once
+      <input class="" type="file" name="rental[images][]" placeholder="For multiple images please select all images at once" value="" multiple="multiple">
+    </label>
+
+    <input class="btn btn-primary" type="submit" value="Update Rental">
   </form>
   <%= link_to "Delete Rental" , rental_path(rental), method: :delete, class: "red sign-up-button"%>
 </div>

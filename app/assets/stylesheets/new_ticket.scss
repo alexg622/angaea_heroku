@@ -7,5 +7,29 @@
 
 .transaction-fee {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
+}
+
+.spots-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+  font-size: 15px;
+}
+
+.spots-container input {
+  margin-top: 25px;
+}
+
+.spots-container select {
+  margin-top: 15px;
+  width: 50px;
+}
+
+.spots-submit {
+  background: linear-gradient(#7dc5ee,#008cdd 85%,#30a2e4);
+  color: #fff;
+  border-radius: 25px;
 }

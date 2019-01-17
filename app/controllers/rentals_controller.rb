@@ -11,9 +11,16 @@ class RentalsController < ApplicationController
   end
 
   def create
-    @rental = Rental.new(rental_params)
+    @rental = Rental.new(cost: rental_params[:cost], rental_name: rental_params[:rental_name], description: rental_params[:description], category: rental_params[:category], additional_info: rental_params[:additional_info], contact_number: rental_params[:contact_number], contact_email: rental_params[:contact_email], addressLN2: rental_params[:addressLN2], addressLN1: rental_params[:addressLN1], state: rental_params[:state], city: rental_params[:city], zipcode: rental_params[:zipcode], start_date: rental_params[:start_date], end_date: rental_params[:end_date])
     @rental.user = current_user
-    if @rental.save
+    @user = current_user
+    if @rental.save && @user.update_attributes(account_number: user_params[:account_number], routing_number: user_params[:routing_number])
+      if rental_params[:image]
+        @rental.image.attach(rental_params[:image])
+      end
+      if rental_params[:images]
+        @rental.images.attach(rental_params[:images])
+      end
       redirect_to user_path(current_user)
     else
       redirect_to user_path(current_user), :flash => { :error => @rental.errors.full_messages.join(", ") }
@@ -29,6 +36,11 @@ class RentalsController < ApplicationController
     if rental_params[:image]
       @rental.image.attach(rental_params[:image])
     end
+
+    if rental_params[:images]
+      @rental.images.attach(rental_params[:images])
+    end
+    
     if rental_params[:end_date] == "" && rental_params[:start_date] == ""
       if @rental.update_attributes(cost: rental_params[:cost], rental_name: rental_params[:rental_name], description: rental_params[:description], additional_info: rental_params[:additional_info], contact_number: rental_params[:contact_number], contact_email: rental_params[:contact_email], addressLN2: rental_params[:addressLN2], addressLN1: rental_params[:addressLN1], state: rental_params[:state], city: rental_params[:city], zipcode: rental_params[:zipcode], start_date: @rental.start_date, end_date: @rental.end_date) && @rental.image.attached?
         redirect_to user_path(current_user)
@@ -68,6 +80,10 @@ class RentalsController < ApplicationController
 
   private
   def rental_params
-    params.require(:rental).permit(:cost, :image, :rental_name, :description, :category, :additional_info, :contact_number, :contact_email, :addressLN2, :addressLN1, :state, :city, :zipcode, :start_date, :end_date)
+    params.require(:rental).permit(:cost, :image, :rental_name, :description, :category, :additional_info, :contact_number, :contact_email, :addressLN2, :addressLN1, :state, :city, :zipcode, :start_date, :end_date, images: [])
+  end
+
+  def user_params
+    params.require(:user).permit(:account_number, :routing_number)
   end
 end

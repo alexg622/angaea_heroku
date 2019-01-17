@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   # resources :activities
   # root 'static_pages#activities'  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get '/activities', to: 'static_pages#activities'
+  get '/activities/:activity_id/spots', to: 'activity_tickets#spots'
+  post '/activities/:activity_id/spots', to: 'activity_tickets#create_spots'
+  post '/rentals/:rental_id/days_renting', to: 'rental_tickets#create_days_renting'
+  get '/rentals/:rental_id/days_renting', to: 'rental_tickets#days_renting'
   root 'static_pages#home'
   get '/bookings' , to: 'static_pages#bookings'
   get '/dashboard' , to: 'static_pages#dashboard'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_08_021056) do
+ActiveRecord::Schema.define(version: 2019_01_17_034417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 2019_01_08_021056) do
     t.integer "activity_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "spots_buying"
     t.index ["activity_id"], name: "index_activity_tickets_on_activity_id"
     t.index ["user_id"], name: "index_activity_tickets_on_user_id"
   end
@@ -115,6 +116,7 @@ ActiveRecord::Schema.define(version: 2019_01_08_021056) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "days_renting"
     t.index ["rental_id"], name: "index_rental_tickets_on_rental_id"
     t.index ["user_id"], name: "index_rental_tickets_on_user_id"
   end

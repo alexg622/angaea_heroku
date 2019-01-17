@@ -1,0 +1,22 @@
+<script>
+  $(document).on('turbolinks:load', () => {
+    spotsPrice()
+  })
+
+  function spotsPrice() {
+    let spotsSelect = document.querySelector(".spots-select")
+    let spotsTotalDiv = document.querySelector(".spots-total-div")
+    if (spotsTotalDiv !== null) {
+    let spotsArr = spotsTotalDiv.textContent.split("$")
+      let cost = parseInt(spotsArr[1])
+      if(spotsSelect !== null) {
+        spotsSelect.addEventListener("input", e => {
+          let spotsTotal = parseInt(spotsArr[1])
+          spotsTotal = cost * parseInt(spotsSelect.value)
+          spotsTotalDiv.innerText = spotsTotalDiv.textContent.substr(0, 8) + String(spotsTotal)
+        })
+      }
+    }
+  }
+
+</script>

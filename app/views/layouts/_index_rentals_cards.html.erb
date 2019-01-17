@@ -9,9 +9,8 @@
         <div class="home-bottom-activity-card">
           <div class="home-activity-card-name"><%=rental.format_rental_name%></div>
           <div class="home-activity-details-container">
-            <div class="home-top-marsgin home-activity-card-date"><%=rental.format_start_date%></div>
             <div class="home-top-margin home-activity-card-location"><%=rental.format_location%></div>
-            <div class="home-top-margin activity-card-user">By <%=rental.user.name%></div>
+            <div class="home-top-margin activity-card-user">Owner <%=rental.user.name%></div>
             <div class="home-top-margin home-activity-card-price">$<%=rental.cost%></div>
           </div>
         </div>

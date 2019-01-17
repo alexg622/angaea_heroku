@@ -1,4 +1,4 @@
-<div class="new-rental-ticket-container">
+<div class="new-activity-ticket-container">
   <%= form_tag rental_rental_tickets_path(@rental) do %>
     <article>
       <% if flash[:error].present? %>
@@ -7,14 +7,21 @@
         </div>
       <% end %>
       <label class="amount">
-        <span>Amount: $<%=@rental.cost%></span>
+        <div class="transaction-fee">
+          <span>Amount Per Day: $<%=(@rental.cost.to_f)%></span>
+          <span>Days Being Rented: <%=@days.days_renting%></span>
+          <span>Transaction Fee: $<%=((@rental.cost.to_f*0.05 * 10**2).round.to_f / 10**2)*@days.days_renting.to_f%></span>
+          <span>Total: $<%=((@rental.cost.to_f*1.05 * 10**2).round.to_f / 10**2)*@days.days_renting.to_f%></span>
+        </div>
       </label>
     </article>
 
     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
             data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-            data-description="Purchase Rental"
-            data-amount="<%=@rental.cost.to_i*100%>"
+            data-image='https://github.com/alexg622/angaea_heroku/blob/master/app/assets/images/the_angaea_final_symbol.png?raw=true'
+            data-name='Angaea'
+            data-description='Purchase Spots'
+            data-amount="<%=((@rental.cost.to_i*100).to_f*1.05)%>"
             data-locale="auto"></script>
   <% end %>
 </div>

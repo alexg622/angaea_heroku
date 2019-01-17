@@ -1,14 +1,15 @@
 <script>
   $(document).on('turbolinks:load', () => {
-    // showRatings()
+    showRatings()
     showActivities()
     showCreateActivityForm()
-    // showCreateRentalForm()
+    showCreateRentalForm()
     showUpcomingActivities()
     successPurchase()
-    // showRentedItems()
+    showRentedItems()
     showForm()
     changePrice()
+    // spotsPrice()
 
     // let img = document.querySelector(".users-show-image")
     // if(img !== null) {
@@ -17,43 +18,45 @@
     // img.style.borderRadius = "50%"
   })
 
-  // let showRatings = function() {
-  //   let ratings = document.querySelector(".users-rentals-outer-container")
-  //   let activities = document.querySelector(".users-activities-outer-container")
-  //   let form = document.querySelector(".display-it-none")
-  //   let rentalForm = document.querySelector(".display-it-none-rental")
-  //   let upcomingActivities = document.querySelector(".users-upcoming-activities-container")
-  //   let rentedItems = document.querySelector(".users-rented-items-container")
-  //   document.querySelector(".right-toggle").addEventListener("click", (e) => {
-  //     console.log("in rental");
-  //     ratings.style.display = "flex"
-  //     activities.style.display = "none"
-  //     form.style.display = "none"
-  //     rentalForm.style.display = "none"
-  //     upcomingActivities.style.display = "none"
-  //     rentedItems.style.display = "none"
-  //   })
-  // }
-
-  function showUpcomingActivities() {
-    // let ratings = document.querySelector(".users-rentals-outer-container")
+  function showRatings() {
+    let ratings = document.querySelector(".users-rentals-outer-container")
     let activities = document.querySelector(".users-activities-outer-container")
     let form = document.querySelector(".display-it-none")
-    // let rentalForm = document.querySelector(".display-it-none-rental")
+    let rentalForm = document.querySelector(".display-it-none-rental")
+    let upcomingActivities = document.querySelector(".users-upcoming-activities-container")
+    let rentedItems = document.querySelector(".users-rented-items-container")
+    let rightToggle = document.querySelector(".right-toggle")
+    if (rightToggle !== null) {
+      rightToggle.addEventListener("click", (e) => {
+        ratings.style.display = "flex"
+        activities.style.display = "none"
+        form.style.display = "none"
+        rentalForm.style.display = "none"
+        upcomingActivities.style.display = "none"
+        rentedItems.style.display = "none"
+      })
+    }
+  }
+
+  function showUpcomingActivities() {
+    let ratings = document.querySelector(".users-rentals-outer-container")
+    let activities = document.querySelector(".users-activities-outer-container")
+    let form = document.querySelector(".display-it-none")
+    let rentalForm = document.querySelector(".display-it-none-rental")
     // let toggleCreate = document.querySelector(".create-activity-toggle")
     // let toggleRental = document.querySelector(".create-rental-toggle")
     let upcomingActivitiesToggle = document.querySelector(".upcoming-activities-toggle")
     let upcomingActivities = document.querySelector(".users-upcoming-activities-container")
-    // let rentedItems = document.querySelector(".users-rented-items-container")
+    let rentedItems = document.querySelector(".users-rented-items-container")
     // if(toggleCreate && toggleRental) {
       if (upcomingActivitiesToggle !== null) {
         upcomingActivitiesToggle.addEventListener("click", (e) => {
-          // ratings.style.display = "none"
+          ratings.style.display = "none"
           activities.style.display = "none"
           form.style.display = "none"
-          // rentalForm.style.display = "none"
+          rentalForm.style.display = "none"
           upcomingActivities.style.display = "flex"
-          // rentedItems.style.display = "none"
+          rentedItems.style.display = "none"
         })
       }
     // }
@@ -70,52 +73,54 @@
     let upcomingActivities = document.querySelector(".users-upcoming-activities-container")
     let rentedItems = document.querySelector(".users-rented-items-container")
     // if(toggleCreate && toggleRental) {
-      rentedItemsToggle.addEventListener("click", (e) => {
-        ratings.style.display = "none"
-        activities.style.display = "none"
-        form.style.display = "none"
-        rentalForm.style.display = "none"
-        upcomingActivities.style.display = "none"
-        rentedItems.style.display = "flex"
-      })
+      if (rentedItemsToggle !== null) {
+        rentedItemsToggle.addEventListener("click", (e) => {
+          ratings.style.display = "none"
+          activities.style.display = "none"
+          form.style.display = "none"
+          rentalForm.style.display = "none"
+          upcomingActivities.style.display = "none"
+          rentedItems.style.display = "flex"
+        })
+      }
     // }
   }
 
   function showActivities() {
-    // let ratings = document.querySelector(".users-rentals-outer-container")
+    let ratings = document.querySelector(".users-rentals-outer-container")
     let activities = document.querySelector(".users-activities-outer-container")
     let form = document.querySelector(".display-it-none")
-    // let rentalForm = document.querySelector(".display-it-none-rental")
+    let rentalForm = document.querySelector(".display-it-none-rental")
     let upcomingActivities = document.querySelector(".users-upcoming-activities-container")
-    // let rentedItems = document.querySelector(".users-rented-items-container")
+    let rentedItems = document.querySelector(".users-rented-items-container")
     if(document.querySelector(".left-toggle") !== null)
     document.querySelector(".left-toggle").addEventListener("click", (e) => {
       activities.style.display = "flex"
       form.style.display = "none"
-      // ratings.style.display = "none"
-      // rentalForm.style.display = "none"
+      ratings.style.display = "none"
+      rentalForm.style.display = "none"
       upcomingActivities.style.display = "none"
-      // rentedItems.style.display = "none"
+      rentedItems.style.display = "none"
     })
   }
 
   function showCreateActivityForm() {
-    // let ratings = document.querySelector(".users-rentals-outer-container")
+    let ratings = document.querySelector(".users-rentals-outer-container")
     let activities = document.querySelector(".users-activities-outer-container")
     let form = document.querySelector(".display-it-none")
-    // let rentalForm = document.querySelector(".display-it-none-rental")
+    let rentalForm = document.querySelector(".display-it-none-rental")
     let toggleCreate = document.querySelector(".create-activity-toggle")
     // let toggleRental = document.querySelector(".create-rental-toggle")
     let upcomingActivities = document.querySelector(".users-upcoming-activities-container")
-    // let rentedItems = document.querySelector(".users-rented-items-container")
+    let rentedItems = document.querySelector(".users-rented-items-container")
     if(toggleCreate) {
       toggleCreate.addEventListener("click", (e) => {
-        // ratings.style.display = "none"
+        ratings.style.display = "none"
         activities.style.display = "none"
         form.style.display = "flex"
-        // rentalForm.style.display = "none"
+        rentalForm.style.display = "none"
         upcomingActivities.style.display = "none"
-        // rentedItems.style.display = "none"
+        rentedItems.style.display = "none"
       })
     }
   }
@@ -167,10 +172,25 @@
     let theInput = document.querySelector(".add-five-percent")
     if (price !== null) {
       price.addEventListener("input", e => {
-        // theInput.value = price.value*1.05
         theInput.value = Math.round(price.value*1.05*100) / 100
       })
     }
   }
+
+  // function spotsPrice() {
+  //   let spotsSelect = document.querySelector(".spots-select")
+  //   let spotsTotalDiv = document.querySelector(".spots-total-div")
+  //   let spotsArr = spotsTotalDiv.textContent.split("$")
+  //   let cost = parseInt(spotsArr[1])
+  //   if(spotsSelect !== null) {
+  //     spotsSelect.addEventListener("input", e => {
+  //       let spotsTotal = parseInt(spotsArr[1])
+  //       spotsTotal = cost * parseInt(spotsSelect.value)
+  //       console.log(String(spotsTotal));
+  //       spotsTotalDiv.innerText = spotsTotalDiv.textContent.substr(0, 8) + String(spotsTotal)
+  //       console.log(spotsTotalDiv.textContent)
+  //     })
+  //   }
+  // }
 
 </script>

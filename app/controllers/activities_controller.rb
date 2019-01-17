@@ -6,7 +6,7 @@ class ActivitiesController < ApplicationController
 
     @activity = Activity.new(capacity: activity_params[:capacity], contact_number: activity_params[:contact_number], contact_email: activity_params[:contact_email], activity_name: activity_params[:activity_name], content: activity_params[:content], additional_info: activity_params[:additional_info], user_id: current_user.id, start_date: activity_params[:start_date], end_date: activity_params[:end_date], addressLN1: activity_params[:addressLN1], addressLN2: activity_params[:addressLN2], city: activity_params[:city], state: activity_params[:state], cost: activity_params[:cost], zip: activity_params[:zip])
     @category = Category.find_by(category_name: activity_params[:category])
-    if @activity.save && @user.update_attributes!(account_number: user_params[:account_number], routing_number: user_params[:routing_number])
+    if @activity.save && @user.update_attributes(account_number: user_params[:account_number], routing_number: user_params[:routing_number])
       # @activity.image.attach(activity_params[:image])
       if activity_params[:image]
         @activity.image.attach(activity_params[:image])
