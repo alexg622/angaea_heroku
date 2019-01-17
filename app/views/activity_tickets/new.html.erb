@@ -10,8 +10,8 @@
         <div class="transaction-fee">
           <span>Amount Per Spot: $<%=(@activity.cost.to_f)%></span>
           <span>Spots Being Purchased: <%=@spots.spots_buying%></span>
-          <span>Transaction Fee: $<%=((@activity.cost.to_f*0.05 * 10**2).round.to_f / 10**2)*@spots.spots_buying.to_f%></span>
-          <span>Total: $<%=((@activity.cost.to_f*1.05 * 10**2).round.to_f / 10**2)*@spots.spots_buying.to_f%></span>
+          <span>Transaction Fee: $<%=@transFee%></span>
+          <span>Total: $<%=@total%></span>
         </div>
       </label>
     </article>

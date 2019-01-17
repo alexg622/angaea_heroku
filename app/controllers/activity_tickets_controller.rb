@@ -27,6 +27,8 @@ class ActivityTicketsController < ApplicationController
     @activity = Activity.find(params[:activity_id])
     @activity_ticket = ActivityTicket.new
     @spots = current_user.activity_tickets.find_by(activity_id: @activity.id)
+    @total = ((@spots.spots_buying.to_f*@activity.cost.to_f*1.05 * 10**2).round.to_f / 10**2)
+    @transFee = ((@spots.spots_buying*@activity.cost.to_f*0.05 * 10**2).round.to_f / 10**2)
   end
 
   def create
@@ -34,6 +36,7 @@ class ActivityTicketsController < ApplicationController
     @activity = Activity.find(params[:activity_id])
     @spots = current_user.activity_tickets.find_by(activity_id: @activity.id)
     @amount = (@activity.cost.to_i*105)*@spots.spots_buying
+
     customer = Stripe::Customer.create(
       :email => params[:stripeEmail],
       :source  => params[:stripeToken]
