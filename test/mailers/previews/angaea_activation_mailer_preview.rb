@@ -11,4 +11,9 @@ class AngaeaActivationMailerPreview < ActionMailer::Preview
     @activity = @user.activities.find(@activity_ticket.activity_id)
     AngaeaActivationMailer.send_activity_info(@user, @activity, @activity_ticket)
   end
+
+  def test_scheduler
+    @user = User.find(1)
+    AngaeaActivationMailer.test_scheduler(@user)
+  end
 end

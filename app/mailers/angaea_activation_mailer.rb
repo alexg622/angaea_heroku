@@ -13,4 +13,9 @@ class AngaeaActivationMailer < ApplicationMailer
     @spot_num = activity_ticket.spots_buying > 1 ? "spots" : "spot"
     mail(to: @user.email, subject: "You got a spot for #{activity.activity_name}")
   end
+
+  def test_scheduler(user)
+    @user = user
+    mail(to: @user.email, subject: "Test Email for Scheduler Angaea Team")
+  end
 end

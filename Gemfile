@@ -37,6 +37,8 @@ gem 'bcrypt',         '3.1.12'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'rails-ujs', '~> 0.1.0'
 
+# run tasks everyday
+gem 'whenever', :require => false
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
