@@ -32,20 +32,20 @@ class RentalTicketsController < ApplicationController
     @rental = Rental.find(params[:rental_id])
     @rental_ticket = RentalTicket.new
     @days = current_user.rental_tickets.find_by(rental_id: @rental.id)
-    @total = ((@days.days_renting.to_f*@rental.cost.to_f*1.05 * 10**2).round.to_f / 10**2)
-    @transFee = ((@days.days_renting*@rental.cost.to_f*0.05 * 10**2).round.to_f / 10**2)
+    @total = ((@days.days_renting.to_f*@rental.cost.to_f*1.10 * 10**2).round.to_f / 10**2)
+    @transFee = ((@days.days_renting*@rental.cost.to_f*0.10 * 10**2).round.to_f / 10**2)
   end
 
   def create
     # Amount in cents
     @rental = Rental.find(params[:rental_id])
     @days = current_user.rental_tickets.find_by(rental_id: @rental.id)
-    @amount = (@rental.cost.to_i*105)*@days.days_renting
+    @amount = (@rental.cost.to_i*110)*@days.days_renting
     customer = Stripe::Customer.create(
       :email => params[:stripeEmail],
       :source  => params[:stripeToken]
     )
-    description = "Rental: #{@rental.rental_name} \n Rental id: #{@rental.id} \n User id: #{current_user.id} \n User Email: #{current_user.email} \n Days Renting: #{@days.days_renting} \n Rental Amount per Day: $#{@rental.cost} \n Transaction Fee: $#{((@rental.cost.to_f*0.05 * 10**2).round.to_f / 10**2)*@days.days_renting.to_f} \n Total: $#{((@rental.cost.to_f*1.05 * 10**2).round.to_f / 10**2)*@days.days_renting.to_f}"
+    description = "Rental: #{@rental.rental_name} \n Rental id: #{@rental.id} \n User id: #{current_user.id} \n User Email: #{current_user.email} \n Days Renting: #{@days.days_renting} \n Rental Amount per Day: $#{@rental.cost} \n Transaction Fee: $#{((@rental.cost.to_f*0.10 * 10**2).round.to_f / 10**2)*@days.days_renting.to_f} \n Total: $#{((@rental.cost.to_f*1.10 * 10**2).round.to_f / 10**2)*@days.days_renting.to_f}"
     charge = Stripe::Charge.create({
       customer:     customer.id,
       amount:       @amount,
@@ -57,9 +57,9 @@ class RentalTicketsController < ApplicationController
     # if charge.Paid
     if charge.status == "succeeded"
       if @days.days_renting == 1
-        return redirect_to user_path(current_user), :flash => { :success => "Purchased rental for #{@days.days_renting} day at $#{(@rental.cost.to_f*1.05 * 10**2).round.to_f / 10**2} per day for a total of #{((@rental.cost.to_f*1.05 * 10**2).round.to_f / 10**2)*@days.days_renting.to_f}"}
+        return redirect_to user_path(current_user), :flash => { :success => "Purchased rental for #{@days.days_renting} day at $#{(@rental.cost.to_f*1.10 * 10**2).round.to_f / 10**2} per day for a total of #{((@rental.cost.to_f*1.10 * 10**2).round.to_f / 10**2)*@days.days_renting.to_f}"}
       else
-        return redirect_to user_path(current_user), :flash => { :success => "Purchased rental for #{@days.days_renting} days at $#{(@rental.cost.to_f*1.05 * 10**2).round.to_f / 10**2} per day for a total of #{((@rental.cost.to_f*1.05 * 10**2).round.to_f / 10**2)*@days.days_renting.to_f}"}
+        return redirect_to user_path(current_user), :flash => { :success => "Purchased rental for #{@days.days_renting} days at $#{(@rental.cost.to_f*1.10 * 10**2).round.to_f / 10**2} per day for a total of #{((@rental.cost.to_f*1.10 * 10**2).round.to_f / 10**2)*@days.days_renting.to_f}"}
       end
         # redirect_to signup_path, :flash => { :error => @user.errors.full_messages.join(", ") }
     end

@@ -27,21 +27,21 @@ class ActivityTicketsController < ApplicationController
     @activity = Activity.find(params[:activity_id])
     @activity_ticket = ActivityTicket.new
     @spots = current_user.activity_tickets.find_by(activity_id: @activity.id)
-    @total = ((@spots.spots_buying.to_f*@activity.cost.to_f*1.05 * 10**2).round.to_f / 10**2)
-    @transFee = ((@spots.spots_buying*@activity.cost.to_f*0.05 * 10**2).round.to_f / 10**2)
+    @total = ((@spots.spots_buying.to_f*@activity.cost.to_f*1.10 * 10**2).round.to_f / 10**2)
+    @transFee = ((@spots.spots_buying*@activity.cost.to_f*0.10 * 10**2).round.to_f / 10**2)
   end
 
   def create
     # Amount in cents
     @activity = Activity.find(params[:activity_id])
     @spots = current_user.activity_tickets.find_by(activity_id: @activity.id)
-    @amount = (@activity.cost.to_i*105)*@spots.spots_buying
+    @amount = (@activity.cost.to_i*110)*@spots.spots_buying
 
     customer = Stripe::Customer.create(
       :email => params[:stripeEmail],
       :source  => params[:stripeToken]
     )
-    description = "Activity: #{@activity.activity_name} \n Location: #{@activity.format_full_location} \n Date: #{@activity.format_start_date} - #{@activity.format_end_date} \n Activity id: #{@activity.id} \n User id: #{current_user.id} \n User Email: #{current_user.email} \n Activity Amount: $#{@activity.cost} \n Transaction Fee: $#{((@activity.cost.to_f*0.05 * 10**2).round.to_f / 10**2)*@spots.spots_buying.to_f} \n Spots Purchased: #{@spots.spots_buying} \n Total: $#{((@activity.cost.to_f*1.05 * 10**2).round.to_f / 10**2)*@spots.spots_buying.to_f}"
+    description = "Activity: #{@activity.activity_name} \n Location: #{@activity.format_full_location} \n Date: #{@activity.format_start_date} - #{@activity.format_end_date} \n Activity id: #{@activity.id} \n User id: #{current_user.id} \n User Email: #{current_user.email} \n Activity Amount: $#{@activity.cost} \n Transaction Fee: $#{((@activity.cost.to_f*0.10 * 10**2).round.to_f / 10**2)*@spots.spots_buying.to_f} \n Spots Purchased: #{@spots.spots_buying} \n Total: $#{((@activity.cost.to_f*1.10 * 10**2).round.to_f / 10**2)*@spots.spots_buying.to_f}"
     charge = Stripe::Charge.create({
       customer:     customer.id,
       amount:       @amount,
@@ -53,9 +53,11 @@ class ActivityTicketsController < ApplicationController
     # if charge.Paid
     if charge.status == "succeeded"
       if @spots.spots_buying == 1
-        return redirect_to user_path(current_user), :flash => { :success => "Purchased 1 spot for $#{(@activity.cost.to_f*1.05 * 10**2).round.to_f / 10**2}"}
+        AngaeaActivationMailer.send_activity_info(current_user, @activity, @spots).deliver
+        return redirect_to user_path(current_user), :flash => { :success => "Purchased 1 spot for $#{(@activity.cost.to_f*1.10 * 10**2).round.to_f / 10**2}"}
       else
-        return redirect_to user_path(current_user), :flash => { :success => "Purchased #{@spots.spots_buying} spots for $#{((@activity.cost.to_f*1.05 * 10**2).round.to_f / 10**2)*@spots.spots_buying.to_f}"}
+        AngaeaActivationMailer.send_activity_info(current_user, @activity, @spots).deliver
+        return redirect_to user_path(current_user), :flash => { :success => "Purchased #{@spots.spots_buying} spots for $#{((@activity.cost.to_f*1.10 * 10**2).round.to_f / 10**2)*@spots.spots_buying.to_f}"}
       end
         # redirect_to signup_path, :flash => { :error => @user.errors.full_messages.join(", ") }
       flash[:error] = "I'm sorry your payment did not go through"
