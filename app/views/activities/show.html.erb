@@ -48,7 +48,10 @@
       <div class="about-activity-show-title">About This Activity</div>
       <div class="about-activity-content-show"><%=@activity.content%> <%=" "%> <%=@activity.additional_info%></div>
     </div>
-    <div class='social-share-buttons'><%= social_share_button_tag('Share Activity', :url => "https://www.angaea.com/activities/#{@activity.id}", desc: @activity.activity_name) %></div>
+    <div class='social-share-buttons'>
+      <div class="share-with-friends">Share With Friends!</div>
+      <%= social_share_button_tag('Share Activity', :url => "https://www.angaea.com/activities/#{@activity.id}", desc: @activity.activity_name) %>
+    </div>
   </div>
   <%if @activity.ratings.any?%>
   <%@activity.ratings.each do |rating|%>

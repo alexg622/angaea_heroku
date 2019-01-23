@@ -35,13 +35,15 @@
 }
 
 .users-show-image {
-  display:flex;
+  display: flex;
   justify-content: center;
-  // align-items: center;
-  max-height: 200px;
-  max-width: 100px;
+  max-height: 300px;
+  max-width: 200px;
   border-radius: 50%;
   object-fit: cover;
+  height: 200px;
+  width: 200px;
+  margin-bottom: 10px;
 }
 
 .gravatar {
@@ -49,10 +51,9 @@
 }
 
 .users-show-image-div {
-  display:flex;
+  display: flex;
   justify-content: center;
-  // align-items: center;
-  max-height: 100px;
+  max-height: 300px;
   width: 100%;
 }
 
