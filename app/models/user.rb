@@ -6,6 +6,23 @@ class User < ApplicationRecord
   has_many :activities, dependent: :delete_all
   has_many :cards, dependent: :delete_all
   has_one_attached :image
+  # def thubmnail
+    # exclamation forces resize
+    # return self.image.variant(resize: "300x300").processed
+    # -----no exclamation
+    # return self.image.variant(resize: "300x300!").processed
+  # end
+  # when has_many_attached :images
+  # def thubmnail(input)
+    # exclamation forces resize
+    # return self.image[input].variant(resize: "300x300").processed
+    # no exclamation
+    # return self.image[input].variant(resize: "300x300!").processed
+  # end
+  # link to tutorial https://www.youtube.com/watch?v=A23zCePXe74
+  # in view call it - image_tag(@user.thumbnail)
+  # need imageMagick and minimagic
+
 
   has_many :rental_tickets, dependent: :delete_all
   has_many :rented_items,
@@ -22,7 +39,7 @@ class User < ApplicationRecord
   has_many :ratings, dependent: :delete_all
   has_many :rental_ratings
   has_many :rentals, dependent: :delete_all
-  
+
   before_save { email.downcase! }
   validates :name,  presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
