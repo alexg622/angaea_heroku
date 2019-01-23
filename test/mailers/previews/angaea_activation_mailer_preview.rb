@@ -16,4 +16,9 @@ class AngaeaActivationMailerPreview < ActionMailer::Preview
     @user = User.find(1)
     AngaeaActivationMailer.test_scheduler(@user)
   end
+
+  def post_activation_email
+    @user = User.all.sample
+    AngaeaActivationMailer.post_activation_email(@user)
+  end
 end

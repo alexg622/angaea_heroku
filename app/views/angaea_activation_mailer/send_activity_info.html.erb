@@ -1,12 +1,21 @@
 <div>
-  <div>Hi <%="#{@user.name},"%></div>
+  <div>BOOKED!</div>
   <br>
-  <div>
-    <%="You got #{@activity_ticket.spots_buying} #{@spot_num} for activity #{@activity.activity_name}
-    at #{@activity.format_full_location} from #{@activity.format_start_date} - #{@activity.format_end_date}."%>
-  </div>
+  <div>Here is your booking receipt. Please show this when you go to the venue.</div>
   <br>
-  <div>Best,</div>
+  <div>Booking Number: <%=@activity_ticket.id%></div>
+  <div>Spots Purchased: <%=@activity_ticket.spots_buying%></div>
+  <div>Activity: <%=@activity.activity_name%></div>
+  <div>By: <%=@activity.user.name%></div>
+  <div>Date and Time: <%=@activity.format_start_date%> - <%=@activity.format_end_date%></div>
   <br>
+  <div>Please ensure that you’re on time and contact us if you have any questions!</div>
+  <br>
+  <div>Regards,</div>
   <div>Angaea Team</div>
+  <br>
+  <div>Angaea Inc.,</div>
+  <div>San Francisco</div>
+  <div>contact@angaea.com</div>
+  <div>+1(510)499-6974</div>
 </div>
