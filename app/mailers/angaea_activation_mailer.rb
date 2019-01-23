@@ -24,4 +24,11 @@ class AngaeaActivationMailer < ApplicationMailer
     mail(to: @user.email, subject: "Welcome to Angaea!")
   end
 
+  def send_rental_purchase_email(user, rental, rental_ticket)
+    @user = user
+    @rental = rental
+    @rental_ticket = rental_ticket
+    mail(to: @user.email, subject: "You've got it!")
+  end
+
 end

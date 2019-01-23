@@ -2,7 +2,7 @@ class Rental < ApplicationRecord
   belongs_to :user
   has_many :rental_ratings, dependent: :delete_all
   has_many :rental_tickets, dependent: :delete_all
-  
+
   has_many_attached :images
   has_one_attached :image
 
@@ -10,7 +10,7 @@ class Rental < ApplicationRecord
     through: :rental_tickets,
     source: :user
 
-  validates :cost, :contact_email, :start_date, :end_date, :rental_name, :description, :addressLN1, :state, :city, :zipcode, presence: true
+  validates :cost, :contact_number, :contact_email, :start_date, :end_date, :rental_name, :description, :addressLN1, :state, :city, :zipcode, presence: true
 
 
 

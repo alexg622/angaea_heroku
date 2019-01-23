@@ -1,0 +1,18 @@
+<div>
+  <div>Hi <%=@user.name%>,</div>
+  <br>
+  <div>Here is your booking receipt. Please show this when you go to pick up the rental item.</div>
+  <br>
+  <div>Booking number: <%=@rental_ticket.id%></div>
+  <div>Rental product: <%=@rental.rental_name%></div>
+  <div>By: <%=@rental.user.name%></div>
+  <div>Renting for: <%=@rental_ticket.days_renting%> Days</div>
+  <br>
+  <div>Regards,</div>
+  <div>Angaea Team</div>
+  <br>
+  <div>Angaea Inc.,</div>
+  <div>San Francisco</div>
+  <div>contact@angaea.com</div>
+  <div>+1(510)499-6974</div>
+</div>

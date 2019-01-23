@@ -38,6 +38,7 @@ class RentalTicketsController < ApplicationController
 
   def create
     # Amount in cents
+    @user = current_user
     @rental = Rental.find(params[:rental_id])
     @days = current_user.rental_tickets.find_by(rental_id: @rental.id)
     @amount = (@rental.cost.to_i*110)*@days.days_renting
@@ -57,8 +58,10 @@ class RentalTicketsController < ApplicationController
     # if charge.Paid
     if charge.status == "succeeded"
       if @days.days_renting == 1
+        AngaeaActivationMailer.send_rental_purchase_email(@user, @rental, @days).deliver
         return redirect_to user_path(current_user), :flash => { :success => "Purchased rental for #{@days.days_renting} day at $#{(@rental.cost.to_f*1.10 * 10**2).round.to_f / 10**2} per day for a total of #{((@rental.cost.to_f*1.10 * 10**2).round.to_f / 10**2)*@days.days_renting.to_f}"}
       else
+        AngaeaActivationMailer.send_rental_purchase_email(@user, @rental, @days).deliver
         return redirect_to user_path(current_user), :flash => { :success => "Purchased rental for #{@days.days_renting} days at $#{(@rental.cost.to_f*1.10 * 10**2).round.to_f / 10**2} per day for a total of #{((@rental.cost.to_f*1.10 * 10**2).round.to_f / 10**2)*@days.days_renting.to_f}"}
       end
         # redirect_to signup_path, :flash => { :error => @user.errors.full_messages.join(", ") }

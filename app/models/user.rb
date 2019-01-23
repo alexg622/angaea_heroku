@@ -22,6 +22,7 @@ class User < ApplicationRecord
   has_many :ratings, dependent: :delete_all
   has_many :rental_ratings
   has_many :rentals, dependent: :delete_all
+  
   before_save { email.downcase! }
   validates :name,  presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

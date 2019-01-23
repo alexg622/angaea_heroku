@@ -21,4 +21,12 @@ class AngaeaActivationMailerPreview < ActionMailer::Preview
     @user = User.all.sample
     AngaeaActivationMailer.post_activation_email(@user)
   end
+
+  def send_rental_purchase_email
+    @user = User.find(11)
+    @rental = @user.rented_items.first
+    @rental_ticket = @user.rental_tickets.find_by(user_id: @user.id)
+    AngaeaActivationMailer.send_rental_purchase_email(@user, @rental, @rental_ticket)
+  end
+
 end
