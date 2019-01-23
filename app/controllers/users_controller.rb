@@ -55,7 +55,8 @@ class UsersController < ApplicationController
   def create_activate_account
     @user = User.find_by(account_activation_secret: params[:activation_id])
     if @user.update_attributes(account_activated: "true")
-      AngaeaActivationMailer.post_activation_email(@user)
+
+      AngaeaActivationMailer.post_activation_email(@user).deliver
       flash.now[:success] = "Account Activated!"
       redirect_to user_path(@user)
     else
