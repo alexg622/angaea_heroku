@@ -53,6 +53,23 @@
       <%= social_share_button_tag('Share Activity', :url => "https://www.angaea.com/activities/#{@activity.id}", desc: @activity.activity_name) %>
     </div>
   </div>
+  <div class="attendees-container">
+    <%if @activity.attendees.any?%>
+      <div class="attendees-text">Attendees</div>
+      <div class="attendees-cards-container">
+        <%@activity.attendees.each do |attendee|%>
+          <div class="attendees-card">
+            <div class="attendee-name"><%=attendee.name%></div>
+            <%if attendee.image.attached?%>
+            <div class="users-show-image-div"><%= image_tag(attendee.image, class: "users-show-image")%></div>
+            <%else%>
+            <div class="users-show-image-div"><%= gravatar_for attendee, size: 100 %></div>
+            <%end%>
+          </div>
+        <%end%>
+      </div>
+    <%end%>
+  </div>
   <%if @activity.ratings.any?%>
   <%@activity.ratings.each do |rating|%>
   <div class="show-activity-ratings-card">
@@ -69,9 +86,12 @@
   <%end%>
   <div id="ratings" class="show-activity-ratings-container">
   </div>
-  <div class="activity-show-images-container">
-    <% for i in 0...@activity.images.length %>
-      <div class="image-div"><%=image_tag(@activity.images[i], class: "activity-show-bottom-images")%></div>
-    <% end %>
-  </div>
+  <%if @activity.images.length > 0%>
+    <div class="more-images-text">Get To Know <%=@activity.activity_name%></div>
+    <div class="activity-show-images-container">
+        <% for i in 0...@activity.images.length %>
+          <div class="image-div"><%=image_tag(@activity.images[i], class: "activity-show-bottom-images")%></div>
+        <% end %>
+    </div>
+  <%end%>
 </div>
