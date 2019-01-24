@@ -61,10 +61,9 @@
   font-size: 35px;
   position: absolute;
   color: #FFF;
-  margin-left: 30%;
+  margin-left: 85%;
   font-weight: bold;
   transition: opacity 0.75s;
-
   -webkit-user-select: none; /* Chrome/Safari */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10+ */
@@ -82,7 +81,7 @@
 .left-arrow {
   opacity: 0;
   font-size: 35px;
-  margin-left: 2.2%;
+  margin-left: 15%;
   position: absolute;
   color: #FFF;
   font-weight: bold;
@@ -95,6 +94,7 @@
 }
 
 .image-activity-card-container {
+  position: relative;
   max-width: 500px;
   height: 100%;
 }
@@ -382,7 +382,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 50px; 
+  margin-top: 50px;
 }
 
 .attendees-text {
