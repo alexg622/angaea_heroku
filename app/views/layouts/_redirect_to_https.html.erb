@@ -1,0 +1,6 @@
+<script>
+  if (location.protocol != 'https:' && location.href.split("/")[2] !== "localhost:3000")
+  {
+   location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+  }
+</script>

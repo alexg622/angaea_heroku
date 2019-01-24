@@ -24,18 +24,10 @@
         <div class="about-user"><%=@user.about%></div>
       </div>
       <div class="logos-container">
-        <%if @user.facebook != ""%>
-          <div><a href="<%=@user.facebook%>"><img class="logo-facebook" width="35px" height="35px" src="https://github.com/alexg622/angaea_heroku/blob/master/app/assets/images/facebook.jpg?raw=true"></a></div>
-        <%end%>
-        <%if @user.instagram != ""%>
-          <div><a href="<%=@user.instagram%>"><img class="logo" width="35px" height="35px" src="https://github.com/alexg622/angaea_heroku/blob/master/app/assets/images/instagram.jpg?raw=true"/></a></div>
-        <%end%>
-        <%if @user.youtube != ""%>
-          <div><a href="<%=@user.youtube%>"><img class="logo" height="35px" width="35px" src="https://github.com/alexg622/angaea_heroku/blob/master/app/assets/images/youtube.jpg?raw=true"></a></div>
-        <%end%>
-        <%if @user.twitter != ""%>
-          <div><a href="<%=@user.twitter%>"><img class="logo" height="35px" width="35px" src="https://github.com/alexg622/angaea_heroku/blob/master/app/assets/images/twitter.jpg?raw=true"/></a></div>
-        <%end%>
+        <div><a href="<%=@user.facebook%>"><img class="logo-facebook" width="35px" height="35px" src="https://github.com/alexg622/angaea_heroku/blob/master/app/assets/images/facebook.jpg?raw=true"></a></div>
+        <div><a href="<%=@user.instagram%>"><img class="logo" width="35px" height="35px" src="https://github.com/alexg622/angaea_heroku/blob/master/app/assets/images/instagram.jpg?raw=true"/></a></div>
+        <div><a href="<%=@user.youtube%>"><img class="logo" height="35px" width="35px" src="https://github.com/alexg622/angaea_heroku/blob/master/app/assets/images/youtube.jpg?raw=true"></a></div>
+        <div><a href="<%=@user.twitter%>"><img class="logo" height="35px" width="35px" src="https://github.com/alexg622/angaea_heroku/blob/master/app/assets/images/twitter.jpg?raw=true"/></a></div>
       </div>
     </div>
   </div>
