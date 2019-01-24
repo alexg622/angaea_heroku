@@ -41,18 +41,62 @@
   border: 1px solid lightgray;
   flex-direction: column;
   box-shadow: 0;
-  transform: scale(0.95);
-  transition: box-shadow 0.5s, transform 0.5s;
-  &:hover{
-    transform: scale(1);
-    box-shadow: 5px 20px 30px rgba(0,0,0,0.2);
-  }
+  // transform: scale(0.95);
+  // transition: box-shadow 0.5s, transform 0.5s;
+  // &:hover{
+  //   transform: scale(1);
+    // box-shadow: 5px 20px 30px rgba(0,0,0,0.2);
+  // }
 }
 
 .show-image-activity-card {
   max-width: 500px;
   height: 100%;
   object-fit: cover;
+  width: 500px;
+}
+
+.right-arrow {
+  opacity: 0;
+  font-size: 35px;
+  position: absolute;
+  color: #FFF;
+  margin-left: 30%;
+  font-weight: bold;
+  transition: opacity 0.75s;
+
+  -webkit-user-select: none; /* Chrome/Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+  /* Rules below not implemented in browsers yet */
+  -o-user-select: none;
+  user-select: none;
+}
+
+.arrows-holder {
+  position: absolute;
+  width: 100%;
+  transform: translateY(calc(100% + 100px));
+}
+
+.left-arrow {
+  opacity: 0;
+  font-size: 35px;
+  margin-left: 2.2%;
+  position: absolute;
+  color: #FFF;
+  font-weight: bold;
+  transition: 0.75s;
+  -webkit-user-select: none; /* Chrome/Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+  -o-user-select: none;
+  user-select: none;
+}
+
+.image-activity-card-container {
+  max-width: 500px;
+  height: 100%;
 }
 
 .show-top-activity-card:hover {
@@ -315,6 +359,7 @@
 }
 
 .image-div {
+  display: none;
   margin-top: 25px;
   width: 50%;
   display: flex;
@@ -323,6 +368,7 @@
 }
 
 .activity-show-bottom-images {
+  display: none;
   max-width: 300px;
   max-height: 300px;
   width: 300px;
@@ -336,6 +382,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 50px; 
 }
 
 .attendees-text {

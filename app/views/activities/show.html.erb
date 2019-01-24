@@ -3,7 +3,13 @@
     <div class="show-top-activity-card">
       <!-- <img class="show-image-activity-card" src="http://www.pcraft.com/wp-content/uploads/2015/06/Jim-Delutes_Gondolas.jpg" /> -->
       <%if @activity.image.attached?%>
-        <%=image_tag(@activity.image, class: "show-image-activity-card")%>
+        <div class="image-activity-card-container">
+          <div class="arrows-holder">
+            <div unselectable="on" class="left-arrow"><</div>
+            <div unselectable="on" class="right-arrow">></div>
+          </div>
+          <img class="show-image-activity-card" src="<%=url_for(@activity.image)%>"/>
+        </div>
       <%end%>
       <div class="show-info-activity-card">
         <div class="show-activity-card-name"><%=@activity.format_activity_name%></div>
@@ -87,11 +93,12 @@
   <div id="ratings" class="show-activity-ratings-container">
   </div>
   <%if @activity.images.length > 0%>
-    <div class="more-images-text">Get To Know <%=@activity.activity_name%></div>
-    <div class="activity-show-images-container">
         <% for i in 0...@activity.images.length %>
-          <div class="image-div"><%=image_tag(@activity.images[i], class: "activity-show-bottom-images")%></div>
+          <%=image_tag(@activity.images[i], class: "activity-show-bottom-images")%>
         <% end %>
     </div>
+  <%end%>
+  <%if @activity.images.length > 0%>
+    <%=render "layouts/activities_show_carousel"%>
   <%end%>
 </div>
