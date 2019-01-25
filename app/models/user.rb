@@ -2,6 +2,7 @@ class User < ApplicationRecord
 
   attr_accessor :remember_token, :activation_token
   before_save :downcase_email
+  has_one :stripe_connect 
   before_create :create_activation_digest
   has_many :activities, dependent: :delete_all
   has_many :cards, dependent: :delete_all
