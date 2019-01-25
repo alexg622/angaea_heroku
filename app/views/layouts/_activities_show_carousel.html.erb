@@ -1,67 +1,60 @@
 <script>
-  function locationTrue() {
-    const theLocation = location.href.split("/")
-    return (theLocation[3] === "activities" && theLocation[5] === undefined)
+  document.addEventListener("DOMContentLoaded", () => {
+    showArrows()
+    hideArrows()
+    rightArrowClick()
+    leftArrowClick()
+  })
+
+  let leftArrow = document.querySelector(".left-arrow")
+  let rightArrow = document.querySelector(".right-arrow")
+  let imgTag = document.querySelector('.show-image-activity-card')
+  let imgsTags = Array.from(document.querySelectorAll(".activity-show-bottom-images"))
+  let cardContainer = document.querySelector(".image-activity-card-container")
+  let imgCounter = 0
+  let imgsSrcs = []
+  imgsTags.unshift(imgTag)
+  if(imgsTags.length>0) {
+    for (let i=0; i<imgsTags.length; i++) {
+      imgsSrcs.push(imgsTags[i].src)
+    }
   }
 
-  if(locationTrue()) {
-    document.addEventListener('DOMContentLoaded', () => {
-      showArrows()
-      hideArrows()
-      rightArrowClick()
-      leftArrowClick()
-    })
-
-    let leftArrow = document.querySelector(".left-arrow")
-    let rightArrow = document.querySelector(".right-arrow")
-    let imgTag = document.querySelector('.show-image-activity-card')
-    let imgsTags = Array.from(document.querySelectorAll(".activity-show-bottom-images"))
-    let cardContainer = document.querySelector(".image-activity-card-container")
-    let imgCounter = 0
-    let imgsSrcs = []
-    imgsTags.unshift(imgTag)
-    if(imgsTags.length>0) {
-      for (let i=0; i<imgsTags.length; i++) {
-        imgsSrcs.push(imgsTags[i].src)
-      }
+  function showArrows() {
+    if(cardContainer !== null) {
+      cardContainer.addEventListener("mouseover", e => {
+        leftArrow.style.opacity = 1
+        rightArrow.style.opacity = 1
+      })
     }
+  }
 
-    function showArrows() {
-      if(cardContainer !== null) {
-        cardContainer.addEventListener("mouseover", e => {
-          leftArrow.style.opacity = 1
-          rightArrow.style.opacity = 1
-        })
-      }
+  function hideArrows() {
+    if(cardContainer !== null) {
+      cardContainer.addEventListener("mouseleave", e => {
+        leftArrow.style.opacity = 0
+        rightArrow.style.opacity = 0
+      })
     }
+  }
 
-    function hideArrows() {
-      if(cardContainer !== null) {
-        cardContainer.addEventListener("mouseleave", e => {
-          leftArrow.style.opacity = 0
-          rightArrow.style.opacity = 0
-        })
-      }
+  function rightArrowClick() {
+    if (rightArrow !== null) {
+      rightArrow.addEventListener("click", e => {
+        imgCounter += 1
+        if (imgCounter >= imgsSrcs.length) imgCounter = 0
+        imgTag.src = imgsSrcs[imgCounter]
+      })
     }
+  }
 
-    function rightArrowClick() {
-      if (rightArrow !== null) {
-        rightArrow.addEventListener("click", e => {
-          imgCounter += 1
-          if (imgCounter >= imgsSrcs.length) imgCounter = 0
-          imgTag.src = imgsSrcs[imgCounter]
-        })
-      }
-    }
-
-    function leftArrowClick() {
-      if(leftArrow !== null) {
-        leftArrow.addEventListener("click", e => {
-          imgCounter -= 1
-          if (imgCounter < 0) imgCounter = imgsSrcs.length-1
-          imgTag.src = imgsSrcs[imgCounter]
-        })
-      }
+  function leftArrowClick() {
+    if(leftArrow !== null) {
+      leftArrow.addEventListener("click", e => {
+        imgCounter -= 1
+        if (imgCounter < 0) imgCounter = imgsSrcs.length-1
+        imgTag.src = imgsSrcs[imgCounter]
+      })
     }
   }
 </script>
