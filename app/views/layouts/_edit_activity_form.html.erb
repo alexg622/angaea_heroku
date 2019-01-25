@@ -1,6 +1,7 @@
+
 <div class="edit-activity-form-container">
   <h1>Update Your Activity</h1>
-  <form enctype="multipart/form-data" class="create-activity-form-css" action="<%= activity_path(activity) %>" method="post">
+  <form enctype="multipart/form-data" class="date-class create-activity-form-css" action="<%= activity_path(activity) %>" method="post">
     <input class="" type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>"/>
     <input type="hidden" name="_method" value="patch">
     <label>
@@ -64,14 +65,36 @@
     </label>
 
     <label>
-      Start Date - <%=activity.format_start_date%>
-      <input class="start-date" type="datetime-local" name="activity[start_date]" value="">
+      <div style="display:flex"><div>Start Date - <%=activity.format_start_date%></div><div style="color:red"> *</div></div>
+      <div class="start-datetime start-datetime-input-container datetime-input-container">
+        <div class="start-datetime datetime-input datetime-day"><%=activity.start_date.strftime("%m")%></div>
+        <div class="start-datetime datetime-input datetime-divider">/</div>
+        <div class="start-datetime datetime-input datetime-month"><%=activity.start_date.strftime("%d")%></div>
+        <div class="start-datetime datetime-input datetime-divider">/</div>
+        <div class="start-datetime datetime-input datetime-year"><%=activity.start_date.strftime("%Y")%></div>
+        <div class="start-datetime datetime-input datetime-hour"> <%=activity.start_date.strftime("%l")%></div>
+        <div class="start-datetime datetime-input datetime-divider">:</div>
+        <div class="start-datetime datetime-input datetime-minute"><%=activity.start_date.strftime("%M")%></div>
+        <div class="start-datetime datetime-input datetime-ampm"><%=activity.start_date.strftime("%p")%></div>
+      </div>
+      <input class="start-datetime-value start-date" type="hidden" name="activity[start_date]" value="">
     </label>
-
+    <!-- 17 Jan 2019 20:00:51 UTC +00:00 -->
 
     <label>
-      End Date - <%=activity.format_end_date%>
-      <input class="end-date" type="datetime-local" name="activity[end_date]" value="">
+      <div style="display:flex"><div>End Date - <%=activity.format_end_date%></div><div style="color:red"> *</div></div>
+      <div class="end-datetime end-datetime-input-container datetime-input-container">
+        <div class="end-datetime datetime-input end-datetime-day"><%=activity.end_date.strftime("%m")%></div>
+        <div class="end-datetime datetime-input end-datetime-divider">/</div>
+        <div class="end-datetime datetime-input end-datetime-month"><%=activity.end_date.strftime("%d")%></div>
+        <div class="end-datetime datetime-input end-datetime-divider">/</div>
+        <div class="end-datetime datetime-input end-datetime-year"><%=activity.end_date.strftime("%Y")%></div>
+        <div class="end-datetime datetime-input end-datetime-hour"><%=activity.end_date.strftime("%l")%></div>
+        <div class="end-datetime datetime-input end-datetime-divider">:</div>
+        <div class="end-datetime datetime-input end-datetime-minute"><%=activity.end_date.strftime("%M")%></div>
+        <div class="end-datetime datetime-input end-datetime-ampm"><%=activity.end_date.strftime("%p")%></div>
+      </div>
+      <input class="end-datetime-value end-date" type="hidden" name="activity[end_date]" value="">
     </label>
 
     <label>
@@ -87,5 +110,6 @@
     <input class="btn btn-primary" type="submit" value="Update Your Activity">
   </form>
   <%= link_to "Delete Activity" , activity_path(activity), method: :delete, class: "red sign-up-button"%>
-
+  <%= render "layouts/datetime_javascript"%>
+  <%= render "layouts/end_datetime_javascript"%>
 </div>

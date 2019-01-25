@@ -1,0 +1,840 @@
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    startDatesetDay()
+    startDatesetMonth()
+    startDatesetYear()
+    startDatesetHour()
+    startDatesetMinute()
+    startDatesetAmpm()
+    startDatefollowKeyPress()
+    startDatetimeValue()
+    startDateinsertValue()
+    startDateresetListeners()
+  })
+
+  function startDateMonths() {
+    let months = {
+      "12": "Dec",
+      "11": "Nov",
+      "10": "Oct",
+      "09": "Sep",
+      "08": "Aug",
+      "07": "Jul",
+      "06": "Jun",
+      "05": "May",
+      "04": "Apr",
+      "03": "Mar",
+      "02": "Feb",
+      "01": "Jan"
+    }
+    return months
+  }
+
+  function startDateConvertTime() {
+    let times = {
+      "12AM": "00",
+      "01AM": "01",
+      "02AM": "02",
+      "03AM": "03",
+      "04AM": "04",
+      "05AM": "05",
+      "06AM": "06",
+      "07AM": "07",
+      "08AM": "08",
+      "09AM": "09",
+      "10AM": "10",
+      "11AM": "11",
+      "12PM": "12",
+      "01PM": "13",
+      "02PM": "14",
+      "03PM": "15",
+      "04PM": "16",
+      "05PM": "17",
+      "06PM": "18",
+      "07PM": "19",
+      "08pm": "20",
+      "09PM": "21",
+      "10PM": "22",
+      "11PM": "23",
+      "12PM": "24"
+    }
+    return times
+  }
+
+  function startDatetimeInputContainer() {
+    return document.querySelector(".start-datetime-input-container")
+  }
+  function startDateForm() {
+    return document.querySelector(".date-class")
+  }
+  function startDatetimeInput() {
+    return document.querySelector(".start-datetime-value")
+  }
+
+  function startDatetimeArray() {
+    return Array.from(document.querySelectorAll(".start-datetime"))
+  }
+
+  function startDateDayBool() {
+    return false
+  }
+  function startDateDayCounter() {
+    return 0
+  }
+  function startDateDayDiv() {
+    let theElement = document.querySelector(".datetime-day")
+    return theElement
+  }
+
+  function startDateMonthBool() {
+    return false
+  }
+  function startDateMonthCounter() {
+    return 0
+  }
+  function startDateMonthDiv() {
+    return document.querySelector(".datetime-month")
+  }
+
+  function startDateYearBool() {
+    return false
+  }
+  function startDateYearCounter() {
+    return 4
+  }
+  function startDateYearDiv() {
+    return document.querySelector(".datetime-year")
+  }
+
+  function startDateHourBool() {
+    return false
+  }
+  function startDateHourCounter() {
+    return 0
+  }
+  function startDateHourDiv() {
+    return document.querySelector(".datetime-hour")
+  }
+
+  function startDateMinuteBool() {
+    return false
+  }
+  function startDateMinuteCounter() {
+    return 0
+  }
+  function startDateMinuteDiv() {
+    return document.querySelector(".datetime-minute")
+  }
+
+  function startDateAmpmBool() {
+    return false
+  }
+  function startDateAmpmCounter() {
+    return 0
+  }
+  function startDateAmpmDiv() {
+    return document.querySelector(".datetime-ampm")
+  }
+
+  function startDateresetListeners() {
+    if(startDateForm() !== null) {
+      let theInputs = Array.from(startDateForm().querySelectorAll("input"))
+      for(let i=0; i<theInputs.length; i++) {
+        theInputs[i].addEventListener("click", e => {
+          startDateMonthBool() = false
+          startDateDayBool() = false
+          startDateYearBool() = false
+          startDateHourBool() = false
+          startDateMinuteBool() = false
+          startDateAmpmBool() = false
+        })
+      }
+    }
+  }
+
+  function startDatesetDay() {
+    let theStartDateDayDiv = startDateDayDiv()
+    if(theStartDateDayDiv !== null) {
+      console.log(theStartDateDayDiv);
+      theStartDateDayDiv.addEventListener("click", e => {
+        theStartDateDayDiv.style.color = "black"
+        startDateMonthBool() = false
+        startDateDayBool() = true
+        startDateYearBool() = false
+        startDateHourBool() = false
+        startDateMinuteBool() = false
+        startDateAmpmBool() = false
+      })
+    }
+  }
+
+  function startDatesetMonth() {
+    if(startDateMonthDiv() !== null) {
+      startDateMonthDiv().addEventListener("click", e => {
+        startDateMonthDiv().style.color = "black"
+        startDateDayBool() = false
+        startDateMonthBool() = true
+        startDateYearBool() = false
+        startDateHourBool() = false
+        startDateMinuteBool() = false
+        startDateAmpmBool() = false
+      })
+    }
+  }
+
+  function startDatesetYear() {
+    if(startDateYearDiv() !== null) {
+      startDateYearDiv().addEventListener("click", e => {
+        startDateYearDiv().style.color = "black"
+        startDateMonthBool() = false
+        startDateDayBool() = false
+        startDateAmpmBool() = false
+        startDateHourBool() = false
+        startDateMinuteBool() = false
+        startDateYearBool() = true
+      })
+    }
+  }
+
+  function startDatesetHour() {
+    if(startDateHourDiv() !== null) {
+      startDateHourDiv().addEventListener("click", e => {
+        startDateHourDiv().style.color = "black"
+        startDateDayBool() = false
+        startDateMonthBool() = false
+        startDateYearBool() = false
+        startDateHourBool() = true
+        startDateMinuteBool() = false
+        startDateAmpmBool() = false
+      })
+    }
+  }
+
+  function startDatesetMinute() {
+    if(startDateMinuteDiv() !== null) {
+      startDateMinuteDiv().addEventListener("click", e => {
+        startDateMinuteDiv().style.color = "black"
+        startDateDayBool() = false
+        startDateMonthBool() = false
+        startDateYearBool() = false
+        startDateHourBool() = false
+        startDateMinuteBool() = true
+        startDateAmpmBool() = false
+      })
+    }
+  }
+
+  function startDatesetAmpm() {
+    if(startDateAmpmDiv() !== null) {
+      startDateAmpmDiv().addEventListener("click", e => {
+        startDateAmpmDiv().style.color = "black"
+        startDateDayBool() = false
+        startDateMonthBool() = false
+        startDateYearBool() = false
+        startDateHourBool() = false
+        startDateMinuteBool() = false
+        startDateAmpmBool() = true
+      })
+    }
+  }
+
+  function startDatefollowKeyPress() {
+    document.addEventListener("keydown", e => {
+      if(startDateDayBool()) {
+        if (e.keyCode === 49) {
+          if(startDateDayCounter() % 2 === 0) {
+            startDateDayDiv().innerText = "1" + startDateDayDiv().innerText.substr(1, 2)
+            startDateDayCounter() ++
+          } else {
+            startDateDayDiv().innerText = startDateDayDiv().innerText.substr(0, 1) + "1"
+            startDateDayCounter() ++
+          }
+        }
+        if (e.keyCode === 50) {
+          if(startDateDayCounter() % 2 === 0) {
+            startDateDayDiv().innerText = "2" + startDateDayDiv().innerText.substr(1, 2)
+            startDateDayCounter() ++
+          } else {
+            startDateDayDiv().innerText = startDateDayDiv().innerText.substr(0, 1) + "2"
+            startDateDayCounter() ++
+          }
+        }
+        if (e.keyCode === 51) {
+          if(startDateDayCounter() % 2 === 0) {
+            startDateDayDiv().innerText = "3" + startDateDayDiv().innerText.substr(1, 2)
+            startDateDayCounter() ++
+          } else {
+            startDateDayDiv().innerText = startDateDayDiv().innerText.substr(0, 1) + "3"
+            startDateDayCounter() ++
+          }
+        }
+        if (e.keyCode === 52) {
+          if(startDateDayCounter() % 2 === 0) {
+            startDateDayDiv().innerText = "4" + startDateDayDiv().innerText.substr(1, 2)
+            startDateDayCounter() ++
+          } else {
+            startDateDayDiv().innerText = startDateDayDiv().innerText.substr(0, 1) + "4"
+            startDateDayCounter() ++
+          }
+        }
+        if (e.keyCode === 53) {
+          if(startDateDayCounter() % 2 === 0) {
+            startDateDayDiv().innerText = "5" + startDateDayDiv().innerText.substr(1, 2)
+            startDateDayCounter() ++
+          } else {
+            startDateDayDiv().innerText = startDateDayDiv().innerText.substr(0, 1) + "5"
+            startDateDayCounter() ++
+          }
+        }
+        if (e.keyCode === 54) {
+          if(startDateDayCounter() % 2 === 0) {
+            startDateDayDiv().innerText = "6" + startDateDayDiv().innerText.substr(1, 2)
+            startDateDayCounter() ++
+          } else {
+            startDateDayDiv().innerText = startDateDayDiv().innerText.substr(0, 1) + "6"
+            startDateDayCounter() ++
+          }
+        }
+        if (e.keyCode === 55) {
+          if(startDateDayCounter() % 2 === 0) {
+            startDateDayDiv().innerText = "7" + startDateDayDiv().innerText.substr(1, 2)
+            startDateDayCounter() ++
+          } else {
+            startDateDayDiv().innerText = startDateDayDiv().innerText.substr(0, 1) + "7"
+            startDateDayCounter() ++
+          }
+        }
+        if (e.keyCode === 56) {
+          if(startDateDayCounter() % 2 === 0) {
+            startDateDayDiv().innerText = "8" + startDateDayDiv().innerText.substr(1, 2)
+            startDateDayCounter() ++
+          } else {
+            startDateDayDiv().innerText = startDateDayDiv().innerText.substr(0, 1) + "8"
+            startDateDayCounter() ++
+          }
+        }
+        if (e.keyCode === 57) {
+          if(startDateDayCounter() % 2 === 0) {
+            startDateDayDiv().innerText = "9" + startDateDayDiv().innerText.substr(1, 2)
+            startDateDayCounter() ++
+          } else {
+            startDateDayDiv().innerText = startDateDayDiv().innerText.substr(0, 1) + "9"
+            startDateDayCounter() ++
+          }
+        }
+        if (e.keyCode === 48) {
+          if(startDateDayCounter() % 2 === 0) {
+            startDateDayDiv().innerText = "0" + startDateDayDiv().innerText.substr(1, 2)
+            startDateDayCounter() ++
+          } else {
+            startDateDayDiv().innerText = startDateDayDiv().innerText.substr(0, 1) + "0"
+            startDateDayCounter() ++
+          }
+        }
+      }
+
+      if(startDateMonthBool()) {
+        if (e.keyCode === 49) {
+          if(startDateMonthCounter() % 2 === 0) {
+            startDateMonthDiv().innerText = "1" + startDateMonthDiv().innerText.substr(1, 2)
+            startDateMonthCounter() ++
+          } else {
+            startDateMonthDiv().innerText = startDateMonthDiv().innerText.substr(0, 1) + "1"
+            startDateMonthCounter() ++
+          }
+        }
+        if (e.keyCode === 50) {
+          if(startDateMonthCounter() % 2 === 0) {
+            startDateMonthDiv().innerText = "2" + startDateMonthDiv().innerText.substr(1, 2)
+            startDateMonthCounter() ++
+          } else {
+            startDateMonthDiv().innerText = startDateMonthDiv().innerText.substr(0, 1) + "2"
+            startDateMonthCounter() ++
+          }
+        }
+        if (e.keyCode === 51) {
+          if(startDateMonthCounter() % 2 === 0) {
+            startDateMonthDiv().innerText = "3" + startDateMonthDiv().innerText.substr(1, 2)
+            startDateMonthCounter() ++
+          } else {
+            startDateMonthDiv().innerText = startDateMonthDiv().innerText.substr(0, 1) + "3"
+            startDateMonthCounter() ++
+          }
+        }
+        if (e.keyCode === 52) {
+          if(startDateMonthCounter() % 2 === 0) {
+            startDateMonthDiv().innerText = "4" + startDateMonthDiv().innerText.substr(1, 2)
+            startDateMonthCounter() ++
+          } else {
+            startDateMonthDiv().innerText = startDateMonthDiv().innerText.substr(0, 1) + "4"
+            startDateMonthCounter() ++
+          }
+        }
+        if (e.keyCode === 53) {
+          if(startDateMonthCounter() % 2 === 0) {
+            startDateMonthDiv().innerText = "5" + startDateMonthDiv().innerText.substr(1, 2)
+            startDateMonthCounter() ++
+          } else {
+            startDateMonthDiv().innerText = startDateMonthDiv().innerText.substr(0, 1) + "5"
+            startDateMonthCounter() ++
+          }
+        }
+        if (e.keyCode === 54) {
+          if(startDateMonthCounter() % 2 === 0) {
+            startDateMonthDiv().innerText = "6" + startDateMonthDiv().innerText.substr(1, 2)
+            startDateMonthCounter() ++
+          } else {
+            startDateMonthDiv().innerText = startDateMonthDiv().innerText.substr(0, 1) + "6"
+            startDateMonthCounter() ++
+          }
+        }
+        if (e.keyCode === 55) {
+          if(startDateMonthCounter() % 2 === 0) {
+            startDateMonthDiv().innerText = "7" + startDateMonthDiv().innerText.substr(1, 2)
+            startDateMonthCounter() ++
+          } else {
+            startDateMonthDiv().innerText = startDateMonthDiv().innerText.substr(0, 1) + "7"
+            startDateMonthCounter() ++
+          }
+        }
+        if (e.keyCode === 56) {
+          if(startDateMonthCounter() % 2 === 0) {
+            startDateMonthDiv().innerText = "8" + startDateMonthDiv().innerText.substr(1, 2)
+            startDateMonthCounter() ++
+          } else {
+            startDateMonthDiv().innerText = startDateMonthDiv().innerText.substr(0, 1) + "8"
+            startDateMonthCounter() ++
+          }
+        }
+        if (e.keyCode === 57) {
+          if(startDateMonthCounter() % 2 === 0) {
+            startDateMonthDiv().innerText = "9" + startDateMonthDiv().innerText.substr(1, 2)
+            startDateMonthCounter() ++
+          } else {
+            startDateMonthDiv().innerText = startDateMonthDiv().innerText.substr(0, 1) + "9"
+            startDateMonthCounter() ++
+          }
+        }
+        if (e.keyCode === 48) {
+          if(startDateMonthCounter() % 2 === 0) {
+            startDateMonthDiv().innerText = "0" + startDateMonthDiv().innerText.substr(1, 2)
+            startDateMonthCounter() ++
+          } else {
+            startDateMonthDiv().innerText = startDateMonthDiv().innerText.substr(0, 1) + "0"
+            startDateMonthCounter() ++
+          }
+        }
+      }
+
+      if(startDateHourBool()) {
+        if (e.keyCode === 49) {
+          if(startDateHourCounter() % 2 === 0) {
+            startDateHourDiv().innerText = "1" + startDateHourDiv().innerText.substr(1, 2)
+            startDateHourCounter() ++
+          } else {
+            startDateHourDiv().innerText = startDateHourDiv().innerText.substr(0, 1) + "1"
+            startDateHourCounter() ++
+          }
+        }
+        if (e.keyCode === 50) {
+          if(startDateHourCounter() % 2 === 0) {
+            startDateHourDiv().innerText = "2" + startDateHourDiv().innerText.substr(1, 2)
+            startDateHourCounter() ++
+          } else {
+            startDateHourDiv().innerText = startDateHourDiv().innerText.substr(0, 1) + "2"
+            startDateHourCounter() ++
+          }
+        }
+        if (e.keyCode === 51) {
+          if(startDateHourCounter() % 2 === 0) {
+            startDateHourDiv().innerText = "3" + startDateHourDiv().innerText.substr(1, 2)
+            startDateHourCounter() ++
+          } else {
+            startDateHourDiv().innerText = startDateHourDiv().innerText.substr(0, 1) + "3"
+            startDateHourCounter() ++
+          }
+        }
+        if (e.keyCode === 52) {
+          if(startDateHourCounter() % 2 === 0) {
+            startDateHourDiv().innerText = "4" + startDateHourDiv().innerText.substr(1, 2)
+            startDateHourCounter() ++
+          } else {
+            startDateHourDiv().innerText = startDateHourDiv().innerText.substr(0, 1) + "4"
+            startDateHourCounter() ++
+          }
+        }
+        if (e.keyCode === 53) {
+          if(startDateHourCounter() % 2 === 0) {
+            startDateHourDiv().innerText = "5" + startDateHourDiv().innerText.substr(1, 2)
+            startDateHourCounter() ++
+          } else {
+            startDateHourDiv().innerText = startDateHourDiv().innerText.substr(0, 1) + "5"
+            startDateHourCounter() ++
+          }
+        }
+        if (e.keyCode === 54) {
+          if(startDateHourCounter() % 2 === 0) {
+            startDateHourDiv().innerText = "6" + startDateHourDiv().innerText.substr(1, 2)
+            startDateHourCounter() ++
+          } else {
+            startDateHourDiv().innerText = startDateHourDiv().innerText.substr(0, 1) + "6"
+            startDateHourCounter() ++
+          }
+        }
+        if (e.keyCode === 55) {
+          if(startDateHourCounter() % 2 === 0) {
+            startDateHourDiv().innerText = "7" + startDateHourDiv().innerText.substr(1, 2)
+            startDateHourCounter() ++
+          } else {
+            startDateHourDiv().innerText = startDateHourDiv().innerText.substr(0, 1) + "7"
+            startDateHourCounter() ++
+          }
+        }
+        if (e.keyCode === 56) {
+          if(startDateHourCounter() % 2 === 0) {
+            startDateHourDiv().innerText = "8" + startDateHourDiv().innerText.substr(1, 2)
+            startDateHourCounter() ++
+          } else {
+            startDateHourDiv().innerText = startDateHourDiv().innerText.substr(0, 1) + "8"
+            startDateHourCounter() ++
+          }
+        }
+        if (e.keyCode === 57) {
+          if(startDateHourCounter() % 2 === 0) {
+            startDateHourDiv().innerText = "9" + startDateHourDiv().innerText.substr(1, 2)
+            startDateHourCounter() ++
+          } else {
+            startDateHourDiv().innerText = startDateHourDiv().innerText.substr(0, 1) + "9"
+            startDateHourCounter() ++
+          }
+        }
+        if (e.keyCode === 48) {
+          if(startDateHourCounter() % 2 === 0) {
+            startDateHourDiv().innerText = "0" + startDateHourDiv().innerText.substr(1, 2)
+            startDateHourCounter() ++
+          } else {
+            startDateHourDiv().innerText = startDateHourDiv().innerText.substr(0, 1) + "0"
+            startDateHourCounter() ++
+          }
+        }
+      }
+
+      if(startDateMinuteBool()) {
+        if (e.keyCode === 49) {
+          if(startDateMinuteCounter() % 2 === 0) {
+            startDateMinuteDiv().innerText = "1" + startDateMinuteDiv().innerText.substr(1, 2)
+            startDateMinuteCounter() ++
+          } else {
+            startDateMinuteDiv().innerText = startDateMinuteDiv().innerText.substr(0, 1) + "1"
+            startDateMinuteCounter() ++
+          }
+        }
+        if (e.keyCode === 50) {
+          if(startDateMinuteCounter() % 2 === 0) {
+            startDateMinuteDiv().innerText = "2" + startDateMinuteDiv().innerText.substr(1, 2)
+            startDateMinuteCounter() ++
+          } else {
+            startDateMinuteDiv().innerText = startDateMinuteDiv().innerText.substr(0, 1) + "2"
+            startDateMinuteCounter() ++
+          }
+        }
+        if (e.keyCode === 51) {
+          if(startDateMinuteCounter() % 2 === 0) {
+            startDateMinuteDiv().innerText = "3" + startDateMinuteDiv().innerText.substr(1, 2)
+            startDateMinuteCounter() ++
+          } else {
+            startDateMinuteDiv().innerText = startDateMinuteDiv().innerText.substr(0, 1) + "3"
+            startDateMinuteCounter() ++
+          }
+        }
+        if (e.keyCode === 52) {
+          if(startDateMinuteCounter() % 2 === 0) {
+            startDateMinuteDiv().innerText = "4" + startDateMinuteDiv().innerText.substr(1, 2)
+            startDateMinuteCounter() ++
+          } else {
+            startDateMinuteDiv().innerText = startDateMinuteDiv().innerText.substr(0, 1) + "4"
+            startDateMinuteCounter() ++
+          }
+        }
+        if (e.keyCode === 53) {
+          if(startDateMinuteCounter() % 2 === 0) {
+            startDateMinuteDiv().innerText = "5" + startDateMinuteDiv().innerText.substr(1, 2)
+            startDateMinuteCounter() ++
+          } else {
+            startDateMinuteDiv().innerText = startDateMinuteDiv().innerText.substr(0, 1) + "5"
+            startDateMinuteCounter() ++
+          }
+        }
+        if (e.keyCode === 54) {
+          if(startDateMinuteCounter() % 2 === 0) {
+            startDateMinuteDiv().innerText = "6" + startDateMinuteDiv().innerText.substr(1, 2)
+            startDateMinuteCounter() ++
+          } else {
+            startDateMinuteDiv().innerText = startDateMinuteDiv().innerText.substr(0, 1) + "6"
+            startDateMinuteCounter() ++
+          }
+        }
+        if (e.keyCode === 55) {
+          if(startDateMinuteCounter() % 2 === 0) {
+            startDateMinuteDiv().innerText = "7" + startDateMinuteDiv().innerText.substr(1, 2)
+            startDateMinuteCounter() ++
+          } else {
+            startDateMinuteDiv().innerText = startDateMinuteDiv().innerText.substr(0, 1) + "7"
+            startDateMinuteCounter() ++
+          }
+        }
+        if (e.keyCode === 56) {
+          if(startDateMinuteCounter() % 2 === 0) {
+            startDateMinuteDiv().innerText = "8" + startDateMinuteDiv().innerText.substr(1, 2)
+            startDateMinuteCounter() ++
+          } else {
+            startDateMinuteDiv().innerText = startDateMinuteDiv().innerText.substr(0, 1) + "8"
+            startDateMinuteCounter() ++
+          }
+        }
+        if (e.keyCode === 57) {
+          if(startDateMinuteCounter() % 2 === 0) {
+            startDateMinuteDiv().innerText = "9" + startDateMinuteDiv().innerText.substr(1, 2)
+            startDateMinuteCounter() ++
+          } else {
+            startDateMinuteDiv().innerText = startDateMinuteDiv().innerText.substr(0, 1) + "9"
+            startDateMinuteCounter() ++
+          }
+        }
+        if (e.keyCode === 48) {
+          if(startDateMinuteCounter() % 2 === 0) {
+            startDateMinuteDiv().innerText = "0" + startDateMinuteDiv().innerText.substr(1, 2)
+            startDateMinuteCounter() ++
+          } else {
+            startDateMinuteDiv().innerText = startDateMinuteDiv().innerText.substr(0, 1) + "0"
+            startDateMinuteCounter() ++
+          }
+        }
+      }
+
+      if(startDateYearBool()) {
+        if (e.keyCode === 49) {
+          if(startDateYearCounter() % 4 === 0) {
+            startDateYearDiv().innerText = "1" + startDateYearDiv().innerText.substr(1, 4)
+            startDateYearCounter() --
+            if(startDateYearCounter() <= 0) startDateYearCounter() = 4
+          } else if(startDateYearCounter() % 3 === 0) {
+            startDateYearDiv().innerText = startDateYearDiv().innerText.substr(0, 1) + "1" + startDateYearDiv().innerText.substr(2, 4)
+            startDateYearCounter() --
+            if(startDateYearCounter() <= 0) startDateYearCounter() = 4
+          } else if(startDateYearCounter() % 2 === 0) {
+            startDateYearDiv().innerText = startDateYearDiv().innerText.substr(0, 2) + "1" + startDateYearDiv().innerText.substr(3, 4)
+            startDateYearCounter() --
+            if(startDateYearCounter() <= 0) startDateYearCounter() = 4
+          } else if(startDateYearCounter() % 1 === 0) {
+            startDateYearDiv().innerText = startDateYearDiv().innerText.substr(0, 3) + "1"
+            startDateYearCounter() --
+            if(startDateYearCounter() <= 0) startDateYearCounter() = 4
+          }
+        }
+        if (e.keyCode === 50) {
+          if(startDateYearCounter() % 4 === 0) {
+            startDateYearDiv().innerText = "2" + startDateYearDiv().innerText.substr(1, 4)
+            startDateYearCounter() --
+            if(startDateYearCounter() <= 0) startDateYearCounter() = 4
+          } else if(startDateYearCounter() % 3 === 0) {
+            startDateYearDiv().innerText = startDateYearDiv().innerText.substr(0, 1) + "2" + startDateYearDiv().innerText.substr(2, 4)
+            startDateYearCounter() --
+            if(startDateYearCounter() <= 0) startDateYearCounter() = 4
+          } else if(startDateYearCounter() % 2 === 0) {
+            startDateYearDiv().innerText = startDateYearDiv().innerText.substr(0, 2) + "2" + startDateYearDiv().innerText.substr(3, 4)
+            startDateYearCounter() --
+            if(startDateYearCounter() <= 0) startDateYearCounter() = 4
+          } else if(startDateYearCounter() % 1 === 0) {
+            startDateYearDiv().innerText = startDateYearDiv().innerText.substr(0, 3) + "2"
+            startDateYearCounter() --
+            if(startDateYearCounter() <= 0) startDateYearCounter() = 4
+          }
+        }
+        if (e.keyCode === 51) {
+          if(startDateYearCounter() % 4 === 0) {
+            startDateYearDiv().innerText = "3" + startDateYearDiv().innerText.substr(1, 4)
+            startDateYearCounter() --
+            if(startDateYearCounter() <= 0) startDateYearCounter() = 4
+          } else if(startDateYearCounter() % 3 === 0) {
+            startDateYearDiv().innerText = startDateYearDiv().innerText.substr(0, 1) + "3" + startDateYearDiv().innerText.substr(2, 4)
+            startDateYearCounter() --
+            if(startDateYearCounter() <= 0) startDateYearCounter() = 4
+          } else if(startDateYearCounter() % 2 === 0) {
+            startDateYearDiv().innerText = startDateYearDiv().innerText.substr(0, 2) + "3" + startDateYearDiv().innerText.substr(3, 4)
+            startDateYearCounter() --
+            if(startDateYearCounter() <= 0) startDateYearCounter() = 4
+          } else if(startDateYearCounter() % 1 === 0) {
+            startDateYearDiv().innerText = startDateYearDiv().innerText.substr(0, 3) + "3"
+            startDateYearCounter() --
+            if(startDateYearCounter() <= 0) startDateYearCounter() = 4
+          }
+        }
+        if (e.keyCode === 52) {
+          if(startDateYearCounter() % 4 === 0) {
+            startDateYearDiv().innerText = "4" + startDateYearDiv().innerText.substr(1, 4)
+            startDateYearCounter() --
+            if(startDateYearCounter() <= 0) startDateYearCounter() = 4
+          } else if(startDateYearCounter() % 3 === 0) {
+            startDateYearDiv().innerText = startDateYearDiv().innerText.substr(0, 1) + "4" + startDateYearDiv().innerText.substr(2, 4)
+            startDateYearCounter() --
+            if(startDateYearCounter() <= 0) startDateYearCounter() = 4
+          } else if(startDateYearCounter() % 2 === 0) {
+            startDateYearDiv().innerText = startDateYearDiv().innerText.substr(0, 2) + "4" + startDateYearDiv().innerText.substr(3, 4)
+            startDateYearCounter() --
+            if(startDateYearCounter() <= 0) startDateYearCounter() = 4
+          } else if(startDateYearCounter() % 1 === 0) {
+            startDateYearDiv().innerText = startDateYearDiv().innerText.substr(0, 3) + "4"
+            startDateYearCounter() --
+            if(startDateYearCounter() <= 0) startDateYearCounter() = 4
+          }
+        }
+        if (e.keyCode === 53) {
+          if(startDateYearCounter() % 4 === 0) {
+            startDateYearDiv().innerText = "5" + startDateYearDiv().innerText.substr(1, 4)
+            startDateYearCounter() --
+            if(startDateYearCounter() <= 0) startDateYearCounter() = 4
+          } else if(startDateYearCounter() % 3 === 0) {
+            startDateYearDiv().innerText = startDateYearDiv().innerText.substr(0, 1) + "5" + startDateYearDiv().innerText.substr(2, 4)
+            startDateYearCounter() --
+            if(startDateYearCounter() <= 0) startDateYearCounter() = 4
+          } else if(startDateYearCounter() % 2 === 0) {
+            startDateYearDiv().innerText = startDateYearDiv().innerText.substr(0, 2) + "5" + startDateYearDiv().innerText.substr(3, 4)
+            startDateYearCounter() --
+            if(startDateYearCounter() <= 0) startDateYearCounter() = 4
+          } else if(startDateYearCounter() % 1 === 0) {
+            startDateYearDiv().innerText = startDateYearDiv().innerText.substr(0, 3) + "5"
+            startDateYearCounter() --
+            if(startDateYearCounter() <= 0) startDateYearCounter() = 4
+          }
+        }
+        if (e.keyCode === 54) {
+          if(startDateYearCounter() % 4 === 0) {
+            startDateYearDiv().innerText = "6" + startDateYearDiv().innerText.substr(1, 4)
+            startDateYearCounter() --
+            if(startDateYearCounter() <= 0) startDateYearCounter() = 4
+          } else if(startDateYearCounter() % 3 === 0) {
+            startDateYearDiv().innerText = startDateYearDiv().innerText.substr(0, 1) + "6" + startDateYearDiv().innerText.substr(2, 4)
+            startDateYearCounter() --
+            if(startDateYearCounter() <= 0) startDateYearCounter() = 4
+          } else if(startDateYearCounter() % 2 === 0) {
+            startDateYearDiv().innerText = startDateYearDiv().innerText.substr(0, 2) + "6" + startDateYearDiv().innerText.substr(3, 4)
+            startDateYearCounter() --
+            if(startDateYearCounter() <= 0) startDateYearCounter() = 4
+          } else if(startDateYearCounter() % 1 === 0) {
+            startDateYearDiv().innerText = startDateYearDiv().innerText.substr(0, 3) + "6"
+            startDateYearCounter() --
+            if(startDateYearCounter() <= 0) startDateYearCounter() = 4
+          }
+        }
+        if (e.keyCode === 55) {
+          if(startDateYearCounter() % 4 === 0) {
+            startDateYearDiv().innerText = "7" + startDateYearDiv().innerText.substr(1, 4)
+            startDateYearCounter() --
+            if(startDateYearCounter() <= 0) startDateYearCounter() = 4
+          } else if(startDateYearCounter() % 3 === 0) {
+            startDateYearDiv().innerText = startDateYearDiv().innerText.substr(0, 1) + "7" + startDateYearDiv().innerText.substr(2, 4)
+            startDateYearCounter() --
+            if(startDateYearCounter() <= 0) startDateYearCounter() = 4
+          } else if(startDateYearCounter() % 2 === 0) {
+            startDateYearDiv().innerText = startDateYearDiv().innerText.substr(0, 2) + "7" + startDateYearDiv().innerText.substr(3, 4)
+            startDateYearCounter() --
+            if(startDateYearCounter() <= 0) startDateYearCounter() = 4
+          } else if(startDateYearCounter() % 1 === 0) {
+            startDateYearDiv().innerText = startDateYearDiv().innerText.substr(0, 3) + "7"
+            startDateYearCounter() --
+            if(startDateYearCounter() <= 0) startDateYearCounter() = 4
+          }
+        }
+        if (e.keyCode === 56) {
+          if(startDateYearCounter() % 4 === 0) {
+            startDateYearDiv().innerText = "8" + startDateYearDiv().innerText.substr(1, 4)
+            startDateYearCounter() --
+            if(startDateYearCounter() <= 0) startDateYearCounter() = 4
+          } else if(startDateYearCounter() % 3 === 0) {
+            startDateYearDiv().innerText = startDateYearDiv().innerText.substr(0, 1) + "8" + startDateYearDiv().innerText.substr(2, 4)
+            startDateYearCounter() --
+            if(startDateYearCounter() <= 0) startDateYearCounter() = 4
+          } else if(startDateYearCounter() % 2 === 0) {
+            startDateYearDiv().innerText = startDateYearDiv().innerText.substr(0, 2) + "8" + startDateYearDiv().innerText.substr(3, 4)
+            startDateYearCounter() --
+            if(startDateYearCounter() <= 0) startDateYearCounter() = 4
+          } else if(startDateYearCounter() % 1 === 0) {
+            startDateYearDiv().innerText = startDateYearDiv().innerText.substr(0, 3) + "8"
+            startDateYearCounter() --
+            if(startDateYearCounter() <= 0) startDateYearCounter() = 4
+          }
+        }
+        if (e.keyCode === 57) {
+          if(startDateYearCounter() % 4 === 0) {
+            startDateYearDiv().innerText = "9" + startDateYearDiv().innerText.substr(1, 4)
+            startDateYearCounter() --
+            if(startDateYearCounter() <= 0) startDateYearCounter() = 4
+          } else if(startDateYearCounter() % 3 === 0) {
+            startDateYearDiv().innerText = startDateYearDiv().innerText.substr(0, 1) + "9" + startDateYearDiv().innerText.substr(2, 4)
+            startDateYearCounter() --
+            if(startDateYearCounter() <= 0) startDateYearCounter() = 4
+          } else if(startDateYearCounter() % 2 === 0) {
+            startDateYearDiv().innerText = startDateYearDiv().innerText.substr(0, 2) + "9" + startDateYearDiv().innerText.substr(3, 4)
+            startDateYearCounter() --
+            if(startDateYearCounter() <= 0) startDateYearCounter() = 4
+          } else if(startDateYearCounter() % 1 === 0) {
+            startDateYearDiv().innerText = startDateYearDiv().innerText.substr(0, 3) + "9"
+            startDateYearCounter() --
+            if(startDateYearCounter() <= 0) startDateYearCounter() = 4
+          }
+        }
+        if (e.keyCode === 48) {
+          if(startDateYearCounter() % 4 === 0) {
+            startDateYearDiv().innerText = "0" + startDateYearDiv().innerText.substr(1, 4)
+            startDateYearCounter() --
+            if(startDateYearCounter() <= 0) startDateYearCounter() = 4
+          } else if(startDateYearCounter() % 3 === 0) {
+            startDateYearDiv().innerText = startDateYearDiv().innerText.substr(0, 1) + "0" + startDateYearDiv().innerText.substr(2, 4)
+            startDateYearCounter() --
+            if(startDateYearCounter() <= 0) startDateYearCounter() = 4
+          } else if(startDateYearCounter() % 2 === 0) {
+            startDateYearDiv().innerText = startDateYearDiv().innerText.substr(0, 2) + "0" + startDateYearDiv().innerText.substr(3, 4)
+            startDateYearCounter() --
+            if(startDateYearCounter() <= 0) startDateYearCounter() = 4
+          } else if(startDateYearCounter() % 1 === 0) {
+            startDateYearDiv().innerText = startDateYearDiv().innerText.substr(0, 3) + "0"
+            startDateYearCounter() --
+            if(startDateYearCounter() <= 0) startDateYearCounter() = 4
+          }
+        }
+      }
+
+      if(startDateAmpmBool()) {
+        if(e.keyCode === 65) {
+          startDateAmpmDiv().innerText = "A" + startDateAmpmDiv().innerText.substr(1, 2)
+        }
+        if(e.keyCode === 80) {
+          startDateAmpmDiv().innerText = "P" + startDateAmpmDiv().innerText.substr(1, 2)
+        }
+      }
+    })
+  }
+
+  function startDatetimeValue() {
+    let values = []
+    for (let i=0; i<startDatetimeArray().length; i++) {
+      if(startDatetimeArray()[i].innerText !== "/" && startDatetimeArray()[i].innerText !== ":") {
+        values.push(startDatetimeArray()[i].innerText)
+      }
+    }
+    let dateStr = values[2] + " " + startDateMonths()[values[1]] + " " + values[3] + " " + startDateConvertTime()[values[4]+values[6]] + ":" + values[5] + ":" + "00" + " UTC +00:00"
+    return dateStr
+  }
+
+  function startDateinsertValue() {
+    if(startDateForm() !== null) {
+      startDateForm().addEventListener("submit", e => {
+        e.preventDefault()
+        startDatetimeInput().value = startDatetimeValue()
+        if (startDatetimeInput().value === "00 undefined 0000 undefined:00:00 UTC +00:00") startDatetimeInput().value = "sldkjfslkjdf"
+      })
+    }
+  }
+
+</script>

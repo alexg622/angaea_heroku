@@ -5,7 +5,7 @@
   }
 
   if(locationTrue()) {
-    $(document).on('turbolinks:load', () => {
+    document.addEventListener('DOMContentLoaded', () => {
       showArrows()
       hideArrows()
       rightArrowClick()

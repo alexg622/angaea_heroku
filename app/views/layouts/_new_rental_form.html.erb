@@ -1,6 +1,6 @@
 <div class="display-it-none-rental create-activity-form-container">
   <h1>Create Your Rental</h1>
-  <form enctype="multipart/form-data" class="create-activity-form-css" action="<%= rentals_path %>" method="post">
+  <form enctype="multipart/form-data" class="rentalDate-class create-activity-form-css" action="<%= rentals_path %>" method="post">
     <input class="" type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>"/>
 
     <label>
@@ -59,13 +59,35 @@
     </label>
 
     <label>
-      Start Date
-      <input class="" type="datetime-local" name="rental[start_date]" value="">
+      <div style="display:flex"><div>Start Date</div><div style="color:red"> *</div></div>
+      <div class="rentalStart-datetime start-datetime rentalStart-datetime-input-container start-datetime-input-container datetime-input-container">
+        <div class="rentalStart-datetime start-datetime datetime-input rentalStartDatetime-day">00</div>
+        <div class="rentalStart-datetime start-datetime datetime-input rentalStartDatetime-divider">/</div>
+        <div class="rentalStart-datetime start-datetime datetime-input rentalStartDatetime-month">00</div>
+        <div class="rentalStart-datetime start-datetime datetime-input rentalStartDatetime-divider">/</div>
+        <div class="rentalStart-datetime start-datetime datetime-input rentalStartDatetime-year">0000</div>
+        <div class="rentalStart-datetime start-datetime datetime-input rentalStartDatetime-hour"> 00</div>
+        <div class="rentalStart-datetime start-datetime datetime-input rentalStartDatetime-divider">:</div>
+        <div class="rentalStart-datetime start-datetime datetime-input rentalStartDatetime-minute">00</div>
+        <div class="rentalStart-datetime start-datetime datetime-input rentalStartDatetime-ampm">AM</div>
+      </div>
+      <input class="rentalStart-datetime-value start-datetime-value start-date" type="hidden" name="rental[start_date]" value="">
     </label>
 
     <label>
-      End Date
-      <input class="" type="datetime-local" name="rental[end_date]" value="">
+      <div style="display:flex"><div>End Date</div><div style="color:red"> *</div></div>
+      <div class="rentalEnd-datetime rentalEnd-datetime-input-container end-datetime end-datetime-input-container datetime-input-container">
+        <div class="rentalEnd-datetime end-datetime datetime-input rentalEndDatetime-day">00</div>
+        <div class="rentalEnd-datetime end-datetime datetime-input rentalEndDatetime-divider">/</div>
+        <div class="rentalEnd-datetime end-datetime datetime-input rentalEndDatetime-month">00</div>
+        <div class="rentalEnd-datetime end-datetime datetime-input rentalEndDatetime-divider">/</div>
+        <div class="rentalEnd-datetime end-datetime datetime-input rentalEndDatetime-year">0000</div>
+        <div class="rentalEnd-datetime end-datetime datetime-input rentalEndDatetime-hour">00</div>
+        <div class="rentalEnd-datetime end-datetime datetime-input rentalEndDatetime-divider">:</div>
+        <div class="rentalEnd-datetime end-datetime datetime-input rentalEndDatetime-minute">00</div>
+        <div class="rentalEnd-datetime end-datetime datetime-input rentalEndDatetime-ampm">AM</div>
+      </div>
+      <input class="end-datetime-value rentalEnd-datetime-value end-date" type="hidden" name="rental[end_date]" value="">
     </label>
 
     <label>
@@ -92,4 +114,6 @@
 
     <div class="rental-note">There will be a 10% service charge to the user renting your item.</div>
   </form>
+  <%= render "layouts/rental_datetime_javascript"%>
+  <%= render "layouts/rental_endDate_javascript"%>
 </div>

@@ -1,6 +1,6 @@
 <div class="edit-rental-form-container">
   <h1>Update Your Rental</h1>
-  <form enctype="multipart/form-data" class="create-activity-form-css" action="<%= rental_path(rental) %>" method="post">
+  <form enctype="multipart/form-data" class="rentalDate-class create-activity-form-css" action="<%= rental_path(rental) %>" method="post">
     <input class="" type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>"/>
     <input type="hidden" name="_method" value="patch">
 
@@ -60,13 +60,35 @@
     </label>
 
     <label>
-      Start Date - <%=rental.format_start_date%>
-      <input class="" type="datetime-local" name="rental[start_date]" value="">
+      <div style="display:flex"><div>Start Date - <%=rental.format_start_date%></div><div style="color:red"> *</div></div>
+      <div class="rentalStart-datetime start-datetime rentalStart-datetime-input-container start-datetime-input-container datetime-input-container">
+        <div class="rentalStart-datetime start-datetime datetime-input rentalStartDatetime-day"><%=rental.start_date.strftime("%m")%></div>
+        <div class="rentalStart-datetime start-datetime datetime-input rentalStartDatetime-divider">/</div>
+        <div class="rentalStart-datetime start-datetime datetime-input rentalStartDatetime-month"><%=rental.start_date.strftime("%d")%></div>
+        <div class="rentalStart-datetime start-datetime datetime-input rentalStartDatetime-divider">/</div>
+        <div class="rentalStart-datetime start-datetime datetime-input rentalStartDatetime-year"><%=rental.start_date.strftime("%Y")%></div>
+        <div class="rentalStart-datetime start-datetime datetime-input rentalStartDatetime-hour"> <%=rental.start_date.strftime("%l")%></div>
+        <div class="rentalStart-datetime start-datetime datetime-input rentalStartDatetime-divider">:</div>
+        <div class="rentalStart-datetime start-datetime datetime-input rentalStartDatetime-minute"><%=rental.start_date.strftime("%M")%></div>
+        <div class="rentalStart-datetime start-datetime datetime-input rentalStartDatetime-ampm"><%=rental.start_date.strftime("%p")%></div>
+      </div>
+      <input class="rentalStart-datetime-value start-datetime-value start-date" type="hidden" name="rental[start_date]" value="">
     </label>
 
     <label>
-      End Date - <%=rental.format_end_date%>
-      <input class="" type="datetime-local" name="rental[end_date]" value="">
+      <div style="display:flex"><div>End Date - <%=rental.format_end_date%></div><div style="color:red"> *</div></div>
+      <div class="rentalEnd-datetime rentalEnd-datetime-input-container end-datetime end-datetime-input-container datetime-input-container">
+        <div class="rentalEnd-datetime end-datetime datetime-input rentalEndDatetime-day"><%=rental.end_date.strftime("%m")%></div>
+        <div class="rentalEnd-datetime end-datetime datetime-input rentalEndDatetime-divider">/</div>
+        <div class="rentalEnd-datetime end-datetime datetime-input rentalEndDatetime-month"><%=rental.end_date.strftime("%d")%></div>
+        <div class="rentalEnd-datetime end-datetime datetime-input rentalEndDatetime-divider">/</div>
+        <div class="rentalEnd-datetime end-datetime datetime-input rentalEndDatetime-year"><%=rental.end_date.strftime("%Y")%></div>
+        <div class="rentalEnd-datetime end-datetime datetime-input rentalEndDatetime-hour"><%=rental.end_date.strftime("%l")%></div>
+        <div class="rentalEnd-datetime end-datetime datetime-input rentalEndDatetime-divider">:</div>
+        <div class="rentalEnd-datetime end-datetime datetime-input rentalEndDatetime-minute"><%=rental.end_date.strftime("%M")%></div>
+        <div class="rentalEnd-datetime end-datetime datetime-input rentalEndDatetime-ampm"><%=rental.end_date.strftime("%p")%></div>
+      </div>
+      <input class="end-datetime-value rentalEnd-datetime-value end-date" type="hidden" name="rental[end_date]" value="">
     </label>
 
     <label>
@@ -82,4 +104,6 @@
     <input class="btn btn-primary" type="submit" value="Update Rental">
   </form>
   <%= link_to "Delete Rental" , rental_path(rental), method: :delete, class: "red sign-up-button"%>
+  <%= render "layouts/rental_datetime_javascript"%>
+  <%= render "layouts/rental_endDate_javascript"%>
 </div>

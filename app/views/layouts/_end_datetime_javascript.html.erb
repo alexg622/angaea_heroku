@@ -1,0 +1,789 @@
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    endDatesetDay()
+    endDatesetMonth()
+    endDatesetYear()
+    endDatesetHour()
+    endDatesetMinute()
+    endDatesetAmpm()
+    endDatefollowKeyPress()
+    endDatetimeValue()
+    endDateinsertValue()
+    endDateresetListeners()
+  })
+
+  const endDateMonths = {
+    "12": "Dec",
+    "11": "Nov",
+    "10": "Oct",
+    "09": "Sep",
+    "08": "Aug",
+    "07": "Jul",
+    "06": "Jun",
+    "05": "May",
+    "04": "Apr",
+    "03": "Mar",
+    "02": "Feb",
+    "01": "Jan"
+  }
+
+  const endDateConvertTime = {
+    "12AM": "00",
+    "01AM": "01",
+    "02AM": "02",
+    "03AM": "03",
+    "04AM": "04",
+    "05AM": "05",
+    "06AM": "06",
+    "07AM": "07",
+    "08AM": "08",
+    "09AM": "09",
+    "10AM": "10",
+    "11AM": "11",
+    "12PM": "12",
+    "01PM": "13",
+    "02PM": "14",
+    "03PM": "15",
+    "04PM": "16",
+    "05PM": "17",
+    "06PM": "18",
+    "07PM": "19",
+    "08pm": "20",
+    "09PM": "21",
+    "10PM": "22",
+    "11PM": "23",
+    "12PM": "24"
+  }
+
+  let endDateTimeInputContainer = document.querySelector(".end-datetime-input-container")
+  let endDateForm = document.querySelector(".date-class")
+  let endDatetimeInput = document.querySelector(".end-datetime-value")
+
+  let endDatetimeArray = Array.from(document.querySelectorAll(".end-datetime"))
+
+  let endDateDayBool = false
+  let endDateDayCounter = 0
+  let endDateDayDiv = document.querySelector(".end-datetime-day")
+
+  let endDateMonthBool = false
+  let endDateMonthCounter = 0
+  let endDateMonthDiv = document.querySelector(".end-datetime-month")
+
+  let endDateYearBool = false
+  let endDateYearCounter = 4
+  let endDateYearDiv = document.querySelector(".end-datetime-year")
+
+  let endDateHourBool = false
+  let endDateHourCounter = 0
+  let endDateHourDiv = document.querySelector(".end-datetime-hour")
+
+  let endDateMinuteBool = false
+  let endDateMinuteCounter = 0
+  let endDateMinuteDiv = document.querySelector(".end-datetime-minute")
+
+  let endDateAmpmBool = false
+  let endDateAmpmCounter = 0
+  let endDateAmpmDiv = document.querySelector(".end-datetime-ampm")
+
+  let startDateDiv = document.querySelector(".start-datetime")
+
+  function endDateresetListeners() {
+    if(endDateForm !== null) {
+      let theInputs = Array.from(endDateForm.querySelectorAll("input"))
+      theInputs.push(startDateDiv)
+      for(let i=0; i<theInputs.length; i++) {
+        theInputs[i].addEventListener("click", e => {
+          endDateMonthBool = false
+          endDateDayBool = false
+          endDateYearBool = false
+          endDateHourBool = false
+          endDateMinuteBool = false
+          endDateAmpmBool = false
+        })
+      }
+    }
+  }
+
+  function endDatesetDay() {
+    if(endDateDayDiv !== null) {
+      endDateDayDiv.addEventListener("click", e => {
+        endDateDayDiv.style.color = "black"
+        endDateMonthBool = false
+        endDateDayBool = true
+        endDateYearBool = false
+        endDateHourBool = false
+        endDateMinuteBool = false
+        endDateAmpmBool = false
+      })
+    }
+  }
+
+  function endDatesetMonth() {
+    if(endDateMonthDiv !== null) {
+      endDateMonthDiv.addEventListener("click", e => {
+        endDateMonthDiv.style.color = "black"
+        endDateDayBool = false
+        endDateMonthBool = true
+        endDateYearBool = false
+        endDateHourBool = false
+        endDateMinuteBool = false
+        endDateAmpmBool = false
+      })
+    }
+  }
+
+  function endDatesetYear() {
+    if(endDateYearDiv !== null) {
+      endDateYearDiv.addEventListener("click", e => {
+        endDateYearDiv.style.color = "black"
+        endDateMonthBool = false
+        endDateDayBool = false
+        endDateAmpmBool = false
+        endDateHourBool = false
+        endDateMinuteBool = false
+        endDateYearBool = true
+      })
+    }
+  }
+
+  function endDatesetHour() {
+    if(endDateHourDiv !== null) {
+      endDateHourDiv.addEventListener("click", e => {
+        endDateHourDiv.style.color = "black"
+        endDateDayBool = false
+        endDateMonthBool = false
+        endDateYearBool = false
+        endDateHourBool = true
+        endDateMinuteBool = false
+        endDateAmpmBool = false
+      })
+    }
+  }
+
+  function endDatesetMinute() {
+    if(endDateMinuteDiv !== null) {
+      endDateMinuteDiv.addEventListener("click", e => {
+        endDateMinuteDiv.style.color = "black"
+        endDateDayBool = false
+        endDateMonthBool = false
+        endDateYearBool = false
+        endDateHourBool = false
+        endDateMinuteBool = true
+        endDateAmpmBool = false
+      })
+    }
+  }
+
+  function endDatesetAmpm() {
+    if(endDateAmpmDiv !== null) {
+      endDateAmpmDiv.addEventListener("click", e => {
+        endDateAmpmDiv.style.color = "black"
+        endDateDayBool = false
+        endDateMonthBool = false
+        endDateYearBool = false
+        endDateHourBool = false
+        endDateMinuteBool = false
+        endDateAmpmBool = true
+      })
+    }
+  }
+
+  function endDatefollowKeyPress() {
+    document.addEventListener("keydown", e => {
+      if(endDateDayBool) {
+        if (e.keyCode === 49) {
+          if(endDateDayCounter % 2 === 0) {
+            endDateDayDiv.innerText = "1" + endDateDayDiv.innerText.substr(1, 2)
+            endDateDayCounter ++
+          } else {
+            endDateDayDiv.innerText = endDateDayDiv.innerText.substr(0, 1) + "1"
+            endDateDayCounter ++
+          }
+        }
+        if (e.keyCode === 50) {
+          if(endDateDayCounter % 2 === 0) {
+            endDateDayDiv.innerText = "2" + endDateDayDiv.innerText.substr(1, 2)
+            endDateDayCounter ++
+          } else {
+            endDateDayDiv.innerText = endDateDayDiv.innerText.substr(0, 1) + "2"
+            endDateDayCounter ++
+          }
+        }
+        if (e.keyCode === 51) {
+          if(endDateDayCounter % 2 === 0) {
+            endDateDayDiv.innerText = "3" + endDateDayDiv.innerText.substr(1, 2)
+            endDateDayCounter ++
+          } else {
+            endDateDayDiv.innerText = endDateDayDiv.innerText.substr(0, 1) + "3"
+            endDateDayCounter ++
+          }
+        }
+        if (e.keyCode === 52) {
+          if(endDateDayCounter % 2 === 0) {
+            endDateDayDiv.innerText = "4" + endDateDayDiv.innerText.substr(1, 2)
+            endDateDayCounter ++
+          } else {
+            endDateDayDiv.innerText = endDateDayDiv.innerText.substr(0, 1) + "4"
+            endDateDayCounter ++
+          }
+        }
+        if (e.keyCode === 53) {
+          if(endDateDayCounter % 2 === 0) {
+            endDateDayDiv.innerText = "5" + endDateDayDiv.innerText.substr(1, 2)
+            endDateDayCounter ++
+          } else {
+            endDateDayDiv.innerText = endDateDayDiv.innerText.substr(0, 1) + "5"
+            endDateDayCounter ++
+          }
+        }
+        if (e.keyCode === 54) {
+          if(endDateDayCounter % 2 === 0) {
+            endDateDayDiv.innerText = "6" + endDateDayDiv.innerText.substr(1, 2)
+            endDateDayCounter ++
+          } else {
+            endDateDayDiv.innerText = endDateDayDiv.innerText.substr(0, 1) + "6"
+            endDateDayCounter ++
+          }
+        }
+        if (e.keyCode === 55) {
+          if(endDateDayCounter % 2 === 0) {
+            endDateDayDiv.innerText = "7" + endDateDayDiv.innerText.substr(1, 2)
+            endDateDayCounter ++
+          } else {
+            endDateDayDiv.innerText = endDateDayDiv.innerText.substr(0, 1) + "7"
+            endDateDayCounter ++
+          }
+        }
+        if (e.keyCode === 56) {
+          if(endDateDayCounter % 2 === 0) {
+            endDateDayDiv.innerText = "8" + endDateDayDiv.innerText.substr(1, 2)
+            endDateDayCounter ++
+          } else {
+            endDateDayDiv.innerText = endDateDayDiv.innerText.substr(0, 1) + "8"
+            endDateDayCounter ++
+          }
+        }
+        if (e.keyCode === 57) {
+          if(endDateDayCounter % 2 === 0) {
+            endDateDayDiv.innerText = "9" + endDateDayDiv.innerText.substr(1, 2)
+            endDateDayCounter ++
+          } else {
+            endDateDayDiv.innerText = endDateDayDiv.innerText.substr(0, 1) + "9"
+            endDateDayCounter ++
+          }
+        }
+        if (e.keyCode === 48) {
+          if(endDateDayCounter % 2 === 0) {
+            endDateDayDiv.innerText = "0" + endDateDayDiv.innerText.substr(1, 2)
+            endDateDayCounter ++
+          } else {
+            endDateDayDiv.innerText = endDateDayDiv.innerText.substr(0, 1) + "0"
+            endDateDayCounter ++
+          }
+        }
+      }
+
+      if(endDateMonthBool) {
+        if (e.keyCode === 49) {
+          if(endDateMonthCounter % 2 === 0) {
+            endDateMonthDiv.innerText = "1" + endDateMonthDiv.innerText.substr(1, 2)
+            endDateMonthCounter ++
+          } else {
+            endDateMonthDiv.innerText = endDateMonthDiv.innerText.substr(0, 1) + "1"
+            endDateMonthCounter ++
+          }
+        }
+        if (e.keyCode === 50) {
+          if(endDateMonthCounter % 2 === 0) {
+            endDateMonthDiv.innerText = "2" + endDateMonthDiv.innerText.substr(1, 2)
+            endDateMonthCounter ++
+          } else {
+            endDateMonthDiv.innerText = endDateMonthDiv.innerText.substr(0, 1) + "2"
+            endDateMonthCounter ++
+          }
+        }
+        if (e.keyCode === 51) {
+          if(endDateMonthCounter % 2 === 0) {
+            endDateMonthDiv.innerText = "3" + endDateMonthDiv.innerText.substr(1, 2)
+            endDateMonthCounter ++
+          } else {
+            endDateMonthDiv.innerText = endDateMonthDiv.innerText.substr(0, 1) + "3"
+            endDateMonthCounter ++
+          }
+        }
+        if (e.keyCode === 52) {
+          if(endDateMonthCounter % 2 === 0) {
+            endDateMonthDiv.innerText = "4" + endDateMonthDiv.innerText.substr(1, 2)
+            endDateMonthCounter ++
+          } else {
+            endDateMonthDiv.innerText = endDateMonthDiv.innerText.substr(0, 1) + "4"
+            endDateMonthCounter ++
+          }
+        }
+        if (e.keyCode === 53) {
+          if(endDateMonthCounter % 2 === 0) {
+            endDateMonthDiv.innerText = "5" + endDateMonthDiv.innerText.substr(1, 2)
+            endDateMonthCounter ++
+          } else {
+            endDateMonthDiv.innerText = endDateMonthDiv.innerText.substr(0, 1) + "5"
+            endDateMonthCounter ++
+          }
+        }
+        if (e.keyCode === 54) {
+          if(endDateMonthCounter % 2 === 0) {
+            endDateMonthDiv.innerText = "6" + endDateMonthDiv.innerText.substr(1, 2)
+            endDateMonthCounter ++
+          } else {
+            endDateMonthDiv.innerText = endDateMonthDiv.innerText.substr(0, 1) + "6"
+            endDateMonthCounter ++
+          }
+        }
+        if (e.keyCode === 55) {
+          if(endDateMonthCounter % 2 === 0) {
+            endDateMonthDiv.innerText = "7" + endDateMonthDiv.innerText.substr(1, 2)
+            endDateMonthCounter ++
+          } else {
+            endDateMonthDiv.innerText = endDateMonthDiv.innerText.substr(0, 1) + "7"
+            endDateMonthCounter ++
+          }
+        }
+        if (e.keyCode === 56) {
+          if(endDateMonthCounter % 2 === 0) {
+            endDateMonthDiv.innerText = "8" + endDateMonthDiv.innerText.substr(1, 2)
+            endDateMonthCounter ++
+          } else {
+            endDateMonthDiv.innerText = endDateMonthDiv.innerText.substr(0, 1) + "8"
+            endDateMonthCounter ++
+          }
+        }
+        if (e.keyCode === 57) {
+          if(endDateMonthCounter % 2 === 0) {
+            endDateMonthDiv.innerText = "9" + endDateMonthDiv.innerText.substr(1, 2)
+            endDateMonthCounter ++
+          } else {
+            endDateMonthDiv.innerText = endDateMonthDiv.innerText.substr(0, 1) + "9"
+            endDateMonthCounter ++
+          }
+        }
+        if (e.keyCode === 48) {
+          if(endDateMonthCounter % 2 === 0) {
+            endDateMonthDiv.innerText = "0" + endDateMonthDiv.innerText.substr(1, 2)
+            endDateMonthCounter ++
+          } else {
+            endDateMonthDiv.innerText = endDateMonthDiv.innerText.substr(0, 1) + "0"
+            endDateMonthCounter ++
+          }
+        }
+      }
+
+      if(endDateHourBool) {
+        if (e.keyCode === 49) {
+          if(endDateHourCounter % 2 === 0) {
+            endDateHourDiv.innerText = "1" + endDateHourDiv.innerText.substr(1, 2)
+            endDateHourCounter ++
+          } else {
+            endDateHourDiv.innerText = endDateHourDiv.innerText.substr(0, 1) + "1"
+            endDateHourCounter ++
+          }
+        }
+        if (e.keyCode === 50) {
+          if(endDateHourCounter % 2 === 0) {
+            endDateHourDiv.innerText = "2" + endDateHourDiv.innerText.substr(1, 2)
+            endDateHourCounter ++
+          } else {
+            endDateHourDiv.innerText = endDateHourDiv.innerText.substr(0, 1) + "2"
+            endDateHourCounter ++
+          }
+        }
+        if (e.keyCode === 51) {
+          if(endDateHourCounter % 2 === 0) {
+            endDateHourDiv.innerText = "3" + endDateHourDiv.innerText.substr(1, 2)
+            endDateHourCounter ++
+          } else {
+            endDateHourDiv.innerText = endDateHourDiv.innerText.substr(0, 1) + "3"
+            endDateHourCounter ++
+          }
+        }
+        if (e.keyCode === 52) {
+          if(endDateHourCounter % 2 === 0) {
+            endDateHourDiv.innerText = "4" + endDateHourDiv.innerText.substr(1, 2)
+            endDateHourCounter ++
+          } else {
+            endDateHourDiv.innerText = endDateHourDiv.innerText.substr(0, 1) + "4"
+            endDateHourCounter ++
+          }
+        }
+        if (e.keyCode === 53) {
+          if(endDateHourCounter % 2 === 0) {
+            endDateHourDiv.innerText = "5" + endDateHourDiv.innerText.substr(1, 2)
+            endDateHourCounter ++
+          } else {
+            endDateHourDiv.innerText = endDateHourDiv.innerText.substr(0, 1) + "5"
+            endDateHourCounter ++
+          }
+        }
+        if (e.keyCode === 54) {
+          if(endDateHourCounter % 2 === 0) {
+            endDateHourDiv.innerText = "6" + endDateHourDiv.innerText.substr(1, 2)
+            endDateHourCounter ++
+          } else {
+            endDateHourDiv.innerText = endDateHourDiv.innerText.substr(0, 1) + "6"
+            endDateHourCounter ++
+          }
+        }
+        if (e.keyCode === 55) {
+          if(endDateHourCounter % 2 === 0) {
+            endDateHourDiv.innerText = "7" + endDateHourDiv.innerText.substr(1, 2)
+            endDateHourCounter ++
+          } else {
+            endDateHourDiv.innerText = endDateHourDiv.innerText.substr(0, 1) + "7"
+            endDateHourCounter ++
+          }
+        }
+        if (e.keyCode === 56) {
+          if(endDateHourCounter % 2 === 0) {
+            endDateHourDiv.innerText = "8" + endDateHourDiv.innerText.substr(1, 2)
+            endDateHourCounter ++
+          } else {
+            endDateHourDiv.innerText = endDateHourDiv.innerText.substr(0, 1) + "8"
+            endDateHourCounter ++
+          }
+        }
+        if (e.keyCode === 57) {
+          if(endDateHourCounter % 2 === 0) {
+            endDateHourDiv.innerText = "9" + endDateHourDiv.innerText.substr(1, 2)
+            endDateHourCounter ++
+          } else {
+            endDateHourDiv.innerText = endDateHourDiv.innerText.substr(0, 1) + "9"
+            endDateHourCounter ++
+          }
+        }
+        if (e.keyCode === 48) {
+          if(endDateHourCounter % 2 === 0) {
+            endDateHourDiv.innerText = "0" + endDateHourDiv.innerText.substr(1, 2)
+            endDateHourCounter ++
+          } else {
+            endDateHourDiv.innerText = endDateHourDiv.innerText.substr(0, 1) + "0"
+            endDateHourCounter ++
+          }
+        }
+      }
+
+      if(endDateMinuteBool) {
+        if (e.keyCode === 49) {
+          if(endDateMinuteCounter % 2 === 0) {
+            endDateMinuteDiv.innerText = "1" + endDateMinuteDiv.innerText.substr(1, 2)
+            endDateMinuteCounter ++
+          } else {
+            endDateMinuteDiv.innerText = endDateMinuteDiv.innerText.substr(0, 1) + "1"
+            endDateMinuteCounter ++
+          }
+        }
+        if (e.keyCode === 50) {
+          if(endDateMinuteCounter % 2 === 0) {
+            endDateMinuteDiv.innerText = "2" + endDateMinuteDiv.innerText.substr(1, 2)
+            endDateMinuteCounter ++
+          } else {
+            endDateMinuteDiv.innerText = endDateMinuteDiv.innerText.substr(0, 1) + "2"
+            endDateMinuteCounter ++
+          }
+        }
+        if (e.keyCode === 51) {
+          if(endDateMinuteCounter % 2 === 0) {
+            endDateMinuteDiv.innerText = "3" + endDateMinuteDiv.innerText.substr(1, 2)
+            endDateMinuteCounter ++
+          } else {
+            endDateMinuteDiv.innerText = endDateMinuteDiv.innerText.substr(0, 1) + "3"
+            endDateMinuteCounter ++
+          }
+        }
+        if (e.keyCode === 52) {
+          if(endDateMinuteCounter % 2 === 0) {
+            endDateMinuteDiv.innerText = "4" + endDateMinuteDiv.innerText.substr(1, 2)
+            endDateMinuteCounter ++
+          } else {
+            endDateMinuteDiv.innerText = endDateMinuteDiv.innerText.substr(0, 1) + "4"
+            endDateMinuteCounter ++
+          }
+        }
+        if (e.keyCode === 53) {
+          if(endDateMinuteCounter % 2 === 0) {
+            endDateMinuteDiv.innerText = "5" + endDateMinuteDiv.innerText.substr(1, 2)
+            endDateMinuteCounter ++
+          } else {
+            endDateMinuteDiv.innerText = endDateMinuteDiv.innerText.substr(0, 1) + "5"
+            endDateMinuteCounter ++
+          }
+        }
+        if (e.keyCode === 54) {
+          if(endDateMinuteCounter % 2 === 0) {
+            endDateMinuteDiv.innerText = "6" + endDateMinuteDiv.innerText.substr(1, 2)
+            endDateMinuteCounter ++
+          } else {
+            endDateMinuteDiv.innerText = endDateMinuteDiv.innerText.substr(0, 1) + "6"
+            endDateMinuteCounter ++
+          }
+        }
+        if (e.keyCode === 55) {
+          if(endDateMinuteCounter % 2 === 0) {
+            endDateMinuteDiv.innerText = "7" + endDateMinuteDiv.innerText.substr(1, 2)
+            endDateMinuteCounter ++
+          } else {
+            endDateMinuteDiv.innerText = endDateMinuteDiv.innerText.substr(0, 1) + "7"
+            endDateMinuteCounter ++
+          }
+        }
+        if (e.keyCode === 56) {
+          if(endDateMinuteCounter % 2 === 0) {
+            endDateMinuteDiv.innerText = "8" + endDateMinuteDiv.innerText.substr(1, 2)
+            endDateMinuteCounter ++
+          } else {
+            endDateMinuteDiv.innerText = endDateMinuteDiv.innerText.substr(0, 1) + "8"
+            endDateMinuteCounter ++
+          }
+        }
+        if (e.keyCode === 57) {
+          if(endDateMinuteCounter % 2 === 0) {
+            endDateMinuteDiv.innerText = "9" + endDateMinuteDiv.innerText.substr(1, 2)
+            endDateMinuteCounter ++
+          } else {
+            endDateMinuteDiv.innerText = endDateMinuteDiv.innerText.substr(0, 1) + "9"
+            endDateMinuteCounter ++
+          }
+        }
+        if (e.keyCode === 48) {
+          if(endDateMinuteCounter % 2 === 0) {
+            endDateMinuteDiv.innerText = "0" + endDateMinuteDiv.innerText.substr(1, 2)
+            endDateMinuteCounter ++
+          } else {
+            endDateMinuteDiv.innerText = endDateMinuteDiv.innerText.substr(0, 1) + "0"
+            endDateMinuteCounter ++
+          }
+        }
+      }
+
+      if(endDateYearBool) {
+        if (e.keyCode === 49) {
+          if(endDateYearCounter % 4 === 0) {
+            endDateYearDiv.innerText = "1" + endDateYearDiv.innerText.substr(1, 4)
+            endDateYearCounter --
+            if(endDateYearCounter <= 0) endDateYearCounter = 4
+          } else if(endDateYearCounter % 3 === 0) {
+            endDateYearDiv.innerText = endDateYearDiv.innerText.substr(0, 1) + "1" + endDateYearDiv.innerText.substr(2, 4)
+            endDateYearCounter --
+            if(endDateYearCounter <= 0) endDateYearCounter = 4
+          } else if(endDateYearCounter % 2 === 0) {
+            endDateYearDiv.innerText = endDateYearDiv.innerText.substr(0, 2) + "1" + endDateYearDiv.innerText.substr(3, 4)
+            endDateYearCounter --
+            if(endDateYearCounter <= 0) endDateYearCounter = 4
+          } else if(endDateYearCounter % 1 === 0) {
+            endDateYearDiv.innerText = endDateYearDiv.innerText.substr(0, 3) + "1"
+            endDateYearCounter --
+            if(endDateYearCounter <= 0) endDateYearCounter = 4
+          }
+        }
+        if (e.keyCode === 50) {
+          if(endDateYearCounter % 4 === 0) {
+            endDateYearDiv.innerText = "2" + endDateYearDiv.innerText.substr(1, 4)
+            endDateYearCounter --
+            if(endDateYearCounter <= 0) endDateYearCounter = 4
+          } else if(endDateYearCounter % 3 === 0) {
+            endDateYearDiv.innerText = endDateYearDiv.innerText.substr(0, 1) + "2" + endDateYearDiv.innerText.substr(2, 4)
+            endDateYearCounter --
+            if(endDateYearCounter <= 0) endDateYearCounter = 4
+          } else if(endDateYearCounter % 2 === 0) {
+            endDateYearDiv.innerText = endDateYearDiv.innerText.substr(0, 2) + "2" + endDateYearDiv.innerText.substr(3, 4)
+            endDateYearCounter --
+            if(endDateYearCounter <= 0) endDateYearCounter = 4
+          } else if(endDateYearCounter % 1 === 0) {
+            endDateYearDiv.innerText = endDateYearDiv.innerText.substr(0, 3) + "2"
+            endDateYearCounter --
+            if(endDateYearCounter <= 0) endDateYearCounter = 4
+          }
+        }
+        if (e.keyCode === 51) {
+          if(endDateYearCounter % 4 === 0) {
+            endDateYearDiv.innerText = "3" + endDateYearDiv.innerText.substr(1, 4)
+            endDateYearCounter --
+            if(endDateYearCounter <= 0) endDateYearCounter = 4
+          } else if(endDateYearCounter % 3 === 0) {
+            endDateYearDiv.innerText = endDateYearDiv.innerText.substr(0, 1) + "3" + endDateYearDiv.innerText.substr(2, 4)
+            endDateYearCounter --
+            if(endDateYearCounter <= 0) endDateYearCounter = 4
+          } else if(endDateYearCounter % 2 === 0) {
+            endDateYearDiv.innerText = endDateYearDiv.innerText.substr(0, 2) + "3" + endDateYearDiv.innerText.substr(3, 4)
+            endDateYearCounter --
+            if(endDateYearCounter <= 0) endDateYearCounter = 4
+          } else if(endDateYearCounter % 1 === 0) {
+            endDateYearDiv.innerText = endDateYearDiv.innerText.substr(0, 3) + "3"
+            endDateYearCounter --
+            if(endDateYearCounter <= 0) endDateYearCounter = 4
+          }
+        }
+        if (e.keyCode === 52) {
+          if(endDateYearCounter % 4 === 0) {
+            endDateYearDiv.innerText = "4" + endDateYearDiv.innerText.substr(1, 4)
+            endDateYearCounter --
+            if(endDateYearCounter <= 0) endDateYearCounter = 4
+          } else if(endDateYearCounter % 3 === 0) {
+            endDateYearDiv.innerText = endDateYearDiv.innerText.substr(0, 1) + "4" + endDateYearDiv.innerText.substr(2, 4)
+            endDateYearCounter --
+            if(endDateYearCounter <= 0) endDateYearCounter = 4
+          } else if(endDateYearCounter % 2 === 0) {
+            endDateYearDiv.innerText = endDateYearDiv.innerText.substr(0, 2) + "4" + endDateYearDiv.innerText.substr(3, 4)
+            endDateYearCounter --
+            if(endDateYearCounter <= 0) endDateYearCounter = 4
+          } else if(endDateYearCounter % 1 === 0) {
+            endDateYearDiv.innerText = endDateYearDiv.innerText.substr(0, 3) + "4"
+            endDateYearCounter --
+            if(endDateYearCounter <= 0) endDateYearCounter = 4
+          }
+        }
+        if (e.keyCode === 53) {
+          if(endDateYearCounter % 4 === 0) {
+            endDateYearDiv.innerText = "5" + endDateYearDiv.innerText.substr(1, 4)
+            endDateYearCounter --
+            if(endDateYearCounter <= 0) endDateYearCounter = 4
+          } else if(endDateYearCounter % 3 === 0) {
+            endDateYearDiv.innerText = endDateYearDiv.innerText.substr(0, 1) + "5" + endDateYearDiv.innerText.substr(2, 4)
+            endDateYearCounter --
+            if(endDateYearCounter <= 0) endDateYearCounter = 4
+          } else if(endDateYearCounter % 2 === 0) {
+            endDateYearDiv.innerText = endDateYearDiv.innerText.substr(0, 2) + "5" + endDateYearDiv.innerText.substr(3, 4)
+            endDateYearCounter --
+            if(endDateYearCounter <= 0) endDateYearCounter = 4
+          } else if(endDateYearCounter % 1 === 0) {
+            endDateYearDiv.innerText = endDateYearDiv.innerText.substr(0, 3) + "5"
+            endDateYearCounter --
+            if(endDateYearCounter <= 0) endDateYearCounter = 4
+          }
+        }
+        if (e.keyCode === 54) {
+          if(endDateYearCounter % 4 === 0) {
+            endDateYearDiv.innerText = "6" + endDateYearDiv.innerText.substr(1, 4)
+            endDateYearCounter --
+            if(endDateYearCounter <= 0) endDateYearCounter = 4
+          } else if(endDateYearCounter % 3 === 0) {
+            endDateYearDiv.innerText = endDateYearDiv.innerText.substr(0, 1) + "6" + endDateYearDiv.innerText.substr(2, 4)
+            endDateYearCounter --
+            if(endDateYearCounter <= 0) endDateYearCounter = 4
+          } else if(endDateYearCounter % 2 === 0) {
+            endDateYearDiv.innerText = endDateYearDiv.innerText.substr(0, 2) + "6" + endDateYearDiv.innerText.substr(3, 4)
+            endDateYearCounter --
+            if(endDateYearCounter <= 0) endDateYearCounter = 4
+          } else if(endDateYearCounter % 1 === 0) {
+            endDateYearDiv.innerText = endDateYearDiv.innerText.substr(0, 3) + "6"
+            endDateYearCounter --
+            if(endDateYearCounter <= 0) endDateYearCounter = 4
+          }
+        }
+        if (e.keyCode === 55) {
+          if(endDateYearCounter % 4 === 0) {
+            endDateYearDiv.innerText = "7" + endDateYearDiv.innerText.substr(1, 4)
+            endDateYearCounter --
+            if(endDateYearCounter <= 0) endDateYearCounter = 4
+          } else if(endDateYearCounter % 3 === 0) {
+            endDateYearDiv.innerText = endDateYearDiv.innerText.substr(0, 1) + "7" + endDateYearDiv.innerText.substr(2, 4)
+            endDateYearCounter --
+            if(endDateYearCounter <= 0) endDateYearCounter = 4
+          } else if(endDateYearCounter % 2 === 0) {
+            endDateYearDiv.innerText = endDateYearDiv.innerText.substr(0, 2) + "7" + endDateYearDiv.innerText.substr(3, 4)
+            endDateYearCounter --
+            if(endDateYearCounter <= 0) endDateYearCounter = 4
+          } else if(endDateYearCounter % 1 === 0) {
+            endDateYearDiv.innerText = endDateYearDiv.innerText.substr(0, 3) + "7"
+            endDateYearCounter --
+            if(endDateYearCounter <= 0) endDateYearCounter = 4
+          }
+        }
+        if (e.keyCode === 56) {
+          if(endDateYearCounter % 4 === 0) {
+            endDateYearDiv.innerText = "8" + endDateYearDiv.innerText.substr(1, 4)
+            endDateYearCounter --
+            if(endDateYearCounter <= 0) endDateYearCounter = 4
+          } else if(endDateYearCounter % 3 === 0) {
+            endDateYearDiv.innerText = endDateYearDiv.innerText.substr(0, 1) + "8" + endDateYearDiv.innerText.substr(2, 4)
+            endDateYearCounter --
+            if(endDateYearCounter <= 0) endDateYearCounter = 4
+          } else if(endDateYearCounter % 2 === 0) {
+            endDateYearDiv.innerText = endDateYearDiv.innerText.substr(0, 2) + "8" + endDateYearDiv.innerText.substr(3, 4)
+            endDateYearCounter --
+            if(endDateYearCounter <= 0) endDateYearCounter = 4
+          } else if(endDateYearCounter % 1 === 0) {
+            endDateYearDiv.innerText = endDateYearDiv.innerText.substr(0, 3) + "8"
+            endDateYearCounter --
+            if(endDateYearCounter <= 0) endDateYearCounter = 4
+          }
+        }
+        if (e.keyCode === 57) {
+          if(endDateYearCounter % 4 === 0) {
+            endDateYearDiv.innerText = "9" + endDateYearDiv.innerText.substr(1, 4)
+            endDateYearCounter --
+            if(endDateYearCounter <= 0) endDateYearCounter = 4
+          } else if(endDateYearCounter % 3 === 0) {
+            endDateYearDiv.innerText = endDateYearDiv.innerText.substr(0, 1) + "9" + endDateYearDiv.innerText.substr(2, 4)
+            endDateYearCounter --
+            if(endDateYearCounter <= 0) endDateYearCounter = 4
+          } else if(endDateYearCounter % 2 === 0) {
+            endDateYearDiv.innerText = endDateYearDiv.innerText.substr(0, 2) + "9" + endDateYearDiv.innerText.substr(3, 4)
+            endDateYearCounter --
+            if(endDateYearCounter <= 0) endDateYearCounter = 4
+          } else if(endDateYearCounter % 1 === 0) {
+            endDateYearDiv.innerText = endDateYearDiv.innerText.substr(0, 3) + "9"
+            endDateYearCounter --
+            if(endDateYearCounter <= 0) endDateYearCounter = 4
+          }
+        }
+        if (e.keyCode === 48) {
+          if(endDateYearCounter % 4 === 0) {
+            endDateYearDiv.innerText = "0" + endDateYearDiv.innerText.substr(1, 4)
+            endDateYearCounter --
+            if(endDateYearCounter <= 0) endDateYearCounter = 4
+          } else if(endDateYearCounter % 3 === 0) {
+            endDateYearDiv.innerText = endDateYearDiv.innerText.substr(0, 1) + "0" + endDateYearDiv.innerText.substr(2, 4)
+            endDateYearCounter --
+            if(endDateYearCounter <= 0) endDateYearCounter = 4
+          } else if(endDateYearCounter % 2 === 0) {
+            endDateYearDiv.innerText = endDateYearDiv.innerText.substr(0, 2) + "0" + endDateYearDiv.innerText.substr(3, 4)
+            endDateYearCounter --
+            if(endDateYearCounter <= 0) endDateYearCounter = 4
+          } else if(endDateYearCounter % 1 === 0) {
+            endDateYearDiv.innerText = endDateYearDiv.innerText.substr(0, 3) + "0"
+            endDateYearCounter --
+            if(endDateYearCounter <= 0) endDateYearCounter = 4
+          }
+        }
+      }
+
+      if(endDateAmpmBool) {
+        if(e.keyCode === 65) {
+          endDateAmpmDiv.innerText = "A" + endDateAmpmDiv.innerText.substr(1, 2)
+        }
+        if(e.keyCode === 80) {
+          endDateAmpmDiv.innerText = "P" + endDateAmpmDiv.innerText.substr(1, 2)
+        }
+      }
+    })
+  }
+
+  function endDatetimeValue() {
+    let values = []
+    for (let i=0; i<endDatetimeArray.length; i++) {
+      if(endDatetimeArray[i].innerText !== "/" && endDatetimeArray[i].innerText !== ":") {
+        values.push(endDatetimeArray[i].innerText)
+      }
+    }
+    let dateStr = values[2] + " " + endDateMonths[values[1]] + " " + values[3] + " " + endDateConvertTime[values[4]+values[6]] + ":" + values[5] + ":" + "00" + " UTC +00:00"
+    return dateStr
+  }
+
+  function endDateinsertValue() {
+    if(endDateForm !== null) {
+      endDateForm.addEventListener("submit", e => {
+        endDatetimeInput.value = endDatetimeValue()
+        // if (endDatetimeInput.value === "00 undefined 0000 undefined:00:00 UTC +00:00") endDatetimeInput.value = "17 Jan 2019 20:00:51 UTC +00:00"
+      })
+    }
+  }
+
+</script>

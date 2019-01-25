@@ -1,0 +1,12 @@
+<div class="dashboard-container">
+  <div class="dash-your-activities-container">
+    <div class="dash-your-activities-text">See Who's Attending Your Activities</div>
+    <%if @activities.length > 0%>
+      <%@activities.each do |activity|%>
+        <a href="/activities/<%=activity.id%>/<%=@user.id%>"><%=activity.activity_name%></a>
+      <%end%>
+    <%else%>
+      <div class="dash-no-activities">No activities. Go make some!</div>
+    <%end%>
+  </div>
+</div>

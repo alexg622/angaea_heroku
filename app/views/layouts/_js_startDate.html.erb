@@ -1,0 +1,774 @@
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    handleTheStartDate().setDay()
+    handleTheStartDate().setMonth()
+    handleTheStartDate().setYear()
+    handleTheStartDate().setHour()
+    handleTheStartDate().setMinute()
+    handleTheStartDate().setAmpm()
+    handleTheStartDate().followKeyPress()
+    handleTheStartDate().startDatetimeValue()
+    handleTheStartDate().insertValue()
+  })
+  function handleTheStartDate() {
+    let months = {
+      "12": "Dec",
+      "11": "Nov",
+      "10": "Oct",
+      "09": "Sep",
+      "08": "Aug",
+      "07": "Jul",
+      "06": "Jun",
+      "05": "May",
+      "04": "Apr",
+      "03": "Mar",
+      "02": "Feb",
+      "01": "Jan"
+    }
+
+    let convertTime = {
+      "12AM": "00",
+      "01AM": "01",
+      "02AM": "02",
+      "03AM": "03",
+      "04AM": "04",
+      "05AM": "05",
+      "06AM": "06",
+      "07AM": "07",
+      "08AM": "08",
+      "09AM": "09",
+      "10AM": "10",
+      "11AM": "11",
+      "12PM": "12",
+      "01PM": "13",
+      "02PM": "14",
+      "03PM": "15",
+      "04PM": "16",
+      "05PM": "17",
+      "06PM": "18",
+      "07PM": "19",
+      "08pm": "20",
+      "09PM": "21",
+      "10PM": "22",
+      "11PM": "23",
+      "12PM": "24"
+    }
+
+    let startDateTimeInputContainer = document.querySelector(".start-datetime-input-container")
+    let theForm = document.querySelector(".date-class")
+    let startDatetimeInput = document.querySelector(".start-datetime-value")
+
+    let startDatetimeArray = Array.from(document.querySelectorAll(".start-datetime"))
+
+    let dayBool = false
+    let dayCounter = 0
+    let dayDiv = document.querySelector(".datetime-day")
+
+    let monthBool = false
+    let monthCounter = 0
+    let monthDiv = document.querySelector(".datetime-month")
+
+    let yearBool = false
+    let yearCounter = 4
+    let yearDiv = document.querySelector(".datetime-year")
+
+    let hourBool = false
+    let hourCounter = 0
+    let hourDiv = document.querySelector(".datetime-hour")
+
+    let minuteBool = false
+    let minuteCounter = 0
+    let minuteDiv = document.querySelector(".datetime-minute")
+
+    let ampmBool = false
+    let ampmCounter = 0
+    let ampmDiv = document.querySelector(".datetime-ampm")
+
+    const startDateHash = {
+      setDay: function() {
+        if(dayDiv !== null) {
+          dayDiv.addEventListener("click", e => {
+            dayDiv.style.color = "black"
+            monthBool = false
+            dayBool = true
+            yearBool = false
+            hourBool = false
+            minuteBool = false
+            ampmBool = false
+          })
+        }
+      },
+
+      setMonth: function() {
+        if(monthDiv !== null) {
+          monthDiv.addEventListener("click", e => {
+            monthDiv.style.color = "black"
+            dayBool = false
+            monthBool = true
+            yearBool = false
+            hourBool = false
+            minuteBool = false
+            ampmBool = false
+          })
+        }
+      },
+
+      setYear: function() {
+        if(yearDiv !== null) {
+          yearDiv.addEventListener("click", e => {
+            yearDiv.style.color = "black"
+            monthBool = false
+            dayBool = false
+            ampmBool = false
+            hourBool = false
+            minuteBool = false
+            yearBool = true
+          })
+        }
+      },
+
+      setHour: function() {
+        if(hourDiv !== null) {
+          hourDiv.addEventListener("click", e => {
+            hourDiv.style.color = "black"
+            dayBool = false
+            monthBool = false
+            yearBool = false
+            hourBool = true
+            minuteBool = false
+            ampmBool = false
+          })
+        }
+      },
+
+      setMinute: function() {
+        if(minuteDiv !== null) {
+          minuteDiv.addEventListener("click", e => {
+            minuteDiv.style.color = "black"
+            dayBool = false
+            monthBool = false
+            yearBool = false
+            hourBool = false
+            minuteBool = true
+            ampmBool = false
+          })
+        }
+      },
+
+      setAmpm: function() {
+        if(ampmDiv !== null) {
+          ampmDiv.addEventListener("click", e => {
+            ampmDiv.style.color = "black"
+            dayBool = false
+            monthBool = false
+            yearBool = false
+            hourBool = false
+            minuteBool = false
+            ampmBool = true
+          })
+        }
+      },
+
+      followKeyPress: function() {
+        document.addEventListener("keydown", e => {
+          if(dayBool) {
+            if (e.keyCode === 49) {
+              if(dayCounter % 2 === 0) {
+                dayDiv.innerText = "1" + dayDiv.innerText.substr(1, 2)
+                dayCounter ++
+              } else {
+                dayDiv.innerText = dayDiv.innerText.substr(0, 1) + "1"
+                dayCounter ++
+              }
+            }
+            if (e.keyCode === 50) {
+              if(dayCounter % 2 === 0) {
+                dayDiv.innerText = "2" + dayDiv.innerText.substr(1, 2)
+                dayCounter ++
+              } else {
+                dayDiv.innerText = dayDiv.innerText.substr(0, 1) + "2"
+                dayCounter ++
+              }
+            }
+            if (e.keyCode === 51) {
+              if(dayCounter % 2 === 0) {
+                dayDiv.innerText = "3" + dayDiv.innerText.substr(1, 2)
+                dayCounter ++
+              } else {
+                dayDiv.innerText = dayDiv.innerText.substr(0, 1) + "3"
+                dayCounter ++
+              }
+            }
+            if (e.keyCode === 52) {
+              if(dayCounter % 2 === 0) {
+                dayDiv.innerText = "4" + dayDiv.innerText.substr(1, 2)
+                dayCounter ++
+              } else {
+                dayDiv.innerText = dayDiv.innerText.substr(0, 1) + "4"
+                dayCounter ++
+              }
+            }
+            if (e.keyCode === 53) {
+              if(dayCounter % 2 === 0) {
+                dayDiv.innerText = "5" + dayDiv.innerText.substr(1, 2)
+                dayCounter ++
+              } else {
+                dayDiv.innerText = dayDiv.innerText.substr(0, 1) + "5"
+                dayCounter ++
+              }
+            }
+            if (e.keyCode === 54) {
+              if(dayCounter % 2 === 0) {
+                dayDiv.innerText = "6" + dayDiv.innerText.substr(1, 2)
+                dayCounter ++
+              } else {
+                dayDiv.innerText = dayDiv.innerText.substr(0, 1) + "6"
+                dayCounter ++
+              }
+            }
+            if (e.keyCode === 55) {
+              if(dayCounter % 2 === 0) {
+                dayDiv.innerText = "7" + dayDiv.innerText.substr(1, 2)
+                dayCounter ++
+              } else {
+                dayDiv.innerText = dayDiv.innerText.substr(0, 1) + "7"
+                dayCounter ++
+              }
+            }
+            if (e.keyCode === 56) {
+              if(dayCounter % 2 === 0) {
+                dayDiv.innerText = "8" + dayDiv.innerText.substr(1, 2)
+                dayCounter ++
+              } else {
+                dayDiv.innerText = dayDiv.innerText.substr(0, 1) + "8"
+                dayCounter ++
+              }
+            }
+            if (e.keyCode === 57) {
+              if(dayCounter % 2 === 0) {
+                dayDiv.innerText = "9" + dayDiv.innerText.substr(1, 2)
+                dayCounter ++
+              } else {
+                dayDiv.innerText = dayDiv.innerText.substr(0, 1) + "9"
+                dayCounter ++
+              }
+            }
+            if (e.keyCode === 48) {
+              if(dayCounter % 2 === 0) {
+                dayDiv.innerText = "0" + dayDiv.innerText.substr(1, 2)
+                dayCounter ++
+              } else {
+                dayDiv.innerText = dayDiv.innerText.substr(0, 1) + "0"
+                dayCounter ++
+              }
+            }
+          }
+
+          if(monthBool) {
+            if (e.keyCode === 49) {
+              if(monthCounter % 2 === 0) {
+                monthDiv.innerText = "1" + monthDiv.innerText.substr(1, 2)
+                monthCounter ++
+              } else {
+                monthDiv.innerText = monthDiv.innerText.substr(0, 1) + "1"
+                monthCounter ++
+              }
+            }
+            if (e.keyCode === 50) {
+              if(monthCounter % 2 === 0) {
+                monthDiv.innerText = "2" + monthDiv.innerText.substr(1, 2)
+                monthCounter ++
+              } else {
+                monthDiv.innerText = monthDiv.innerText.substr(0, 1) + "2"
+                monthCounter ++
+              }
+            }
+            if (e.keyCode === 51) {
+              if(monthCounter % 2 === 0) {
+                monthDiv.innerText = "3" + monthDiv.innerText.substr(1, 2)
+                monthCounter ++
+              } else {
+                monthDiv.innerText = monthDiv.innerText.substr(0, 1) + "3"
+                monthCounter ++
+              }
+            }
+            if (e.keyCode === 52) {
+              if(monthCounter % 2 === 0) {
+                monthDiv.innerText = "4" + monthDiv.innerText.substr(1, 2)
+                monthCounter ++
+              } else {
+                monthDiv.innerText = monthDiv.innerText.substr(0, 1) + "4"
+                monthCounter ++
+              }
+            }
+            if (e.keyCode === 53) {
+              if(monthCounter % 2 === 0) {
+                monthDiv.innerText = "5" + monthDiv.innerText.substr(1, 2)
+                monthCounter ++
+              } else {
+                monthDiv.innerText = monthDiv.innerText.substr(0, 1) + "5"
+                monthCounter ++
+              }
+            }
+            if (e.keyCode === 54) {
+              if(monthCounter % 2 === 0) {
+                monthDiv.innerText = "6" + monthDiv.innerText.substr(1, 2)
+                monthCounter ++
+              } else {
+                monthDiv.innerText = monthDiv.innerText.substr(0, 1) + "6"
+                monthCounter ++
+              }
+            }
+            if (e.keyCode === 55) {
+              if(monthCounter % 2 === 0) {
+                monthDiv.innerText = "7" + monthDiv.innerText.substr(1, 2)
+                monthCounter ++
+              } else {
+                monthDiv.innerText = monthDiv.innerText.substr(0, 1) + "7"
+                monthCounter ++
+              }
+            }
+            if (e.keyCode === 56) {
+              if(monthCounter % 2 === 0) {
+                monthDiv.innerText = "8" + monthDiv.innerText.substr(1, 2)
+                monthCounter ++
+              } else {
+                monthDiv.innerText = monthDiv.innerText.substr(0, 1) + "8"
+                monthCounter ++
+              }
+            }
+            if (e.keyCode === 57) {
+              if(monthCounter % 2 === 0) {
+                monthDiv.innerText = "9" + monthDiv.innerText.substr(1, 2)
+                monthCounter ++
+              } else {
+                monthDiv.innerText = monthDiv.innerText.substr(0, 1) + "9"
+                monthCounter ++
+              }
+            }
+            if (e.keyCode === 48) {
+              if(monthCounter % 2 === 0) {
+                monthDiv.innerText = "0" + monthDiv.innerText.substr(1, 2)
+                monthCounter ++
+              } else {
+                monthDiv.innerText = monthDiv.innerText.substr(0, 1) + "0"
+                monthCounter ++
+              }
+            }
+          }
+
+          if(hourBool) {
+            if (e.keyCode === 49) {
+              if(hourCounter % 2 === 0) {
+                hourDiv.innerText = "1" + hourDiv.innerText.substr(1, 2)
+                hourCounter ++
+              } else {
+                hourDiv.innerText = hourDiv.innerText.substr(0, 1) + "1"
+                hourCounter ++
+              }
+            }
+            if (e.keyCode === 50) {
+              if(hourCounter % 2 === 0) {
+                hourDiv.innerText = "2" + hourDiv.innerText.substr(1, 2)
+                hourCounter ++
+              } else {
+                hourDiv.innerText = hourDiv.innerText.substr(0, 1) + "2"
+                hourCounter ++
+              }
+            }
+            if (e.keyCode === 51) {
+              if(hourCounter % 2 === 0) {
+                hourDiv.innerText = "3" + hourDiv.innerText.substr(1, 2)
+                hourCounter ++
+              } else {
+                hourDiv.innerText = hourDiv.innerText.substr(0, 1) + "3"
+                hourCounter ++
+              }
+            }
+            if (e.keyCode === 52) {
+              if(hourCounter % 2 === 0) {
+                hourDiv.innerText = "4" + hourDiv.innerText.substr(1, 2)
+                hourCounter ++
+              } else {
+                hourDiv.innerText = hourDiv.innerText.substr(0, 1) + "4"
+                hourCounter ++
+              }
+            }
+            if (e.keyCode === 53) {
+              if(hourCounter % 2 === 0) {
+                hourDiv.innerText = "5" + hourDiv.innerText.substr(1, 2)
+                hourCounter ++
+              } else {
+                hourDiv.innerText = hourDiv.innerText.substr(0, 1) + "5"
+                hourCounter ++
+              }
+            }
+            if (e.keyCode === 54) {
+              if(hourCounter % 2 === 0) {
+                hourDiv.innerText = "6" + hourDiv.innerText.substr(1, 2)
+                hourCounter ++
+              } else {
+                hourDiv.innerText = hourDiv.innerText.substr(0, 1) + "6"
+                hourCounter ++
+              }
+            }
+            if (e.keyCode === 55) {
+              if(hourCounter % 2 === 0) {
+                hourDiv.innerText = "7" + hourDiv.innerText.substr(1, 2)
+                hourCounter ++
+              } else {
+                hourDiv.innerText = hourDiv.innerText.substr(0, 1) + "7"
+                hourCounter ++
+              }
+            }
+            if (e.keyCode === 56) {
+              if(hourCounter % 2 === 0) {
+                hourDiv.innerText = "8" + hourDiv.innerText.substr(1, 2)
+                hourCounter ++
+              } else {
+                hourDiv.innerText = hourDiv.innerText.substr(0, 1) + "8"
+                hourCounter ++
+              }
+            }
+            if (e.keyCode === 57) {
+              if(hourCounter % 2 === 0) {
+                hourDiv.innerText = "9" + hourDiv.innerText.substr(1, 2)
+                hourCounter ++
+              } else {
+                hourDiv.innerText = hourDiv.innerText.substr(0, 1) + "9"
+                hourCounter ++
+              }
+            }
+            if (e.keyCode === 48) {
+              if(hourCounter % 2 === 0) {
+                hourDiv.innerText = "0" + hourDiv.innerText.substr(1, 2)
+                hourCounter ++
+              } else {
+                hourDiv.innerText = hourDiv.innerText.substr(0, 1) + "0"
+                hourCounter ++
+              }
+            }
+          }
+
+          if(minuteBool) {
+            if (e.keyCode === 49) {
+              if(minuteCounter % 2 === 0) {
+                minuteDiv.innerText = "1" + minuteDiv.innerText.substr(1, 2)
+                minuteCounter ++
+              } else {
+                minuteDiv.innerText = minuteDiv.innerText.substr(0, 1) + "1"
+                minuteCounter ++
+              }
+            }
+            if (e.keyCode === 50) {
+              if(minuteCounter % 2 === 0) {
+                minuteDiv.innerText = "2" + minuteDiv.innerText.substr(1, 2)
+                minuteCounter ++
+              } else {
+                minuteDiv.innerText = minuteDiv.innerText.substr(0, 1) + "2"
+                minuteCounter ++
+              }
+            }
+            if (e.keyCode === 51) {
+              if(minuteCounter % 2 === 0) {
+                minuteDiv.innerText = "3" + minuteDiv.innerText.substr(1, 2)
+                minuteCounter ++
+              } else {
+                minuteDiv.innerText = minuteDiv.innerText.substr(0, 1) + "3"
+                minuteCounter ++
+              }
+            }
+            if (e.keyCode === 52) {
+              if(minuteCounter % 2 === 0) {
+                minuteDiv.innerText = "4" + minuteDiv.innerText.substr(1, 2)
+                minuteCounter ++
+              } else {
+                minuteDiv.innerText = minuteDiv.innerText.substr(0, 1) + "4"
+                minuteCounter ++
+              }
+            }
+            if (e.keyCode === 53) {
+              if(minuteCounter % 2 === 0) {
+                minuteDiv.innerText = "5" + minuteDiv.innerText.substr(1, 2)
+                minuteCounter ++
+              } else {
+                minuteDiv.innerText = minuteDiv.innerText.substr(0, 1) + "5"
+                minuteCounter ++
+              }
+            }
+            if (e.keyCode === 54) {
+              if(minuteCounter % 2 === 0) {
+                minuteDiv.innerText = "6" + minuteDiv.innerText.substr(1, 2)
+                minuteCounter ++
+              } else {
+                minuteDiv.innerText = minuteDiv.innerText.substr(0, 1) + "6"
+                minuteCounter ++
+              }
+            }
+            if (e.keyCode === 55) {
+              if(minuteCounter % 2 === 0) {
+                minuteDiv.innerText = "7" + minuteDiv.innerText.substr(1, 2)
+                minuteCounter ++
+              } else {
+                minuteDiv.innerText = minuteDiv.innerText.substr(0, 1) + "7"
+                minuteCounter ++
+              }
+            }
+            if (e.keyCode === 56) {
+              if(minuteCounter % 2 === 0) {
+                minuteDiv.innerText = "8" + minuteDiv.innerText.substr(1, 2)
+                minuteCounter ++
+              } else {
+                minuteDiv.innerText = minuteDiv.innerText.substr(0, 1) + "8"
+                minuteCounter ++
+              }
+            }
+            if (e.keyCode === 57) {
+              if(minuteCounter % 2 === 0) {
+                minuteDiv.innerText = "9" + minuteDiv.innerText.substr(1, 2)
+                minuteCounter ++
+              } else {
+                minuteDiv.innerText = minuteDiv.innerText.substr(0, 1) + "9"
+                minuteCounter ++
+              }
+            }
+            if (e.keyCode === 48) {
+              if(minuteCounter % 2 === 0) {
+                minuteDiv.innerText = "0" + minuteDiv.innerText.substr(1, 2)
+                minuteCounter ++
+              } else {
+                minuteDiv.innerText = minuteDiv.innerText.substr(0, 1) + "0"
+                minuteCounter ++
+              }
+            }
+          }
+
+          if(yearBool) {
+            if (e.keyCode === 49) {
+              if(yearCounter % 4 === 0) {
+                yearDiv.innerText = "1" + yearDiv.innerText.substr(1, 4)
+                yearCounter --
+                if(yearCounter <= 0) yearCounter = 4
+              } else if(yearCounter % 3 === 0) {
+                yearDiv.innerText = yearDiv.innerText.substr(0, 1) + "1" + yearDiv.innerText.substr(2, 4)
+                yearCounter --
+                if(yearCounter <= 0) yearCounter = 4
+              } else if(yearCounter % 2 === 0) {
+                yearDiv.innerText = yearDiv.innerText.substr(0, 2) + "1" + yearDiv.innerText.substr(3, 4)
+                yearCounter --
+                if(yearCounter <= 0) yearCounter = 4
+              } else if(yearCounter % 1 === 0) {
+                yearDiv.innerText = yearDiv.innerText.substr(0, 3) + "1"
+                yearCounter --
+                if(yearCounter <= 0) yearCounter = 4
+              }
+            }
+            if (e.keyCode === 50) {
+              if(yearCounter % 4 === 0) {
+                yearDiv.innerText = "2" + yearDiv.innerText.substr(1, 4)
+                yearCounter --
+                if(yearCounter <= 0) yearCounter = 4
+              } else if(yearCounter % 3 === 0) {
+                yearDiv.innerText = yearDiv.innerText.substr(0, 1) + "2" + yearDiv.innerText.substr(2, 4)
+                yearCounter --
+                if(yearCounter <= 0) yearCounter = 4
+              } else if(yearCounter % 2 === 0) {
+                yearDiv.innerText = yearDiv.innerText.substr(0, 2) + "2" + yearDiv.innerText.substr(3, 4)
+                yearCounter --
+                if(yearCounter <= 0) yearCounter = 4
+              } else if(yearCounter % 1 === 0) {
+                yearDiv.innerText = yearDiv.innerText.substr(0, 3) + "2"
+                yearCounter --
+                if(yearCounter <= 0) yearCounter = 4
+              }
+            }
+            if (e.keyCode === 51) {
+              if(yearCounter % 4 === 0) {
+                yearDiv.innerText = "3" + yearDiv.innerText.substr(1, 4)
+                yearCounter --
+                if(yearCounter <= 0) yearCounter = 4
+              } else if(yearCounter % 3 === 0) {
+                yearDiv.innerText = yearDiv.innerText.substr(0, 1) + "3" + yearDiv.innerText.substr(2, 4)
+                yearCounter --
+                if(yearCounter <= 0) yearCounter = 4
+              } else if(yearCounter % 2 === 0) {
+                yearDiv.innerText = yearDiv.innerText.substr(0, 2) + "3" + yearDiv.innerText.substr(3, 4)
+                yearCounter --
+                if(yearCounter <= 0) yearCounter = 4
+              } else if(yearCounter % 1 === 0) {
+                yearDiv.innerText = yearDiv.innerText.substr(0, 3) + "3"
+                yearCounter --
+                if(yearCounter <= 0) yearCounter = 4
+              }
+            }
+            if (e.keyCode === 52) {
+              if(yearCounter % 4 === 0) {
+                yearDiv.innerText = "4" + yearDiv.innerText.substr(1, 4)
+                yearCounter --
+                if(yearCounter <= 0) yearCounter = 4
+              } else if(yearCounter % 3 === 0) {
+                yearDiv.innerText = yearDiv.innerText.substr(0, 1) + "4" + yearDiv.innerText.substr(2, 4)
+                yearCounter --
+                if(yearCounter <= 0) yearCounter = 4
+              } else if(yearCounter % 2 === 0) {
+                yearDiv.innerText = yearDiv.innerText.substr(0, 2) + "4" + yearDiv.innerText.substr(3, 4)
+                yearCounter --
+                if(yearCounter <= 0) yearCounter = 4
+              } else if(yearCounter % 1 === 0) {
+                yearDiv.innerText = yearDiv.innerText.substr(0, 3) + "4"
+                yearCounter --
+                if(yearCounter <= 0) yearCounter = 4
+              }
+            }
+            if (e.keyCode === 53) {
+              if(yearCounter % 4 === 0) {
+                yearDiv.innerText = "5" + yearDiv.innerText.substr(1, 4)
+                yearCounter --
+                if(yearCounter <= 0) yearCounter = 4
+              } else if(yearCounter % 3 === 0) {
+                yearDiv.innerText = yearDiv.innerText.substr(0, 1) + "5" + yearDiv.innerText.substr(2, 4)
+                yearCounter --
+                if(yearCounter <= 0) yearCounter = 4
+              } else if(yearCounter % 2 === 0) {
+                yearDiv.innerText = yearDiv.innerText.substr(0, 2) + "5" + yearDiv.innerText.substr(3, 4)
+                yearCounter --
+                if(yearCounter <= 0) yearCounter = 4
+              } else if(yearCounter % 1 === 0) {
+                yearDiv.innerText = yearDiv.innerText.substr(0, 3) + "5"
+                yearCounter --
+                if(yearCounter <= 0) yearCounter = 4
+              }
+            }
+            if (e.keyCode === 54) {
+              if(yearCounter % 4 === 0) {
+                yearDiv.innerText = "6" + yearDiv.innerText.substr(1, 4)
+                yearCounter --
+                if(yearCounter <= 0) yearCounter = 4
+              } else if(yearCounter % 3 === 0) {
+                yearDiv.innerText = yearDiv.innerText.substr(0, 1) + "6" + yearDiv.innerText.substr(2, 4)
+                yearCounter --
+                if(yearCounter <= 0) yearCounter = 4
+              } else if(yearCounter % 2 === 0) {
+                yearDiv.innerText = yearDiv.innerText.substr(0, 2) + "6" + yearDiv.innerText.substr(3, 4)
+                yearCounter --
+                if(yearCounter <= 0) yearCounter = 4
+              } else if(yearCounter % 1 === 0) {
+                yearDiv.innerText = yearDiv.innerText.substr(0, 3) + "6"
+                yearCounter --
+                if(yearCounter <= 0) yearCounter = 4
+              }
+            }
+            if (e.keyCode === 55) {
+              if(yearCounter % 4 === 0) {
+                yearDiv.innerText = "7" + yearDiv.innerText.substr(1, 4)
+                yearCounter --
+                if(yearCounter <= 0) yearCounter = 4
+              } else if(yearCounter % 3 === 0) {
+                yearDiv.innerText = yearDiv.innerText.substr(0, 1) + "7" + yearDiv.innerText.substr(2, 4)
+                yearCounter --
+                if(yearCounter <= 0) yearCounter = 4
+              } else if(yearCounter % 2 === 0) {
+                yearDiv.innerText = yearDiv.innerText.substr(0, 2) + "7" + yearDiv.innerText.substr(3, 4)
+                yearCounter --
+                if(yearCounter <= 0) yearCounter = 4
+              } else if(yearCounter % 1 === 0) {
+                yearDiv.innerText = yearDiv.innerText.substr(0, 3) + "7"
+                yearCounter --
+                if(yearCounter <= 0) yearCounter = 4
+              }
+            }
+            if (e.keyCode === 56) {
+              if(yearCounter % 4 === 0) {
+                yearDiv.innerText = "8" + yearDiv.innerText.substr(1, 4)
+                yearCounter --
+                if(yearCounter <= 0) yearCounter = 4
+              } else if(yearCounter % 3 === 0) {
+                yearDiv.innerText = yearDiv.innerText.substr(0, 1) + "8" + yearDiv.innerText.substr(2, 4)
+                yearCounter --
+                if(yearCounter <= 0) yearCounter = 4
+              } else if(yearCounter % 2 === 0) {
+                yearDiv.innerText = yearDiv.innerText.substr(0, 2) + "8" + yearDiv.innerText.substr(3, 4)
+                yearCounter --
+                if(yearCounter <= 0) yearCounter = 4
+              } else if(yearCounter % 1 === 0) {
+                yearDiv.innerText = yearDiv.innerText.substr(0, 3) + "8"
+                yearCounter --
+                if(yearCounter <= 0) yearCounter = 4
+              }
+            }
+            if (e.keyCode === 57) {
+              if(yearCounter % 4 === 0) {
+                yearDiv.innerText = "9" + yearDiv.innerText.substr(1, 4)
+                yearCounter --
+                if(yearCounter <= 0) yearCounter = 4
+              } else if(yearCounter % 3 === 0) {
+                yearDiv.innerText = yearDiv.innerText.substr(0, 1) + "9" + yearDiv.innerText.substr(2, 4)
+                yearCounter --
+                if(yearCounter <= 0) yearCounter = 4
+              } else if(yearCounter % 2 === 0) {
+                yearDiv.innerText = yearDiv.innerText.substr(0, 2) + "9" + yearDiv.innerText.substr(3, 4)
+                yearCounter --
+                if(yearCounter <= 0) yearCounter = 4
+              } else if(yearCounter % 1 === 0) {
+                yearDiv.innerText = yearDiv.innerText.substr(0, 3) + "9"
+                yearCounter --
+                if(yearCounter <= 0) yearCounter = 4
+              }
+            }
+            if (e.keyCode === 48) {
+              if(yearCounter % 4 === 0) {
+                yearDiv.innerText = "0" + yearDiv.innerText.substr(1, 4)
+                yearCounter --
+                if(yearCounter <= 0) yearCounter = 4
+              } else if(yearCounter % 3 === 0) {
+                yearDiv.innerText = yearDiv.innerText.substr(0, 1) + "0" + yearDiv.innerText.substr(2, 4)
+                yearCounter --
+                if(yearCounter <= 0) yearCounter = 4
+              } else if(yearCounter % 2 === 0) {
+                yearDiv.innerText = yearDiv.innerText.substr(0, 2) + "0" + yearDiv.innerText.substr(3, 4)
+                yearCounter --
+                if(yearCounter <= 0) yearCounter = 4
+              } else if(yearCounter % 1 === 0) {
+                yearDiv.innerText = yearDiv.innerText.substr(0, 3) + "0"
+                yearCounter --
+                if(yearCounter <= 0) yearCounter = 4
+              }
+            }
+          }
+
+          if(ampmBool) {
+            if(e.keyCode === 65) {
+              ampmDiv.innerText = "A" + ampmDiv.innerText.substr(1, 2)
+            }
+            if(e.keyCode === 80) {
+              ampmDiv.innerText = "P" + ampmDiv.innerText.substr(1, 2)
+            }
+          }
+        })
+      },
+
+      startDatetimeValue: function() {
+        let values = []
+        for (let i=0; i<startDatetimeArray.length; i++) {
+          if(startDatetimeArray[i].innerText !== "/" && startDatetimeArray[i].innerText !== ":") {
+            values.push(startDatetimeArray[i].innerText)
+          }
+        }
+        let dateStr = values[2] + " " + months[values[1]] + " " + values[3] + " " + convertTime[values[4]+values[6]] + ":" + values[5] + ":" + "00" + " UTC +00:00"
+        return dateStr
+      },
+
+      insertValue: function() {
+        if(theForm !== null) {
+          theForm.addEventListener("submit", e => {
+            console.log("here");
+            e.preventDefault()
+            startDatetimeInput.value = startDatetimeValue()
+          })
+        }
+      }
+    }
+    return startDateHash
+  }
+
+</script>

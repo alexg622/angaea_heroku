@@ -103,3 +103,25 @@
 .display-it-none {
   display: none;
 }
+
+.datetime-input-container {
+  display: flex;
+  width: 100%;
+  height: 30px;
+  border: 1px solid lightgray;
+  // justify-content: center;
+  align-items: center;
+  text-indent: 5px;
+}
+
+.datetime-input-container:hover {
+  cursor: pointer;
+}
+
+.datetime-hour {
+  margin-left: 15px;
+}
+
+.datetime-input {
+  color: gray;
+}

@@ -64,6 +64,8 @@ class StaticPagesController < ApplicationController
   end
 
   def dashboard
+    @user = current_user
+    @activities = @user.activities
   end
 
   private

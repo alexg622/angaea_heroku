@@ -1,6 +1,6 @@
 <div class="display-it-none create-activity-form-container">
   <h1>Create Your Activity</h1>
-  <form enctype="multipart/form-data" class="create-activity-form-css" action="<%= activities_path %>" method="post">
+  <form enctype="multipart/form-data" class="date-class create-activity-form-css" action="<%= activities_path %>" method="post">
     <input class="" type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>"/>
 
     <label>
@@ -84,15 +84,35 @@
     </label>
 
     <label>
-      Please input the start date as same format as the example
-      <input class="" type="datetime-local" name="activity[start_date]" value="">
-      <!-- <input type="text" name="activity[start_date]" placeholder="01/15/2019 6:00PM" value=""> -->
+      <div style="display:flex"><div>Start Date</div><div style="color:red"> *</div></div>
+      <div class="start-datetime start-datetime-input-container datetime-input-container">
+        <div class="start-datetime datetime-input datetime-day">00</div>
+        <div class="start-datetime datetime-input datetime-divider">/</div>
+        <div class="start-datetime datetime-input datetime-month">00</div>
+        <div class="start-datetime datetime-input datetime-divider">/</div>
+        <div class="start-datetime datetime-input datetime-year">0000</div>
+        <div class="start-datetime datetime-input datetime-hour"> 00</div>
+        <div class="start-datetime datetime-input datetime-divider">:</div>
+        <div class="start-datetime datetime-input datetime-minute">00</div>
+        <div class="start-datetime datetime-input datetime-ampm">AM</div>
+      </div>
+      <input class="start-datetime-value start-date" type="hidden" name="activity[start_date]" value="">
     </label>
 
     <label>
-      Please input the end date as the same format as the example
-      <input class="" type="datetime-local" name="activity[end_date]" value="">
-      <!-- <input type="text" name="activity[end_date]" placeholder="01/15/2019 6:00PM" value=""> -->
+      <div style="display:flex"><div>End Date</div><div style="color:red"> *</div></div>
+      <div class="end-datetime end-datetime-input-container datetime-input-container">
+        <div class="end-datetime datetime-input end-datetime-day">00</div>
+        <div class="end-datetime datetime-input end-datetime-divider">/</div>
+        <div class="end-datetime datetime-input end-datetime-month">00</div>
+        <div class="end-datetime datetime-input end-datetime-divider">/</div>
+        <div class="end-datetime datetime-input end-datetime-year">0000</div>
+        <div class="end-datetime datetime-input end-datetime-hour">00</div>
+        <div class="end-datetime datetime-input end-datetime-divider">:</div>
+        <div class="end-datetime datetime-input end-datetime-minute">00</div>
+        <div class="end-datetime datetime-input end-datetime-ampm">AM</div>
+      </div>
+      <input class="end-datetime-value end-date" type="hidden" name="activity[end_date]" value="">
     </label>
 
     <label>
@@ -117,4 +137,6 @@
 
     <input class="btn btn-primary" type="submit" value="Create Activity">
   </form>
+  <%= render "layouts/datetime_javascript"%>
+  <%= render "layouts/end_datetime_javascript"%>
 </div>

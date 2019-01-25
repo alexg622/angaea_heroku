@@ -82,8 +82,9 @@ class Activity < ApplicationRecord
    }
 
    self.all.each do |activity|
-
-     categories_hash[activity.categories[0].category_name].push(activity)
+     if activity.categories.any?
+       categories_hash[activity.categories[0].category_name].push(activity)
+     end
    end
    return categories_hash
  end

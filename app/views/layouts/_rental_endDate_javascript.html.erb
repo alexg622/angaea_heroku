@@ -1,0 +1,792 @@
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    rentalEndDatesetDay()
+    rentalEndDatesetMonth()
+    rentalEndDatesetYear()
+    rentalEndDatesetHour()
+    rentalEndDatesetMinute()
+    rentalEndDatesetAmpm()
+    rentalEndDatefollowKeyPress()
+    rentalEndDatetimeValue()
+    rentalEndDateinsertValue()
+    rentalEndDateresetListeners()
+    document.addEventListener("click", () => {
+    })
+  })
+
+  const rentalEndDateMonths = {
+    "12": "Dec",
+    "11": "Nov",
+    "10": "Oct",
+    "09": "Sep",
+    "08": "Aug",
+    "07": "Jul",
+    "06": "Jun",
+    "05": "May",
+    "04": "Apr",
+    "03": "Mar",
+    "02": "Feb",
+    "01": "Jan"
+  }
+
+  const rentalEndDateConvertTime = {
+    "12AM": "00",
+    "01AM": "01",
+    "02AM": "02",
+    "03AM": "03",
+    "04AM": "04",
+    "05AM": "05",
+    "06AM": "06",
+    "07AM": "07",
+    "08AM": "08",
+    "09AM": "09",
+    "10AM": "10",
+    "11AM": "11",
+    "12PM": "12",
+    "01PM": "13",
+    "02PM": "14",
+    "03PM": "15",
+    "04PM": "16",
+    "05PM": "17",
+    "06PM": "18",
+    "07PM": "19",
+    "08pm": "20",
+    "09PM": "21",
+    "10PM": "22",
+    "11PM": "23",
+    "12PM": "24"
+  }
+
+  let rentalEndDateTimeInputContainer = document.querySelector(".rentalEnd-datetime-input-container")
+  let rentalEndDateForm = document.querySelector(".rentalDate-class")
+  let rentalEndDatetimeInput = document.querySelector(".rentalEnd-datetime-value")
+
+  let rentalEndDatetimeArray = Array.from(document.querySelectorAll(".rentalEnd-datetime"))
+
+  let rentalEndDateDayBool = false
+  let rentalEndDateDayCounter = 0
+  let rentalEndDateDayDiv = document.querySelector(".rentalEndDatetime-day")
+
+  let rentalEndDateMonthBool = false
+  let rentalEndDateMonthCounter = 0
+  let rentalEndDateMonthDiv = document.querySelector(".rentalEndDatetime-month")
+
+  let rentalEndDateYearBool = false
+  let rentalEndDateYearCounter = 4
+  let rentalEndDateYearDiv = document.querySelector(".rentalEndDatetime-year")
+
+  let rentalEndDateHourBool = false
+  let rentalEndDateHourCounter = 0
+  let rentalEndDateHourDiv = document.querySelector(".rentalEndDatetime-hour")
+
+  let rentalEndDateMinuteBool = false
+  let rentalEndDateMinuteCounter = 0
+  let rentalEndDateMinuteDiv = document.querySelector(".rentalEndDatetime-minute")
+
+  let rentalEndDateAmpmBool = false
+  let rentalEndDateAmpmCounter = 0
+  let rentalEndDateAmpmDiv = document.querySelector(".rentalEndDatetime-ampm")
+
+  let rentalStartInputDiv = document.querySelector(".rentalStart-datetime")
+
+  function rentalEndDateresetListeners() {
+    if(rentalEndDateForm !== null) {
+      let theInputs = Array.from(rentalEndDateForm.querySelectorAll("input"))
+      theInputs.push(rentalStartInputDiv)
+      for(let i=0; i<theInputs.length; i++) {
+        theInputs[i].addEventListener("click", e => {
+          rentalEndDateMonthBool = false
+          rentalEndDateDayBool = false
+          rentalEndDateYearBool = false
+          rentalEndDateHourBool = false
+          rentalEndDateMinuteBool = false
+          rentalEndDateAmpmBool = false
+        })
+      }
+    }
+  }
+
+  function rentalEndDatesetDay() {
+    if(rentalEndDateDayDiv !== null) {
+      rentalEndDateDayDiv.addEventListener("click", e => {
+        rentalEndDateDayDiv.style.color = "black"
+        rentalEndDateMonthBool = false
+        rentalEndDateDayBool = true
+        rentalEndDateYearBool = false
+        rentalEndDateHourBool = false
+        rentalEndDateMinuteBool = false
+        rentalEndDateAmpmBool = false
+      })
+    }
+  }
+
+  function rentalEndDatesetMonth() {
+    if(rentalEndDateMonthDiv !== null) {
+      rentalEndDateMonthDiv.addEventListener("click", e => {
+        rentalEndDateMonthDiv.style.color = "black"
+        rentalEndDateDayBool = false
+        rentalEndDateMonthBool = true
+        rentalEndDateYearBool = false
+        rentalEndDateHourBool = false
+        rentalEndDateMinuteBool = false
+        rentalEndDateAmpmBool = false
+      })
+    }
+  }
+
+  function rentalEndDatesetYear() {
+    if(rentalEndDateYearDiv !== null) {
+      rentalEndDateYearDiv.addEventListener("click", e => {
+        rentalEndDateYearDiv.style.color = "black"
+        rentalEndDateMonthBool = false
+        rentalEndDateDayBool = false
+        rentalEndDateAmpmBool = false
+        rentalEndDateHourBool = false
+        rentalEndDateMinuteBool = false
+        rentalEndDateYearBool = true
+      })
+    }
+  }
+
+  function rentalEndDatesetHour() {
+    if(rentalEndDateHourDiv !== null) {
+      rentalEndDateHourDiv.addEventListener("click", e => {
+        rentalEndDateHourDiv.style.color = "black"
+        rentalEndDateDayBool = false
+        rentalEndDateMonthBool = false
+        rentalEndDateYearBool = false
+        rentalEndDateHourBool = true
+        rentalEndDateMinuteBool = false
+        rentalEndDateAmpmBool = false
+      })
+    }
+  }
+
+  function rentalEndDatesetMinute() {
+    if(rentalEndDateMinuteDiv !== null) {
+      rentalEndDateMinuteDiv.addEventListener("click", e => {
+        rentalEndDateMinuteDiv.style.color = "black"
+        rentalEndDateDayBool = false
+        rentalEndDateMonthBool = false
+        rentalEndDateYearBool = false
+        rentalEndDateHourBool = false
+        rentalEndDateMinuteBool = true
+        rentalEndDateAmpmBool = false
+      })
+    }
+  }
+
+  function rentalEndDatesetAmpm() {
+    if(rentalEndDateAmpmDiv !== null) {
+      rentalEndDateAmpmDiv.addEventListener("click", e => {
+        rentalEndDateAmpmDiv.style.color = "black"
+        rentalEndDateDayBool = false
+        rentalEndDateMonthBool = false
+        rentalEndDateYearBool = false
+        rentalEndDateHourBool = false
+        rentalEndDateMinuteBool = false
+        rentalEndDateAmpmBool = true
+      })
+    }
+  }
+
+  function rentalEndDatefollowKeyPress() {
+    document.addEventListener("keydown", e => {
+      if(rentalEndDateDayBool) {
+        if (e.keyCode === 49) {
+          if(rentalEndDateDayCounter % 2 === 0) {
+            rentalEndDateDayDiv.innerText = "1" + rentalEndDateDayDiv.innerText.substr(1, 2)
+            rentalEndDateDayCounter ++
+          } else {
+            rentalEndDateDayDiv.innerText = rentalEndDateDayDiv.innerText.substr(0, 1) + "1"
+            rentalEndDateDayCounter ++
+          }
+        }
+        if (e.keyCode === 50) {
+          if(rentalEndDateDayCounter % 2 === 0) {
+            rentalEndDateDayDiv.innerText = "2" + rentalEndDateDayDiv.innerText.substr(1, 2)
+            rentalEndDateDayCounter ++
+          } else {
+            rentalEndDateDayDiv.innerText = rentalEndDateDayDiv.innerText.substr(0, 1) + "2"
+            rentalEndDateDayCounter ++
+          }
+        }
+        if (e.keyCode === 51) {
+          if(rentalEndDateDayCounter % 2 === 0) {
+            rentalEndDateDayDiv.innerText = "3" + rentalEndDateDayDiv.innerText.substr(1, 2)
+            rentalEndDateDayCounter ++
+          } else {
+            rentalEndDateDayDiv.innerText = rentalEndDateDayDiv.innerText.substr(0, 1) + "3"
+            rentalEndDateDayCounter ++
+          }
+        }
+        if (e.keyCode === 52) {
+          if(rentalEndDateDayCounter % 2 === 0) {
+            rentalEndDateDayDiv.innerText = "4" + rentalEndDateDayDiv.innerText.substr(1, 2)
+            rentalEndDateDayCounter ++
+          } else {
+            rentalEndDateDayDiv.innerText = rentalEndDateDayDiv.innerText.substr(0, 1) + "4"
+            rentalEndDateDayCounter ++
+          }
+        }
+        if (e.keyCode === 53) {
+          if(rentalEndDateDayCounter % 2 === 0) {
+            rentalEndDateDayDiv.innerText = "5" + rentalEndDateDayDiv.innerText.substr(1, 2)
+            rentalEndDateDayCounter ++
+          } else {
+            rentalEndDateDayDiv.innerText = rentalEndDateDayDiv.innerText.substr(0, 1) + "5"
+            rentalEndDateDayCounter ++
+          }
+        }
+        if (e.keyCode === 54) {
+          if(rentalEndDateDayCounter % 2 === 0) {
+            rentalEndDateDayDiv.innerText = "6" + rentalEndDateDayDiv.innerText.substr(1, 2)
+            rentalEndDateDayCounter ++
+          } else {
+            rentalEndDateDayDiv.innerText = rentalEndDateDayDiv.innerText.substr(0, 1) + "6"
+            rentalEndDateDayCounter ++
+          }
+        }
+        if (e.keyCode === 55) {
+          if(rentalEndDateDayCounter % 2 === 0) {
+            rentalEndDateDayDiv.innerText = "7" + rentalEndDateDayDiv.innerText.substr(1, 2)
+            rentalEndDateDayCounter ++
+          } else {
+            rentalEndDateDayDiv.innerText = rentalEndDateDayDiv.innerText.substr(0, 1) + "7"
+            rentalEndDateDayCounter ++
+          }
+        }
+        if (e.keyCode === 56) {
+          if(rentalEndDateDayCounter % 2 === 0) {
+            rentalEndDateDayDiv.innerText = "8" + rentalEndDateDayDiv.innerText.substr(1, 2)
+            rentalEndDateDayCounter ++
+          } else {
+            rentalEndDateDayDiv.innerText = rentalEndDateDayDiv.innerText.substr(0, 1) + "8"
+            rentalEndDateDayCounter ++
+          }
+        }
+        if (e.keyCode === 57) {
+          if(rentalEndDateDayCounter % 2 === 0) {
+            rentalEndDateDayDiv.innerText = "9" + rentalEndDateDayDiv.innerText.substr(1, 2)
+            rentalEndDateDayCounter ++
+          } else {
+            rentalEndDateDayDiv.innerText = rentalEndDateDayDiv.innerText.substr(0, 1) + "9"
+            rentalEndDateDayCounter ++
+          }
+        }
+        if (e.keyCode === 48) {
+          if(rentalEndDateDayCounter % 2 === 0) {
+            rentalEndDateDayDiv.innerText = "0" + rentalEndDateDayDiv.innerText.substr(1, 2)
+            rentalEndDateDayCounter ++
+          } else {
+            rentalEndDateDayDiv.innerText = rentalEndDateDayDiv.innerText.substr(0, 1) + "0"
+            rentalEndDateDayCounter ++
+          }
+        }
+      }
+
+      if(rentalEndDateMonthBool) {
+        if (e.keyCode === 49) {
+          if(rentalEndDateMonthCounter % 2 === 0) {
+            rentalEndDateMonthDiv.innerText = "1" + rentalEndDateMonthDiv.innerText.substr(1, 2)
+            rentalEndDateMonthCounter ++
+          } else {
+            rentalEndDateMonthDiv.innerText = rentalEndDateMonthDiv.innerText.substr(0, 1) + "1"
+            rentalEndDateMonthCounter ++
+          }
+        }
+        if (e.keyCode === 50) {
+          if(rentalEndDateMonthCounter % 2 === 0) {
+            rentalEndDateMonthDiv.innerText = "2" + rentalEndDateMonthDiv.innerText.substr(1, 2)
+            rentalEndDateMonthCounter ++
+          } else {
+            rentalEndDateMonthDiv.innerText = rentalEndDateMonthDiv.innerText.substr(0, 1) + "2"
+            rentalEndDateMonthCounter ++
+          }
+        }
+        if (e.keyCode === 51) {
+          if(rentalEndDateMonthCounter % 2 === 0) {
+            rentalEndDateMonthDiv.innerText = "3" + rentalEndDateMonthDiv.innerText.substr(1, 2)
+            rentalEndDateMonthCounter ++
+          } else {
+            rentalEndDateMonthDiv.innerText = rentalEndDateMonthDiv.innerText.substr(0, 1) + "3"
+            rentalEndDateMonthCounter ++
+          }
+        }
+        if (e.keyCode === 52) {
+          if(rentalEndDateMonthCounter % 2 === 0) {
+            rentalEndDateMonthDiv.innerText = "4" + rentalEndDateMonthDiv.innerText.substr(1, 2)
+            rentalEndDateMonthCounter ++
+          } else {
+            rentalEndDateMonthDiv.innerText = rentalEndDateMonthDiv.innerText.substr(0, 1) + "4"
+            rentalEndDateMonthCounter ++
+          }
+        }
+        if (e.keyCode === 53) {
+          if(rentalEndDateMonthCounter % 2 === 0) {
+            rentalEndDateMonthDiv.innerText = "5" + rentalEndDateMonthDiv.innerText.substr(1, 2)
+            rentalEndDateMonthCounter ++
+          } else {
+            rentalEndDateMonthDiv.innerText = rentalEndDateMonthDiv.innerText.substr(0, 1) + "5"
+            rentalEndDateMonthCounter ++
+          }
+        }
+        if (e.keyCode === 54) {
+          if(rentalEndDateMonthCounter % 2 === 0) {
+            rentalEndDateMonthDiv.innerText = "6" + rentalEndDateMonthDiv.innerText.substr(1, 2)
+            rentalEndDateMonthCounter ++
+          } else {
+            rentalEndDateMonthDiv.innerText = rentalEndDateMonthDiv.innerText.substr(0, 1) + "6"
+            rentalEndDateMonthCounter ++
+          }
+        }
+        if (e.keyCode === 55) {
+          if(rentalEndDateMonthCounter % 2 === 0) {
+            rentalEndDateMonthDiv.innerText = "7" + rentalEndDateMonthDiv.innerText.substr(1, 2)
+            rentalEndDateMonthCounter ++
+          } else {
+            rentalEndDateMonthDiv.innerText = rentalEndDateMonthDiv.innerText.substr(0, 1) + "7"
+            rentalEndDateMonthCounter ++
+          }
+        }
+        if (e.keyCode === 56) {
+          if(rentalEndDateMonthCounter % 2 === 0) {
+            rentalEndDateMonthDiv.innerText = "8" + rentalEndDateMonthDiv.innerText.substr(1, 2)
+            rentalEndDateMonthCounter ++
+          } else {
+            rentalEndDateMonthDiv.innerText = rentalEndDateMonthDiv.innerText.substr(0, 1) + "8"
+            rentalEndDateMonthCounter ++
+          }
+        }
+        if (e.keyCode === 57) {
+          if(rentalEndDateMonthCounter % 2 === 0) {
+            rentalEndDateMonthDiv.innerText = "9" + rentalEndDateMonthDiv.innerText.substr(1, 2)
+            rentalEndDateMonthCounter ++
+          } else {
+            rentalEndDateMonthDiv.innerText = rentalEndDateMonthDiv.innerText.substr(0, 1) + "9"
+            rentalEndDateMonthCounter ++
+          }
+        }
+        if (e.keyCode === 48) {
+          if(rentalEndDateMonthCounter % 2 === 0) {
+            rentalEndDateMonthDiv.innerText = "0" + rentalEndDateMonthDiv.innerText.substr(1, 2)
+            rentalEndDateMonthCounter ++
+          } else {
+            rentalEndDateMonthDiv.innerText = rentalEndDateMonthDiv.innerText.substr(0, 1) + "0"
+            rentalEndDateMonthCounter ++
+          }
+        }
+      }
+
+      if(rentalEndDateHourBool) {
+        if (e.keyCode === 49) {
+          if(rentalEndDateHourCounter % 2 === 0) {
+            rentalEndDateHourDiv.innerText = "1" + rentalEndDateHourDiv.innerText.substr(1, 2)
+            rentalEndDateHourCounter ++
+          } else {
+            rentalEndDateHourDiv.innerText = rentalEndDateHourDiv.innerText.substr(0, 1) + "1"
+            rentalEndDateHourCounter ++
+          }
+        }
+        if (e.keyCode === 50) {
+          if(rentalEndDateHourCounter % 2 === 0) {
+            rentalEndDateHourDiv.innerText = "2" + rentalEndDateHourDiv.innerText.substr(1, 2)
+            rentalEndDateHourCounter ++
+          } else {
+            rentalEndDateHourDiv.innerText = rentalEndDateHourDiv.innerText.substr(0, 1) + "2"
+            rentalEndDateHourCounter ++
+          }
+        }
+        if (e.keyCode === 51) {
+          if(rentalEndDateHourCounter % 2 === 0) {
+            rentalEndDateHourDiv.innerText = "3" + rentalEndDateHourDiv.innerText.substr(1, 2)
+            rentalEndDateHourCounter ++
+          } else {
+            rentalEndDateHourDiv.innerText = rentalEndDateHourDiv.innerText.substr(0, 1) + "3"
+            rentalEndDateHourCounter ++
+          }
+        }
+        if (e.keyCode === 52) {
+          if(rentalEndDateHourCounter % 2 === 0) {
+            rentalEndDateHourDiv.innerText = "4" + rentalEndDateHourDiv.innerText.substr(1, 2)
+            rentalEndDateHourCounter ++
+          } else {
+            rentalEndDateHourDiv.innerText = rentalEndDateHourDiv.innerText.substr(0, 1) + "4"
+            rentalEndDateHourCounter ++
+          }
+        }
+        if (e.keyCode === 53) {
+          if(rentalEndDateHourCounter % 2 === 0) {
+            rentalEndDateHourDiv.innerText = "5" + rentalEndDateHourDiv.innerText.substr(1, 2)
+            rentalEndDateHourCounter ++
+          } else {
+            rentalEndDateHourDiv.innerText = rentalEndDateHourDiv.innerText.substr(0, 1) + "5"
+            rentalEndDateHourCounter ++
+          }
+        }
+        if (e.keyCode === 54) {
+          if(rentalEndDateHourCounter % 2 === 0) {
+            rentalEndDateHourDiv.innerText = "6" + rentalEndDateHourDiv.innerText.substr(1, 2)
+            rentalEndDateHourCounter ++
+          } else {
+            rentalEndDateHourDiv.innerText = rentalEndDateHourDiv.innerText.substr(0, 1) + "6"
+            rentalEndDateHourCounter ++
+          }
+        }
+        if (e.keyCode === 55) {
+          if(rentalEndDateHourCounter % 2 === 0) {
+            rentalEndDateHourDiv.innerText = "7" + rentalEndDateHourDiv.innerText.substr(1, 2)
+            rentalEndDateHourCounter ++
+          } else {
+            rentalEndDateHourDiv.innerText = rentalEndDateHourDiv.innerText.substr(0, 1) + "7"
+            rentalEndDateHourCounter ++
+          }
+        }
+        if (e.keyCode === 56) {
+          if(rentalEndDateHourCounter % 2 === 0) {
+            rentalEndDateHourDiv.innerText = "8" + rentalEndDateHourDiv.innerText.substr(1, 2)
+            rentalEndDateHourCounter ++
+          } else {
+            rentalEndDateHourDiv.innerText = rentalEndDateHourDiv.innerText.substr(0, 1) + "8"
+            rentalEndDateHourCounter ++
+          }
+        }
+        if (e.keyCode === 57) {
+          if(rentalEndDateHourCounter % 2 === 0) {
+            rentalEndDateHourDiv.innerText = "9" + rentalEndDateHourDiv.innerText.substr(1, 2)
+            rentalEndDateHourCounter ++
+          } else {
+            rentalEndDateHourDiv.innerText = rentalEndDateHourDiv.innerText.substr(0, 1) + "9"
+            rentalEndDateHourCounter ++
+          }
+        }
+        if (e.keyCode === 48) {
+          if(rentalEndDateHourCounter % 2 === 0) {
+            rentalEndDateHourDiv.innerText = "0" + rentalEndDateHourDiv.innerText.substr(1, 2)
+            rentalEndDateHourCounter ++
+          } else {
+            rentalEndDateHourDiv.innerText = rentalEndDateHourDiv.innerText.substr(0, 1) + "0"
+            rentalEndDateHourCounter ++
+          }
+        }
+      }
+
+      if(rentalEndDateMinuteBool) {
+        if (e.keyCode === 49) {
+          if(rentalEndDateMinuteCounter % 2 === 0) {
+            rentalEndDateMinuteDiv.innerText = "1" + rentalEndDateMinuteDiv.innerText.substr(1, 2)
+            rentalEndDateMinuteCounter ++
+          } else {
+            rentalEndDateMinuteDiv.innerText = rentalEndDateMinuteDiv.innerText.substr(0, 1) + "1"
+            rentalEndDateMinuteCounter ++
+          }
+        }
+        if (e.keyCode === 50) {
+          if(rentalEndDateMinuteCounter % 2 === 0) {
+            rentalEndDateMinuteDiv.innerText = "2" + rentalEndDateMinuteDiv.innerText.substr(1, 2)
+            rentalEndDateMinuteCounter ++
+          } else {
+            rentalEndDateMinuteDiv.innerText = rentalEndDateMinuteDiv.innerText.substr(0, 1) + "2"
+            rentalEndDateMinuteCounter ++
+          }
+        }
+        if (e.keyCode === 51) {
+          if(rentalEndDateMinuteCounter % 2 === 0) {
+            rentalEndDateMinuteDiv.innerText = "3" + rentalEndDateMinuteDiv.innerText.substr(1, 2)
+            rentalEndDateMinuteCounter ++
+          } else {
+            rentalEndDateMinuteDiv.innerText = rentalEndDateMinuteDiv.innerText.substr(0, 1) + "3"
+            rentalEndDateMinuteCounter ++
+          }
+        }
+        if (e.keyCode === 52) {
+          if(rentalEndDateMinuteCounter % 2 === 0) {
+            rentalEndDateMinuteDiv.innerText = "4" + rentalEndDateMinuteDiv.innerText.substr(1, 2)
+            rentalEndDateMinuteCounter ++
+          } else {
+            rentalEndDateMinuteDiv.innerText = rentalEndDateMinuteDiv.innerText.substr(0, 1) + "4"
+            rentalEndDateMinuteCounter ++
+          }
+        }
+        if (e.keyCode === 53) {
+          if(rentalEndDateMinuteCounter % 2 === 0) {
+            rentalEndDateMinuteDiv.innerText = "5" + rentalEndDateMinuteDiv.innerText.substr(1, 2)
+            rentalEndDateMinuteCounter ++
+          } else {
+            rentalEndDateMinuteDiv.innerText = rentalEndDateMinuteDiv.innerText.substr(0, 1) + "5"
+            rentalEndDateMinuteCounter ++
+          }
+        }
+        if (e.keyCode === 54) {
+          if(rentalEndDateMinuteCounter % 2 === 0) {
+            rentalEndDateMinuteDiv.innerText = "6" + rentalEndDateMinuteDiv.innerText.substr(1, 2)
+            rentalEndDateMinuteCounter ++
+          } else {
+            rentalEndDateMinuteDiv.innerText = rentalEndDateMinuteDiv.innerText.substr(0, 1) + "6"
+            rentalEndDateMinuteCounter ++
+          }
+        }
+        if (e.keyCode === 55) {
+          if(rentalEndDateMinuteCounter % 2 === 0) {
+            rentalEndDateMinuteDiv.innerText = "7" + rentalEndDateMinuteDiv.innerText.substr(1, 2)
+            rentalEndDateMinuteCounter ++
+          } else {
+            rentalEndDateMinuteDiv.innerText = rentalEndDateMinuteDiv.innerText.substr(0, 1) + "7"
+            rentalEndDateMinuteCounter ++
+          }
+        }
+        if (e.keyCode === 56) {
+          if(rentalEndDateMinuteCounter % 2 === 0) {
+            rentalEndDateMinuteDiv.innerText = "8" + rentalEndDateMinuteDiv.innerText.substr(1, 2)
+            rentalEndDateMinuteCounter ++
+          } else {
+            rentalEndDateMinuteDiv.innerText = rentalEndDateMinuteDiv.innerText.substr(0, 1) + "8"
+            rentalEndDateMinuteCounter ++
+          }
+        }
+        if (e.keyCode === 57) {
+          if(rentalEndDateMinuteCounter % 2 === 0) {
+            rentalEndDateMinuteDiv.innerText = "9" + rentalEndDateMinuteDiv.innerText.substr(1, 2)
+            rentalEndDateMinuteCounter ++
+          } else {
+            rentalEndDateMinuteDiv.innerText = rentalEndDateMinuteDiv.innerText.substr(0, 1) + "9"
+            rentalEndDateMinuteCounter ++
+          }
+        }
+        if (e.keyCode === 48) {
+          if(rentalEndDateMinuteCounter % 2 === 0) {
+            rentalEndDateMinuteDiv.innerText = "0" + rentalEndDateMinuteDiv.innerText.substr(1, 2)
+            rentalEndDateMinuteCounter ++
+          } else {
+            rentalEndDateMinuteDiv.innerText = rentalEndDateMinuteDiv.innerText.substr(0, 1) + "0"
+            rentalEndDateMinuteCounter ++
+          }
+        }
+      }
+
+      if(rentalEndDateYearBool) {
+        if (e.keyCode === 49) {
+          if(rentalEndDateYearCounter % 4 === 0) {
+            rentalEndDateYearDiv.innerText = "1" + rentalEndDateYearDiv.innerText.substr(1, 4)
+            rentalEndDateYearCounter --
+            if(rentalEndDateYearCounter <= 0) rentalEndDateYearCounter = 4
+          } else if(rentalEndDateYearCounter % 3 === 0) {
+            rentalEndDateYearDiv.innerText = rentalEndDateYearDiv.innerText.substr(0, 1) + "1" + rentalEndDateYearDiv.innerText.substr(2, 4)
+            rentalEndDateYearCounter --
+            if(rentalEndDateYearCounter <= 0) rentalEndDateYearCounter = 4
+          } else if(rentalEndDateYearCounter % 2 === 0) {
+            rentalEndDateYearDiv.innerText = rentalEndDateYearDiv.innerText.substr(0, 2) + "1" + rentalEndDateYearDiv.innerText.substr(3, 4)
+            rentalEndDateYearCounter --
+            if(rentalEndDateYearCounter <= 0) rentalEndDateYearCounter = 4
+          } else if(rentalEndDateYearCounter % 1 === 0) {
+            rentalEndDateYearDiv.innerText = rentalEndDateYearDiv.innerText.substr(0, 3) + "1"
+            rentalEndDateYearCounter --
+            if(rentalEndDateYearCounter <= 0) rentalEndDateYearCounter = 4
+          }
+        }
+        if (e.keyCode === 50) {
+          if(rentalEndDateYearCounter % 4 === 0) {
+            rentalEndDateYearDiv.innerText = "2" + rentalEndDateYearDiv.innerText.substr(1, 4)
+            rentalEndDateYearCounter --
+            if(rentalEndDateYearCounter <= 0) rentalEndDateYearCounter = 4
+          } else if(rentalEndDateYearCounter % 3 === 0) {
+            rentalEndDateYearDiv.innerText = rentalEndDateYearDiv.innerText.substr(0, 1) + "2" + rentalEndDateYearDiv.innerText.substr(2, 4)
+            rentalEndDateYearCounter --
+            if(rentalEndDateYearCounter <= 0) rentalEndDateYearCounter = 4
+          } else if(rentalEndDateYearCounter % 2 === 0) {
+            rentalEndDateYearDiv.innerText = rentalEndDateYearDiv.innerText.substr(0, 2) + "2" + rentalEndDateYearDiv.innerText.substr(3, 4)
+            rentalEndDateYearCounter --
+            if(rentalEndDateYearCounter <= 0) rentalEndDateYearCounter = 4
+          } else if(rentalEndDateYearCounter % 1 === 0) {
+            rentalEndDateYearDiv.innerText = rentalEndDateYearDiv.innerText.substr(0, 3) + "2"
+            rentalEndDateYearCounter --
+            if(rentalEndDateYearCounter <= 0) rentalEndDateYearCounter = 4
+          }
+        }
+        if (e.keyCode === 51) {
+          if(rentalEndDateYearCounter % 4 === 0) {
+            rentalEndDateYearDiv.innerText = "3" + rentalEndDateYearDiv.innerText.substr(1, 4)
+            rentalEndDateYearCounter --
+            if(rentalEndDateYearCounter <= 0) rentalEndDateYearCounter = 4
+          } else if(rentalEndDateYearCounter % 3 === 0) {
+            rentalEndDateYearDiv.innerText = rentalEndDateYearDiv.innerText.substr(0, 1) + "3" + rentalEndDateYearDiv.innerText.substr(2, 4)
+            rentalEndDateYearCounter --
+            if(rentalEndDateYearCounter <= 0) rentalEndDateYearCounter = 4
+          } else if(rentalEndDateYearCounter % 2 === 0) {
+            rentalEndDateYearDiv.innerText = rentalEndDateYearDiv.innerText.substr(0, 2) + "3" + rentalEndDateYearDiv.innerText.substr(3, 4)
+            rentalEndDateYearCounter --
+            if(rentalEndDateYearCounter <= 0) rentalEndDateYearCounter = 4
+          } else if(rentalEndDateYearCounter % 1 === 0) {
+            rentalEndDateYearDiv.innerText = rentalEndDateYearDiv.innerText.substr(0, 3) + "3"
+            rentalEndDateYearCounter --
+            if(rentalEndDateYearCounter <= 0) rentalEndDateYearCounter = 4
+          }
+        }
+        if (e.keyCode === 52) {
+          if(rentalEndDateYearCounter % 4 === 0) {
+            rentalEndDateYearDiv.innerText = "4" + rentalEndDateYearDiv.innerText.substr(1, 4)
+            rentalEndDateYearCounter --
+            if(rentalEndDateYearCounter <= 0) rentalEndDateYearCounter = 4
+          } else if(rentalEndDateYearCounter % 3 === 0) {
+            rentalEndDateYearDiv.innerText = rentalEndDateYearDiv.innerText.substr(0, 1) + "4" + rentalEndDateYearDiv.innerText.substr(2, 4)
+            rentalEndDateYearCounter --
+            if(rentalEndDateYearCounter <= 0) rentalEndDateYearCounter = 4
+          } else if(rentalEndDateYearCounter % 2 === 0) {
+            rentalEndDateYearDiv.innerText = rentalEndDateYearDiv.innerText.substr(0, 2) + "4" + rentalEndDateYearDiv.innerText.substr(3, 4)
+            rentalEndDateYearCounter --
+            if(rentalEndDateYearCounter <= 0) rentalEndDateYearCounter = 4
+          } else if(rentalEndDateYearCounter % 1 === 0) {
+            rentalEndDateYearDiv.innerText = rentalEndDateYearDiv.innerText.substr(0, 3) + "4"
+            rentalEndDateYearCounter --
+            if(rentalEndDateYearCounter <= 0) rentalEndDateYearCounter = 4
+          }
+        }
+        if (e.keyCode === 53) {
+          if(rentalEndDateYearCounter % 4 === 0) {
+            rentalEndDateYearDiv.innerText = "5" + rentalEndDateYearDiv.innerText.substr(1, 4)
+            rentalEndDateYearCounter --
+            if(rentalEndDateYearCounter <= 0) rentalEndDateYearCounter = 4
+          } else if(rentalEndDateYearCounter % 3 === 0) {
+            rentalEndDateYearDiv.innerText = rentalEndDateYearDiv.innerText.substr(0, 1) + "5" + rentalEndDateYearDiv.innerText.substr(2, 4)
+            rentalEndDateYearCounter --
+            if(rentalEndDateYearCounter <= 0) rentalEndDateYearCounter = 4
+          } else if(rentalEndDateYearCounter % 2 === 0) {
+            rentalEndDateYearDiv.innerText = rentalEndDateYearDiv.innerText.substr(0, 2) + "5" + rentalEndDateYearDiv.innerText.substr(3, 4)
+            rentalEndDateYearCounter --
+            if(rentalEndDateYearCounter <= 0) rentalEndDateYearCounter = 4
+          } else if(rentalEndDateYearCounter % 1 === 0) {
+            rentalEndDateYearDiv.innerText = rentalEndDateYearDiv.innerText.substr(0, 3) + "5"
+            rentalEndDateYearCounter --
+            if(rentalEndDateYearCounter <= 0) rentalEndDateYearCounter = 4
+          }
+        }
+        if (e.keyCode === 54) {
+          if(rentalEndDateYearCounter % 4 === 0) {
+            rentalEndDateYearDiv.innerText = "6" + rentalEndDateYearDiv.innerText.substr(1, 4)
+            rentalEndDateYearCounter --
+            if(rentalEndDateYearCounter <= 0) rentalEndDateYearCounter = 4
+          } else if(rentalEndDateYearCounter % 3 === 0) {
+            rentalEndDateYearDiv.innerText = rentalEndDateYearDiv.innerText.substr(0, 1) + "6" + rentalEndDateYearDiv.innerText.substr(2, 4)
+            rentalEndDateYearCounter --
+            if(rentalEndDateYearCounter <= 0) rentalEndDateYearCounter = 4
+          } else if(rentalEndDateYearCounter % 2 === 0) {
+            rentalEndDateYearDiv.innerText = rentalEndDateYearDiv.innerText.substr(0, 2) + "6" + rentalEndDateYearDiv.innerText.substr(3, 4)
+            rentalEndDateYearCounter --
+            if(rentalEndDateYearCounter <= 0) rentalEndDateYearCounter = 4
+          } else if(rentalEndDateYearCounter % 1 === 0) {
+            rentalEndDateYearDiv.innerText = rentalEndDateYearDiv.innerText.substr(0, 3) + "6"
+            rentalEndDateYearCounter --
+            if(rentalEndDateYearCounter <= 0) rentalEndDateYearCounter = 4
+          }
+        }
+        if (e.keyCode === 55) {
+          if(rentalEndDateYearCounter % 4 === 0) {
+            rentalEndDateYearDiv.innerText = "7" + rentalEndDateYearDiv.innerText.substr(1, 4)
+            rentalEndDateYearCounter --
+            if(rentalEndDateYearCounter <= 0) rentalEndDateYearCounter = 4
+          } else if(rentalEndDateYearCounter % 3 === 0) {
+            rentalEndDateYearDiv.innerText = rentalEndDateYearDiv.innerText.substr(0, 1) + "7" + rentalEndDateYearDiv.innerText.substr(2, 4)
+            rentalEndDateYearCounter --
+            if(rentalEndDateYearCounter <= 0) rentalEndDateYearCounter = 4
+          } else if(rentalEndDateYearCounter % 2 === 0) {
+            rentalEndDateYearDiv.innerText = rentalEndDateYearDiv.innerText.substr(0, 2) + "7" + rentalEndDateYearDiv.innerText.substr(3, 4)
+            rentalEndDateYearCounter --
+            if(rentalEndDateYearCounter <= 0) rentalEndDateYearCounter = 4
+          } else if(rentalEndDateYearCounter % 1 === 0) {
+            rentalEndDateYearDiv.innerText = rentalEndDateYearDiv.innerText.substr(0, 3) + "7"
+            rentalEndDateYearCounter --
+            if(rentalEndDateYearCounter <= 0) rentalEndDateYearCounter = 4
+          }
+        }
+        if (e.keyCode === 56) {
+          if(rentalEndDateYearCounter % 4 === 0) {
+            rentalEndDateYearDiv.innerText = "8" + rentalEndDateYearDiv.innerText.substr(1, 4)
+            rentalEndDateYearCounter --
+            if(rentalEndDateYearCounter <= 0) rentalEndDateYearCounter = 4
+          } else if(rentalEndDateYearCounter % 3 === 0) {
+            rentalEndDateYearDiv.innerText = rentalEndDateYearDiv.innerText.substr(0, 1) + "8" + rentalEndDateYearDiv.innerText.substr(2, 4)
+            rentalEndDateYearCounter --
+            if(rentalEndDateYearCounter <= 0) rentalEndDateYearCounter = 4
+          } else if(rentalEndDateYearCounter % 2 === 0) {
+            rentalEndDateYearDiv.innerText = rentalEndDateYearDiv.innerText.substr(0, 2) + "8" + rentalEndDateYearDiv.innerText.substr(3, 4)
+            rentalEndDateYearCounter --
+            if(rentalEndDateYearCounter <= 0) rentalEndDateYearCounter = 4
+          } else if(rentalEndDateYearCounter % 1 === 0) {
+            rentalEndDateYearDiv.innerText = rentalEndDateYearDiv.innerText.substr(0, 3) + "8"
+            rentalEndDateYearCounter --
+            if(rentalEndDateYearCounter <= 0) rentalEndDateYearCounter = 4
+          }
+        }
+        if (e.keyCode === 57) {
+          if(rentalEndDateYearCounter % 4 === 0) {
+            rentalEndDateYearDiv.innerText = "9" + rentalEndDateYearDiv.innerText.substr(1, 4)
+            rentalEndDateYearCounter --
+            if(rentalEndDateYearCounter <= 0) rentalEndDateYearCounter = 4
+          } else if(rentalEndDateYearCounter % 3 === 0) {
+            rentalEndDateYearDiv.innerText = rentalEndDateYearDiv.innerText.substr(0, 1) + "9" + rentalEndDateYearDiv.innerText.substr(2, 4)
+            rentalEndDateYearCounter --
+            if(rentalEndDateYearCounter <= 0) rentalEndDateYearCounter = 4
+          } else if(rentalEndDateYearCounter % 2 === 0) {
+            rentalEndDateYearDiv.innerText = rentalEndDateYearDiv.innerText.substr(0, 2) + "9" + rentalEndDateYearDiv.innerText.substr(3, 4)
+            rentalEndDateYearCounter --
+            if(rentalEndDateYearCounter <= 0) rentalEndDateYearCounter = 4
+          } else if(rentalEndDateYearCounter % 1 === 0) {
+            rentalEndDateYearDiv.innerText = rentalEndDateYearDiv.innerText.substr(0, 3) + "9"
+            rentalEndDateYearCounter --
+            if(rentalEndDateYearCounter <= 0) rentalEndDateYearCounter = 4
+          }
+        }
+        if (e.keyCode === 48) {
+          if(rentalEndDateYearCounter % 4 === 0) {
+            rentalEndDateYearDiv.innerText = "0" + rentalEndDateYearDiv.innerText.substr(1, 4)
+            rentalEndDateYearCounter --
+            if(rentalEndDateYearCounter <= 0) rentalEndDateYearCounter = 4
+          } else if(rentalEndDateYearCounter % 3 === 0) {
+            rentalEndDateYearDiv.innerText = rentalEndDateYearDiv.innerText.substr(0, 1) + "0" + rentalEndDateYearDiv.innerText.substr(2, 4)
+            rentalEndDateYearCounter --
+            if(rentalEndDateYearCounter <= 0) rentalEndDateYearCounter = 4
+          } else if(rentalEndDateYearCounter % 2 === 0) {
+            rentalEndDateYearDiv.innerText = rentalEndDateYearDiv.innerText.substr(0, 2) + "0" + rentalEndDateYearDiv.innerText.substr(3, 4)
+            rentalEndDateYearCounter --
+            if(rentalEndDateYearCounter <= 0) rentalEndDateYearCounter = 4
+          } else if(rentalEndDateYearCounter % 1 === 0) {
+            rentalEndDateYearDiv.innerText = rentalEndDateYearDiv.innerText.substr(0, 3) + "0"
+            rentalEndDateYearCounter --
+            if(rentalEndDateYearCounter <= 0) rentalEndDateYearCounter = 4
+          }
+        }
+      }
+
+      if(rentalEndDateAmpmBool) {
+        if(e.keyCode === 65) {
+          rentalEndDateAmpmDiv.innerText = "A" + rentalEndDateAmpmDiv.innerText.substr(1, 2)
+        }
+        if(e.keyCode === 80) {
+          rentalEndDateAmpmDiv.innerText = "P" + rentalEndDateAmpmDiv.innerText.substr(1, 2)
+        }
+      }
+    })
+  }
+
+  function rentalEndDatetimeValue() {
+    let values = []
+    for (let i=0; i<rentalEndDatetimeArray.length; i++) {
+      if(rentalEndDatetimeArray[i].innerText !== "/" && rentalEndDatetimeArray[i].innerText !== ":") {
+        values.push(rentalEndDatetimeArray[i].innerText)
+      }
+    }
+    let dateStr = values[2] + " " + rentalEndDateMonths[values[1]] + " " + values[3] + " " + rentalEndDateConvertTime[values[4]+values[6]] + ":" + values[5] + ":" + "00" + " UTC +00:00"
+    return dateStr
+  }
+
+  function rentalEndDateinsertValue() {
+    if(rentalEndDateForm !== null) {
+      rentalEndDateForm.addEventListener("submit", e => {
+        rentalEndDatetimeInput.value = rentalEndDatetimeValue()
+        console.log(rentalEndDatetimeInput.value);
+        // if (rentalEndDatetimeInput.value === "00 undefined 0000 undefined:00:00 UTC +00:00") rentalEndDatetimeInput.value = "17 Jan 2019 20:00:51 UTC +00:00"
+      })
+    }
+  }
+
+</script>

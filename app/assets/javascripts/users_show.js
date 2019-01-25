@@ -1,4 +1,4 @@
-// $(document).on('turbolinks:load', () => {
+// document.addEventListener('DOMContentLoaded', () => {
 //   showRatings()
 //   showActivities()
 //   showCreateActivityForm()
@@ -67,7 +67,7 @@
 //   }
 // }
 
-// $(document).on('turbolinks:load', () => {
+// document.addEventListener('DOMContentLoaded', () => {
 //   let images = document.querySelectorAll("img")
 //   let imageLinks = [
 //     "https://images.unsplash.com/photo-1507608869274-d3177c8bb4c7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8ccfcc13bfcdfca6f54a8e043ffbe075&auto=format&fit=crop&w=1050&q=80",
