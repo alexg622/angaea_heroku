@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
-  helper_method :user_logged_in?, :agreements_signed?
+  helper_method :user_logged_in?, :agreements_signed?, :stripe?, :activity_no_stripe
 
   private
 
@@ -12,6 +12,23 @@ class ApplicationController < ActionController::Base
         return
       else
         redirect_to "/termsConditions"
+      end
+    end
+  end
+
+  def stripe?
+    if current_user
+      if current_user.stripe_connect != nil
+        redirect_to user_path(current_user)
+      end
+    end
+  end
+
+  def activity_no_stripe
+    if current_user
+      if current_user.stripe_cnnect == nil
+        flash.now[:error] = "Before creating an activity please create a stripe account so that we can pay after the activity is completed."
+        redirect_to "/stripe/#{current_user}/new"
       end
     end
   end

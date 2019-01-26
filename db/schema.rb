@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_17_174821) do
+ActiveRecord::Schema.define(version: 2019_01_26_015512) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -140,6 +140,31 @@ ActiveRecord::Schema.define(version: 2019_01_17_174821) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_rentals_on_user_id"
+  end
+
+  create_table "stripe_connects", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "account_id"
+    t.string "external_account"
+    t.string "city"
+    t.string "address_line1"
+    t.string "postal_code"
+    t.string "state"
+    t.string "dob_day"
+    t.string "dob_month"
+    t.string "dob_year"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "ssn_last_4"
+    t.string "legal_entity_type"
+    t.datetime "acceptance_date"
+    t.string "acceptance_ip"
+    t.string "personal_id_number"
+    t.string "verification_document"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "accountId"
+    t.index ["user_id"], name: "index_stripe_connects_on_user_id"
   end
 
   create_table "tags", force: :cascade do |t|

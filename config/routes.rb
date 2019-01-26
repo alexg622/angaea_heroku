@@ -11,10 +11,12 @@ Rails.application.routes.draw do
   end
   # resources :activities
   # root 'static_pages#activities'  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  get "/stripe/:user_id/:activity_id/new", to: "stripe_connect_customs#new_stripe_account"
-  post "/stripe/:user_id/:activity_id/create", to: "stripe_connect_customs#create_stripe_account"
-  get "/stripe/:user_id/:activity_id/terms/new", to: "stripe_connect_customs#new_agree_stripe_terms"
-  post "/stripe/:user_id/:activity_id/terms/create", to: "stripe_connect_customs#create_agree_stripe_terms"
+  get "/stripe/:user_id/new", to: "stripe_connect_customs#new_stripe_account"
+  post "/stripe/:user_id/create", to: "stripe_connect_customs#create_stripe_account"
+  get "/stripe/:user_id/terms/new", to: "stripe_connect_customs#new_agree_stripe_terms"
+  post "/stripe/:user_id/terms/create", to: "stripe_connect_customs#create_agree_stripe_terms"
+  get '/stripe/:user_id/stripe_acct_details', to: "stripe_connect_customs#new_stripe_acct_details"
+  post "/stripe/:user_id/stripe_acct_details", to: "stripe_connect_customs#stripe_acct_details_create"
   get '/activities', to: 'static_pages#activities'
   get '/users/activation_reminder', to: "users#activation_reminder"
   get '/users/activate_account/:activation_id', to: 'users#activate_account'

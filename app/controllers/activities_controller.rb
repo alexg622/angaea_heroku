@@ -1,5 +1,7 @@
 class ActivitiesController < ApplicationController
   before_action :agreements_signed?
+  before_action :activity_no_stripe, only: [:new, :create]
+
 
   def create
     @user = current_user

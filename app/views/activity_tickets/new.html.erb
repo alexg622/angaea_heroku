@@ -12,6 +12,7 @@
           <span>Spots Being Purchased: <%=@spots.spots_buying%></span>
           <span>Transaction Fee: $<%=@transFee%></span>
           <span>Total: $<%=@total%></span>
+          <meta name="description" content="Free Web tutorials">
         </div>
       </label>
     </article>
@@ -22,6 +23,8 @@
             data-name='Angaea'
             data-description='Purchase Spots'
             data-amount="<%=((@activity.cost.to_i*100).to_f*1.10)%>"
-            data-locale="auto"></script>
+            data-metadata-this="working?"
+            ></script>
+
   <% end %>
 </div>

@@ -1,0 +1,83 @@
+<div class="stripe-acct-fullDetails-container">
+  <form enctype="multipart/form-data" class="create-stripe-account-form" action="/stripe/<%=@user.id%>/stripe_acct_details" method="post">
+    <input class="" type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>"/>
+    <div class="center-everything-stripe">
+      <div class="stripe-details-text">Lets get you paid!</div>
+      <img width="500px" height="200px" class="stripe-image" src="https://s8333.pcdn.co/wp-content/uploads/edd/2016/04/stripe-featured-image.png"/>
+
+      <label>
+        <div style="display:flex"><div>Routing Number</div><div style="color:red"> *</div></div>
+        <input class="" type="text" name="stripe_connect[routing_number]" value=""/>
+      </label>
+
+      <label>
+        <div style="display:flex"><div>Account Number</div><div style="color:red"> *</div></div>
+        <input class="" type="text" name="stripe_connect[account_number]" value=""/>
+      </label>
+
+      <label>
+        <div style="display:flex"><div>SSN Last 4</div><div style="color:red"> *</div></div>
+        <input class="" type="password" placeholder="xxxx" name="stripe_connect[ssn_last_4]" value=""/>
+      </label>
+
+      <label>
+        <div style="display:flex"><div>Type</div><div style="color:red"> *</div></div>
+        <select name="stripe_connect[entity_type]">
+          <option value="individual">individual</option>
+          <option value="company">company</option>
+        </select>
+      </label>
+
+      <label>
+        <div style="display:flex"><div>First Name</div><div style="color:red"> *</div></div>
+        <input class="" type="text" name="stripe_connect[first_name]" value=""/>
+      </label>
+
+      <label>
+        <div style="display:flex"><div>Last Name</div><div style="color:red"> *</div></div>
+        <input class="" type="text" name="stripe_connect[last_name]" value=""/>
+      </label>
+
+      <label>
+        <div style="display:flex"><div>Date of Birth Day</div><div style="color:red"> *</div></div>
+        <input class="" type="text" placeholder="00" name="stripe_connect[dob_day]" value=""/>
+      </label>
+
+      <label>
+        <div style="display:flex"><div>Date of Birth Month</div><div style="color:red"> *</div></div>
+        <input class="" type="text" placeholder="00" name="stripe_connect[dob_month]" value=""/>
+      </label>
+
+      <label>
+        <div style="display:flex"><div>Date of Birth Year</div><div style="color:red"> *</div></div>
+        <input class="" type="text" placeholder="0000" name="stripe_connect[dob_year]" value=""/>
+      </label>
+
+      <label>
+        <div style="display:flex"><div>Address</div><div style="color:red"> *</div></div>
+        <input class="" type="text" name="stripe_connect[address_line1]" value=""/>
+      </label>
+
+      <label>
+        <div style="display:flex"><div>City</div><div style="color:red"> *</div></div>
+        <input class="" type="text" name="stripe_connect[city]" value=""/>
+      </label>
+
+
+      <label>
+        <div style="display:flex"><div>State</div><div style="color:red"> *</div></div>
+        <input class="" type="text" name="stripe_connect[state]" value="CA"/>
+      </label>
+
+      <label>
+        <div style="display:flex"><div>Zipcode</div><div style="color:red"> *</div></div>
+        <input class="" type="text" name="stripe_connect[postal_code]" value=""/>
+      </label>
+
+      <input id="stripe-acct-details-submit" type="submit" value="Submit and Start Getting Paid"/>
+      <div class="stripe-explanation">
+        <a id="link-to-stripe" href="https://stripe.com/docs/connect/required-verification-information">Stripe Required Verification Information</a>
+      </div>
+    </div>
+  </form>
+</div>

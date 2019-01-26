@@ -1,9 +1,9 @@
 <div class="terms-and-conditions-container">
   <div class="position-end">
   <iframe class="stripe-terms-and-conditions" width="816px" height="816px" src="https://docs.google.com/document/d/e/2PACX-1vRsUX9mu43vSrwlgKhDZJEEgaSG3WlXbulASPQEDGJ9gb9xu4CG1lFBxXHyM1aYykVnCi6Ofj3kbAxr/pub?embedded=true"></iframe>
-  <form class="stripe-terms" action="/stripe/<%=@user.id%>/<%=@activity.id%>/terms/create" method="post">
+  <form class="stripe-terms" action="/stripe/<%=@user.id%>/terms/create" method="post">
     <input class="" type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>"/>
-      Please agree to stripes terms and conditions
+      Stripe's terms and conditions
     <input class="submit-terms-and-conditions" type="submit" value="Agree">
   </form>
   </div>

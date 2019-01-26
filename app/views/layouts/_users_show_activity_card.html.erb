@@ -1,7 +1,11 @@
 <div class="users-activities-outer-container">
   <%if current_user == @user%>
     <div class="align-elements">
-      <div class="create-activity-toggle">Create An Activity</div>
+      <%if current_user.stripe_connect == nil%>
+        <a class="create-activity-toggle" href="/stripe/<%=current_user.id%>/new">Create An Activity</a>
+      <%else%>
+        <div class="create-activity-toggle">Create An Activity</div>
+      <%end%>
     </div>
   <%end%>
   <div class="users-activities-container">
