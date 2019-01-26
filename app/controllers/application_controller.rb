@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
 
   def activity_no_stripe
     if current_user
-      if current_user.stripe_cnnect == nil
+      if current_user.stripe_connect == nil
         flash.now[:error] = "Before creating an activity please create a stripe account so that we can pay after the activity is completed."
         redirect_to "/stripe/#{current_user}/new"
       end
