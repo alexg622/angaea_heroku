@@ -2,7 +2,7 @@ class User < ApplicationRecord
 
   attr_accessor :remember_token, :activation_token
   before_save :downcase_email
-  has_one :stripe_connect 
+  has_one :stripe_connect
   before_create :create_activation_digest
   has_many :activities, dependent: :delete_all
   has_many :cards, dependent: :delete_all
@@ -98,6 +98,22 @@ def forget
   private
   def downcase_email
     self.email = email.downcase
+  end
+
+  def User.show_emails
+    emails = []
+    User.all.each do |user|
+      emails.push(user.name + ":" + " " + user.email)
+    end
+    emails
+  end
+
+  def User.show_professions
+    emails = []
+    User.all.each do |user|
+      emails.push(user.name + ":" + " " + user.profession)
+    end
+    emails
   end
 
   def create_activation_digest

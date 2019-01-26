@@ -131,6 +131,14 @@ class Activity < ApplicationRecord
    "#{address_one},#{address_two} #{city}, #{state} #{zip}"
  end
 
+ def Activity.show_prices
+   prices = []
+   Activity.all.each do |activity|
+     prices.push(activity.activity_name + ": " + activity.cost)
+   end
+   prices
+ end
+
  def format_activity_name
    self.activity_name[-1] == "." ? self.activity_name[0...self.activity_name.length-1] : self.activity_name
  end
