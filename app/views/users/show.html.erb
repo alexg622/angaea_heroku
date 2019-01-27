@@ -24,18 +24,46 @@
         <div class="about-user"><%=@user.about%></div>
       </div>
       <div class="logos-container">
-        <div><a href="<%=@user.facebook%>"><img class="logo-facebook" width="35px" height="35px" src="https://github.com/alexg622/angaea_heroku/blob/master/app/assets/images/facebook.jpg?raw=true"></a></div>
-        <div><a href="<%=@user.instagram%>"><img class="logo" width="35px" height="35px" src="https://github.com/alexg622/angaea_heroku/blob/master/app/assets/images/instagram.jpg?raw=true"/></a></div>
-        <div><a href="<%=@user.youtube%>"><img class="logo" height="35px" width="35px" src="https://github.com/alexg622/angaea_heroku/blob/master/app/assets/images/youtube.jpg?raw=true"></a></div>
-        <div><a href="<%=@user.twitter%>"><img class="logo" height="35px" width="35px" src="https://github.com/alexg622/angaea_heroku/blob/master/app/assets/images/twitter.jpg?raw=true"/></a></div>
+        <%if @user.facebook == ""%>
+          <div style="cursor:pointer"><img class="logo-facebook" width="35px" height="35px" src="https://github.com/alexg622/angaea_heroku/blob/master/app/assets/images/facebook.jpg?raw=true"></div>
+        <%else%>
+          <div><a target="_blank" rel="noopener noreferrer" href="<%=@user.facebook%>"><img class="logo-facebook" width="35px" height="35px" src="https://github.com/alexg622/angaea_heroku/blob/master/app/assets/images/facebook.jpg?raw=true"></a></div>
+        <%end%>
+        <%if @user.instagram == ""%>
+          <div style="cursor:pointer"><img class="logo" width="35px" height="35px" src="https://github.com/alexg622/angaea_heroku/blob/master/app/assets/images/instagram.jpg?raw=true"></div>
+        <%else%>
+          <div><a target="_blank" rel="noopener noreferrer" href="<%=@user.instagram%>"><img class="logo" width="35px" height="35px" src="https://github.com/alexg622/angaea_heroku/blob/master/app/assets/images/instagram.jpg?raw=true"></a></div>
+        <%end%>
+        <%if @user.youtube == ""%>
+          <div style="cursor:pointer"><img class="logo" width="35px" height="35px" src="https://github.com/alexg622/angaea_heroku/blob/master/app/assets/images/youtube.jpg?raw=true"></div>
+        <%else%>
+          <div><a target="_blank" rel="noopener noreferrer" href="<%=@user.youtube%>"><img class="logo" width="35px" height="35px" src="https://github.com/alexg622/angaea_heroku/blob/master/app/assets/images/youtube.jpg?raw=true"></a></div>
+        <%end%>
+        <%if @user.twitter == ""%>
+          <div style="cursor:pointer"><img class="logo" width="35px" height="35px" src="https://github.com/alexg622/angaea_heroku/blob/master/app/assets/images/twitter.jpg?raw=true"></div>
+        <%else%>
+          <div><a target="_blank" rel="noopener noreferrer" href="<%=@user.twitter%>"><img class="logo" width="35px" height="35px" src="https://github.com/alexg622/angaea_heroku/blob/master/app/assets/images/twitter.jpg?raw=true"></a></div>
+        <%end%>
       </div>
     </div>
   </div>
   <div class="toggle-bar">
-    <div class="left-toggle">Your Activities</div>
-    <div class="upcoming-activities-toggle">Your Upcoming Activities</div>
-    <div class="right-toggle">Your Rentals</div>
-    <div class="rented-items-toggle">Your Rented Items</div>
+    <%if current_user && current_user.id == @user.id%>
+      <div class="left-toggle">Your Activities</div>
+    <%else%>
+      <div class="left-toggle"><%=@user.name%>'s Activities</div>
+    <%end%>
+    <%if current_user && current_user.id == @user.id%>
+      <div class="upcoming-activities-toggle">Your Upcoming Activities</div>
+    <%end%>
+    <%if current_user && current_user.id == @user.id%>
+      <div class="right-toggle">Your Rentals</div>
+    <%else%>
+      <div class="right-toggle"><%=@user.name%>'s Rentals</div>
+    <%end%>
+    <%if current_user && current_user.id == @user.id%>
+      <div class="rented-items-toggle">Your Rented Items</div>
+    <%end%>
   </div>
   <!-- Activities card -->
   <%= render "layouts/users_show_activity_card", activities: @activities%>

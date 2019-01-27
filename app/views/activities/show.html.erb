@@ -15,7 +15,7 @@
         <div class="show-activity-card-name"><%=@activity.format_activity_name%></div>
         <div class="show-activity-details-container">
           <div class="left-activity-details-container">
-            <div class="show-top-margin activity-card-user">By <%=@activity.user.name%></div>
+            <div class="show-top-margin activity-card-user">By <a class="underline-that" href="/users/<%=@activity.user.id%>"><%=@activity.user.name%></a></div>
             <div class="show-top-margin show-activity-card-location"><%=@activity.format_location%></div>
           </div>
           <div class="right-activity-details-container">
@@ -101,4 +101,5 @@
   <%if @activity.images.length > 0%>
     <%=render "layouts/activities_show_carousel"%>
   <%end%>
+  <%=render "layouts/largen_image"%>
 </div>

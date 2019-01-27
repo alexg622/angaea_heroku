@@ -1,0 +1,75 @@
+<script>
+
+  document.addEventListener("DOMContentLoaded", () => {
+    imgListener()
+    <!-- bodyListener() -->
+  })
+
+  let arrowsHolder = document.querySelector(".arrows-holder")
+  let bigImg = false
+  let appContainer = document.querySelector(".application-container")
+  let body = document.querySelector("body")
+  let showActivitiesOuterContainer = document.querySelector(".show-activities-outer-container")
+  let img = document.querySelector(".show-image-activity-card")
+
+  function largenImage() {
+    body.style.background = "rgba(0,0,0,5)"
+    body.style.zIndex = "-1"
+    body.style.position = "relative"
+    appContainer.style.background = "rgba(0,0,0,5)"
+    appContainer.style.zIndex = "-1"
+    appContainer.style.position = "relative"
+    showActivitiesOuterContainer.style.background = "rgba(0,0,0,5)"
+    showActivitiesOuterContainer.style.zIndex = "-1"
+    showActivitiesOuterContainer.style.position = "relative"
+    img.style.maxWidth = "998px"
+    img.style.width = "998px"
+    img.style.borderRadius = "10px 10px 10px 10px"
+    img.style.maxHeight = "598px"
+    img.style.height = "598px"
+    img.style.zIndex = "3"
+    img.style.position = "absolute"
+    img.style.cursor = "zoom-out"
+  }
+
+  function reduceImage() {
+    console.log("in reduce")
+    img.style.maxWidth = "500px"
+    img.style.height = "100%"
+    img.style.width = "500px"
+    img.style.position = ""
+    img.style.borderRadius = ""
+    img.style.cursor = "zoom-in"
+
+    body.style.background = ""
+    body.style.zIndex = ""
+    body.style.position = ""
+    appContainer.style.background = ""
+    appContainer.style.zIndex = ""
+    appContainer.style.position = ""
+
+    showActivitiesOuterContainer.style.background = ""
+    showActivitiesOuterContainer.style.zIndex = ""
+    showActivitiesOuterContainer.position = ""
+
+    arrowsHolder.style.display = "none"
+    setTimeout(() => {
+      arrowsHolder.style.display = "flex"
+    }, 2000)
+  }
+
+  function imgListener() {
+    img.addEventListener("click", () => {
+      if(!bigImg) {
+        console.log("in it")
+        largenImage()
+      } else {
+        reduceImage()
+      }
+      bigImg = (bigImg ? false : true )
+      console.log(bigImg)
+    })
+  }
+
+
+</script>
