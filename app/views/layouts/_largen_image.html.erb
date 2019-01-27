@@ -29,8 +29,9 @@
     img.style.zIndex = "3"
     img.style.position = "absolute"
     img.style.cursor = "zoom-out"
-
-    arrowsHolder.style.display = "none"
+    if(arrowsHolder !== null) {
+      arrowsHolder.style.display = "none"
+    }
   }
 
   function reduceImage() {
@@ -51,11 +52,12 @@
     showActivitiesOuterContainer.style.background = ""
     showActivitiesOuterContainer.style.zIndex = ""
     showActivitiesOuterContainer.position = ""
-
-    arrowsHolder.style.display = "none"
-    setTimeout(() => {
-      arrowsHolder.style.display = "flex"
-    }, 2000)
+    if(arrowsHolder !== null) {
+      arrowsHolder.style.display = "none"
+      setTimeout(() => {
+        arrowsHolder.style.display = "flex"
+      }, 2000)
+    }
   }
 
   function imgListener() {
