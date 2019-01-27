@@ -2,7 +2,6 @@
 
   document.addEventListener("DOMContentLoaded", () => {
     imgListener()
-    <!-- bodyListener() -->
   })
 
   let arrowsHolder = document.querySelector(".arrows-holder")
@@ -30,10 +29,11 @@
     img.style.zIndex = "3"
     img.style.position = "absolute"
     img.style.cursor = "zoom-out"
+
+    arrowsHolder.style.display = "none"
   }
 
   function reduceImage() {
-    console.log("in reduce")
     img.style.maxWidth = "500px"
     img.style.height = "100%"
     img.style.width = "500px"
@@ -61,13 +61,11 @@
   function imgListener() {
     img.addEventListener("click", () => {
       if(!bigImg) {
-        console.log("in it")
         largenImage()
       } else {
         reduceImage()
       }
       bigImg = (bigImg ? false : true )
-      console.log(bigImg)
     })
   }
 

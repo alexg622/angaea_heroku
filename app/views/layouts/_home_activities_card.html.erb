@@ -2,12 +2,9 @@
   <a href="<%=category_path(category.id)%>" class="home-category"><%=category.category_name.upcase%></a>
   <div class="home-activities-container">
     <%activities.each do |activity|%>
-      <%= link_to(activity) do %>
+    <%if activity.image.attached?%>
         <div class="home-activities-card-container">
-          <!-- <img class="home-top-activity-card" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS51NatASNQs7LKejInV8vrYzM1TVZ_4YAtNEIRXrBLaqyg5fQi" /> -->
-          <%if activity.image.attached?%>
-            <%= image_tag(activity.image, class: "home-top-activity-card")%>
-          <%end%>
+            <a href="/activities/<%=activity.id%>"><%= image_tag(activity.image, class: "home-top-activity-card")%></a>
           <div class="home-bottom-activity-card">
             <div class="home-activity-card-name"><%=activity.format_activity_name%></div>
             <div class="home-activity-details-container">

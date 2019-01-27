@@ -4,10 +4,12 @@
       <!-- <img class="show-image-activity-card" src="http://www.pcraft.com/wp-content/uploads/2015/06/Jim-Delutes_Gondolas.jpg" /> -->
       <%if @activity.image.attached?%>
         <div class="image-activity-card-container">
-          <div onclick="" class="arrows-holder">
-            <div onclick="" unselectable="on" class="left-arrow"><</div>
-            <div onclick="" unselectable="on" class="right-arrow">></div>
-          </div>
+          <%if @activity.images.attached?%>
+            <div onclick="" class="arrows-holder">
+              <div onclick="" unselectable="on" class="left-arrow"><</div>
+              <div onclick="" unselectable="on" class="right-arrow">></div>
+            </div>
+          <%end%>
           <img class="show-image-activity-card" src="<%=url_for(@activity.image)%>"/>
         </div>
       <%end%>
