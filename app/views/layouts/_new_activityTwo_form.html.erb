@@ -9,8 +9,8 @@
     </label>
 
     <label>
-      <div style="display:flex"><div>Description</div><div style="color:red"> *</div></div>
-      <textarea class="" name="activity[content]">Policies, Rules, Items to Bring...etc</textarea>
+      <div style="display:flex"><div>What To Bring</div><div style="color:red"> *</div></div>
+      <textarea class="" name="activity[content]"></textarea>
     </label>
 
     <label>
@@ -113,6 +113,15 @@
         <div class="end-datetime datetime-input end-datetime-ampm">AM</div>
       </div>
       <input class="end-datetime-value end-date" type="hidden" name="activity[end_date]" value="">
+    </label>
+
+    <label>
+      Recurring
+      <select name="activity[weekly_recurring]">
+        <option value="">Weekly or Bi-Weekly</option>
+        <option value="weekly">Weekly</option>
+        <option value="bi-weekly">Bi-Weekly</option>
+      </select>
     </label>
 
     <label>
