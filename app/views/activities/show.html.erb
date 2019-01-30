@@ -20,10 +20,23 @@
             <div class="show-top-margin activity-card-user">By <a class="underline-that" href="/users/<%=@activity.user.id%>"><%=@activity.user.name%></a></div>
             <div class="show-top-margin show-activity-card-location"><%=@activity.format_location%></div>
           </div>
-          <div class="right-activity-details-container">
-            <div class="show-top-margin show-activity-card-date"><%=@activity.show_start_day%> - <%=@activity.show_end_day%></div>
-            <div class="show-top-margin show-activity-card-date"><%=@activity.show_start_time%> - <%=@activity.show_end_time%></div>
-          </div>
+          <%if @activity.bi_weekly_recurring == "weekly"%>
+            <div class="right-activity-details-container">
+              <div class="show-top-margin show-activity-card-date">This <%=@activity.show_recurring_weekly%></div>
+              <div class="show-top-margin show-activity-card-date"><%=@activity.show_start_time%> - <%=@activity.show_end_time%></div>
+            </div>
+          <%elsif @activity.bi_weekly_recurring == "bi-weekly"%>
+            <div class="right-activity-details-container">
+              <div class="show-top-margin show-activity-card-date"><%=@activity.show_start_day%> - <%=@activity.show_end_day%></div>
+              <div class="show-top-margin show-activity-card-date"><%=@activity.show_start_time%> - <%=@activity.show_end_time%></div>
+            </div>
+          <% elsif @activity.bi_weekly_recurring != "bi-weekly" || @activity.bi_weekly_recurring != "weekly"%>
+            <div class="right-activity-details-container">
+              <div class="show-top-margin show-activity-card-date"><%=@activity.show_start_day%> - <%=@activity.show_end_day%></div>
+              <div class="show-top-margin show-activity-card-date"><%=@activity.show_start_time%> - <%=@activity.show_end_time%></div>
+            </div>
+          <%end%>
+
           <%if @activity.ratings.any?%>
             <div class="show-activity-stars-container">
               <%@activity.get_average_rating.times do |num|%>

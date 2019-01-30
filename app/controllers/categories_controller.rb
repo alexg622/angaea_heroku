@@ -4,6 +4,7 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @activities = @category.activities
+    # fix later to make recurring at the front 
+    @activities = @category.activities.sort_by {|activity| DateTime.now}.reverse
   end
 end

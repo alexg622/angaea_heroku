@@ -83,7 +83,9 @@ class Activity < ApplicationRecord
 
    self.all.each do |activity|
      if activity.categories.any?
-       categories_hash[activity.categories[0].category_name].push(activity)
+       if activity.start_date >= DateTime.now || activity.bi_weekly_recurring == "weekly"
+         categories_hash[activity.categories[0].category_name].push(activity)
+       end
      end
    end
    return categories_hash
@@ -112,6 +114,41 @@ class Activity < ApplicationRecord
  def show_start_time
    self.start_date.strftime("%l:%M%p")
  end
+
+ def show_full_start_day
+   days = {
+     "Mon" => "Monday",
+     "Tue" => "Tuesday",
+     "Wed" => "Wednesday",
+     "Thu" => "Thursday",
+     "Fri" => "Friday",
+     "Sat" => "Saturday",
+     "Sun" => "Sunday",
+   }
+   return days[self.start_date.strftime("%a")]
+ end
+
+ def show_full_end_day
+   days = {
+     "Mon" => "Monday",
+     "Tue" => "Tuesday",
+     "Wed" => "Wednesday",
+     "Thu" => "Thursday",
+     "Fri" => "Friday",
+     "Sat" => "Saturday",
+     "Sun" => "Sunday",
+   }
+   return days[self.end_date.strftime("%a")]
+ end
+
+ def show_recurring_weekly
+   if self.show_full_start_day == self.show_full_end_day
+     return self.show_full_start_day
+   else
+     return self.show_full_start_day + " - " + self.show_full_end_day
+   end
+ end
+
 
  def format_location
    address_one = self.addressLN1
