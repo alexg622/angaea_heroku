@@ -36,10 +36,9 @@ class ApplicationController < ActionController::Base
   def account_activated?
     if current_user
       if current_user.account_activated != "true"
-        p AngaeaActivationMailer.send_activation_link(current_user).deliver
         redirect_to '/users/activation_reminder'
       end
-    end 
+    end
   end
 
   def user_logged_in?
