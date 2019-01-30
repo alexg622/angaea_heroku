@@ -61,6 +61,14 @@
     <%if current_user && current_user.id == @user.id%>
       <div class="upcoming-activities-toggle">Your Upcoming Activities</div>
     <%end%>
+    <%if current_user && current_user.id == @user.id%>
+      <div class="right-toggle">Your Rentals</div>
+    <%else%>
+      <div class="right-toggle"><%=@user.name%>'s Rentals</div>
+    <%end%>
+    <%if current_user && current_user.id == @user.id%>
+      <div class="rented-items-toggle">Your Rented Items</div>
+    <%end%>
   </div>
   <!-- Activities card -->
   <%= render "layouts/users_show_activity_card", activities: @activities%>
