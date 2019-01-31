@@ -25,19 +25,52 @@
   margin-top: 10px;
 }
 
+.delete-btn {
+  color: white;
+  // background-color: #337ab7;
+  background: black !important;
+  // border-color: #2e6da4;
+  display: flex;
+  align-self: flex-end;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 16px;
+  line-height: 1.428571429;
+  border-radius: 25px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin-top: 10px;
+  transition: 1s; 
+}
+
+.delete-btn:hover {
+  color: red !important;
+}
+
 .better-sign-up {
-  color: #fff;
-  background: linear-gradient(#7dc5ee, #008cdd 85%, #30a2e4) !important;
+  color: white;
+  background: black !important;
   display: flex;
   align-self: flex-end;
   margin-top: 10px;
   cursor: pointer;
-  height: 30px;
+  height: 40px;
   border-radius: 25px;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 115px;
+  transition: 1s;
 }
 
 .underline-that:hover {
@@ -52,8 +85,7 @@
 // margin-top: 25px;
 
 .better-sign-up:hover {
-  color: #fff !important;
-  background: linear-gradient(#7dc5ee, #008cdd 85%, #30a2e4) !important;
+  color: #9d9d9d !important;
   // border-color: #204d74;
-  border: 1px solid white !important;
+  // border: 1px solid white !important;
 }

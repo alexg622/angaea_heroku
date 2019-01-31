@@ -134,9 +134,9 @@
       <input class="" type="file" name="activity[images][]" placeholder="For multiple images please select all images at once" value="" multiple="multiple">
     </label>
 
-    <input class="btn btn-primary" type="submit" value="Update Your Activity">
+    <input class="btn" type="submit" value="Update Your Activity">
   </form>
-  <%= link_to "Delete Activity" , activity_path(activity), method: :delete, class: "red sign-up-button"%>
+  <%= link_to "Delete Activity" , activity_path(activity), method: :delete, class: "delete-btn"%>
   <%= render "layouts/datetime_javascript"%>
   <%= render "layouts/end_datetime_javascript"%>
 </div>
