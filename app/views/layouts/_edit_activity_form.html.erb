@@ -97,18 +97,18 @@
       <input class="end-datetime-value end-date" type="hidden" name="activity[end_date]" value="">
     </label>
 
-    <%if activity.bi_weekly_recurring == "weekly"%>
+    <%if activity.recurring_schedule == "weekly"%>
       <label>
         Reucrring
-        <select name="activity[bi_weekly_recurring]">
+        <select name="activity[recurring_schedule]">
           <option value="weekly">Weekly</option>
           <option value="bi-weekly">Bi-Weekly</option>
         </select>
       </label>
-    <%elsif activity.bi_weekly_recurring == "bi-weekly"%>
+    <%elsif activity.recurring_schedule == "bi-weekly"%>
       <label>
         Reucrring
-        <select name="activity[bi_weekly_recurring]">
+        <select name="activity[recurring_schedule]">
           <option value="weekly">Weekly</option>
           <option value="bi-weekly">Bi-Weekly</option>
         </select>
@@ -116,7 +116,7 @@
     <%else%>
       <label>
         Reucrring
-        <select name="activity[bi_weekly_recurring]">
+        <select name="activity[recurring_schedule]">
           <option value="">Weekly or Bi-Weekly</option>
           <option value="weekly">Weekly</option>
           <option value="bi-weekly">Bi-Weekly</option>
