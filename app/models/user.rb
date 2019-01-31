@@ -52,9 +52,13 @@ class User < ApplicationRecord
   validates :city, :state, :address, :zipcode, presence: true
 
   def show_location
-    "#{self.city}, #{self.state}"
+    if self.city != "" && self.state != "" || self.city != nil && self.state != nil
+      return "#{self.city}, #{self.state}"
+    else
+      return ""
+    end
   end
-  
+
   def user_events
     events = {}
     events_arr = []
