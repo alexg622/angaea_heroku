@@ -52,7 +52,7 @@ class User < ApplicationRecord
   validates :city, :state, :address, :zipcode, presence: true
 
   def show_location
-    if self.city != "" && self.state != "" || self.city != nil && self.state != nil
+    if self.city != "" && self.state != "" && self.city != nil && self.state != nil
       return "#{self.city}, #{self.state}"
     else
       return ""
