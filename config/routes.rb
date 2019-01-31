@@ -25,7 +25,9 @@ Rails.application.routes.draw do
   post '/activities/:activity_id/spots', to: 'activity_tickets#create_spots'
   post '/rentals/:rental_id/days_renting', to: 'rental_tickets#create_days_renting'
   get '/rentals/:rental_id/days_renting', to: 'rental_tickets#days_renting'
-  root 'static_pages#home'
+  root "categories#show"
+  get "/categories/:id/testing", to: "categories#show_testing"
+  get "/home/testing", to: "static_pages#home"
   get '/bookings' , to: 'static_pages#bookings'
   get '/dashboard' , to: 'static_pages#dashboard'
   get '/portfolio' , to: 'static_pages#portfolio'
