@@ -18,6 +18,10 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
-every 1.day, at: '6:00 am' do
-  rake "my_namespace:send_activity_email"
+# every 1.day, at: '6:00 am' do
+#   rake "my_namespace:send_activity_email"
+# end
+
+every 2.minutes do
+  rake "create_test"
 end
