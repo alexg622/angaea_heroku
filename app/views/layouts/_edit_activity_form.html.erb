@@ -96,19 +96,33 @@
       </div>
       <input class="end-datetime-value end-date" type="hidden" name="activity[end_date]" value="">
     </label>
+
     <%if activity.bi_weekly_recurring == "weekly"%>
       <label>
-        Recurring Weekly
-        <input type="checkbox" name="activity[bi_weekly_recurring]" checked="checked" value="weekly"/>
+        Reucrring
+        <select name="activity[bi_weekly_recurring]">
+          <option value="weekly">Weekly</option>
+          <option value="bi-weekly">Bi-Weekly</option>
+        </select>
+      </label>
+    <%elsif activity.bi_weekly_recurring == "bi-weekly"%>
+      <label>
+        Reucrring
+        <select name="activity[bi_weekly_recurring]">
+          <option value="weekly">Weekly</option>
+          <option value="bi-weekly">Bi-Weekly</option>
+        </select>
       </label>
     <%else%>
       <label>
-        Recurring
-        <input type="checkbox" name="activity[bi_weekly_recurring]" value="weekly"/>
+        Reucrring
+        <select name="activity[bi_weekly_recurring]">
+          <option value="">Weekly or Bi-Weekly</option>
+          <option value="weekly">Weekly</option>
+          <option value="bi-weekly">Bi-Weekly</option>
+        </select>
       </label>
     <%end%>
-
-
 
     <label>
       Main Images
