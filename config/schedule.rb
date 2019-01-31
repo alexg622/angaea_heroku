@@ -22,6 +22,6 @@
 #   rake "my_namespace:send_activity_email"
 # end
 
-every 2.minutes do
-  rake "create_test"
-end
+# every 2.minutes do
+#   rake "create_test"
+# end
