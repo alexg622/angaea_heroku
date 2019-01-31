@@ -70,8 +70,8 @@ task :update_recurring_weekly_activities => :environment do
   end
 
   weekly_activities_to_update.each do |activity|
-    new_start_date = create_new_date(activity.start_date)
-    new_end_date = create_new_date(activity.end_date)
+    new_start_date = create_new_date(activity.clone.start_date)
+    new_end_date = create_new_date(activity.clone.end_date)
 
     new_activity = Activity.create!(start_date: new_start_date, end_date: new_end_date, user_id: activity.user.id, recurring_schedule: activity.recurring_schedule, image: activity.image, capacity: activity.capacity, contact_email: activity.contact_email, contact_number: activity.contact_number, activity_name: activity.activity_name, content: activity.content, additional_info: activity.additional_info, cost: activity.cost, start_date: activity.start_date, end_date: activity.end_date, addressLN1: activity.addressLN1, addressLN2: activity.addressLN2, city: activity.city, state: activity.state, zip: activity.zip)
     Tag.create!(activity_id: new_activity.id, category_id: activity.categories[0].id)
@@ -159,8 +159,8 @@ task :update_recurring_bi_weekly_activities => :environment do
   end
 
   bi_weekly_activities_to_update.each do |activity|
-    new_start_date = create_new_date(activity.start_date)
-    new_end_date = create_new_date(activity.end_date)
+    new_start_date = create_new_date(activity.clone.start_date)
+    new_end_date = create_new_date(activity.clone.end_date)
 
     new_activity = Activity.create!(start_date: new_start_date, end_date: new_end_date, user_id: activity.user.id, recurring_schedule: activity.recurring_schedule, image: activity.image, capacity: activity.capacity, contact_email: activity.contact_email, contact_number: activity.contact_number, activity_name: activity.activity_name, content: activity.content, additional_info: activity.additional_info, cost: activity.cost, start_date: activity.start_date, end_date: activity.end_date, addressLN1: activity.addressLN1, addressLN2: activity.addressLN2, city: activity.city, state: activity.state, zip: activity.zip)
     Tag.create!(activity_id: new_activity.id, category_id: activity.categories[0].id)
