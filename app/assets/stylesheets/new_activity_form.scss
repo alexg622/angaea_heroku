@@ -4,6 +4,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-top: 25px; 
 }
 
 .edit-activity-form-container {
@@ -36,7 +37,7 @@
 .red {
   color: white;
   background: black;
-  font-size: 8px;
+  font-size: 16px;
 }
 
 .red:hover {

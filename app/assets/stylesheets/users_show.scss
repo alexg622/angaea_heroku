@@ -71,9 +71,12 @@
 .toggle-bar {
   width: 1200px;
   margin-top: 25px;
-  border: 1px solid black;
+  // border: 2px solid white;
   display: flex;
   justify-content: space-around;
+  border-radius: 25px;
+  background: black;
+  height: 50px;
 }
 
 .left-toggle {
@@ -81,8 +84,12 @@
   justify-content: center;
   align-items: center;
   flex: 1;
-  border-right: 1px solid black;
+  // border-right: 1px solid black;
   transition: 0.5s;
+  // background: black;
+  color: white;
+  font-size: 25px;
+  border-right: 2px solid white;
 }
 
 .upcoming-activities-toggle {
@@ -90,8 +97,11 @@
   justify-content: center;
   align-items: center;
   flex: 1;
-  border-right: 1px solid black;
+  // border-right: 1px solid black;
   transition: 0.5s;
+  font-size: 25px;
+  // background: black;
+  color: white;
 }
 
 .rented-items-toggle {
@@ -115,10 +125,28 @@
   transition: 0.5s;
   background: black;
   color: white;
-  border-radius: 12px;
+  border-radius: 25px;
   // margin-right: 25px;
   margin-top: 25px;
 }
+.space-create-activity-toggle {
+  // border-left: 1px solid black;
+  display: flex;
+  align-self: flex-end;
+  justify-content: center;
+  align-items: center;
+  // flex: 1;
+  height: 50px;
+  width: 150px;
+  transition: 0.5s;
+  background: white;
+  color: white;
+  border-radius: 25px;
+  // margin-right: 25px;
+  margin-top: 25px;
+  width: 100px; 
+}
+
 
 .create-rental-toggle {
   // border-left: 1px solid black;
@@ -139,12 +167,14 @@
 
 .left-toggle:hover {
   cursor: pointer;
-  background: #A6CDDE;
+  // background: #A6CDDE;
+  color: #9d9d9d;
 }
 
 .upcoming-activities-toggle:hover {
   cursor: pointer;
-  background: #A6CDDE;
+  // background: #A6CDDE;
+  color: #9d9d9d;
 }
 
 .rented-items-toggle:hover {
@@ -195,7 +225,7 @@
   flex-wrap: wrap;
   justify-content: center;
   width: 100%;
-  margin-top: 25px;
+  margin-top: 100px;
   display: none;
 }
 

@@ -49,6 +49,7 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  validates :city, :state, :address, :zipcode, presence: true 
 
   def user_events
     events = {}

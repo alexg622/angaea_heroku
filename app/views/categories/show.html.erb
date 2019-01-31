@@ -1,4 +1,4 @@
 <div class="show-category-container">
-  <div class="show-category-title"><%=@category.category_name.capitalize%></div>
+  <div class="show-category-title"><%=@category.category_name.upcase%></div>
   <%= render "layouts/users_show_activity_card_category", activities: @activities%>
 </div>
