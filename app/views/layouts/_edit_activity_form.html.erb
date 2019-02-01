@@ -103,6 +103,7 @@
         <select name="activity[recurring_schedule]">
           <option value="weekly">Weekly</option>
           <option value="bi-weekly">Bi-Weekly</option>
+          <option value="">Non-Recurring</option>
         </select>
       </label>
     <%elsif activity.recurring_schedule == "bi-weekly"%>
@@ -111,13 +112,14 @@
         <select name="activity[recurring_schedule]">
           <option value="bi-weekly">Bi-Weekly</option>
           <option value="weekly">Weekly</option>
+          <option value="">Non-Recurring</option>
         </select>
       </label>
     <%else%>
       <label>
         Reucrring
         <select name="activity[recurring_schedule]">
-          <option value="">Weekly or Bi-Weekly</option>
+          <option value="">Non-Recurring</option>
           <option value="weekly">Weekly</option>
           <option value="bi-weekly">Bi-Weekly</option>
         </select>
