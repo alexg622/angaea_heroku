@@ -2,6 +2,7 @@
   <div class="second-show-activities-header"><%=activity.activity_name%></div>
 
   <div class="second-show-activities-mid-container">
+    <div class="second-show-activities-mid-right-container"><%= render "layouts/second_resize_image", activity: activity%></div>
     <div class="second-show-activities-mid-left-container">
       <div class="second-activities-show-by">By <a class="make-me-pretty" href="/users/<%=activity.user.id%>"><%=activity.user.name%></a></div>
       <div class="second-activities-show-cost">Price: $<%=activity.cost%></div>
@@ -12,7 +13,6 @@
         <%= social_share_button_tag('Share Activity', :url => "https://www.angaea.com/activities/#{activity.id}", desc: activity.activity_name) %>
       </div>
     </div>
-    <div class="second-show-activities-mid-right-container"><%= render "layouts/second_resize_image", activity: activity%></div>
   </div>
 
   <div class="second-show-activities-lower-mid-container">

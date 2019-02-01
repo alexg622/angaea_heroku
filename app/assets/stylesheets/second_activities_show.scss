@@ -14,6 +14,8 @@
 
 .second-show-activities-mid-right-container {
   flex: 1;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .second-show-activities-mid-left-container {
@@ -131,7 +133,7 @@
 .second-right-arrow {
   opacity: 0;
   font-size: 25px;
-  cursor: pointer; 
+  cursor: pointer;
   position: absolute;
   color: #FFF;
   margin-left: 85%;
@@ -148,7 +150,7 @@
 .second-arrows-holder {
   position: absolute;
   width: 100%;
-  transform: translateY(calc(100% + 195px));
+  transform: translateY(calc(100% + 150px));
 }
 
 .second-left-arrow {
