@@ -1,0 +1,77 @@
+<script>
+
+  document.addEventListener("DOMContentLoaded", () => {
+    imgListener()
+  })
+
+  let arrowsHolder = document.querySelector(".second-arrows-holder")
+  let bigImg = false
+  let appContainer = document.querySelector(".application-container")
+  let body = document.querySelector("body")
+  let showActivitiesOuterContainer = document.querySelector(".show-activities-outer-container")
+  let img = document.querySelector(".second-show-image-activity-card")
+  let secondActivitiesMidContaier = document.querySelector(".second-show-activities-mid-container")
+  // let midContainerHeight = secondActivitiesMidContaier.stlye.height
+  function largenImage() {
+    body.style.background = "rgba(0,0,0,5)"
+    body.style.transition = "1s"
+    // body.style.zIndex = "-1"
+    // body.style.position = "relative"
+    // appContainer.style.background = "rgba(0,0,0,5)"
+    img.style.maxWidth = "600px"
+    img.style.width = "600px"
+    // img.style.maxHeight = "498px"
+    // img.style.height = "498px"
+    // img.style.zIndex = "3"
+    // img.style.position = "absolute"
+    img.style.cursor = "zoom-out"
+    // img.style.transform = "translate(-50%, 0%)"
+    // img.style.transform = "scale(1)"
+    if(arrowsHolder !== null) {
+      arrowsHolder.style.display = "none"
+    }
+  }
+
+  function reduceImage() {
+    img.style.maxWidth = "400px"
+    img.style.height = "100%"
+    img.style.width = "400px"
+    // img.style.position = ""
+    // img.style.borderRadius = ""
+    img.style.cursor = "zoom-in"
+    // img.style.transform = "none"
+
+    // secondActivitiesMidContaier.style.heigh = "400px"
+
+    body.style.background = ""
+    // body.style.zIndex = ""
+    // body.style.position = ""
+    // appContainer.style.background = ""
+    // appContainer.style.zIndex = ""
+    // appContainer.style.position = ""
+
+    // showActivitiesOuterContainer.style.background = ""
+    // showActivitiesOuterContainer.style.zIndex = ""
+    // showActivitiesOuterContainer.position = ""
+    if(arrowsHolder !== null) {
+      arrowsHolder.style.display = "none"
+      setTimeout(() => {
+        arrowsHolder.style.display = "flex"
+        body.style.transition = ""
+      }, 1000)
+    }
+  }
+
+  function imgListener() {
+    img.addEventListener("click", () => {
+      if(!bigImg) {
+        largenImage()
+      } else {
+        reduceImage()
+      }
+      bigImg = (bigImg ? false : true )
+    })
+  }
+
+
+</script>

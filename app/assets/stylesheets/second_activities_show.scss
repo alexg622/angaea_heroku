@@ -37,3 +37,138 @@
 .second-activities-show-about-text {
   margin-top: 5px;
 }
+
+.second-show-activities-lower-mid-container{
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 15px;
+}
+
+.second-show-activities-where-container {
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  padding: 10px;
+  font-size: 16px;
+  width: 30%
+}
+
+.make-me-pretty:hover {
+  text-decoration: underline !important;
+}
+
+.second-show-activities-where-text {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.second-show-activities-city-only {
+  margin-top: 15px;
+  font-size: 16px;
+}
+
+.second-show-activities-when-container {
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  padding: 10px;
+  font-size: 16px;
+  width: 30%
+}
+
+.second-show-activities-when-text {
+  margin-bottom: 15px;
+  width: 100%;
+  text-align: center;
+}
+
+.second-show-activities-date {
+  margin-bottom: 7.5px;
+}
+
+.second-show-activities-bring-container {
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  padding: 10px;
+  font-size: 16px;
+  width: 30%
+}
+
+.second-show-activitites-bring-text {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.second-show-activities-spots-container {
+  display: flex;
+  align-items: center;
+  width: 425px;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.second-image-activity-card-container {
+  position: relative;
+  max-width: 400px;
+  height: 100%;
+}
+
+.second-show-image-activity-card {
+  max-width: 400px;
+  height: 100%;
+  object-fit: cover;
+  width: 500px;
+  transition: 1s;
+  cursor: zoom-in;
+}
+
+.second-right-arrow {
+  opacity: 0;
+  font-size: 25px;
+  cursor: pointer; 
+  position: absolute;
+  color: #FFF;
+  margin-left: 85%;
+  font-weight: bold;
+  transition: opacity 0.75s;
+  -webkit-user-select: none; /* Chrome/Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+  /* Rules below not implemented in browsers yet */
+  -o-user-select: none;
+  user-select: none;
+}
+
+.second-arrows-holder {
+  position: absolute;
+  width: 100%;
+  transform: translateY(calc(100% + 195px));
+}
+
+.second-left-arrow {
+  opacity: 0;
+  font-size: 25px;
+  margin-left: 15%;
+  position: absolute;
+  color: #FFF;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.75s;
+  -webkit-user-select: none; /* Chrome/Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+  -o-user-select: none;
+  user-select: none;
+}
+
+.second-image-activity-card-container {
+  position: relative;
+  max-width: 400px;
+  height: 100%;
+}

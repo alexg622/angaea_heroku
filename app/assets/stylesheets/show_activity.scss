@@ -385,6 +385,9 @@
   justify-content: center;
   align-items: center;
   margin-top: 50px;
+  border: 1px solid black;
+  padding: 5px;
+
 }
 
 .attendees-text {
@@ -415,7 +418,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 50%;
+  width: 25%;
   margin-top: 25px;
 }
 

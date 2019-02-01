@@ -1,0 +1,12 @@
+
+<%if activity.image.attached?%>
+  <div class="second-image-activity-card-container">
+    <%if activity.images.attached?%>
+      <div onclick="" class="second-arrows-holder">
+        <div onclick="" unselectable="on" class="second-left-arrow"><</div>
+        <div onclick="" unselectable="on" class="second-right-arrow">></div>
+      </div>
+    <%end%>
+    <img class="second-show-image-activity-card" src="<%=url_for(activity.image)%>"/>
+  </div>
+<%end%>
