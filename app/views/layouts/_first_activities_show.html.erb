@@ -1,0 +1,107 @@
+<div class="show-activities-outer-container">
+  <div class="show-activities-card-container">
+    <div class="show-top-activity-card">
+      <!-- <img class="show-image-activity-card" src="http://www.pcraft.com/wp-content/uploads/2015/06/Jim-Delutes_Gondolas.jpg" /> -->
+      <%if activity.image.attached?%>
+        <div class="image-activity-card-container">
+          <%if activity.images.attached?%>
+            <div onclick="" class="arrows-holder">
+              <div onclick="" unselectable="on" class="left-arrow"><</div>
+              <div onclick="" unselectable="on" class="right-arrow">></div>
+            </div>
+          <%end%>
+          <img class="show-image-activity-card" src="<%=url_for(activity.image)%>"/>
+        </div>
+      <%end%>
+      <div class="show-info-activity-card">
+        <div class="show-activity-card-name"><%=activity.format_activity_name%></div>
+        <div class="show-activity-details-container">
+          <div class="left-activity-details-container">
+            <div class="show-top-margin activity-card-user">By <a class="underline-that" href="/users/<%=activity.user.id%>"><%=activity.user.name%></a></div>
+            <div class="show-top-margin show-activity-card-location"><%=activity.format_location%></div>
+          </div>
+          <div class="right-activity-details-container">
+            <div class="show-top-margin show-activity-card-date"><%=activity.show_start_day%> - <%=activity.show_end_day%></div>
+            <div class="show-top-margin show-activity-card-date"><%=activity.show_start_time%> - <%=activity.show_end_time%></div>
+          </div>
+          <%if activity.ratings.any?%>
+            <div class="show-activity-stars-container">
+              <%activity.get_average_rating.times do |num|%>
+                <div class="show-activity-star"><img width="25px" height="25px" src="https://github.com/hennyhandles/angaea/blob/master/app/assets/images/star.png?raw=true"/></div>
+              <%end%>
+              <div class="show-activity-number-ratings"><a href="#ratings">reviews <%=activity.ratings.length%></a></div>
+            </div>
+          <%end%>
+        </div>
+        <div class="show-top-margin show-activity-card-price">$<%=activity.cost%></div>
+      </div>
+    </div>
+    <div class="show-bottom-activity-card">
+      <div class="show-activity-tags">
+        <div class="show-activity-tag-title">Tags</div>
+        <%activity.categories.each do |category|%>
+          <div class="show-activity-category"><a href="<%=category_path(category)%>"><%=category.category_name%></a></div>
+        <%end%>
+      </div>
+      <div class="show-activity-right">
+        <%if (activity.capacity.to_i - activity.attendees.length <= 0)%>
+          <div class="activity-ticket"> No Spots Left </div>
+        <%else%>
+          <div class="show-activity-capacity"><%=activity.capacity.to_i - activity.attendees.length%> Spots Left</div>
+          <a href="/activities/<%=activity.id%>/spots"><div class="activity-ticket"> Book Spot </div></a>
+        <%end%>
+      </div>
+    </div>
+    <div class="about-activity-container">
+      <div class="about-activity-show-title">About This Activity</div>
+      <div class="about-activity-content-show"><%=activity.content%> <%=" "%> <%=activity.additional_info%></div>
+    </div>
+    <div class='social-share-buttons'>
+      <div class="share-with-friends">Share With Friends!</div>
+      <%= social_share_button_tag('Share Activity', :url => "https://www.angaea.com/activities/#{activity.id}", desc: activity.activity_name) %>
+    </div>
+  </div>
+  <div class="attendees-container">
+    <%if activity.attendees.any?%>
+      <div class="attendees-text">Attendees</div>
+      <div class="attendees-cards-container">
+        <%activity.attendees.each do |attendee|%>
+          <div class="attendees-card">
+            <div class="attendee-name"><%=attendee.name%></div>
+            <%if attendee.image.attached?%>
+            <div class="users-show-image-div"><%= image_tag(attendee.image, class: "users-show-image")%></div>
+            <%else%>
+            <div class="users-show-image-div"><%= gravatar_for attendee, size: 100 %></div>
+            <%end%>
+          </div>
+        <%end%>
+      </div>
+    <%end%>
+  </div>
+  <%if activity.ratings.any?%>
+  <%activity.ratings.each do |rating|%>
+  <div class="show-activity-ratings-card">
+    <div class="show-activity-stars-container">
+      <%rating.stars.to_i.times do |num|%>
+      <div class="show-activity-star"><img width="25px" height="25px" src="https://github.com/hennyhandles/angaea/blob/master/app/assets/images/star.png?raw=true"/></div>
+      <%end%>
+      <div class="show-activity-number-ratings">"<%=rating.comment.split(".")[0]%>"</div>
+    </div>
+    <div class="activity-show-user-rating"><%= gravatar_for rating.user, size: 25, class: "gravatar space-right"%> <div class="pad-left-username"><%=rating.user.name%></div></div>
+    <div class="show-activity-rating-content"><%=rating.comment%></div>
+  </div>
+  <%end%>
+  <%end%>
+  <div id="ratings" class="show-activity-ratings-container">
+  </div>
+  <%if activity.images.length > 0%>
+        <% for i in 0...activity.images.length %>
+          <%=image_tag(activity.images[i], class: "activity-show-bottom-images")%>
+        <% end %>
+    </div>
+  <%end%>
+  <%if activity.images.length > 0%>
+    <%=render "layouts/activities_show_carousel"%>
+  <%end%>
+  <%=render "layouts/largen_image"%>
+</div>

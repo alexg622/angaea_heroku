@@ -1,0 +1,31 @@
+<div class="show-activities-outer-container">
+  <div class="second-show-activities-header"><%=activity.activity_name%></div>
+
+  <div class="second-show-activities-mid-container">
+    <div class="second-show-activities-mid-left-container">
+      <div class="second-activities-show-by">By <a href="/users/<%=activity.user.id%>"><%=activity.user.name%></a></div>
+      <div class="second-activities-show-cost">Price: $<%=activity.cost%></div>
+      <div class="second-activities-show-about">ABOUT:</div>
+      <div class="second-activities-show-about-text"><%=activity.content%></div>
+    </div>
+    <div class="second-show-activities-mid-right-container"><%= render "layouts/resize_image", activity: activity%></div>
+  </div>
+
+  <div class="second-show-activities-lower-mid-container">
+    <div class="second-show-activities-where-container">
+
+    </div>
+    <div class="second-show-activities-when-container"></div>
+    <div class="second-show-activities-bring-container"></div>
+  </div>
+
+  <%if activity.images.length > 0%>
+    <% for i in 0...activity.images.length %>
+      <%=image_tag(activity.images[i], class: "activity-show-bottom-images")%>
+    <% end %>
+  <%end%>
+  <%if activity.images.length > 0%>
+    <%=render "layouts/activities_show_carousel"%>
+  <%end%>
+  <%=render "layouts/largen_image"%>
+</div>
