@@ -15,7 +15,7 @@
     </label>
 
     <label>
-      What to Bring
+      <div style="display:flex"><div>What to Bring</div><div style="color:red"> *</div></div>
       <textarea class="" type="text" name="activity[additional_info]"><%=activity.additional_info%></textarea>
     </label>
 
@@ -109,8 +109,8 @@
       <label>
         Reucrring
         <select name="activity[recurring_schedule]">
-          <option value="weekly">Weekly</option>
           <option value="bi-weekly">Bi-Weekly</option>
+          <option value="weekly">Weekly</option>
         </select>
       </label>
     <%else%>
