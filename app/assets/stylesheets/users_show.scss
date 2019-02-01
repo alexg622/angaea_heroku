@@ -73,9 +73,10 @@
   margin-top: 25px;
   // border: 2px solid white;
   display: flex;
+  border: 1px solid black;
   justify-content: space-around;
-  border-radius: 25px;
-  background: black;
+  // border-radius: 25px;
+  // background: black;
   height: 50px;
 }
 
@@ -87,9 +88,8 @@
   // border-right: 1px solid black;
   transition: 0.5s;
   // background: black;
-  color: white;
-  font-size: 25px;
-  border-right: 2px solid white;
+  font-size: 16px;
+  border-right: 1px solid black;
 }
 
 .upcoming-activities-toggle {
@@ -99,9 +99,9 @@
   flex: 1;
   // border-right: 1px solid black;
   transition: 0.5s;
-  font-size: 25px;
+  font-size: 16px;
   // background: black;
-  color: white;
+  // color: white;
 }
 
 .rented-items-toggle {
@@ -144,7 +144,7 @@
   border-radius: 25px;
   // margin-right: 25px;
   margin-top: 25px;
-  width: 100px; 
+  width: 100px;
 }
 
 
@@ -167,14 +167,14 @@
 
 .left-toggle:hover {
   cursor: pointer;
-  // background: #A6CDDE;
-  color: #9d9d9d;
+  background: #A6CDDE;
+  // color: #9d9d9d;
 }
 
 .upcoming-activities-toggle:hover {
   cursor: pointer;
-  // background: #A6CDDE;
-  color: #9d9d9d;
+  background: #A6CDDE;
+  // color: #9d9d9d;
 }
 
 .rented-items-toggle:hover {
