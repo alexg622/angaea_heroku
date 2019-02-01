@@ -24,22 +24,22 @@ user1 = User.create(name: "Angaea", email: "contact@angaea.com", profession: "Co
 #
 # 10.times do |counter|
 #  name = Faker::HarryPotter.character
-#  User.create!(name: name, skills: Faker::ChuckNorris.fact, profession: Faker::Job.title, email: (name.split(" ")[0]+counter.to_s+"@mail.com"), about_me: Faker::GameOfThrones.quote, password: "password")
+#  User.create(name: name, skills: Faker::ChuckNorris.fact, profession: Faker::Job.title, email: (name.split(" ")[0]+counter.to_s+"@mail.com"), about_me: Faker::GameOfThrones.quote, password: "password")
 # end
 
-art = Category.create!(category_name: "art", user_id: User.first.id)
-music = Category.create!(category_name: "music", user_id: User.first.id)
-dance = Category.create!(category_name: "dance", user_id: User.first.id)
-theatre = Category.create!(category_name: "theatre", user_id: User.first.id)
-food = Category.create!(category_name: "food", user_id: User.first.id)
-others = Category.create!(category_name: "others", user_id: User.first.id)
-comedy = Category.create!(category_name: "comedy", user_id: User.first.id)
+art = Category.create(category_name: "art", user_id: User.first.id)
+music = Category.create(category_name: "music", user_id: User.first.id)
+dance = Category.create(category_name: "dance", user_id: User.first.id)
+theatre = Category.create(category_name: "theatre", user_id: User.first.id)
+food = Category.create(category_name: "food", user_id: User.first.id)
+others = Category.create(category_name: "others", user_id: User.first.id)
+comedy = Category.create(category_name: "comedy", user_id: User.first.id)
 # categories = [art, music, dance]
 #
 # 10.times do
 #  content = Faker::Lorem.sentence(5)
 #  User.all.each do |user|
-#    Activity.create!(start_date: "Thu, 20 Dec 2018 18:00:12 UTC +00:00", end_date: "Thu, 20 Dec 2018 18:00:12 UTC +00:00", capacity: "100", contact_email: "Test@mail.com", user_id: user.id, picture: Faker::LoremPixel.image("50x60"), activity_name: Faker::GameOfThrones.quote, content: Faker::Lorem.paragraph(2), cost: rand(500).to_s, city: Faker::Address.city, state: Faker::Address.state, addressLN1: Faker::Address.street_address, zip: Faker::Address.zip)
+#    Activity.create(start_date: "Thu, 20 Dec 2018 18:00:12 UTC +00:00", end_date: "Thu, 20 Dec 2018 18:00:12 UTC +00:00", capacity: "100", contact_email: "Test@mail.com", user_id: user.id, picture: Faker::LoremPixel.image("50x60"), activity_name: Faker::GameOfThrones.quote, content: Faker::Lorem.paragraph(2), cost: rand(500).to_s, city: Faker::Address.city, state: Faker::Address.state, addressLN1: Faker::Address.street_address, zip: Faker::Address.zip)
 #    Tag.create(activity_id: user.activities.first.id, category_id: categories[rand(3)].id)
 #  end
 # end
