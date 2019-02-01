@@ -18,7 +18,7 @@
   flex: 1;
   display: flex;
   justify-content: flex-start;
-  max-width: 400px; 
+  max-width: 400px;
 }
 
 .second-show-activities-mid-left-container {
@@ -76,7 +76,7 @@
   box-shadow: 5px 20px 30px rgba(0,0,0,0.1);
   transition: box-shadow 0.5s, transform 0.5s;
   &:hover{
-    transform: scale(1.2);
+    transform: scale(1.05);
     box-shadow: 5px 20px 30px rgba(0,0,0,0.2);
   }
 }
@@ -114,7 +114,7 @@
   box-shadow: 5px 20px 30px rgba(0,0,0,0.1);
   transition: box-shadow 0.5s, transform 0.5s;
   &:hover{
-    transform: scale(1.2);
+    transform: scale(1.05);
     box-shadow: 5px 20px 30px rgba(0,0,0,0.2);
   }
 }
@@ -144,7 +144,7 @@
   box-shadow: 5px 20px 30px rgba(0,0,0,0.1);
   transition: box-shadow 0.5s, transform 0.5s;
   &:hover{
-    transform: scale(1.2);
+    transform: scale(1.05);
     box-shadow: 5px 20px 30px rgba(0,0,0,0.2);
   }
 }
@@ -257,7 +257,7 @@
   border-radius: 10px 10px 10px 10px;
   border: solid rgba(255, 255, 255, 1) 0;
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     box-shadow: 5px 20px 30px rgba(0,0,0,0.2);
   }
 }
