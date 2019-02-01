@@ -124,8 +124,12 @@
 .second-show-image-activity-card {
   max-width: 400px;
   height: 100%;
+  max-height: 400px;
+  min-height: 400px;
+  height: 400px;
+  min-width: 400px;
   object-fit: cover;
-  width: 500px;
+  width: 400px;
   transition: 1s;
   cursor: zoom-in;
 }
@@ -136,7 +140,7 @@
   cursor: pointer;
   position: absolute;
   color: #FFF;
-  margin-left: 85%;
+  margin-left: 350px;
   font-weight: bold;
   transition: opacity 0.75s;
   -webkit-user-select: none; /* Chrome/Safari */
@@ -156,7 +160,7 @@
 .second-left-arrow {
   opacity: 0;
   font-size: 25px;
-  margin-left: 15%;
+  margin-left: 28px;
   position: absolute;
   color: #FFF;
   cursor: pointer;
@@ -169,8 +173,8 @@
   user-select: none;
 }
 
-.second-image-activity-card-container {
-  position: relative;
-  max-width: 400px;
-  height: 100%;
-}
+// .second-image-activity-card-container {
+//   position: relative;
+//   max-width: 400px;
+//   height: 100%;
+// }
