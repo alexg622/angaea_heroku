@@ -1,28 +1,27 @@
 <div class="show-activities-outer-container">
-  <div class="second-show-activities-header"><%=activity.activity_name%></div>
 
   <div class="second-show-activities-mid-container">
     <div class="second-show-activities-mid-right-container"><%= render "layouts/second_resize_image", activity: activity%></div>
     <div class="second-show-activities-mid-left-container">
-      <div class="second-activities-show-by">By <a class="make-me-pretty" href="/users/<%=activity.user.id%>"><%=activity.user.name%></a></div>
-      <div class="second-activities-show-cost">Price: $<%=activity.cost%></div>
+      <div class="second-show-activities-header"><%=activity.activity_name%></div>
+      <div class="second-activities-show-by"><div class="boldy-by">By:</div> <a class="make-me-pretty" href="/users/<%=activity.user.id%>"><%=activity.user.name%></a></div>
+      <div class="second-activities-show-cost"><div class="boldy-by">Price:</div> $<%=activity.cost%></div>
       <div class="second-activities-show-about">ABOUT:</div>
       <div class="second-activities-show-about-text"><%=activity.content%></div>
-      <div class='social-share-buttons'>
-        <div class="share-with-friends">Share With Friends!</div>
-        <%= social_share_button_tag('Share Activity', :url => "https://www.angaea.com/activities/#{activity.id}", desc: activity.activity_name) %>
-      </div>
+    </div>
+    <div class='social-share-buttons'>
+      <!-- <div class="share-with-friends">Share With Friends!</div> -->
+      <%= social_share_button_tag('Share Activity', :url => "https://www.angaea.com/activities/#{activity.id}", desc: activity.activity_name) %>
     </div>
   </div>
 
   <div class="second-show-activities-lower-mid-container">
     <div class="second-show-activities-where-container">
-      <div class=second-show-activities-where-text>Where is it</div>
+      <div class="second-show-activities-where-text">Where is it?</div>
       <div class="second-show-activities-city"><%=@activity.city%></div>
-      <div class="second-show-activities-city-only">We will disclose the location once you're booked</div>
     </div>
     <div class="second-show-activities-when-container">
-      <div class="second-show-activities-when-text">When is it</div>
+      <div class="second-show-activities-when-text">When is it?</div>
       <div class="second-show-activities-date"><%=activity.show_start_day%></div>
       <div class="second-show-activities-time"><%=activity.show_start_time%> to <%=activity.show_end_time%></div>
     </div>
@@ -34,10 +33,10 @@
 
   <div class="second-show-activities-spots-container">
     <%if (activity.capacity.to_i - activity.attendees.length <= 0)%>
-      <div class="activity-ticket"> No Spots Left </div>
+      <div class="second-activity-ticket"> No Spots Left </div>
     <%else%>
-      <a href="/activities/<%=activity.id%>/spots"><div class="activity-ticket"> Book Spot </div></a>
-      <div class="show-activity-capacity"><%=activity.capacity.to_i - activity.attendees.length%> Spots Left</div>
+      <a href="/activities/<%=activity.id%>/spots"><div class="second-activity-ticket"> Book Spot </div></a>
+      <div class="second-show-activity-capacity"><%=activity.capacity.to_i - activity.attendees.length%> Spots Left</div>
     <%end%>
   </div>
 
