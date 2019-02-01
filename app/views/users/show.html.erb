@@ -54,12 +54,12 @@
   </div>
   <div class="toggle-bar">
     <%if current_user && current_user.id == @user.id%>
-      <div class="left-toggle">Your Activities</div>
+      <div class="left-toggle">Your Services</div>
     <%else%>
       <div class="left-toggle"><%=@user.name%>'s Activities</div>
     <%end%>
     <%if current_user && current_user.id == @user.id%>
-      <div class="upcoming-activities-toggle">Your Upcoming Activities</div>
+      <div class="upcoming-activities-toggle">Your Experiences</div>
     <%end%>
   </div>
   <!-- Activities card -->

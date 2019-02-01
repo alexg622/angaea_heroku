@@ -41,7 +41,7 @@ class ActivityTicketsController < ApplicationController
       :email => params[:stripeEmail],
       :source  => params[:stripeToken]
     )
-    description = "Activity: #{@activity.activity_name} \n Location: #{@activity.format_full_location} \n Date: #{@activity.format_start_date} - #{@activity.format_end_date} \n Activity id: #{@activity.id} \n User id: #{current_user.id} \n User Email: #{current_user.email} \n Activity Amount: $#{@activity.cost} \n Transaction Fee: $#{((@activity.cost.to_f*0.10 * 10**2).round.to_f / 10**2)*@spots.spots_buying.to_f} \n Spots Purchased: #{@spots.spots_buying} \n Total: $#{((@activity.cost.to_f*1.10 * 10**2).round.to_f / 10**2)*@spots.spots_buying.to_f}"
+    description = "Service: #{@activity.activity_name} \n Location: #{@activity.format_full_location} \n Date: #{@activity.format_start_date} - #{@activity.format_end_date} \n Service id: #{@activity.id} \n User id: #{current_user.id} \n User Email: #{current_user.email} \n Service Amount: $#{@activity.cost} \n Transaction Fee: $#{((@activity.cost.to_f*0.10 * 10**2).round.to_f / 10**2)*@spots.spots_buying.to_f} \n Spots Purchased: #{@spots.spots_buying} \n Total: $#{((@activity.cost.to_f*1.10 * 10**2).round.to_f / 10**2)*@spots.spots_buying.to_f}"
     charge = Stripe::Charge.create({
       customer:     customer.id,
       amount:       @amount,

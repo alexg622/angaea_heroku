@@ -1,6 +1,6 @@
 
 <div class="edit-activity-form-container">
-  <h1>Update Your Activity</h1>
+  <h1>Update Your Service</h1>
   <form enctype="multipart/form-data" class="date-class create-activity-form-css" action="<%= activity_path(activity) %>" method="post">
     <input class="" type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>"/>
     <input type="hidden" name="_method" value="patch">
@@ -136,9 +136,9 @@
       <input class="" type="file" name="activity[images][]" placeholder="For multiple images please select all images at once" value="" multiple="multiple">
     </label>
 
-    <input class="btn" type="submit" value="Update Your Activity">
+    <input class="btn" type="submit" value="Update Your Service">
   </form>
-  <%= link_to "Delete Activity" , activity_path(activity), method: :delete, class: "delete-btn"%>
+  <%= link_to "Delete Service" , activity_path(activity), method: :delete, class: "delete-btn"%>
   <%= render "layouts/datetime_javascript"%>
   <%= render "layouts/end_datetime_javascript"%>
 </div>
