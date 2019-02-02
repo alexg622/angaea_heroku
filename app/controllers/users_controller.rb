@@ -76,7 +76,7 @@ class UsersController < ApplicationController
      @user.image.attach(user_params[:image])
    end
 
-   if @user.image.attached? && @user.update_attributes(city: user_params[:city], state: user_params[:state], address: user_params[:address], zipcode: user_params[:zipcode], facebook: user_params[:facebook], instagram: user_params[:instagram], twitter: user_params[:twitter], pinterest: user_params[:pinterest], youtube: user_params[:youtube], about: user_params[:about], name: user_params[:name], email: user_params[:email], profession: user_params[:profession], skills: user_params[:skills]) && @user.authenticate(user_params[:password])
+   if @user.image.attached? && @user.update_attributes(city: user_params[:city], state: user_params[:state], address: user_params[:address], zipcode: user_params[:zipcode], facebook: user_params[:facebook], instagram: user_params[:instagram], twitter: user_params[:twitter], pinterest: user_params[:pinterest], youtube: user_params[:youtube], about: user_params[:about], name: user_params[:name], email: user_params[:email], profession: user_params[:profession], skills: user_params[:skills])
      flash[:success] = "Profile updated"
      redirect_to @user
    else

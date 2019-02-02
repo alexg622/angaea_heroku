@@ -18,6 +18,12 @@
   width: 55%;
 }
 
+.center-my-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .second-new-user-name {
   width: 100%;
   height: 45px;
@@ -579,7 +585,7 @@
 }
 
 .new-user-margin-right-label {
-  margin-right: 45px;
+  // margin-right: 45px;
   min-width: 200px;
   width: 200px;
 }
