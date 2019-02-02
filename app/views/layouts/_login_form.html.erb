@@ -1,21 +1,15 @@
-<div class="create-login-form-container">
+<div class="login-container-better">
   <h1>Log In</h1>
-  <form class="create-login-form-css" action="<%= login_path %>" method="post">
+  <form class="login-form" action="<%= login_path %>" method="post">
     <input class="" type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>"/>
 
-    <label>
-      Email
-      <input class="" type="email" name="session[email]" value="">
-    </label>
+    <input class="login-inputs" type="email" name="session[email]" placeholder="EMAIL" value="">
+    <input class="login-inputs" type="password" name="session[password]" placeholder="PASSWORD" value="">
 
-    <label>
-      Password
-      <input class="" type="password" name="session[password]" value="">
-    </label>
-
-    <input class="login-submit" type="submit" value="Login">
+    <div width="100px">
+      <input class="best-btn" type="submit" value="Login">
+    </div>
   </form>
-  <%= link_to "Sign up now!", signup_path, class: "better-sign-up" %>
 </div>
 <!-- background: rgba(0,0,0,0.5); -->
 <!-- background: rgba(0,0,0,.6);
