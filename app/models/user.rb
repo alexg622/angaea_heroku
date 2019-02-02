@@ -49,10 +49,10 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
-  validates :city, :state, :address, :zipcode, presence: true
+  validates :city, :state, :zipcode, presence: true
 
   def show_location
-    if self.city != "" && self.state != "" && self.city != nil && self.state != nil
+    if self.city != "" && self.state != "" && self.zipcode != "" && self.zipcode != nil && self.city != nil && self.state != nil
       return "#{self.city}, #{self.state}"
     else
       return ""

@@ -1,0 +1,85 @@
+<div class="new-user-container">
+  <h1>Sign Up to Create Your Portfolio</h1>
+  <form enctype="multipart/form-data" class="new-user-form" action="<%= users_path %>" method="post">
+    <input class="" type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>"/>
+
+    <input class="second-new-user-name" type="text" name="user[name]" placeholder="NAME*" value="<%=user.name%>">
+
+    <div class="new-user-email-city-container">
+      <input class="second-new-user-email" type="email" name="user[email]" placeholder="EMAIL*" value="<%=user.email%>">
+      <input class="second-new-user-city" type="text" name="user[city]" placeholder="CITY*"value="<%=user.city%>">
+    </div>
+
+    <div class="new-user-state-zip-container">
+      <input class="second-new-user-state" type="text" name="user[state]" placeholder="STATE*" value="<%=user.state%>">
+      <input class="second-new-user-zipcode" type="text" name="user[zipcode]" placeholder="ZIPCODE" value="<%=user.zipcode%>">
+    </div>
+
+    <div class="new-user-password-container">
+      <input class="second-new-user-password" type="password" name="user[password]" placeholder="PASSWORD*" value="">
+      <input class="second-new-user-password-conf" type="password" name="user[password_confirmation]" placeholder="PASSWORD CONFIRMATION*" value="">
+    </div>
+
+    <div class="new-user-pro-talents-container">
+      <input class="second-new-user-profession" type="text" name="user[profession]" placeholder="PROFESSION" value="<%=user.profession%>">
+      <input class="second-new-user-skills" type="text" name="user[skills]" placeholder="OTHER TALENTS" value="<%=user.skills%>">
+    </div>
+
+    <textarea class="second-new-user-about" type="text" placeholder="ABOUT YOURSELF" name="user[about]"></textarea>
+
+    <div class="new-user-social-media-container">
+      <div class="new-user-social-media-text">Connect Your Online World!</div>
+      <input class="second-new-user-facebook" placeholder="FACBOOK" type="text" name="user[facebook]" value="<%=user.facebook%>">
+      <input class="second-new-user-instagram" placeholder="INSTAGRAM" type="text" name="user[instagram]" value="<%=user.instagram%>">
+      <input class="second-new-user-youtube" placeholder="YOUTUBE" type="text" name="user[youtube]" value="<%=user.youtube%>">
+      <input class="second-new-user-twitter" placeholder="TWITTER" type="text" name="user[twitter]" value="<%=user.twitter%>">
+      <input class="second-new-user-pinterest" placeholder="PINTEREST" type="text" name="user[pinterest]" value="<%=user.pinterest%>">
+    </div>
+
+    <div class="new-user-margin-right-label">
+      <input readonly type="text" class="red-border second-activity-new-image" placeholder="PROFILE PICTURE"/>
+      <div class="max-file-size">Max File Size 15MB</div>
+      <input class="dont-display-image" type="file" type="hidden" name="user[image]" value="" multiple="multiple">
+    </div>
+
+    <div class="agreements">
+      <div class="agreement-links">
+        <a href="/showTermsConditions">Terms and Conditions Agreement</a>
+        <a href="/showPrivacyAgreement">Privacy Agreement</a>
+      </div>
+      <div class="text-agreement">
+        <div>By Checking This Box You Agree To Having Read and Accepted The Terms and Conditions and Privacy Agreement</div>
+        <input class="agreement-checkbox" type="checkbox" name="user[agree_to_terms]" value="true">
+      </div>
+    </div>
+
+    <input class="best-btn" type="submit" value="Sign Up">
+  </form>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      clickFileImage()
+      isImgAttached()
+    })
+
+    function isImgAttached() {
+      let inputText = document.querySelector(".second-activity-new-image")
+      let inputImg = document.querySelector(".dont-display-image")
+      inputImg.addEventListener("change", (e) => {
+        if(inputImg.value !== "") {
+          inputText.placeholder = "Image Attached"
+        }
+      })
+    }
+
+    function clickFileImage() {
+      let inputText = document.querySelector(".second-activity-new-image")
+      let inputImg = document.querySelector(".dont-display-image")
+      inputText.addEventListener("click", e => {
+        inputImg.click()
+      })
+    }
+
+  </script>
+
+</div>

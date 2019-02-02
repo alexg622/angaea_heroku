@@ -4,7 +4,26 @@
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  margin-top: 25px; 
+  margin-top: 25px;
+  margin-bottom: 15px;
+  box-shadow: 0px 3px 10px 1px rgba(0,0,0,0.08);
+  border-radius: 4px;
+  font: normal normal normal 12px/1.4em lulo-clean-w01-one-bold,sans-serif;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-width: 2px;
+  background-color: rgba(255, 255, 255, 1);
+  box-sizing: border-box !important;
+  color: #000000;
+  border-style: solid;
+  border-color: rgba(232, 232, 232, 1);
+  padding: 3px;
+  margin-bottom: 15px;
+  max-width: 100%;
+  // text-overflow: ellipsis;
+  // text-indent: 10px;
+  font-weight: bold;
+  letter-spacing: 2px;
 }
 
 .agreement-links {
@@ -25,10 +44,10 @@
 
 .text-agreement {
   display: flex;
-  flex-direction: column;
+  // flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  height: 80px;
+  height: 120px;
   margin-top: 10px;
   flex-wrap: wrap;
   width: 80%;
