@@ -1,0 +1,29 @@
+.work-please {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+}
+
+.work-please form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+}
+
+.no-black:hover {
+  color: red !important;
+}
+
+.no-black {
+  margin-top: 8px;
+  transition: 1s
+}
+
+.edit-delete-btn {
+  display: flex;
+  width: 88%;
+  justify-content: flex-start;
+}
