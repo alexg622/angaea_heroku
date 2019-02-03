@@ -26,9 +26,9 @@ class ActivityTicketsController < ApplicationController
   def new
     @activity = Activity.find(params[:activity_id])
     @activity_ticket = ActivityTicket.new
-    @spots = current_user.activity_tickets.find_by(activity_id: @activity.id)
-    @total = ((@spots.spots_buying.to_f*@activity.cost.to_f*1.10 * 10**2).round.to_f / 10**2)
-    @transFee = ((@spots.spots_buying*@activity.cost.to_f*0.10 * 10**2).round.to_f / 10**2)
+    # @spots = current_user.activity_tickets.find_by(activity_id: @activity.id)
+    # @total = ((@spots.spots_buying.to_f*@activity.cost.to_f*1.10 * 10**2).round.to_f / 10**2)
+    # @transFee = ((@spots.spots_buying*@activity.cost.to_f*0.10 * 10**2).round.to_f / 10**2)
   end
 
   def create
