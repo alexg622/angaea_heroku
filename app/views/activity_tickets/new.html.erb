@@ -46,13 +46,13 @@
 
           <div class="service-fee-container">
             <div class="service-fee-text">Service Fee:</div>
-            <div class="service-fee">$<%=@transFee%></div>
+            <div class="service-fee">$<%=@activity.cost.to_f*0.1%></div>
             <div class="spots-place-holder"></div>
           </div>
 
           <div class="activity-total-container">
             <div class="activity-total-text">Total:</div>
-            <span class="activity-total-cost">$<%=@total%></span>
+            <span class="activity-total-cost">$<%=@activity.cost.to_f%></span>
             <div class="spots-place-holder"></div>
           </div>
 

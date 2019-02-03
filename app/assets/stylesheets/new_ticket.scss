@@ -4,7 +4,7 @@
   justify-content: flex-start;
   height: 80vh;
   width: 50%;
-  margin-top: 25px; 
+  margin-top: 25px;
 }
 
 .new-activity-ticket-container form {
@@ -67,6 +67,7 @@
 .activity-name {
   display:flex;
   font-weight: normal;
+  text-align: center;
   // justify-content: center;
   // width: 100%;
 }
