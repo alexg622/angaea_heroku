@@ -69,10 +69,10 @@ class ActivityTicketsController < ApplicationController
     # if charge.Paid
     if charge.status == "succeeded"
       if @spots.spots_buying == 1
-        # AngaeaActivationMailer.send_activity_info(current_user, @activity, @spots).deliver
+        AngaeaActivationMailer.send_activity_info(current_user, @activity, @spots).deliver
         return redirect_to user_path(current_user), :flash => { :success => "Purchased 1 spot for $#{(@activity.cost.to_f*1.10 * 10**2).round.to_f / 10**2}"}
       else
-        # AngaeaActivationMailer.send_activity_info(current_user, @activity, @spots).deliver
+        AngaeaActivationMailer.send_activity_info(current_user, @activity, @spots).deliver
         return redirect_to user_path(current_user), :flash => { :success => "Purchased #{@spots.spots_buying} spots for $#{((@activity.cost.to_f*1.10 * 10**2).round.to_f / 10**2)*@spots.spots_buying.to_f}"}
       end
         # redirect_to signup_path, :flash => { :error => @user.errors.full_messages.join(", ") }
