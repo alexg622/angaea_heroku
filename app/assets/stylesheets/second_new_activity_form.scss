@@ -773,13 +773,71 @@
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
   border: solid white 0;
   border-radius: 10px 10px 10px 10px;
-  border: solid white 0;
   &:hover {
     transform: scale(1.05);
     cursor: pointer;
     box-shadow: 5px 20px 30px rgba(0,0,0,0.2);
   }
 }
+
+// .stripe-button-el {
+//   background: black !important;
+//   color: white !important;
+//   border: none !important;
+//   padding: 0 !important;
+//   display: flex !important;
+//   background: black !important;
+//   justify-content: center !important;
+//   align-items: center !important;
+//   width: 180px !important;
+//   height: 50px !important;
+//   color: white !important;
+//   font-size: 16px !important;
+//   background-color: black !important;
+//   transition: 1s !important;
+//   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6) !important;
+//   border: solid white 0 !important;
+//   border-radius: 10px 10px 10px 10px !important;
+//   font-family: georgia !important;
+//   text-shadow: none !important;
+//   color: white !important;
+//   font-weight: normal !important;
+//   -webkit-font-smoothing: normal !important;
+//   &:hover {
+//     transform: scale(1.05) !important;
+//     cursor: pointer !important;
+//     -webkit-font-smoothing: normal !important;
+//     box-shadow: 5px 20px 30px rgba(0,0,0,0.2) !important;
+//     padding: 0 !important;
+//   }
+// }
+//
+// .stripe-button-el span {
+//   display: flex !important;
+//   background: black !important;
+//   justify-content: center !important;
+//   align-items: center !important;
+//   width: 180px !important;
+//   height: 50px !important;
+//   color: white !important;
+//   font-size: 16px !important;
+//   background-color: black !important;
+//   // transition: 1s !important;
+//   // box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6) !important;
+//   // border: solid white 0 !important;
+//   // border-radius: 10px 10px 10px 10px !important;
+//   font-family: georgia !important;
+//   text-shadow: none !important;
+//   // color: white !important;
+//   font-weight: normal !important;
+//   // -webkit-font-smoothing: none !important;
+//   &:hover {
+//     padding: 0 !important;
+//     -webkit-font-smoothing: normal !important;
+//   }
+// }
+
+
 
 .second-edit-form {
   display: flex;

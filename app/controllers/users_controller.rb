@@ -34,12 +34,16 @@ class UsersController < ApplicationController
          redirect_to user_path(@user)  #redirect_to user_url(@user)
        else
          # flash.now[:error] = @user.errors.full_messages.join(", ")
-         redirect_to signup_path, :flash => { :error => @user.errors.full_messages.join(", ") }
+         # flash[:error] = @user.errors.full_messages.join(", ")
+         # return  render "new"
+         return redirect_to signup_path, :flash => { :error => @user.errors.full_messages.join(", ") }
        end
      else
-       # flash.now[:error] = "Please agree to the terms and conditions"
+       flash.now[:error] = "Please agree to the terms and conditions"
        # render_to 'new'
-       redirect_to signup_path, :flash => { :error => "Please agree to the terms and conditions" }
+       # flash[:error] = "Please agree to the terms and conditions"
+       # render "new"
+       # redirect_to signup_path, :flash => { :error => "Please agree to the terms and conditions" }
      end
    end
    #forgot to add log in user before that s why it didnt work

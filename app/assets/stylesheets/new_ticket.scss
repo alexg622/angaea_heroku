@@ -1,14 +1,27 @@
 .new-activity-ticket-container {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   height: 80vh;
+  width: 50%;
+  margin-top: 25px; 
+}
+
+.new-activity-ticket-container form {
+  width: 100%;
 }
 
 .transaction-fee {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
+
+.amount {
+  width: 100%;
+}
+
+
 
 .spots-container {
   display: flex;
@@ -32,4 +45,127 @@
   background: linear-gradient(#7dc5ee,#008cdd 85%,#30a2e4);
   color: #fff;
   border-radius: 25px;
+}
+
+.activity-checkout-text {
+  min-width: 200px;
+  font-size: 25px;
+  display:flex;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.service-purchased-container {
+  display:flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.activity-name {
+  display:flex;
+  font-weight: normal;
+  // justify-content: center;
+  // width: 100%;
+}
+
+.spots-number-container {
+  display:flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.amount-per-spot-container {
+  display:flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.service-fee-container {
+  display:flex;
+  justify-content: space-between;
+  font-weight: normal;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.activity-total-cost {
+  font-weight: normal;
+}
+
+.activity-total-container {
+  display:flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.spots-center {
+  width: 65px;
+  display:flex;
+  justify-content: center;
+}
+
+.spots-place-holder {
+  width: 200px;
+}
+
+.activity-text {
+  min-width: 200px;
+  font-weight: bold;
+}
+
+.spots-number-text {
+  min-width: 200px;
+  font-weight: bold;
+}
+
+.amount-per-spot-text {
+  min-width: 200px;
+  font-weight: bold;
+}
+
+.service-fee-text {
+  min-width: 200px;
+  font-weight: bold;
+}
+
+.activity-total-text {
+  min-width: 200px;
+  font-weight: bold;
+}
+
+.spots-select {
+  border-radius: 6px;
+  // -webkit-appearance: none;
+  // -moz-appearance: none;
+  box-shadow: 0px 3px 10px 1px rgba(0,0,0,0.08);
+  // font: normal normal normal 12px/1.4em lulo-clean-w01-one-bold,sans-serif;
+  background-color: rgba(255, 255, 255, 1);
+  color: #000000;
+  border-width: 0;
+  border-style: solid;
+  border-color: rgba(232, 232, 232, 1);
+  // margin: 0;
+  padding: 0 45px;
+  cursor: pointer;
+  position: relative;
+  // max-width: 100%;
+  // min-width: 100%;
+  min-width: 65px;
+  min-height: 10px;
+  height: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  font-weight: normal !important;
+  border: 1px solid lightgray;
+}
+
+.activity-cost {
+  font-weight: normal;
 }

@@ -1,6 +1,6 @@
 <div class="new-activity-ticket-container">
   <%= form_tag activity_activity_tickets_path(@activity) do %>
-    <article>
+    <article class="stripe-help-btn">
       <% if flash[:error].present? %>
         <div id="error_explanation">
           <p><%= flash[:error] %></p>
@@ -8,10 +8,54 @@
       <% end %>
       <label class="amount">
         <div class="transaction-fee">
-          <span>Amount Per Spot: $<%=(@activity.cost.to_f)%></span>
-          <span>Spots Being Purchased: <%=@spots.spots_buying%></span>
-          <span>Transaction Fee: $<%=@transFee%></span>
-          <span>Total: $<%=@total%></span>
+
+          <div class="activity-checkout-text">Checkout</div>
+
+          <div class="service-purchased-container">
+            <div class="activity-text">Service Purchasing:</div>
+            <div class="activity-name"><%=@activity.activity_name%></div>
+            <div class="spots-place-holder"></div>
+          </div>
+
+
+
+          <div class="spots-number-container">
+            <div class="spots-number-text">Total Number of Spots:</div>
+              <select class="spots-select" name="activity_tickets[spots_buying]">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <div class="spots-place-holder"></div>
+          </div>
+
+          <div class="amount-per-spot-container">
+            <div class="amount-per-spot-text">Price:</div>
+            <span class="activity-cost">$<%=(@activity.cost.to_f)%></span>
+            <div class="spots-place-holder"></div>
+          </div>
+
+
+
+          <div class="service-fee-container">
+            <div class="service-fee-text">Service Fee:</div>
+            <div class="service-fee">$<%=@transFee%></div>
+            <div class="spots-place-holder"></div>
+          </div>
+
+          <div class="activity-total-container">
+            <div class="activity-total-text">Total:</div>
+            <span class="activity-total-cost">$<%=@total%></span>
+            <div class="spots-place-holder"></div>
+          </div>
+
           <meta name="description" content="Free Web tutorials">
         </div>
       </label>
@@ -22,9 +66,48 @@
             data-image='https://github.com/alexg622/angaea_heroku/blob/master/app/assets/images/the_angaea_final_symbol.png?raw=true'
             data-name='Angaea'
             data-description='Purchase Spots'
-            data-amount="<%=(@total*100)%>"
-            data-metadata-this="working?"
             ></script>
+  <input class="update-spots" type="hidden" name="spot_count[spots]" value="1"/>
 
   <% end %>
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      updateCost()
+      updateAmount()
+    })
+    let spotsInput = document.querySelector(".spots-select")
+    let servFeeDiv = document.querySelector(".service-fee")
+    let totalDiv = document.querySelector(".activity-total-cost")
+    let costDiv = document.querySelector(".activity-cost")
+    let originalCost = parseFloat(costDiv.innerText.split("$")[1])
+    let serviceFeeDiv = document.querySelector(".service-fee")
+    let stripeButton = document.querySelector(".stripe-button")
+    let newCost = parseFloat(originalCost*parseFloat(spotsInput.value))
+    let serviceFee = (newCost*.1)
+    let total = ((serviceFee+newCost)*100);
+    let updateSpotsInput = document.querySelector(".update-spots")
+
+    window.stripeButton = stripeButton
+
+    function updateCost() {
+      spotsInput.addEventListener("change", e => {
+        newCost = parseFloat(originalCost*parseFloat(spotsInput.value))
+        serviceFee = (newCost*.1)
+        total = (serviceFee + newCost)
+        costDiv.innerText = "$" + String(newCost)
+        serviceFeeDiv.innerText = "$" + String(serviceFee)
+        totalDiv.innerText = "$" + String(total)
+        total = String(total*100)
+        updateSpotsInput.value = spotsInput.value
+      })
+    }
+
+    function updateAmount() {
+      document.querySelector("button").addEventListener("click", e => {
+      stripeButton.dataset["amount"] = total
+      })
+    }
+  </script>
 </div>

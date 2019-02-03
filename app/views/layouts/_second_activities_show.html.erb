@@ -36,7 +36,7 @@
       <div class="second-activity-ticket"> No Spots Left </div>
     <%else%>
       <div class="space-holder"></div>
-      <a href="/activities/<%=activity.id%>/spots"><div class="second-activity-ticket">Book</div></a>
+      <a href="/activities/<%=activity.id%>/activity_tickets/new"><div class="second-activity-ticket">Book</div></a>
       <div class="second-show-activity-capacity"><%=activity.capacity.to_i - activity.attendees.length%> Spots Left</div>
     <%end%>
   </div>
