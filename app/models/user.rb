@@ -91,9 +91,9 @@ def User.digest(string)
    BCrypt::Password.new(remember_digest).is_password?(remember_token)
  end
 
-def forget
-     update_attribute(:remember_digest, nil)
-   end
+ def forget
+   update_attribute(:remember_digest, nil)
+ end
 
    # Confirms a logged-in user.
     def logged_in_user

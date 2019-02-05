@@ -157,7 +157,7 @@ end
    def create_reset_password
      @user = User.find_by(reset_password_secret: params[:id])
      if user_params[:password] == user_params[:new_password]
-       if @user && @user.update_attributes(password: user_params[:new_password])
+       if @user && @user.update_attributes(password: user_params[:new_password], city: @user.city, state: @user.state, zipcode: @user.zipcode)
          flash[:success] = "Password Updated"
          return redirect_to login_path
        else
