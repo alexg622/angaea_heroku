@@ -1,0 +1,52 @@
+<div class="new-user-container">
+  <h1>Lets get you Paid!</h1>
+  <form enctype="multipart/form-data" class="new-user-form" action="/stripe/<%=@user.id%>/stripe_acct_details" method="post">
+    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>"/>
+
+    <div class="stripe-help-text">Account Information</div>
+    <div class="new-user-email-city-container">
+      <input class="second-new-user-email" type="text" name="stripe_connect[routing_number]" placeholder="ROUTING NUMBER*" value="">
+      <input class="second-new-user-city" type="text" name="stripe_connect[account_number]" placeholder="ACCOUNT NUMBER*"value="">
+    </div>
+
+    <div class="new-user-email-city-container stripe-form-marg-bottom">
+      <input class="second-new-user-email" type="password" name="stripe_connect[ssn_last_4]" placeholder="SSN LAST 4*" value="">
+        <select class="red-border stripe-entity-type-width" name="stripe_connect[entity_type]">
+          <option value="individual">Individual*</option>
+          <option value="company">Company*</option>
+        </select>
+    </div>
+
+    <div class="stripe-help-text">Name Associated with Account</div>
+    <div class="new-user-email-city-container">
+      <input class="second-new-user-email" type="text" name="stripe_connect[first_name]" placeholder="FIRST NAME*" value="">
+      <input class="second-new-user-city" type="text" name="stripe_connect[last_name]" placeholder="LAST NAME*"value="">
+    </div>
+
+    <div class="new-user-email-city-container">
+      <input class="second-new-user-email" type="text" name="stripe_connect[dob_day]" placeholder="DOB DAY - 00*" value="">
+      <input class="second-new-user-city" type="text" name="stripe_connect[dob_month]" placeholder="DOB MONTH - 00*"value="">
+    </div>
+
+    <div class="new-user-email-city-container stripe-form-marg-bottom">
+      <input class="second-new-user-email stripe-dob-year" type="text" name="stripe_connect[dob_year]" placeholder="DOB YEAR - 0000*" value="">
+    </div>
+
+    <div class="stripe-help-text">Address Associated with Account</div>
+    <div class="new-user-email-city-container">
+      <input class="second-new-user-email" type="text" name="stripe_connect[address_line1]" placeholder="ADDRESS*" value="">
+      <input class="second-new-user-city" type="text" name="stripe_connect[city]" placeholder="CITY*"value="">
+    </div>
+
+    <div class="new-user-email-city-container">
+      <input class="second-new-user-email" type="text" name="stripe_connect[state]" placeholder="STATE*" value="">
+      <input class="second-new-user-city" type="text" name="stripe_connect[postal_code]" placeholder="ZIPCODE*"value="">
+    </div>
+
+    <input id="get-you-paid-submit" class="stripe-button-marg-top" type="submit" value="Get Paid!">
+
+    <div class="stripe-explanation">
+      <a id="link-to-stripe" href="https://stripe.com/docs/connect/required-verification-information">Stripe Required Verification Information</a>
+    </div>
+  </form>
+</div>
