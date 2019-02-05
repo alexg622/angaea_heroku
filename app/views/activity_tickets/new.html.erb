@@ -46,13 +46,13 @@
 
           <div class="service-fee-container">
             <div class="service-fee-text">Service Fee:</div>
-            <div class="service-fee">$<%=@activity.cost.to_f*0.1%></div>
+            <div class="service-fee">$<%=(@activity.cost.to_f*0.1 * 10**2).round.to_f / 10**2%></div>
             <div class="spots-place-holder"></div>
           </div>
 
           <div class="activity-total-container">
             <div class="activity-total-text">Total:</div>
-            <span class="activity-total-cost">$<%=@activity.cost.to_f%></span>
+            <span class="activity-total-cost">$<%=(@activity.cost.to_f * 10**2).round.to_f / 10**2%></span>
             <div class="spots-place-holder"></div>
           </div>
 
@@ -96,10 +96,10 @@
         newCost = parseFloat(originalCost*parseFloat(spotsInput.value))
         serviceFee = (newCost*.1)
         total = (serviceFee + newCost)
-        costDiv.innerText = "$" + String(newCost)
-        serviceFeeDiv.innerText = "$" + String(serviceFee)
-        totalDiv.innerText = "$" + String(total)
-        total = String(total*100)
+        costDiv.innerText = "$" + String(Math.round(newCost*100)/100)
+        serviceFeeDiv.innerText = "$" + String(Math.round(serviceFee*100)/100)
+        totalDiv.innerText = "$" + String(Math.round(total*100)/100)
+        total = String((Math.round(total*100 * 100)/100))
         updateSpotsInput.value = spotsInput.value
       })
     }
