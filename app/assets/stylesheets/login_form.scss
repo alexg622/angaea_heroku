@@ -50,7 +50,7 @@
   -ms-user-select: none;
   user-select: none;
   margin-top: 10px;
-  transition: 1s; 
+  transition: 1s;
 }
 
 .delete-btn:hover {
@@ -77,6 +77,14 @@
   text-decoration: underline;
 }
 
+.reset-password {
+  width: 100%;
+  margin-top: 30px; 
+  &:hover{
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
 // background: linear-gradient(#7dc5ee, #008cdd 85%, #30a2e4);
 // color: #fff;
 // width: 85%;

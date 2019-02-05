@@ -101,10 +101,79 @@ end
      redirect_to(root_url) unless @user == current_user
    end
 
+   def update_password
+     @user = User.find(params[:id])
+   end
+
+   def create_update_password
+     @user = User.find(params[:id])
+     if @user.authenticate(user_params[:password])
+       if user_params[:new_password] == user_params[:password_confirmation]
+         if @user.update_attributes(password: user_params[:new_password])
+           flash[:success] = "Password Updated"
+           return redirect_to user_path(@user)
+         else
+           flash.now[:error] = @user.errors.full_messages
+           return render "update_password"
+         end
+       else
+         flash.now[:error] = "Passwords do not match"
+         return render "update_password"
+       end
+     else
+       flash.now[:error] = "Password is incorrect"
+       return render "update_password"
+     end
+   end
+
+
+   def reset_password_link
+   end
+
+   def create_reset_password_link
+     @user = User.find_by(email: user_params[:email])
+     reset_password_secret = SecureRandom.urlsafe_base64
+     if @user
+       if @user.update_attributes(reset_password_secret: reset_password_secret)
+         AngaeaActivationMailer.send_reset_password_link(@user).deliver
+         redirect_to "/users/resetPasswordNotification"
+       else
+         flash.now[:error] = @user.errors.full_messages
+         render "reset_password_link"
+       end
+     else
+       flash.now[:error] =  "Could not find user with that email."
+       render "reset_password_link"
+     end
+   end
+
+   def reset_password_notification
+   end
+
+   def reset_password
+     @user = User.find_by(reset_password_secret: params[:id])
+   end
+
+   def create_reset_password
+     @user = User.find_by(reset_password_secret: params[:id])
+     if user_params[:password] == user_params[:new_password]
+       if @user && @user.update_attributes(password: user_params[:new_password])
+         flash[:success] = "Password Updated"
+         return redirect_to login_path
+       else
+         flash[:error] = @user.errors.full_messages
+         return render "reset_password"
+       end
+    else
+      flash[:error] = "Passwords do not match"
+      return render "reset_password"
+    end
+   end
+
   private
 
     def user_params
-      params.require(:user).permit(:city, :state, :zipcode, :address, :agree_to_terms, :facebook, :instagram, :youtube, :twitter, :pinterest, :image, :about, :name, :profession, :skills, :email, :password, :password_confirmation)
+      params.require(:user).permit(:city, :state, :zipcode, :address, :new_password, :agree_to_terms, :facebook, :instagram, :youtube, :twitter, :pinterest, :image, :about, :name, :profession, :skills, :email, :password, :password_confirmation)
     end
         # Confirms a logged-in user.
    def logged_in_user

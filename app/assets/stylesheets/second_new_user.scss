@@ -645,3 +645,35 @@
   min-width: 200px;
   width: 200px;
 }
+
+.login-signup-container {
+  display: flex;
+  width: 500px;
+  align-items: center;
+  margin-top: 15px;
+  justify-content: space-between;
+}
+
+.login-white:hover {
+  color: white !important;
+}
+
+.login-signup-text {
+  width: 150px;
+}
+
+.login-signup-center {
+  width: 150px;
+}
+
+.reset-pass-btn {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  border: none; 
+  margin-top: 30px;
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}

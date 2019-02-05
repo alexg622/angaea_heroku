@@ -45,8 +45,13 @@ Rails.application.routes.draw do
   post '/privacyConditions', to: "static_pages#create_privacy_conditions"
   get '/termsConditions', to: 'static_pages#terms_and_conditions'
   get '/privacyConditions', to: 'static_pages#privacy_conditions'
-
-
+  get '/users/:id/updatePassword', to: 'users#update_password'
+  post '/users/:id/updatePassword', to: 'users#create_update_password'
+  post '/users/resetPasswordLink', to: 'users#create_reset_password_link'
+  get '/users/resetPasswordLink', to: 'users#reset_password_link'
+  post '/users/:id/resetPassword', to: 'users#create_reset_password'
+  get '/users/:id/resetPassword', to: 'users#reset_password'
+  get '/users/resetPasswordNotification', to: "users#reset_password_notification"
 
 resources :users
 resources :account_activations, only: [:edit]

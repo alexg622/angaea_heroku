@@ -31,4 +31,9 @@ class AngaeaActivationMailer < ApplicationMailer
     mail(to: @user.email, subject: "You've got it!")
   end
 
+  def send_reset_password_link(user)
+    @user = user
+    mail(to: @user.email, subject: "Angaea Reset Password Link")
+  end
+
 end
