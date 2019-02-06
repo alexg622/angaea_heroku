@@ -1,0 +1,44 @@
+<div class="second-dash-container">
+  <div class="second-dash-upper-container">
+    <div class="second-dash-your-services">Your Services</div>
+    <div class="second-dash-people-attending">People Attending</div>
+  </div>
+  <div class="second-dash-lower-container">
+    <% activities.each do |activity| %>
+      <div class="second-dash-activity-container">
+        <div class="second-dash-activity-name"><a class="a-tag-second-dash" href="<%=activity_path(activity)%>"><%=activity.activity_name%></a></div>
+        <div class="second-dash-activity-scroll">
+          <% if activity.attendees.length <= 0 %>
+          <div class="second-dash-no-attendee-container">
+            No Attendees Yet
+          </div>
+          <%end%>
+          <% activity.attendees.each do |attendee| %>
+            <div class="second-dash-attendee-container">
+              <div class="second-dash-attendee-name"><a class="a-tag-second-dash" href="<%=user_path(attendee)%>"><%=attendee.name%><a></div>
+              <div class="second-dash-attendee-picture">
+                <%if attendee.image.attached?%>
+                  <div class=""><%= image_tag(attendee.image, class: "second-dash-user-image")%></div>
+                <%else%>
+                  <div class="users-show-image-div"><%= gravatar_for attendee, size: 100 %></div>
+                <%end%>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <!-- <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      noBoarderTop()
+    })
+
+    function noBoarderTop() {
+      let theContainer = document.querySelector(".second-dash-lower-container")
+      if (theContainer) {
+        Array.from(theContainer.children)[0].style.borderTop = "none"
+      }
+    }
+  </script> -->
+</div>
