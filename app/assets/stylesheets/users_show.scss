@@ -132,6 +132,7 @@
   &:hover {
     transform: scale(1.05);
     cursor:pointer;
+    color: white !important; 
     box-shadow: 5px 20px 30px rgba(0,0,0,0.2);
   }
 }

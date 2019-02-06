@@ -17,6 +17,10 @@ Rails.application.routes.draw do
   post "/stripe/:user_id/terms/create", to: "stripe_connect_customs#create_agree_stripe_terms"
   get '/stripe/:user_id/stripe_acct_details', to: "stripe_connect_customs#new_stripe_acct_details"
   post "/stripe/:user_id/stripe_acct_details", to: "stripe_connect_customs#stripe_acct_details_create"
+  delete '/stripe/:user_id/delete_stripe_acct', to: "stripe_connect_customs#delete_stripe_acct"
+  # get "/stripe/:user_id/update_stripe_acct_details", to: "stripe_connect_customs#update_stripe_acct_details"
+  # post "/stripe/:user_id/update_stripe_acct_details", to: "stripe_connect_customs#create_update_stripe_acct_details"
+  get '/stripe/:user_id/stripe_acct', to: "stripe_connect_customs#stripe_acct"
   get '/activities', to: 'static_pages#activities'
   get '/users/activation_reminder', to: "users#activation_reminder"
   get '/users/activate_account/:activation_id', to: 'users#activate_account'

@@ -28,7 +28,11 @@ class ApplicationController < ActionController::Base
     if current_user
       if current_user.stripe_connect == nil
         flash.now[:error] = "Before creating an activity please create a stripe account so that we can pay after the activity is completed."
-        redirect_to "/stripe/#{current_user}/new"
+        return redirect_to "/stripe/#{current_user}/new"
+      end
+      if current_user.stripe_connect.account_number == nil
+        flash.now[:error] = "Please agree to stripes terms and conditions and complete your account with them!"
+        return redirect_to "/stripe/#{current_user.id}/terms/new}"
       end
     end
   end

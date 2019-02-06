@@ -1,0 +1,60 @@
+<div class="new-user-container">
+  <h1>Update Stripe Acct Details</h1>
+  <form enctype="multipart/form-data" class="new-user-form" action="/stripe/<%=@user.id%>/update_stripe_acct_details" method="post">
+    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>"/>
+    <input type="hidden" name="_method" value="patch"/>
+
+    <div class="stripe-help-text">Account Information</div>
+    <div class="new-user-email-city-container">
+      <input class="second-new-user-email" type="text" name="stripe_connect[routing_number]" placeholder="ROUTING NUMBER*" value=" <%=@acct.external_accounts["data"][0]["routing_number"]%> ">
+      <input class="second-new-user-city" type="text" name="stripe_connect[account_number]" placeholder="ACCOUNT NUMBER*"value=" ">
+    </div>
+
+    <div class="new-user-email-city-container stripe-form-marg-bottom">
+      <input class="second-new-user-email" type="password" name="stripe_connect[ssn_last_4]" placeholder="SSN LAST 4*" value=" <%=@acct.legal_entity.ssn_last_4%> ">
+      <%if @acct.legal_entity.type == "individual"%>
+        <select class="red-border stripe-entity-type-width" name="stripe_connect[entity_type]">
+          <option value="individual">Individual*</option>
+          <option value="company">Company*</option>
+        </select>
+      <%else%>
+        <select class="red-border stripe-entity-type-width" name="stripe_connect[entity_type]">
+          <option value="company">Company*</option>
+          <option value="individual">Individual*</option>
+        </select>
+      <%end%>
+    </div>
+
+    <div class="stripe-help-text">Name Associated with Account</div>
+    <div class="new-user-email-city-container">
+      <input class="second-new-user-email" type="text" name="stripe_connect[first_name]" placeholder="FIRST NAME*" value=" <%=@acct.legal_entity.first_name%> ">
+      <input class="second-new-user-city" type="text" name="stripe_connect[last_name]" placeholder="LAST NAME*"value=" <%=@acct.legal_entity.last_name%> ">
+    </div>
+
+    <div class="new-user-email-city-container">
+      <input class="second-new-user-email" type="text" name="stripe_connect[dob_day]" placeholder="DOB DAY - 00*" value=" <%=@acct.legal_entity.dob.day%> ">
+      <input class="second-new-user-city" type="text" name="stripe_connect[dob_month]" placeholder="DOB MONTH - 00*"value=" <%=@acct.legal_entity.dob.month%> ">
+    </div>
+
+    <div class="new-user-email-city-container stripe-form-marg-bottom">
+      <input class="second-new-user-email stripe-dob-year" type="text" name="stripe_connect[dob_year]" placeholder="DOB YEAR - 0000*" value=" <%=@acct.legal_entity.dob.year%> ">
+    </div>
+
+    <div class="stripe-help-text">Address Associated with Account</div>
+    <div class="new-user-email-city-container">
+      <input class="second-new-user-email" type="text" name="stripe_connect[address_line1]" placeholder="ADDRESS*" value=" <%=@acct.legal_entity.address.line1%> ">
+      <input class="second-new-user-city" type="text" name="stripe_connect[city]" placeholder="CITY*"value=" <%=@acct.legal_entity.address.city%> ">
+    </div>
+
+    <div class="new-user-email-city-container">
+      <input class="second-new-user-email" type="text" name="stripe_connect[state]" placeholder="STATE*" value=" <%=@acct.legal_entity.address.state%> ">
+      <input class="second-new-user-city" type="text" name="stripe_connect[postal_code]" placeholder="ZIPCODE*"value=" <%=@acct.legal_entity.address.postal_code%> ">
+    </div>
+
+    <input id="get-you-paid-submit" class="stripe-button-marg-top" type="submit" value="Get Paid!">
+
+    <div class="stripe-explanation">
+      <a id="link-to-stripe" href="https://stripe.com/docs/connect/required-verification-information">Stripe Required Verification Information</a>
+    </div>
+  </form>
+</div>
