@@ -11,7 +11,7 @@
         <div class="stripe-acct-routing-number"><%= @user.stripe_connect.routing_number %></div>
       </div>
       <div class="new-stripe-account-how-to-container">
-        To change your payment information please delete this account and create a new one.
+        To change your payment information please remove this payment information and re-submit the new one.
       </div>
       <form enctype="multipart/form-data" class="delete-stripe-acct-btn" action="/stripe/<%=@user.id%>/delete_stripe_acct" method="post">
         <input class="" type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>"/>
