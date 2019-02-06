@@ -18,9 +18,7 @@
               <li><%= link_to "Portfolio", current_user %></li>
               <li><%= link_to "Settings", edit_user_path(current_user) %></li>
               <li><%= link_to "Update Password", "/users/#{current_user.id}/updatePassword" %></li>
-              <%if current_user.stripe_connect != nil && current_user.stripe_connect.account_number != nil%>
-                <li><%= link_to "Stripe Acct Details", "/stripe/#{current_user.id}/stripe_acct" %></li>
-              <%end%>
+              <li><%= link_to "Payment Info", "/stripe/#{current_user.id}/stripe_acct" %></li>
               <li class="divider"></li>
               <li>
                 <%= link_to "Log out", logout_path, method: :delete %>

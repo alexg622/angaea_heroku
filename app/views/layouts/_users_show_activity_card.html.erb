@@ -2,9 +2,9 @@
   <%if current_user == @user%>
     <div class="align-elements">
       <%if current_user.stripe_connect == nil%>
-        <a class="create-activity-toggle" href="/stripe/<%=current_user.id%>/new">Create a Service</a>
+        <a class="create-activity-toggle" href="/stripe/<%=current_user.id%>/stripe_acct">Create a Service</a>
       <%elsif current_user.stripe_connect.account_number == nil%>
-        <a class="create-activity-toggle" href="/stripe/<%=current_user.id%>/terms/new">Create a Service</a>
+        <a class="create-activity-toggle" href="/stripe/<%=current_user.id%>/stripe_acct">Create a Service</a>
       <%else%>
         <div class="create-activity-toggle">Create a Service</div>
       <%end%>

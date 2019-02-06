@@ -19,7 +19,11 @@ class ApplicationController < ActionController::Base
   def stripe?
     if current_user
       if current_user.stripe_connect != nil
-        redirect_to user_path(current_user)
+        if current_user.stripe_connect.account_number == nil
+          redirect_to "/stripe/#{current_user.id}/terms/new"
+        else
+          redirect_to user_path(current_user)
+        end
       end
     end
   end

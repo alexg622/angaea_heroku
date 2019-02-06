@@ -1,5 +1,5 @@
 <div class="new-user-container">
-  <h1>Lets get you Paid!</h1>
+  <h1>Lets up Your Payment Information</h1>
   <form enctype="multipart/form-data" class="new-user-form" action="/stripe/<%=@user.id%>/stripe_acct_details" method="post">
     <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>"/>
 
@@ -43,7 +43,7 @@
       <input class="second-new-user-city" type="text" name="stripe_connect[postal_code]" placeholder="ZIPCODE*"value="">
     </div>
 
-    <input id="get-you-paid-submit" class="stripe-button-marg-top" type="submit" value="Get Paid!">
+    <input id="get-you-paid-submit" class="stripe-button-marg-top" type="submit" value="Done">
 
     <div class="stripe-explanation">
       <a id="link-to-stripe" href="https://stripe.com/docs/connect/required-verification-information">Stripe Required Verification Information</a>

@@ -1,22 +1,29 @@
 <div class="stripe-acct-container">
-  <div class="stripe-acct-text">Your Stripe Account Information</div>
+  <div class="stripe-acct-text">Account Information</div>
   <div class="stripe-acct-inner-container">
-    <div class="acct-number-container">
-      <div>Account Number:</div>
-      <div class="strip-acct-account-number">**** **** **** <%=@user.stripe_connect.account_number%></div>
-    </div>
-    <div class="routing-number-container">
-      <div>Routing Number:</div>
-      <div class="stripe-acct-routing-number"><%= @user.stripe_connect.routing_number %></div>
-    </div>
-    <div class="new-stripe-account-how-to-container">
-      To change your stripe account information please delete this stripe account and create a new one.
-      To create a stripe account you need to create a service on your portfolio.
-    </div>
-    <form enctype="multipart/form-data" class="delete-stripe-acct-btn" action="/stripe/<%=@user.id%>/delete_stripe_acct" method="post">
-      <input class="" type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>"/>
-      <input type="hidden" name="_method" value="delete"/>
-      <input class="best-btn" type="submit" value="Delete Stripe Account">
-    </form>
+    <% if @user.stripe_connect != nil && @user.stripe_connect.account_number != nil %>
+      <div class="acct-number-container">
+        <div>Bank Account Number:</div>
+        <div class="strip-acct-account-number">**** **** **** <%=@user.stripe_connect.account_number%></div>
+      </div>
+      <div class="routing-number-container">
+        <div>Routing Number:</div>
+        <div class="stripe-acct-routing-number"><%= @user.stripe_connect.routing_number %></div>
+      </div>
+      <div class="new-stripe-account-how-to-container">
+        To change your payment information please delete this account and create a new one.
+      </div>
+      <form enctype="multipart/form-data" class="delete-stripe-acct-btn" action="/stripe/<%=@user.id%>/delete_stripe_acct" method="post">
+        <input class="" type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>"/>
+        <input type="hidden" name="_method" value="delete"/>
+        <input class="best-btn" type="submit" value="Delete Account">
+      </form>
+    <% else %>
+      <div class="get-started-stripe-text">
+        Please submit your payment information before creating a service so that we can
+        get you paid once the service has been completed!
+      </div>
+      <a class="best-btn get-started-stripe" href="/stripe/<%=@user.id%>/new">Get Started</a>
+    <% end %>
   </div>
 </div>

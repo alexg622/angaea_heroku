@@ -30,6 +30,7 @@
   border-color: rgba(232, 232, 232, 1);
   box-sizing: border-box;
   border-style: solid;
+  min-height: 400px;
 }
 
 .acct-number-container {
@@ -71,5 +72,18 @@
   width: 80%;
   display: flex;
   justify-content: flex-start;
-  margin-bottom: 30px; 
+  margin-bottom: 30px;
+}
+
+.get-started-stripe-text {
+  width: 60%;
+  text-overflow: ellipsis;
+  text-align: center;
+  line-height: 25px; 
+  margin-bottom: 30px;
+}
+
+.get-started-stripe:hover {
+  cursor: pointer;
+  color: white !important;
 }

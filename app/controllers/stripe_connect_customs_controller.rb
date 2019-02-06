@@ -103,8 +103,8 @@ class StripeConnectCustomsController < ApplicationController
 
       acct.external_accounts.create(:external_account => stripe_token)
       if @user.stripe_connect.update_attributes(account_number: stripe_connect_params[:account_number][-4..-1], routing_number: stripe_connect_params[:routing_number])
-        flash[:success] = "Stripe Details Successfully Submittet"
-        redirect_to user_path(@user)
+        flash[:success] = "Payment Information Successfully Submitted"
+        redirect_to "/stripe/#{@user.id}/stripe_acct"
       else
         flash.now[:error] = @user.errors.full_messages
         render "new_stripe_acct_details"
@@ -175,7 +175,7 @@ class StripeConnectCustomsController < ApplicationController
   def delete_stripe_acct
     @user = User.find(params[:user_id])
     if @user.stripe_connect.destroy
-      redirect_to user_path(@user)
+      redirect_to "/stripe/#{@user.id}/stripe_acct"
     else
       flash.now[:error] = @user.errors.full_messages
       render "stripe_acct"

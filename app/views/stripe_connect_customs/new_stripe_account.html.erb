@@ -1,8 +1,10 @@
 <div class="create-stripe-accnt-form-container">
-  <div class="create-stripe-new-text">Before Creating an Activity Lets Get Started With Stripe to Get You Paid!</div>
+  <div class="create-stripe-new-text">Before creating a service lets get started with setting up your payment information to get you paid!
+    We use Stripe as a third party payment service to keep your information safe!
+  </div>
   <form enctype="multipart/form-data" class="create-stripe-account-form" action="/stripe/<%=@user.id%>/create" method="post">
     <input class="" type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>"/>
     <img src="https://github.com/alexg622/angaea_heroku/blob/master/app/assets/images/the_angaea_final_symbol.png?raw=true"/>
-    <input id="get-you-paid-submit" type="submit" value="Create Stripe Account"/>
+    <input id="get-you-paid-submit" type="submit" value="Continue"/>
   </form>
 </div>
