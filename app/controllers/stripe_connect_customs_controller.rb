@@ -98,6 +98,8 @@ class StripeConnectCustomsController < ApplicationController
       acct.legal_entity.last_name = stripe_connect_params[:last_name]
       acct.legal_entity.ssn_last_4 = stripe_connect_params[:ssn_last_4]
       acct.legal_entity.type = stripe_connect_params[:entity_type]
+      acct.legal_entity.business_name = stripe_connect_params[:business_name]
+      acct.legal_entity.business_tax_id = stripe_connect_params[:business_tax_id]
       acct.metadata.activity_creator_id = @user.id
       acct.save
 
@@ -132,8 +134,6 @@ class StripeConnectCustomsController < ApplicationController
         flash.now[:error] = "Looks like you don't have a bank account set up with stripe. Lets get you started!"
         redirect_to "/stripe/#{@user.id}/terms/new"
       end
-      p "external account"
-      p @acct
     rescue => e
       flash.now[:error] = e
       render "update_stripe_acct_details"
@@ -142,7 +142,6 @@ class StripeConnectCustomsController < ApplicationController
 
   def create_update_stripe_acct_details
     @user = User.fin(params[:user_id])
-
     begin
       @acct = Stripe::Account.retrieve(@user.stripe_connect.accountId)
 
@@ -158,6 +157,8 @@ class StripeConnectCustomsController < ApplicationController
       @acct.legal_entity.ssn_last_4 = stripe_connect_params[:ssn_last_4]
       @acct.legal_entity.type = stripe_connect_params[:entity_type]
       @acct.metadata.activity_creator_id = @user.id
+      @acct.legal_entity.business_name = stripe_connect_params[:business_name]
+      @acct.legal_entity.business_tax_id = stripe_connect_params[:business_tax_id]
       @acct.save
 
       flash[:success] = "Stripe Acct Successfully Updated"
@@ -184,6 +185,6 @@ class StripeConnectCustomsController < ApplicationController
 
   private
   def stripe_connect_params
-    params.require(:stripe_connect).permit(:state, :routing_number, :dob_month, :account_number, :account_holder_type, :city, :address_line1, :postal_code, :dob_day, :dob_year, :first_name, :last_name, :ssn_last_4, :entity_type)
+    params.require(:stripe_connect).permit(:state, :routing_number, :dob_month, :business_name, :business_tax_id, :account_number, :account_holder_type, :city, :address_line1, :postal_code, :dob_day, :dob_year, :first_name, :last_name, :ssn_last_4, :entity_type)
   end
 end

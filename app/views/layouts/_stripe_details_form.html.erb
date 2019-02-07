@@ -9,12 +9,17 @@
       <input class="second-new-user-city" type="text" name="stripe_connect[account_number]" placeholder="ACCOUNT NUMBER*"value="">
     </div>
 
-    <div class="new-user-email-city-container stripe-form-marg-bottom">
+    <div class="new-user-email-city-container">
       <input class="second-new-user-email" type="password" name="stripe_connect[ssn_last_4]" placeholder="SSN LAST 4*" value="">
         <select class="red-border stripe-entity-type-width" name="stripe_connect[entity_type]">
           <option value="individual">Individual*</option>
           <option value="company">Company*</option>
         </select>
+    </div>
+
+    <div class="new-user-email-city-container stripe-form-marg-bottom">
+      <input class="second-new-user-email" type="text" name="stripe_connect[business_name]" placeholder="COMPANIES ONLY* - COMPANY NAME" value="">
+      <input class="second-new-user-city" type="text" name="stripe_connect[business_tax_id]" placeholder="COMPANIES ONLY* - COMPANY TAX ID" value="">
     </div>
 
     <div class="stripe-help-text">Name Associated with Account</div>
