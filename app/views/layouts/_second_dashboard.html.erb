@@ -22,7 +22,11 @@
                 <%else%>
                   <div class="users-show-image-div second-dash-user-image"><%= gravatar_for attendee, size: 50 %></div>
                 <%end%>
-                <div class="small-font"><%=attendee.activity_tickets.find_by(activity_id: activity.id).spots_buying%> reservation</div>
+                <%if attendee.activity_tickets.find_by(activity_id: activity.id).spots_buying == 1%>
+                  <div class="small-font"><%=attendee.activity_tickets.find_by(activity_id: activity.id).spots_buying%> Spot</div>
+                <%else%>
+                  <div class="small-font"><%=attendee.activity_tickets.find_by(activity_id: activity.id).spots_buying%> Spots</div>
+                <%end%>
               </div>
             </div>
           <% end %>
