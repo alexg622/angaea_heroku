@@ -13,15 +13,16 @@
             No Attendees Yet
           </div>
           <%end%>
-          <% activity.attendees.each do |attendee| %>
+          <% activity.attendees.sort_by {|attendee| attendee.name.downcase}.each do |attendee| %>
             <div class="second-dash-attendee-container">
               <div class="second-dash-attendee-name"><a class="a-tag-second-dash" href="<%=user_path(attendee)%>"><%=attendee.name%><a></div>
               <div class="second-dash-attendee-picture">
                 <%if attendee.image.attached?%>
                   <div class=""><%= image_tag(attendee.image, class: "second-dash-user-image")%></div>
                 <%else%>
-                  <div class="users-show-image-div"><%= gravatar_for attendee, size: 100 %></div>
+                  <div class="users-show-image-div second-dash-user-image"><%= gravatar_for attendee, size: 50 %></div>
                 <%end%>
+                <div class="small-font"><%=attendee.activity_tickets.find_by(activity_id: activity.id).spots_buying%> reservation</div>
               </div>
             </div>
           <% end %>
