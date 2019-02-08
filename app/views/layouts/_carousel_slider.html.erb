@@ -45,19 +45,31 @@
     }
 
     function showArrow() {
-      let theCont = document.querySelector(".second-home-carousel-container-bottom")
-      let leftArrow = document.querySelector(".second-home-carousel-top")
-      let rightArrow = document.querySelector(".second-home-carousel-bottom")
-      if(theCont) {
-        theCont.addEventListener("mouseenter", () => {
-          leftArrow.style.opacity = "1"
-          rightArrow.style.opacity = "1"
-        })
-        theCont.addEventListener("mouseleave", () => {
-          leftArrow.style.opacity = "0"
-          rightArrow.style.opacity = "0"
-        })
+      let bigConts = Array.from(document.querySelectorAll(".second-home-carousel-container-bottom"))
+      // let leftArrow = document.querySelector(".second-home-carousel-top")
+      // let rightArrow = document.querySelector(".second-home-carousel-bottom")
+      for(let i=0; i<bigConts.length; i++) {
+        if(bigConts[i]) {
+          let leftArrow = bigConts[i].querySelector(".second-home-carousel-top")
+          let rightArrow = bigConts[i].querySelector(".second-home-carousel-bottom")
+          bigConts[i].addEventListener("mouseenter", () => {
+            leftArrow.style.opacity = "1"
+            rightArrow.style.opacity = "1"
+          })
+          bigConts[i].addEventListener("mouseleave", () => {
+            leftArrow.style.opacity = "0"
+            rightArrow.style.opacity = "0"
+          })
+        }
       }
+        // theCont.addEventListener("mouseenter", () => {
+        //   leftArrow.style.opacity = "1"
+        //   rightArrow.style.opacity = "1"
+        // })
+        // theCont.addEventListener("mouseleave", () => {
+        //   leftArrow.style.opacity = "0"
+        //   rightArrow.style.opacity = "0"
+        // })
     }
   </script>
 </div>
