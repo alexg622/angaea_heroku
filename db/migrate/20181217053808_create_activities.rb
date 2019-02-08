@@ -19,7 +19,7 @@ class CreateActivities < ActiveRecord::Migration[5.2]
      t.string :contact_email, null: false
      t.string :bi_weekly_recurring
      t.string :weekly_recurring
-     t.string :recurring_schedule
+     # t.string :recurring_schedule
      t.datetime :start_date, null: false
      t.datetime :end_date, null: false
 
