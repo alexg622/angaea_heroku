@@ -17,8 +17,8 @@
   </div>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      scrollRight()
-      scrollLeft()
+      // scrollRight()
+      // scrollLeft()
       showArrow()
     })
 
@@ -33,7 +33,7 @@
       }
     }
 
-    function scrollLeft(){
+    function scrollLeft(rightButto){
       let rightButton = document.querySelector(".second-home-carousel-top")
       let scrollCont = document.querySelector(".second-home-carousel-mid")
       if(rightButton) {
@@ -60,7 +60,23 @@
             leftArrow.style.opacity = "0"
             rightArrow.style.opacity = "0"
           })
+          let scrollCont = bigConts[i].querySelector(".second-home-carousel-mid")
+          if(leftArrow) {
+            leftArrow.addEventListener("click", e => {
+              console.log("here");
+              scrollCont.scrollLeft -= 1016.52
+            })
+          }
+
+          let scrollContLeft = bigConts[i].querySelector(".second-home-carousel-mid")
+          if(rightArrow) {
+            rightArrow.addEventListener("click", e => {
+              console.log("here");
+              scrollContLeft.scrollLeft += 1016.52
+            })
+          }
         }
+
       }
         // theCont.addEventListener("mouseenter", () => {
         //   leftArrow.style.opacity = "1"
