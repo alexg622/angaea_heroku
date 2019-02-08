@@ -1,0 +1,6 @@
+<%categories.each do |category|%>
+  <%if category.activities.length > 0%>
+    <%= render "layouts/carousel_slider", category:category %>
+  <%else%>
+  <%end%>
+<%end%>

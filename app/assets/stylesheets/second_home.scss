@@ -1,0 +1,220 @@
+.second-home-carousel-container {
+  // height: 600px;
+  width:90%;
+  display: flex;
+  margin-bottom: 25px;
+  flex-direction: column;
+  // align-items: center;
+
+}
+
+.second-home-carousel-container-top {
+  // height: 100px;
+  display:flex;
+  justify-content: space-between;
+  // width: 400px;
+}
+
+.second-home-carousel-container-bottom {
+  // height: 500px;
+  display:flex;
+  align-items: center;
+}
+
+.second-home-carousel-mid {
+  display:flex;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  // height: 500px;
+  width: 100%;
+  align-items: center;
+  height: 415px;
+  // max-height: 500px;
+  transition: 1s;
+}
+
+.manage-height {
+  width: 306px;
+  height: 226px;
+  min-width: 306px;
+  min-height: 226px;
+  max-height: 226px;
+  max-width: 306px;
+  // margin-right: 40px;
+}
+
+.second-home-image {
+  width: 306px;
+  height: 226px;
+  min-width: 306px;
+  min-height: 226px;
+  max-height: 226px;
+  max-width: 306px;
+  object-fit: cover;
+  // margin-right: 40px;
+}
+
+.second-div-card-holder {
+  width: 306px;
+  height: 386px;
+  display: flex;
+  flex-direction: column;
+}
+
+.second-home-bottom-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14px;
+  width: 306px;
+  height: 160px;
+}
+
+.second-home-carousel-top {
+  display: flex;
+  height: 75px;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  margin-right: 35px;
+  // margin-top: 193px;
+  // background: black;
+  border-radius: 50%;
+  color:lightblue;
+  width: 75px;
+  font-size: 50px;
+  font-weight: bold;
+  transition: 0.5s;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.second-home-left-pholder {
+  margin-right: 35px;
+  width: 75px;
+  opacity:0;
+}
+
+.second-home-right-pholder {
+  margin-left: 35px;
+  width: 75px;
+  opacity:0;
+}
+
+.carousel-title {
+  display:flex;
+  width: 100%;
+  margin-left: 8px;
+  font-weight: bold;
+  width: 100%;
+  font-size: 25px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.underline-it:hover{
+  text-decoration: underline;
+}
+
+.dont-center {
+  text-align: none !important;
+  display: flex;
+  justify-content: flex-start !important;
+}
+
+
+
+.second-home-carousel-bottom {
+  display: flex;
+  height: 75px;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  margin-left: 35px;
+  // margin-top: 193px;
+  // background: black;
+  border-radius: 50%;
+  color:lightblue;
+  width: 75px;
+  font-size: 50px;
+  font-weight: bold;
+  transition: 0.5s;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.second-home-card-holder {
+  height: 386px;
+  border-width:0 0 0 0;
+  margin-right: 25px;
+  // margin-top: 10px;
+  margin-bottom: 10px;
+  border-style:solid solid solid solid;
+  border-color:rgba(176, 169, 134, 1) rgba(176, 169, 134, 1) rgba(176, 169, 134, 1) rgba(176, 169, 134, 1);
+  border-radius:10px 10px 10px 10px;
+  box-shadow:3px 3px 10px 2px rgba(0, 0, 0, 0.3);
+  margin-left: 8px;
+  transition: 1s;
+  transition: box-shadow .75s, transform .75s;
+  &:hover{
+    transform: scale(1.05);
+    box-shadow: 5px 20px 30px rgba(0,0,0,0.2);
+  }
+}
+
+.second-home-card-name {
+  color: #577083;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin-top: 10px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.second-home-card-date {
+  width:70%;
+  display:flex;
+  // text-align: center;
+  align-content: center;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
+
+.second-home-card-location {
+  width:70%;
+  display:flex;
+  // text-align: center;
+  align-content: center;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
+
+.second-home-card-by {
+  width:70%;
+  display:flex;
+  // text-align: center;
+  align-content: center;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.marg-it-left {
+  margin-left: 5px;
+}
+
+.second-home-card-cost {
+  width:70%;
+  display:flex;
+  // text-align: center;
+  align-content: center;
+  justify-content: flex-start;
+  // font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 10px;
+}

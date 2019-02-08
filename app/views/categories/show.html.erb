@@ -1,4 +1,10 @@
 <div class="show-category-container">
   <div class="show-category-title"><%=@category.category_name.upcase%></div>
-  <%= render "layouts/users_show_activity_card_category", activities: @activities%>
+  <div class="category-activities-container">
+    <%if @category.activities.length > 0%>
+      <%@category.activities.each do |activity|%>
+        <%= render "layouts/home_activity_card", activity: activity, margTop: "give-marg-top"%>
+      <%end%>
+    <%end%>
+  </div>
 </div>

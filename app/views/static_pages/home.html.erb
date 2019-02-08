@@ -1,8 +1,1 @@
-<div class="home-container">
-  <%= render 'layouts/home_activities_card', classCategory: "dance-class", category: @dance, activities: @dance_activities%>
-  <%= render 'layouts/home_activities_card', classCategory: "music-class", category: @music, activities: @music_activities%>
-  <%= render 'layouts/home_activities_card', classCategory: "theatre-class", category: @theatre, activities: @theatre_activities%>
-  <%= render 'layouts/home_activities_card', classCategory: "comedy-class", category: @comedy, activities: @comedy_activities%>
-  <%= render 'layouts/home_activities_card', classCategory: "food-class", category: @food, activities: @food_activities%>
-  <%= render 'layouts/home_activities_card', classCategory: "art-class", category: @art, activities: @art_activities%>
-</div>
+<%=render "layouts/second_home", categories: @categories%>

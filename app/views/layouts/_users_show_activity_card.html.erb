@@ -19,7 +19,7 @@
         <div class="home-activities-card-container">
           <!-- <img class="home-top-activity-card" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS51NatASNQs7LKejInV8vrYzM1TVZ_4YAtNEIRXrBLaqyg5fQi" /> -->
           <%if activity.image.attached?%>
-          <%=image_tag(activity.image, class: "home-top-activity-card")%>
+            <%=image_tag(activity.image, class: "home-top-activity-card")%>
           <%end%>
           <div class="home-bottom-activity-card">
             <div class="home-activity-card-name"><%=activity.format_activity_name%></div>

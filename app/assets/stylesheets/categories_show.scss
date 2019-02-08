@@ -7,10 +7,24 @@
   width: 100%;
 }
 
+.give-marg-top {
+  margin-top: 25px;
+}
+
+
+
+.category-activities-container {
+  width: 80%;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 .show-category-title {
   display: flex;
+  width: 80%;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   font-size: 25px;
   font-weight: bold;
 

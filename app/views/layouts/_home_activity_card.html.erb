@@ -1,0 +1,11 @@
+<div class="second-home-card-holder <%=margTop%>">
+  <%if activity.image.attached?%>
+    <a class="manage-height" href="/activities/<%=activity.id%>"><img class="second-home-image" src="<%=url_for(activity.image)%>"/></a>
+  <%end%>
+  <div class="second-home-bottom-card">
+    <div class="second-home-card-name"><%=activity.activity_name.upcase%></div>
+    <div class="second-home-card-date"><%=activity.format_start_date.split(",")[1]%></div>
+    <div class="second-home-card-location"><%=activity.format_location.split(",")[0]%></div>
+    <div class="second-home-card-cost">$<%=activity.cost%></div>
+  </div>
+</div>
