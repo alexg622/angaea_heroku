@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2019_02_05_232758) do
     t.datetime "end_date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "bi_weekly_recurring"
     t.string "weekly_recurring"
     t.string "recurring_schedule"
     t.index ["user_id", "created_at"], name: "index_activities_on_user_id_and_created_at"
@@ -217,4 +218,3 @@ ActiveRecord::Schema.define(version: 2019_02_05_232758) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "activities", "users"
 end
-  
