@@ -23,7 +23,7 @@
 
 .second-home-carousel-mid {
   display:flex;
-  overflow-x: hidden;
+  overflow-x: auto;
   scroll-behavior: smooth;
   // height: 500px;
   width: 100%;
@@ -52,7 +52,7 @@
   max-width: 306px;
   object-fit: cover;
   // margin-right: 40px;
-  border-radius: 25px; 
+  border-radius: 25px;
 }
 
 .second-div-card-holder {
