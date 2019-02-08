@@ -52,6 +52,7 @@
   max-width: 306px;
   object-fit: cover;
   // margin-right: 40px;
+  border-radius: 25px; 
 }
 
 .second-div-card-holder {
@@ -157,6 +158,7 @@
   margin-left: 8px;
   transition: 1s;
   transition: box-shadow .75s, transform .75s;
+  border-radius: 25px;
   &:hover{
     transform: scale(1.05);
     box-shadow: 5px 20px 30px rgba(0,0,0,0.2);
