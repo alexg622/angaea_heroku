@@ -17,8 +17,9 @@ class CreateActivities < ActiveRecord::Migration[5.2]
      t.string :capacity, null: false
      t.string :contact_number
      t.string :contact_email, null: false
+     t.string :bi_weekly_recurring
      t.datetime :start_date, null: false
-     t.datetime :end_date, null: false 
+     t.datetime :end_date, null: false
 
 
      t.timestamps
