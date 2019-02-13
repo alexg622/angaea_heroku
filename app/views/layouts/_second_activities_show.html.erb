@@ -53,9 +53,9 @@
             <div class="attendees-card">
               <div class="attendee-name"><a class="make-me-pretty" href="/users/<%=attendee.id%>"><%=attendee.name%></a></div>
               <%if attendee.image.attached?%>
-              <div class="users-show-image-div"><%= image_tag(attendee.image, class: "users-show-image")%></div>
+                <div class="users-show-image-div"><%= image_tag(attendee.image, class: "users-show-image")%></div>
               <%else%>
-              <div class="users-show-image-div"><%= gravatar_for attendee, size: 100 %></div>
+                <div class="users-show-image-div"><%= gravatar_for attendee, class: "users-show-image" %></div>
               <%end%>
             </div>
           <%end%>
