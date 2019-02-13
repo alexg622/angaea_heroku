@@ -55,7 +55,7 @@
               <%if attendee.image.attached?%>
                 <div class="users-show-image-div"><%= image_tag(attendee.image, class: "users-show-image")%></div>
               <%else%>
-                <div class="users-show-image-div"><%= gravatar_for attendee, class: "users-show-image" %></div>
+                <div class="users-show-image-div"><%= gravatar_for attendee, id: "users-show-image" %></div>
               <%end%>
             </div>
           <%end%>
@@ -202,6 +202,18 @@
         });
       }
       // codeAddress()
+      function gravatarSize () {
+        console.log("here");
+        let gravatars = document.querySelectorAll(".gravatar")
+        if (gravatars.length > 0) {
+          for(let i=0; i<gravatars.length; i++) {
+            console.log(gravatars[i].className);
+            console.log(gravatars);
+            gravatars[i].className = "users-show-image"
+          }
+        }
+      }
+      gravatarSize()
     </script>
     <script async defer
 

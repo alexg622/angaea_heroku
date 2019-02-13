@@ -45,6 +45,17 @@
   width: 200px;
   margin-bottom: 10px;
 }
+#users-show-image {
+  display: flex;
+  justify-content: center;
+  max-height: 300px;
+  max-width: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  height: 200px;
+  width: 200px;
+  margin-bottom: 10px;
+}
 
 .gravatar {
   border-radius: 50%;
@@ -132,7 +143,7 @@
   &:hover {
     transform: scale(1.05);
     cursor:pointer;
-    color: white !important; 
+    color: white !important;
     box-shadow: 5px 20px 30px rgba(0,0,0,0.2);
   }
 }
