@@ -10,4 +10,8 @@ class Category < ApplicationRecord
     through: :tags,
     source: :activity
 
+  def Category.sort_categories
+    return [Category.find_by(category_name: "dance"), Category.find_by(category_name: "music"), Category.find_by(category_name: "comedy"), Category.find_by(category_name: "theatre"), Category.find_by(category_name: "food"), Category.find_by(category_name: "casual")]
+  end
+
 end
