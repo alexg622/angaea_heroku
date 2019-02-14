@@ -11,7 +11,7 @@ class Category < ApplicationRecord
     source: :activity
 
   def Category.sort_categories
-    return [Category.find_by(category_name: "dance"), Category.find_by(category_name: "music"), Category.find_by(category_name: "comedy"), Category.find_by(category_name: "theatre"), Category.find_by(category_name: "food"), Category.find_by(category_name: "casual")]
+    return [Category.find_by(category_name: "dance"), Category.find_by(category_name: "music"), Category.find_by(category_name: "comedy"), Category.find_by(category_name: "theatre"), Category.find_by(category_name: "food"), Category.find_by(category_name: "casual"), Category.find_by(category_name: "art")]
   end
 
   def activities_not_passed_date
@@ -34,7 +34,7 @@ class Category < ApplicationRecord
       for i in 0...the_activities.length-1
         if the_activities[i].start_date > the_activities[i+1].start_date
           the_activities[i], the_activities[i+1] = the_activities[i+1], the_activities[i]
-          not_sorted = true 
+          not_sorted = true
         end
       end
     end
