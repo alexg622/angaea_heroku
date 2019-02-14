@@ -1,8 +1,8 @@
 <div class="show-category-container">
   <div class="show-category-title"><%=@category.category_name.upcase%></div>
   <div class="category-activities-container">
-    <%if @category.activities.length > 0%>
-      <%@category.activities.each do |activity|%>
+    <%if @category.sort_valid_activities.length > 0%>
+      <%@category.sort_valid_activities.each do |activity|%>
         <%= render "layouts/home_activity_card", activity: activity, margTop: "give-marg-top"%>
       <%end%>
     <%end%>

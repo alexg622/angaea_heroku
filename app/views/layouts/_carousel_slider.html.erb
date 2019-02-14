@@ -5,7 +5,7 @@
   </div>
   <div class="second-home-carousel-container-bottom">
     <div class="second-home-carousel-mid">
-      <%category.activities.sort_by {|activity| DateTime.now}.each do |activity|%>
+      <%category.sort_valid_activities.each do |activity|%>
         <%if activity.image.attached?%>
           <%= render "layouts/home_activity_card", activity: activity, margTop: "" %>
         <%end%>
