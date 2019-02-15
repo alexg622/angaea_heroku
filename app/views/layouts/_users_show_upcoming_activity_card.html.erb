@@ -1,26 +1,7 @@
 <div class="users-upcoming-activities-container">
   <%if activities.any?%>
     <%activities.each do |activity|%>
-      <%= link_to(activity) do %>
-        <div class="home-activities-card-container">
-          <!-- <img class="home-top-activity-card" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS51NatASNQs7LKejInV8vrYzM1TVZ_4YAtNEIRXrBLaqyg5fQi" /> -->
-          <%if activity.image.attached?%>
-            <%= image_tag(activity.image, class: "home-top-activity-card")%>
-          <%end%>
-          <div class="home-bottom-activity-card">
-            <div class="home-activity-card-name"><%=activity.format_activity_name%></div>
-            <div class="home-activity-details-container">
-              <div class="home-top-margin home-activity-card-date"><%=activity.format_start_date%></div>
-              <div class="home-top-margin home-activity-card-location"><%=activity.format_full_location%></div>
-              <div class="home-top-margin activity-card-user">By <%=activity.user.name%></div>
-              <div class="home-top-margin home-activity-card-price">$<%=activity.cost%></div>
-            </div>
-            <%if current_user == activity.user%>
-              <a class="activity-edit-link" href="<%=edit_activity_path(activity)%>">edit</a>
-            <%end%>
-          </div>
-        </div>
-      <%end%>
+      <%=render "layouts/home_activity_card", activity: activity, margTop: "give-marg-top"%>
     <%end%>
     <%else%>
       <div class="no-data">No Upcoming Experiences</div>

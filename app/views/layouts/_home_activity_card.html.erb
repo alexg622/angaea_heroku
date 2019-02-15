@@ -6,6 +6,9 @@
     <div class="second-home-card-name"><%=activity.activity_name.upcase%></div>
     <div class="second-home-card-date"><%=activity.format_start_date.split(",")[1]%></div>
     <div class="second-home-card-location"><%=activity.format_location.split(",")[0]%></div>
-    <div class="second-home-card-cost">$<%=activity.cost%></div>
+    <div class="second-home-card-cost">By <a class="underline-username" href="/users/<%=activity.user.id%>"> <%=activity.user.name%></a></div>
+    <%if current_user && current_user == activity.user%>
+    <a class="activity-edit-link" href="<%=edit_activity_path(activity)%>">edit</a>
+    <%end%>
   </div>
 </div>
