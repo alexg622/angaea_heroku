@@ -127,7 +127,7 @@ def User.digest(string)
 
   def User.email_all_users
     i = 0
-    email = "https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to="
+    email = "https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&bcc="
     all_users = User.all
     if all_users.length > 0
       while i < all_users.length
@@ -137,7 +137,7 @@ def User.digest(string)
           else
             email += all_users[i].email + "%20"
           end
-        end 
+        end
         i += 1
       end
     end

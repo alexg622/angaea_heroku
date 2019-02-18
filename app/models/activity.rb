@@ -184,7 +184,7 @@ class Activity < ApplicationRecord
  end
 
  def email_attendees
-   email = "https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to="
+   email = "https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&bcc="
    if self.attendees.length > 0
      i=0
      while i < self.attendees.length
