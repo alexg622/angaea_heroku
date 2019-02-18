@@ -56,6 +56,7 @@ Rails.application.routes.draw do
   post '/users/:id/resetPassword', to: 'users#create_reset_password'
   get '/users/:id/resetPassword', to: 'users#reset_password'
   get '/users/resetPasswordNotification', to: "users#reset_password_notification"
+  get '/email_users', to: 'static_pages#email_users'
 
 resources :users
 resources :account_activations, only: [:edit]

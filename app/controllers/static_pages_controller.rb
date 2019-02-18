@@ -69,6 +69,14 @@ class StaticPagesController < ApplicationController
     @activities = @user.activities
   end
 
+  def email_users
+    if current_user.id == 20
+      @the_email = User.email_all_users
+    else
+      redirect_to root_path 
+    end
+  end
+
   private
   def user_params
     if params[:user]

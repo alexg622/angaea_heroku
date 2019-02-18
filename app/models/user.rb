@@ -125,6 +125,23 @@ def User.digest(string)
     emails
   end
 
+  def User.email_all_users
+    i = 0
+    email = "https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to="
+    all_users = User.all
+    if all_users.length > 0
+      while i < all_users.length
+        if i == all_users.length-1
+          email += all_users[i].email
+        else
+          email += all_users[i].email + "%20"
+        end
+        i += 1 
+      end
+    end
+    return email
+  end
+
   def create_activation_digest
     self.activation_token = User.new_token
     self.activation_digest = User.digest(activation_token)
