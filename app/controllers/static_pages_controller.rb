@@ -73,7 +73,7 @@ class StaticPagesController < ApplicationController
     if current_user.id == 20
       @the_email = User.email_all_users
     else
-      redirect_to root_path 
+      redirect_to root_path
     end
   end
 
