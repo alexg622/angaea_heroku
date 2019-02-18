@@ -11,7 +11,7 @@ task :update_recurring_weekly_activities => :environment do
       "6" =>  "Sat",
       "7" =>  "Sun"
     }
-    
+
     months = {
       "1"  =>  "Jan",
       "2"  =>  "Feb",
@@ -85,6 +85,7 @@ task :update_recurring_weekly_activities => :environment do
         new_activity.images.attach(image.blob)
       end
     end
+    activity.update_attributes(recurring_schedule: "")
   end
 end
 
@@ -174,5 +175,6 @@ task :update_recurring_bi_weekly_activities => :environment do
         new_activity.images.attach(image.blob)
       end
     end
+    activity.update_attributes(recurring_schedule: "") 
   end
 end
