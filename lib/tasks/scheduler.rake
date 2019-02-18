@@ -11,6 +11,7 @@ task :update_recurring_weekly_activities => :environment do
       "6" =>  "Sat",
       "7" =>  "Sun"
     }
+    
     months = {
       "1"  =>  "Jan",
       "2"  =>  "Feb",

@@ -161,7 +161,7 @@ class Activity < ApplicationRecord
 
  def format_full_location
    address_one = self.addressLN1
-   address_two = "" 
+   address_two = ""
    if self.addressLN2 != nil
      address_two = self.addressLN2 != "" ? " " + self.addressLN2 + "," : ""
    end
@@ -181,6 +181,22 @@ class Activity < ApplicationRecord
 
  def format_activity_name
    self.activity_name[-1] == "." ? self.activity_name[0...self.activity_name.length-1] : self.activity_name
+ end
+
+ def email_attendees
+   email = "https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to="
+   if self.attendees.length > 0
+     i=0
+     while i < self.attendees.length
+       if i === self.attendees.length-1
+         email += self.attendees[i].email
+       else
+         email += self.attendees[i].email + "%20"
+       end
+       i += 1
+     end
+   end
+   return email
  end
 
 end

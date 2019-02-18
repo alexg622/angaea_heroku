@@ -6,7 +6,12 @@
   <div class="second-dash-lower-container">
     <% activities.each do |activity| %>
       <div class="second-dash-activity-container">
-        <div class="second-dash-activity-name"><a class="a-tag-second-dash" href="<%=activity_path(activity)%>"><%=activity.activity_name%></a></div>
+        <div class="second-dash-activity-name">
+          <a class="a-tag-second-dash" href="<%=activity_path(activity)%>"><%=activity.activity_name%></a>
+          <%if activity.attendees.length > 0%>
+            <a class="a-tag-second-dash email-users" href="<%=activity.email_attendees%>" target="_blank">Email Attendees</a>
+          <%end%>
+        </div>
         <div class="second-dash-activity-scroll">
           <% if activity.attendees.length <= 0 %>
           <div class="second-dash-no-attendee-container">
