@@ -131,12 +131,14 @@ def User.digest(string)
     all_users = User.all
     if all_users.length > 0
       while i < all_users.length
-        if i == all_users.length-1
-          email += all_users[i].email
-        else
-          email += all_users[i].email + "%20"
-        end
-        i += 1 
+        if all_users[i].email_list == "yes"
+          if i == all_users.length-1
+            email += all_users[i].email
+          else
+            email += all_users[i].email + "%20"
+          end
+        end 
+        i += 1
       end
     end
     return email

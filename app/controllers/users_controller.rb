@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 
  def create
     if user_params[:agree_to_terms] == "true"
-       @user = User.new(city: user_params[:city], state: user_params[:state], address: user_params[:address], zipcode: user_params[:zipcode], account_activation_secret: SecureRandom.urlsafe_base64(16), agree_to_terms: "true", agree_to_privacy: "true", password: user_params[:password], password_confirmation: user_params[:password_confirmation], facebook: user_params[:facebook], instagram: user_params[:instagram], twitter: user_params[:twitter], pinterest: user_params[:pinterest], youtube: user_params[:youtube], about: user_params[:about], name: user_params[:name], email: user_params[:email], profession: user_params[:profession], skills: user_params[:skills])
+       @user = User.new(email_list: user_params[:email_list], city: user_params[:city], state: user_params[:state], address: user_params[:address], zipcode: user_params[:zipcode], account_activation_secret: SecureRandom.urlsafe_base64(16), agree_to_terms: "true", agree_to_privacy: "true", password: user_params[:password], password_confirmation: user_params[:password_confirmation], facebook: user_params[:facebook], instagram: user_params[:instagram], twitter: user_params[:twitter], pinterest: user_params[:pinterest], youtube: user_params[:youtube], about: user_params[:about], name: user_params[:name], email: user_params[:email], profession: user_params[:profession], skills: user_params[:skills])
        if @user.save
          AngaeaActivationMailer.send_activation_link(@user).deliver
          log_in @user
@@ -80,11 +80,11 @@ class UsersController < ApplicationController
      @user.image.attach(user_params[:image])
    end
 
-   if @user.image.attached? && @user.update_attributes(city: user_params[:city], state: user_params[:state], address: user_params[:address], zipcode: user_params[:zipcode], facebook: user_params[:facebook], instagram: user_params[:instagram], twitter: user_params[:twitter], pinterest: user_params[:pinterest], youtube: user_params[:youtube], about: user_params[:about], name: user_params[:name], email: user_params[:email], profession: user_params[:profession], skills: user_params[:skills])
+   if @user.image.attached? && @user.update_attributes(email_list: user_params[:email_list], city: user_params[:city], state: user_params[:state], address: user_params[:address], zipcode: user_params[:zipcode], facebook: user_params[:facebook], instagram: user_params[:instagram], twitter: user_params[:twitter], pinterest: user_params[:pinterest], youtube: user_params[:youtube], about: user_params[:about], name: user_params[:name], email: user_params[:email], profession: user_params[:profession], skills: user_params[:skills])
      flash[:success] = "Profile updated"
      redirect_to @user
    else
-     flash.now[:error] = @user.errors.full_messages.join(", ") + (@user.errors.full_messages.length == 0 ? "please attach an image and fill out your password" : ", please attach an image and fill out your password")
+     flash.now[:error] = @user.errors.full_messages.join(", ") + (@user.errors.full_messages.length == 0 ? "please attach an image and fill out your password" : ", please attach an image")
      render 'edit'
    end
  end
@@ -173,7 +173,7 @@ end
   private
 
     def user_params
-      params.require(:user).permit(:city, :state, :zipcode, :address, :new_password, :agree_to_terms, :facebook, :instagram, :youtube, :twitter, :pinterest, :image, :about, :name, :profession, :skills, :email, :password, :password_confirmation)
+      params.require(:user).permit(:city, :email_list, :state, :zipcode, :address, :new_password, :agree_to_terms, :facebook, :instagram, :youtube, :twitter, :pinterest, :image, :about, :name, :profession, :skills, :email, :password, :password_confirmation)
     end
         # Confirms a logged-in user.
    def logged_in_user
