@@ -117,6 +117,16 @@ def User.digest(string)
     emails
   end
 
+  def User.show_good_emails
+    emails = []
+    User.all.each do |user|
+      if user.email_list == "yes"
+        emails.push(user.name + ":" + " " + user.email)
+      end 
+    end
+    emails
+  end
+
   def User.show_professions
     emails = []
     User.all.each do |user|
