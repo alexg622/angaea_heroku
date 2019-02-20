@@ -1,7 +1,7 @@
 
 <div class="second-edit-activity-form-container">
   <h1>Update Your Service</h1>
-  <form enctype="multipart/form-data" class="second-create-activity-form-css" action="<%= activity_path(activity) %>" method="post">
+  <form enctype="multipart/form-data" class="second-create-activity-form-css date-class" action="<%= activity_path(activity) %>" method="post">
     <input class="" type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>"/>
     <input type="hidden" name="_method" value="patch">
 
@@ -24,13 +24,31 @@
           <option value="comedy">comedy</option>
         </select>
 
-      <label>
-        <select class="red-border second-activity-new-recurring" name="activity[recurring_schedule]">
-          <option value="">One-Time*</option>
-          <option value="weekly">Weekly</option>
-          <option value="bi-weekly">Bi-Weekly</option>
-        </select>
-      </label>
+        <%if @activity.recurring_schedule == "bi-weekly"%>
+          <label>
+            <select class="red-border second-activity-new-recurring" name="activity[recurring_schedule]">
+              <option value="bi-weekly">Bi-Weekly</option>
+              <option value="">One-Time</option>
+              <option value="weekly">Weekly</option>
+            </select>
+          </label>
+        <%elsif @activity.recurring_schedule == "weekly"%>
+          <label>
+            <select class="red-border second-activity-new-recurring" name="activity[recurring_schedule]">
+              <option value="weekly">Weekly</option>
+              <option value="bi-weekly">Bi-Weekly</option>
+              <option value="">One-Time</option>
+            </select>
+          </label>
+        <%else%>
+          <label>
+            <select class="red-border second-activity-new-recurring" name="activity[recurring_schedule]">
+              <option value="">One-Time</option>
+              <option value="weekly">Weekly</option>
+              <option value="bi-weekly">Bi-Weekly</option>
+            </select>
+          </label>
+      <%end%>
     </div>
 
     <div class="red-border second-activity-new-about-container">
@@ -47,7 +65,7 @@
 
     <div class="second-activity-new-date-container">
       <label>
-        <div class="second-activity-new-date-text-start">Start Date:*</div>
+        <div class="second-activity-new-date-text-start">Start Date: <%=@activity.format_start_date%>*</div>
         <div class="start-datetime start-datetime-input-container datetime-input-container red-border second-activity-new-date-start">
           <div class="start-datetime datetime-input datetime-day">00</div>
           <div class="start-datetime datetime-input datetime-divider">/</div>
@@ -63,7 +81,7 @@
       </label>
 
       <label>
-        <div class="second-activity-new-date-text-end">End Date:*</div>
+        <div class="second-activity-new-date-text-end">End Date: <%=@activity.format_end_date%>*</div>
         <div class="end-datetime end-datetime-input-container datetime-input-container red-border second-activity-new-date-end">
           <div class="end-datetime datetime-input end-datetime-day">00</div>
           <div class="end-datetime datetime-input end-datetime-divider">/</div>

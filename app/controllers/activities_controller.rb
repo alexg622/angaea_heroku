@@ -38,6 +38,7 @@ class ActivitiesController < ApplicationController
  end
 
   def update
+    p activity_params
     @activity = current_user.activities.find(params[:id])
     if activity_params[:image]
       @activity.image.attach(activity_params[:image])
@@ -47,21 +48,21 @@ class ActivitiesController < ApplicationController
       @activity.images.attach(activity_params[:images])
     end
 
-    if activity_params[:start_date] == "" && activity_params[:end_date] == ""
+    if (activity_params[:start_date] == "" || activity_params[:start_date] == "00 undefined 0000 undefined:00:00 UTC +00:00") && (activity_params[:end_date] == "" || activity_params[:end_date] == "00 undefined 0000 undefined:00:00 UTC +00:00")
       if @activity.image.attached? && @activity.update_attributes(recurring_schedule: activity_params[:recurring_schedule], capacity: activity_params[:capacity], contact_number: activity_params[:contact_number], contact_email: activity_params[:contact_email], activity_name: activity_params[:activity_name], content: activity_params[:content], additional_info: activity_params[:additional_info], user_id: current_user.id, start_date: @activity.start_date, end_date: @activity.end_date, addressLN1: activity_params[:addressLN1], addressLN2: activity_params[:addressLN2], city: activity_params[:city], state: activity_params[:state], cost: activity_params[:cost], zip: activity_params[:zip])
         redirect_to user_path(current_user)
       else
         flash.now[:error] = @activity.errors.full_messages.join(", ") + (@activity.errors.full_messages.length == 0 ? "please attach a picture" : ", please attach a picture")
         render "edit"
       end
-    elsif activity_params[:start_date] == ""
+    elsif activity_params[:start_date] == "" || activity_params[:start_date] == "00 undefined 0000 undefined:00:00 UTC +00:00"
       if @activity.image.attached? && @activity.update_attributes(recurring_schedule: activity_params[:recurring_schedule], capacity: activity_params[:capacity], contact_number: activity_params[:contact_number], contact_email: activity_params[:contact_email], activity_name: activity_params[:activity_name], content: activity_params[:content], additional_info: activity_params[:additional_info], user_id: current_user.id, start_date: @activity.start_date, end_date: activity_params[:end_date], picture: activity_params[:picture], addressLN1: activity_params[:addressLN1], addressLN2: activity_params[:addressLN2], city: activity_params[:city], state: activity_params[:state], cost: activity_params[:cost], zip: activity_params[:zip])
         redirect_to user_path(current_user)
       else
         flash.now[:error] = @activity.errors.full_messages.join(", ") + (@activity.errors.full_messages.length == 0 ? "please attach a picture" : ", please attach a picture")
         render "edit"
       end
-    elsif activity_params[:end_date] == ""
+    elsif activity_params[:end_date] == "" || activity_params[:end_date] == "00 undefined 0000 undefined:00:00 UTC +00:00"
       if @activity.image.attached? && @activity.update_attributes(recurring_schedule: activity_params[:recurring_schedule], capacity: activity_params[:capacity], contact_number: activity_params[:contact_number], contact_email: activity_params[:contact_email], activity_name: activity_params[:activity_name], content: activity_params[:content], additional_info: activity_params[:additional_info], user_id: current_user.id, start_date: activity_params[:start_date], end_date: @activity.end_date, picture: activity_params[:picture], addressLN1: activity_params[:addressLN1], addressLN2: activity_params[:addressLN2], city: activity_params[:city], state: activity_params[:state], cost: activity_params[:cost], zip: activity_params[:zip])
         redirect_to user_path(current_user)
       else
