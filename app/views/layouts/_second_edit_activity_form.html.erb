@@ -1,6 +1,6 @@
 
 <div class="second-edit-activity-form-container">
-  <h1>Update Your Service</h1>
+  <h1>Update Your Experience</h1>
   <form enctype="multipart/form-data" class="second-create-activity-form-css date-class" action="<%= activity_path(activity) %>" method="post">
     <input class="" type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>"/>
     <input type="hidden" name="_method" value="patch">
@@ -116,7 +116,7 @@
       <%= link_to "Delete Service" , activity_path(activity), method: :delete, class: "no-black"%>
     </div>
 
-    <input class="best-btn" type="submit" value="Update">
+    <input class="best-btn" type="submit" value="Update Experience">
   </form>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
