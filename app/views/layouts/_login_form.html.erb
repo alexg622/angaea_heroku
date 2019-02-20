@@ -1,5 +1,5 @@
 <div class="login-container-better">
-  <h1>Log In</h1>
+  <h1>Log Into My Portfolio</h1>
   <form class="login-form" action="<%= login_path %>" method="post">
     <input class="" type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>"/>
 
@@ -7,11 +7,11 @@
     <input class="login-inputs" type="password" name="session[password]" placeholder="PASSWORD" value="">
 
     <div width="100px">
-      <input class="best-btn" type="submit" value="Login">
+      <input class="best-btn" type="submit" value="Log in">
     </div>
     <div class="login-signup-container">
       <div class="login-signup-text">New to The Site?</div>
-      <a class="best-btn login-white" href=' <%=new_user_path%> '>Sign Up</a>
+      <a class="best-btn login-white" href=' <%=new_user_path%> '>Create My Portfolio</a>
       <div class="login-signup-center"></div>
     </div>
     <a class="reset-password" href="/users/resetPasswordLink">Reset Password</a>

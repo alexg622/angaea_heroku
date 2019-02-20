@@ -1,5 +1,5 @@
 <script>
-  if (location.protocol != 'https:' && location.href.split("/")[2] !== "localhost:3000")
+  if (location.protocol != 'https:' && location.href.split("/")[2] !== "localhost:3000" && location.protocol != 'https:' && location.href.split("/")[2] !== "localhost:3001")
   {
    location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
   }

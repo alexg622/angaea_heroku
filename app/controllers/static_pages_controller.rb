@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   before_action :agreements_signed?, only: [:home]
+  before_action :user_logged_in?, only: [:dashboard]
 
   def home
     # @activities = Activity.categorize_activities

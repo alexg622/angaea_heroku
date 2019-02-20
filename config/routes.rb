@@ -58,9 +58,15 @@ Rails.application.routes.draw do
   get '/users/resetPasswordNotification', to: "users#reset_password_notification"
   get '/email_users', to: 'static_pages#email_users'
 
-resources :users
-resources :account_activations, only: [:edit]
-resources :categories, only: [:show]
-resources :rentals, only: [:create, :edit, :update, :index, :destroy, :show]
-resources :activities, only: [:new, :show, :edit, :update, :create, :destroy]
+  resources :users
+  resources :account_activations, only: [:edit]
+  resources :categories, only: [:show]
+  resources :rentals, only: [:create, :edit, :update, :index, :destroy, :show]
+  resources :activities, only: [:new, :show, :edit, :update, :create, :destroy]
+
+  namespace :api, defaults: {format: :json} do
+    
+  end
+
+
 end

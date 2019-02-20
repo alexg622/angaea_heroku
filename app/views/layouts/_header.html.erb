@@ -4,9 +4,7 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Services", root_path %></li>
-        <% if current_user %>
-          <li><%= link_to "Dashboard", dashboard_path %></li>
-        <%end%>
+        <li><%= link_to "Dashboard", dashboard_path %></li>
         <li><%= link_to "About", "/about" %></li>
         <li><%= link_to "Contact", "/contact" %></li>
         <% if logged_in? %>
@@ -26,8 +24,7 @@
             </ul>
           </li>
         <% else %>
-          <li><%= link_to "Log in", login_path %></li>
-          <li><%= link_to "Sign up", signup_path%></li>
+          <li><%= link_to "My Portfolio", login_path %></li>
         <% end %>
       </ul>
     </nav>
