@@ -65,7 +65,7 @@ Rails.application.routes.draw do
   resources :activities, only: [:new, :show, :edit, :update, :create, :destroy]
 
   namespace :api, defaults: {format: :json} do
-    
+    resource :session, only: [:create, :destroy]
   end
 
 

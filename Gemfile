@@ -37,6 +37,9 @@ gem 'bcrypt',         '3.1.12'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'rails-ujs', '~> 0.1.0'
 
+# enable cors for frontend api calls
+gem 'rack-cors'
+
 # run tasks everyday
 gem 'whenever', :require => false
 # gem 'redis', '~> 4.0'

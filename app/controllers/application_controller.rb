@@ -1,9 +1,14 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  before_action :set_csrf_cookie
   include SessionsHelper
   helper_method :user_logged_in?, :agreements_signed?, :stripe?, :activity_no_stripe
 
   private
+
+  def set_csrf_cookie
+    cookies["CSRF-TOKEN"] = form_authenticity_token
+  end
 
     # Confirms a logged-in user.
   def agreements_signed?

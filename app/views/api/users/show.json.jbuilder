@@ -1,7 +1,7 @@
-# json.set! @user.id do
-#   json.extract! @user, :first_name, :last_name, :email, :id
-# end
-#
+json.set! @user.id do
+  json.extract! @user, :name, :email, :id
+end
+
 # if @event_tickets
 #   json.event_tickets do
 #     @event_tickets.each do |event_ticket|
