@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin-top: 15px;
 }
 
 .landing-first-container {
@@ -139,7 +140,29 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around; 
+  justify-content: space-around;
   width: 100%;
   height: 500px;
+  background: #283e74;
+}
+
+.landing-fourth-title {
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.landing-fourth-img {
+  max-height: 82px;
+  max-width: 82px;
+  min-height: 82px;
+  min-width: 82px;
+  object-fit: cover;
+}
+
+.landing-fourth-bottom {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
 }

@@ -4,7 +4,7 @@
   align-items: center;
   width: 100%;
   height: 50px;
-  border-top: 1px solid #eaeaea;
+  // border-top: 1px solid #eaeaea;
   color: #777777;
   background: black;
   // margin-top: 25px;
@@ -53,4 +53,29 @@
     color: white;
     text-decoration: none;
   }
+}
+
+.landing-fourth-bottom {
+  display:flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.landing-fourth-box {
+  width: 250px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+}
+
+.landing-fourth-box {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.marg-btn-25 {
+  margin-bottom: 25px;
 }
