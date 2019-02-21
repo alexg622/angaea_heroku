@@ -2,7 +2,8 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-top: 15px;
+  margin-top: 25px;
+  font-family:georgia,palatino,book antiqua,palatino linotype,serif !important;
 }
 
 .landing-first-container {
@@ -13,19 +14,19 @@
   align-items: center;
   color: white;
   background:#283e74;
-  height: 509px;
+  height: 600px;
 }
 
 .landing-title {
-  font-size: 25px;
-  font-weight: bold;
+  font-size: 40px;
+  // font-weight: bold;
   letter-spacing: 1px;
 }
 
 .landing-first-text {
   text-align: center;
-  width: 60%;
-  font-size: 16px;
+  width: 75%;
+  font-size: 26px;
   letter-spacing: 1px;
 }
 
@@ -56,11 +57,12 @@
 .landing-second-text {
   width: 75%;
   text-align: center;
+  font-size: 18px;
 }
 
 .landing-second-title {
-  font-size: 25px;
-  font-weight: bold;
+  font-size: 40px;
+  // font-weight: bold;
 }
 
 .landing-second-right {
@@ -112,13 +114,16 @@
 
 .landing-second-box-text {
   margin-top: 10px;
+  font-size: 18px;
   width: 91%;
   // display:flex;
 }
 
+
 .landing-second-box-text-bottom {
   margin-top: 10px;
   width: 84%;
+  font-size: 18px;
   // display:flex;
 }
 
@@ -148,8 +153,16 @@
 
 .landing-fourth-title {
   color: white;
-  font-size: 25px;
-  font-weight: bold;
+  font-size: 40px;
+  // font-weight: bold;
+}
+
+.landing-fourth-text {
+  font-size: 18px;
+}
+
+.landing-fourth-text-one {
+  font-size: 18px;
 }
 
 .landing-fourth-img {
