@@ -1,6 +1,9 @@
 class CategoriesController < ApplicationController
   helper_method :agreements_signed?
 
+  def index
+    @categories = Category.sort_categories
+  end
 
   def show
     # @category = Category.find(3)
