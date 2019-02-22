@@ -20,6 +20,9 @@ class Api::SessionsController < ApplicationController
   end
 
   def destroy
-    log_out if logged_in?
-  end
+   log_out if logged_in?
+   response = {success: "User logged out"}
+   render json: response, status: 200
+ end
+
 end

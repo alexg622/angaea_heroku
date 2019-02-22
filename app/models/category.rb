@@ -3,6 +3,11 @@ class Category < ApplicationRecord
   validates :category_name, uniqueness: true
 
   has_many :tags, dependent: :delete_all
+  has_many :service_tags, dependent: :delete_all
+
+  has_many :services,
+    through: :service_tags,
+    source: :service
 
   belongs_to :user
 

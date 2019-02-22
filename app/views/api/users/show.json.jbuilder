@@ -1,6 +1,15 @@
-json.set! @user.id do
-  json.extract! @user, :name, :email, :id
+json.currentUser do
+  json.extract! @user, :name, :email, :id, :profession, :skills, :about, :facebook,
+  :instagram, :youtube, :pinterest, :twitter, :agree_to_terms, :agree_to_privacy,
+  :routing_number, :account_number, :city, :state, :zipcode, :address, :account_activated,
+  :email_list
 end
+
+# if @jwt
+#   json.token do
+#     json.jwt @jwt
+#   end
+# end
 
 # if @event_tickets
 #   json.event_tickets do

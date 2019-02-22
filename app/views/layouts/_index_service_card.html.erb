@@ -1,0 +1,14 @@
+<div class="second-home-card-holder <%=margTop%>">
+  <%if service.image.attached?%>
+    <a class="manage-height" href="/services/<%=service.id%>"><img class="second-home-image" src="<%=url_for(service.image)%>"/></a>
+  <%end%>
+  <div class="second-home-bottom-card">
+    <div class="second-home-card-name"><%=service.service_name.upcase%></div>
+    <div class="second-home-card-date"><%=service.format_start_date.split(",")[1]%></div>
+    <div class="second-home-card-location"><%=service.format_location.split(",")[0]%></div>
+    <div class="second-home-card-cost">By <a class="underline-username" href="/users/<%=service.user.id%>"> <%=service.user.name%></a></div>
+    <%if current_user && current_user == service.user%>
+      <a class="activity-edit-link" href="<%=edit_service_path(service)%>">edit</a>
+    <%end%>
+  </div>
+</div>

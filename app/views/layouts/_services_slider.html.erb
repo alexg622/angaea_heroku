@@ -1,0 +1,88 @@
+<div class="second-home-carousel-container">
+  <div class="second-home-carousel-container-top">
+    <a class="carousel-title" href="/categories/<%=category.id%>/services"><div class="underline-it"><%=category.category_name.capitalize%></div></a>
+    <div class="second-home-right-pholder">></div>
+  </div>
+  <div class="second-home-carousel-container-bottom">
+    <div class="second-home-carousel-mid">
+      <%category.services.each do |service|%>
+        <%if service.image.attached?%>
+          <%= render "layouts/index_service_card", service: service, margTop: "" %>
+        <%end%>
+      <%end%>
+    </div>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // scrollRight()
+      // scrollLeft()
+      // showArrow()
+    })
+
+    function scrollRight(){
+      let rightButton = document.querySelector(".second-home-carousel-bottom")
+      let scrollCont = document.querySelector(".second-home-carousel-mid")
+      if(rightButton) {
+        rightButton.addEventListener("click", e => {
+          console.log("here");
+          scrollCont.scrollLeft += 1016.52
+        })
+      }
+    }
+
+    function scrollLeft(rightButto){
+      // let rightButton = document.querySelector(".second-home-carousel-top")
+      // let scrollCont = document.querySelector(".second-home-carousel-mid")
+      // if(rightButton) {
+      //   rightButton.addEventListener("click", e => {
+      //     console.log("here");
+      //     scrollCont.scrollLeft -= 1016.52
+      //   })
+      // }
+    }
+
+    function showArrow() {
+      let bigConts = Array.from(document.querySelectorAll(".second-home-carousel-container-bottom"))
+      // let leftArrow = document.querySelector(".second-home-carousel-top")
+      // let rightArrow = document.querySelector(".second-home-carousel-bottom")
+      for(let i=0; i<bigConts.length; i++) {
+        if(bigConts[i]) {
+          let leftArrow = bigConts[i].querySelector(".second-home-carousel-top")
+          let rightArrow = bigConts[i].querySelector(".second-home-carousel-bottom")
+          bigConts[i].addEventListener("mouseenter", () => {
+            leftArrow.style.opacity = "1"
+            rightArrow.style.opacity = "1"
+          })
+          bigConts[i].addEventListener("mouseleave", () => {
+            leftArrow.style.opacity = "0"
+            rightArrow.style.opacity = "0"
+          })
+          let scrollCont = bigConts[i].querySelector(".second-home-carousel-mid")
+          if(leftArrow) {
+            leftArrow.addEventListener("click", e => {
+              console.log("here");
+              scrollCont.scrollLeft -= 1016.52
+            })
+          }
+
+          let scrollContLeft = bigConts[i].querySelector(".second-home-carousel-mid")
+          if(rightArrow) {
+            rightArrow.addEventListener("click", e => {
+              console.log("here");
+              scrollContLeft.scrollLeft += 1016.52
+            })
+          }
+        }
+
+      }
+        // theCont.addEventListener("mouseenter", () => {
+        //   leftArrow.style.opacity = "1"
+        //   rightArrow.style.opacity = "1"
+        // })
+        // theCont.addEventListener("mouseleave", () => {
+        //   leftArrow.style.opacity = "0"
+        //   rightArrow.style.opacity = "0"
+        // })
+    }
+  </script>
+</div>

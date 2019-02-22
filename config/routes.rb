@@ -57,15 +57,21 @@ Rails.application.routes.draw do
   get '/users/:id/resetPassword', to: 'users#reset_password'
   get '/users/resetPasswordNotification', to: "users#reset_password_notification"
   get '/email_users', to: 'static_pages#email_users'
+  get '/categories/services', to: "categories#services_index"
+  get '/categories/:id/services', to: "categories#show_services"
 
   resources :users
   resources :account_activations, only: [:edit]
   resources :categories, only: [:index, :show]
   resources :rentals, only: [:create, :edit, :update, :index, :destroy, :show]
   resources :activities, only: [:new, :show, :edit, :update, :create, :destroy]
+  resources :services, only: [:new, :show, :edit, :update, :create, :destroy]
 
   namespace :api, defaults: {format: :json} do
     resource :session, only: [:create, :destroy]
+    resources :users, only: [:show]
+    resources :activities, only: [:index, :show]
+    resources :categories, only: [:index, :show]
   end
 
 

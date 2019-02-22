@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_18_195504) do
+ActiveRecord::Schema.define(version: 2019_02_22_065838) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -144,6 +144,53 @@ ActiveRecord::Schema.define(version: 2019_02_18_195504) do
     t.index ["user_id"], name: "index_rentals_on_user_id"
   end
 
+  create_table "service_tags", force: :cascade do |t|
+    t.integer "service_id"
+    t.integer "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_service_tags_on_category_id"
+    t.index ["service_id"], name: "index_service_tags_on_service_id"
+  end
+
+  create_table "service_tickets", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "service_id"
+    t.datetime "service_time"
+    t.string "day"
+    t.string "time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["service_id"], name: "index_service_tickets_on_service_id"
+    t.index ["user_id"], name: "index_service_tickets_on_user_id"
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.text "content", null: false
+    t.string "service_name", null: false
+    t.string "additional_info"
+    t.bigint "user_id"
+    t.string "cost", null: false
+    t.string "addressLN1", null: false
+    t.string "addressLN2"
+    t.string "city", null: false
+    t.string "state", null: false
+    t.string "zip", null: false
+    t.string "capacity"
+    t.string "contact_number"
+    t.string "contact_email"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.text "recurring_schedule"
+    t.string "travel_options"
+    t.string "availability_days", null: false
+    t.string "availability_hours", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "created_at"], name: "index_services_on_user_id_and_created_at"
+    t.index ["user_id"], name: "index_services_on_user_id"
+  end
+
   create_table "stripe_connects", force: :cascade do |t|
     t.integer "user_id"
     t.integer "account_id"
@@ -217,4 +264,5 @@ ActiveRecord::Schema.define(version: 2019_02_18_195504) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "activities", "users"
+  add_foreign_key "services", "users"
 end

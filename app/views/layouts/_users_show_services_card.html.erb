@@ -1,0 +1,24 @@
+<div class="users-activities-outer-container">
+  <%if current_user == @user%>
+    <div class="align-elements">
+      <%if current_user.stripe_connect == nil%>
+        <a class="create-activity-toggle" href="/stripe/<%=current_user.id%>/stripe_acct">Create an Experience</a>
+      <%elsif current_user.stripe_connect.account_number == nil%>
+        <a class="create-activity-toggle" href="/stripe/<%=current_user.id%>/stripe_acct">Create an Experience</a>
+      <%else%>
+        <div class="create-activity-toggle">Create an Experience</div>
+      <%end%>
+    </div>
+  <%else%>
+    <div class="space-create-activity-toggle"></div>
+  <%end%>
+  <div class="users-activities-container">
+    <%if services.any?%>
+      <%services.each do |service|%>
+        <%=render "layouts/index_service_card", service: service, margTop: "give-marg-top"%>
+      <%end%>
+    <%else%>
+      <div class="no-data">Create a Service</div>
+    <%end%>
+  </div>
+</div>

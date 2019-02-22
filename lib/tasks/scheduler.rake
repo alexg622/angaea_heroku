@@ -175,6 +175,6 @@ task :update_recurring_bi_weekly_activities => :environment do
         new_activity.images.attach(image.blob)
       end
     end
-    activity.update_attributes(recurring_schedule: "") 
+    activity.update_attributes(recurring_schedule: "")
   end
 end

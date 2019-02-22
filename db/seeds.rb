@@ -36,6 +36,9 @@ others = Category.create(category_name: "others", user_id: User.first.id)
 comedy = Category.create(category_name: "comedy", user_id: User.first.id)
 # categories = [art, music, dance]
 #
+newService = Service.create!(content: "really cool", service_name: "First service", additional_info: "more info", user_id: User.first.id, cost: "1000", addressLN1: "131 Lake Merced Hills", city: "SF", state: "CA", zip: "94132", capacity: "100", contact_number: "415-909-0164", contact_email: "mail@mail.com", start_date: DateTime.now, end_date: DateTime.now, recurring_schedule: "weekly", travel_options: "both", availability_days: "Every Day", availability_hours: "9-10am")
+serviceTag = ServiceTag.create(service_id: newService.id, category_id: art.id)
+serviceTicket = ServiceTicket.create(user_id: User.first.id, service_id: newService.id, service_time: DateTime.now, day: "Mon", time: "9:00PM")
 # 10.times do
 #  content = Faker::Lorem.sentence(5)
 #  User.all.each do |user|

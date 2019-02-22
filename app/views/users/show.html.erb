@@ -54,16 +54,18 @@
   </div>
   <div class="toggle-bar">
     <%if current_user && current_user.id == @user.id%>
-      <div class="left-toggle">Your Services</div>
+      <div class="left-toggle">Your Experiences</div>
     <%else%>
-      <div class="left-toggle"><%=@user.name%>'s Activities</div>
+      <div class="left-toggle"><%=@user.name%>'s Experiences</div>
     <%end%>
     <%if current_user && current_user.id == @user.id%>
-      <div class="upcoming-activities-toggle">Your Experiences</div>
+      <div class="upcoming-activities-toggle">Your Services</div>
     <%end%>
   </div>
   <!-- Activities card -->
   <%= render "layouts/users_show_activity_card", activities: @activities%>
+  <%= render "layouts/users_show_services_card", services: @services%>
+
   <%= render "layouts/users_show_upcoming_activity_card", activities: @upcoming_activities%>
   <!-- Ratings card -->
   <%= render "layouts/user_show_rental_card", rentals: @rentals%>

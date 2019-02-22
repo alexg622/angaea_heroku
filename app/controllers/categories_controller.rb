@@ -12,6 +12,15 @@ class CategoriesController < ApplicationController
     @activities = @category.activities.sort_by {|activity| DateTime.now}.reverse
   end
 
+  def services_index
+    @categories = Category.sort_categories
+  end
+
+  def show_services
+    @category = Category.find(params[:id])
+    @services = @category.services 
+  end
+
   def show_testing
     @category = Category.find(params[:id])
     # @category = Category.find(params[:id])

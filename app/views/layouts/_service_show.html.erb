@@ -1,0 +1,223 @@
+<div class="show-activities-outer-container">
+
+  <div class="second-show-activities-mid-container">
+    <div class="second-show-activities-mid-right-container"><%= render "layouts/second_resize_image", activity: service%></div>
+    <div class="second-show-activities-mid-left-container">
+      <div class="second-show-activities-header"><%=service.service_name%></div>
+      <div class="second-activities-show-by"><div class="boldy-by">By:</div> <a class="make-me-pretty" href="/users/<%=service.user.id%>"><%=service.user.name%></a></div>
+      <div class="second-activities-show-cost"><div class="boldy-by">Price:</div> $<%=service.cost%></div>
+      <div class="second-activities-show-about">ABOUT:</div>
+      <div class="second-activities-show-about-text"><%=service.content%></div>
+    </div>
+    <div class='social-share-buttons'>
+      <!-- <div class="share-with-friends">Share With Friends!</div> -->
+      <%= social_share_button_tag('Share Activity', :url => "https://www.angaea.com/activities/#{service.id}", desc: service.service_name) %>
+    </div>
+  </div>
+
+  <div class="second-show-activities-lower-mid-container">
+    <div class="second-show-activities-where-container">
+      <div class="second-show-activities-where-text">Venue</div>
+      <div class="second-show-activities-city"><%=@service.format_location%></div>
+    </div>
+    <div class="second-show-activities-when-container">
+      <div class="second-show-activities-when-text">Date & Time</div>
+      <div class="second-show-activities-date"><%=service.show_start_day%></div>
+      <div class="second-show-activities-time"><%=service.show_start_time%> to <%=service.show_end_time%></div>
+    </div>
+    <div class="second-show-activities-bring-container">
+      <div class="second-show-activitites-bring-text">Policy</div>
+      <div class="second-show-activitites-bring"><%=service.additional_info%></div>
+    </div>
+  </div>
+
+  <div class="google-maps-container <%=service.format_location%>">
+    <div id="map"></div>
+  </div>
+
+  <div class="second-show-activities-spots-container">
+    <%if (service.capacity.to_i - service.clients.length <= 0)%>
+      <div class="second-activity-ticket"> No Spots Left </div>
+    <%else%>
+      <div class="space-holder"></div>
+      <a href="/activities/<%=service.id%>/service_tickets/new"><div class="second-activity-ticket">Book</div></a>
+      <div class="second-show-activity-capacity"><%=service.capacity.to_i - service.clients.length%> Spots Left</div>
+    <%end%>
+  </div>
+
+  <%if service.clients.any?%>
+    <div class="attendees-container">
+        <div class="attendees-text">Clients</div>
+        <div class="attendees-cards-container">
+          <%service.clients.each do |client|%>
+            <div class="attendees-card">
+              <div class="attendee-name"><a class="make-me-pretty" href="/users/<%=client.id%>"><%=client.name%></a></div>
+              <%if client.image.attached?%>
+                <div class="users-show-image-div"><%= image_tag(client.image, class: "users-show-image")%></div>
+              <%else%>
+                <div class="users-show-image-div"><%= gravatar_for client, id: "users-show-image" %></div>
+              <%end%>
+            </div>
+          <%end%>
+        </div>
+    </div>
+  <%end%>
+
+  <%if service.images.length > 0%>
+    <% for i in 0...service.images.length %>
+      <%=image_tag(service.images[i], class: "activity-show-bottom-images")%>
+    <% end %>
+  <%end%>
+  <%if service.images.length > 0%>
+    <%=render "layouts/second_activities_show_carousel"%>
+  <%end%>
+  <%=render "layouts/second_largen_image"%>
+
+  <script>
+      let markers = []
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 12,
+          center: {lat: 37.8267, lng: -122.4233},
+          // styles: [
+          //   {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
+          //   {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
+          //   {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
+          //   {
+          //     featureType: 'administrative.locality',
+          //     elementType: 'labels.text.fill',
+          //     stylers: [{color: '#d59563'}]
+          //   },
+          //   {
+          //     featureType: 'poi',
+          //     elementType: 'labels.text.fill',
+          //     stylers: [{color: '#d59563'}]
+          //   },
+          //   {
+          //     featureType: 'poi.park',
+          //     elementType: 'geometry',
+          //     stylers: [{color: '#263c3f'}]
+          //   },
+          //   {
+          //     featureType: 'poi.park',
+          //     elementType: 'labels.text.fill',
+          //     stylers: [{color: '#6b9a76'}]
+          //   },
+          //   {
+          //     featureType: 'road',
+          //     elementType: 'geometry',
+          //     stylers: [{color: '#38414e'}]
+          //   },
+          //   {
+          //     featureType: 'road',
+          //     elementType: 'geometry.stroke',
+          //     stylers: [{color: '#212a37'}]
+          //   },
+          //   {
+          //     featureType: 'road',
+          //     elementType: 'labels.text.fill',
+          //     stylers: [{color: '#9ca5b3'}]
+          //   },
+          //   {
+          //     featureType: 'road.highway',
+          //     elementType: 'geometry',
+          //     stylers: [{color: '#746855'}]
+          //   },
+          //   {
+          //     featureType: 'road.highway',
+          //     elementType: 'geometry.stroke',
+          //     stylers: [{color: '#1f2835'}]
+          //   },
+          //   {
+          //     featureType: 'road.highway',
+          //     elementType: 'labels.text.fill',
+          //     stylers: [{color: '#f3d19c'}]
+          //   },
+          //   {
+          //     featureType: 'transit',
+          //     elementType: 'geometry',
+          //     stylers: [{color: '#2f3948'}]
+          //   },
+          //   {
+          //     featureType: 'transit.station',
+          //     elementType: 'labels.text.fill',
+          //     stylers: [{color: '#d59563'}]
+          //   },
+          //   {
+          //     featureType: 'water',
+          //     elementType: 'geometry',
+          //     stylers: [{color: '#17263c'}]
+          //   },
+          //   {
+          //     featureType: 'water',
+          //     elementType: 'labels.text.fill',
+          //     stylers: [{color: '#515c6d'}]
+          //   },
+          //   {
+          //     featureType: 'water',
+          //     elementType: 'labels.text.stroke',
+          //     stylers: [{color: '#17263c'}]
+          //   }
+          // ]
+        });
+        var geocoder = new google.maps.Geocoder();
+        geocodeAddress(geocoder, map);
+      }
+
+      function geocodeAddress(geocoder, resultsMap) {
+        let addressArr = document.querySelector(".google-maps-container").classList
+        let address = addressArr[1] + " " + addressArr[2] + " " + addressArr[3] + " " + addressArr[4]
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            resultsMap.setCenter(results[0].geometry.location);
+            // var marker = new google.maps.Marker({
+            //   map: resultsMap,
+            //   draggable: true,
+            //   animation: google.maps.Animation.DROP,
+            //   position: results[0].geometry.location
+            // });
+
+            var cityCircle = new google.maps.Circle({
+             strokeColor: '#FF0000',
+             strokeOpacity: 0.8,
+             strokeWeight: 2,
+             fillColor: '#FF0000',
+             fillOpacity: 0.35,
+             map: resultsMap,
+             center: results[0].geometry.location,
+             radius: 1000
+           })
+
+            // marker.addListener('click', toggleBounce);
+            // function toggleBounce() {
+            //   if (marker.getAnimation() !== null) {
+            //     marker.setAnimation(null);
+            //   } else {
+            //     marker.setAnimation(google.maps.Animation.BOUNCE);
+            //   }
+            // }
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
+      // codeAddress()
+      function gravatarSize () {
+        console.log("here");
+        let gravatars = document.querySelectorAll(".gravatar")
+        if (gravatars.length > 0) {
+          for(let i=0; i<gravatars.length; i++) {
+            console.log(gravatars[i].className);
+            console.log(gravatars);
+            gravatars[i].className = "users-show-image"
+          }
+        }
+      }
+      gravatarSize()
+    </script>
+    <script async defer
+
+      src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['MAPS_KEY']%>&callback=initMap">
+    </script>
+
+</div>

@@ -13,6 +13,9 @@ class UsersController < ApplicationController
  def show
    @user = User.find(params[:id])
    @activity = Activity.new
+   @service = Service.new
+   @services = @user.services
+   @upcoming_services = @user.upcoming_services
    @rental = Rental.new
    @rentals = @user.rentals
    @upcoming_activities = @user.user_events

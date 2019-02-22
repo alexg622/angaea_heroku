@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :activities, dependent: :delete_all
   has_many :cards, dependent: :delete_all
   has_one_attached :image
+  has_many :services, dependent: :delete_all
   # def thubmnail
     # exclamation forces resize
     # return self.image.variant(resize: "300x300").processed
@@ -35,6 +36,11 @@ class User < ApplicationRecord
     through: :activity_tickets,
     source: :activity
 
+  has_many :service_tickets, dependent: :delete_all
+
+  has_many :upcoming_services,
+    through: :service_tickets,
+    source: :service
 
 
   has_many :ratings, dependent: :delete_all
@@ -122,7 +128,7 @@ def User.digest(string)
     User.all.each do |user|
       if user.email_list == "yes"
         emails.push(user.name + ":" + " " + user.email)
-      end 
+      end
     end
     emails
   end

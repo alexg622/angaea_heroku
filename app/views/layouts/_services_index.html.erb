@@ -1,0 +1,6 @@
+<%categories.each do |category|%>
+  <%if category && category.services.length > 0%>
+    <%= render "layouts/services_slider", category:category %>
+  <%else%>
+  <%end%>
+<%end%>
