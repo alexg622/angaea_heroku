@@ -3,16 +3,29 @@
   word-spacing: 3px;
   letter-spacing: 1px;
 }
+
+.second-create-service-form-container h1 {
+  font-size: 25px;
+  word-spacing: 3px;
+  letter-spacing: 1px;
+}
 .second-create-activity-form-css {
   width: 80%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 25px; 
+  margin-bottom: 25px;
 }
 
 .second-create-activity-form-container {
+  width: 100%;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+.second-create-service-form-container {
   width: 100%;
   display: none;
   flex-direction: column;

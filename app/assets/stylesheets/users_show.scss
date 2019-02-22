@@ -147,6 +147,30 @@
     box-shadow: 5px 20px 30px rgba(0,0,0,0.2);
   }
 }
+
+.create-service-toggle {
+  display: flex;
+  align-self: flex-end;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+  width: 180px;
+  height: 50px;
+  color: white;
+  font-size: 16px;
+  background-color: black;
+  transition: 1s;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  border: solid white 0;
+  border-radius: 10px 10px 10px 10px;
+  border: solid white 0;
+  &:hover {
+    transform: scale(1.05);
+    cursor:pointer;
+    color: white !important;
+    box-shadow: 5px 20px 30px rgba(0,0,0,0.2);
+  }
+}
 .space-create-activity-toggle {
   // border-left: 1px solid black;
   display: flex;

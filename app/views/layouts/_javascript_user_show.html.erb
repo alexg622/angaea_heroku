@@ -9,6 +9,7 @@
     showRentedItems()
     showForm()
     changePrice()
+    showCreateServiceForm()
     // spotsPrice()
 
     // let img = document.querySelector(".users-show-image")
@@ -42,6 +43,7 @@
     let ratings = document.querySelector(".users-rentals-outer-container")
     let activities = document.querySelector(".users-activities-outer-container")
     let form = document.querySelector(".display-it-none")
+    let services = document.querySelector(".users-services-outer-container")
     let rentalForm = document.querySelector(".display-it-none-rental")
     // let toggleCreate = document.querySelector(".create-activity-toggle")
     // let toggleRental = document.querySelector(".create-rental-toggle")
@@ -55,7 +57,8 @@
           activities.style.display = "none"
           form.style.display = "none"
           rentalForm.style.display = "none"
-          upcomingActivities.style.display = "flex"
+          services.style.display = "flex"
+          // upcomingActivities.style.display = "none"
           rentedItems.style.display = "none"
         })
       }
@@ -70,7 +73,7 @@
     // let toggleCreate = document.querySelector(".create-activity-toggle")
     // let toggleRental = document.querySelector(".create-rental-toggle")
     let rentedItemsToggle = document.querySelector(".rented-items-toggle")
-    let upcomingActivities = document.querySelector(".users-upcoming-activities-container")
+    // let upcomingActivities = document.querySelector(".users-upcoming-activities-container")
     let rentedItems = document.querySelector(".users-rented-items-container")
     // if(toggleCreate && toggleRental) {
       if (rentedItemsToggle !== null) {
@@ -79,7 +82,7 @@
           activities.style.display = "none"
           form.style.display = "none"
           rentalForm.style.display = "none"
-          upcomingActivities.style.display = "none"
+          // upcomingActivities.style.display = "none"
           rentedItems.style.display = "flex"
         })
       }
@@ -90,16 +93,18 @@
     let ratings = document.querySelector(".users-rentals-outer-container")
     let activities = document.querySelector(".users-activities-outer-container")
     let form = document.querySelector(".display-it-none")
+    let services = document.querySelector(".users-services-outer-container")
     let rentalForm = document.querySelector(".display-it-none-rental")
-    let upcomingActivities = document.querySelector(".users-upcoming-activities-container")
+    // let upcomingActivities = document.querySelector(".users-upcoming-activities-container")
     let rentedItems = document.querySelector(".users-rented-items-container")
     if(document.querySelector(".left-toggle") !== null)
     document.querySelector(".left-toggle").addEventListener("click", (e) => {
       activities.style.display = "flex"
       form.style.display = "none"
       ratings.style.display = "none"
+      services.style.display = "none"
       rentalForm.style.display = "none"
-      upcomingActivities.style.display = "none"
+      // upcomingActivities.style.display = "none"
       rentedItems.style.display = "none"
     })
   }
@@ -107,19 +112,46 @@
   function showCreateActivityForm() {
     let ratings = document.querySelector(".users-rentals-outer-container")
     let activities = document.querySelector(".users-activities-outer-container")
+    let services = document.querySelector(".users-services-outer-container")
     let form = document.querySelector(".display-it-none")
     let rentalForm = document.querySelector(".display-it-none-rental")
     let toggleCreate = document.querySelector(".create-activity-toggle")
     // let toggleRental = document.querySelector(".create-rental-toggle")
-    let upcomingActivities = document.querySelector(".users-upcoming-activities-container")
+    // let upcomingActivities = document.querySelector(".users-upcoming-activities-container")
     let rentedItems = document.querySelector(".users-rented-items-container")
     if(toggleCreate) {
       toggleCreate.addEventListener("click", (e) => {
         ratings.style.display = "none"
         activities.style.display = "none"
         form.style.display = "flex"
+        services.style.display = "none"
         rentalForm.style.display = "none"
-        upcomingActivities.style.display = "none"
+        // upcomingActivities.style.display = "none"
+        rentedItems.style.display = "none"
+      })
+    }
+  }
+
+  function showCreateServiceForm() {
+    let ratings = document.querySelector(".users-rentals-outer-container")
+    let activities = document.querySelector(".users-activities-outer-container")
+    let services = document.querySelector(".users-services-outer-container")
+    let form = document.querySelector(".display-it-none")
+    let rentalForm = document.querySelector(".display-it-none-rental")
+    let toggleCreate = document.querySelector(".create-service-toggle")
+    let serviceForm = document.querySelector(".second-create-service-form-container")
+    // let toggleRental = document.querySelector(".create-rental-toggle")
+    // let upcomingActivities = document.querySelector(".users-upcoming-activities-container")
+    let rentedItems = document.querySelector(".users-rented-items-container")
+    if(toggleCreate) {
+      toggleCreate.addEventListener("click", (e) => {
+        ratings.style.display = "none"
+        activities.style.display = "none"
+        form.style.display = "none"
+        services.style.display = "none"
+        rentalForm.style.display = "none"
+        serviceForm.style.display = "flex"
+        // upcomingActivities.style.display = "none"
         rentedItems.style.display = "none"
       })
     }
@@ -128,11 +160,12 @@
   function showCreateRentalForm() {
     let ratings = document.querySelector(".users-rentals-outer-container")
     let activities = document.querySelector(".users-activities-outer-container")
+    let services = document.querySelector(".users-services-outer-container")
     let form = document.querySelector(".display-it-none")
     let rentalForm = document.querySelector(".display-it-none-rental")
     // let toggleCreate = document.querySelector(".create-activity-toggle")
     let toggleRental = document.querySelector(".create-rental-toggle")
-    let upcomingActivities = document.querySelector(".users-upcoming-activities-container")
+    // let upcomingActivities = document.querySelector(".users-upcoming-activities-container")
     let rentedItems = document.querySelector(".users-rented-items-container")
     if(toggleRental) {
       toggleRental.addEventListener("click", (e) => {
@@ -140,7 +173,8 @@
         activities.style.display = "none"
         form.style.display = "none"
         rentalForm.style.display = "flex"
-        upcomingActivities.style.display = "none"
+        services.style.display = "none"
+        // upcomingActivities.style.display = "none"
         rentedItems.style.display = "none"
       })
     }

@@ -204,6 +204,36 @@
   width: 100%;
 }
 
+.users-show-upcomingactivity-title {
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.users-services-outer-container {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.upcoming-service-title {
+  font-size: 25px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  font-weight: bold; 
+}
+
+.users-upcomingservices-outer-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
 .users-rentals-outer-container {
   display: none;
   flex-direction: column;

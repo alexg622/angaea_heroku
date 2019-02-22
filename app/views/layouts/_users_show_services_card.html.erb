@@ -1,12 +1,12 @@
-<div class="users-activities-outer-container">
+<div class="users-services-outer-container">
   <%if current_user == @user%>
     <div class="align-elements">
       <%if current_user.stripe_connect == nil%>
-        <a class="create-activity-toggle" href="/stripe/<%=current_user.id%>/stripe_acct">Create an Experience</a>
+        <a class="create-activity-toggle" href="/stripe/<%=current_user.id%>/stripe_acct">Create a Service</a>
       <%elsif current_user.stripe_connect.account_number == nil%>
-        <a class="create-activity-toggle" href="/stripe/<%=current_user.id%>/stripe_acct">Create an Experience</a>
+        <a class="create-activity-toggle" href="/stripe/<%=current_user.id%>/stripe_acct">Create a Service</a>
       <%else%>
-        <div class="create-activity-toggle">Create an Experience</div>
+        <div class="create-service-toggle">Create a Service</div>
       <%end%>
     </div>
   <%else%>
@@ -21,4 +21,6 @@
       <div class="no-data">Create a Service</div>
     <%end%>
   </div>
+  <div class="upcoming-service-title">Upcoming Services</div>
+  <%= render "layouts/users_show_upcoming_services_card", services: services %>
 </div>
