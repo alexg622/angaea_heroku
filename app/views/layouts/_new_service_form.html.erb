@@ -1,21 +1,21 @@
 <!-- display-it-none -->
 <div class="second-create-service-form-container">
   <h1>Create Your Service</h1>
-  <form enctype="multipart/form-data" class="date-class second-create-activity-form-css" action="<%= activities_path %>" method="post">
+  <form enctype="multipart/form-data" class="date-class second-create-activity-form-css" action="<%= services_path %>" method="post">
     <input class="" type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>"/>
 
 
     <div class="second-activity-new-personal-info-container">
-      <input class="red-border new-activity-name" type="text" name="activity[activity_name]" placeholder="NAME*" value="<%=service.service_name%>">
-      <input class="red-border new-activity-email" type="email" name="activity[contact_email]" placeholder="EMAIL*" value="<%=service.contact_email%>">
-      <input class="red-border new-activity-number" type="text" name="activity[contact_number]" placeholder="CONTACT NUMBER*" value="<%=service.contact_number%>">
+      <input class="red-border new-activity-name" type="text" name="service[service_name]" placeholder="NAME*" value="<%=service.service_name%>">
+      <input class="red-border new-activity-email" type="email" name="service[contact_email]" placeholder="EMAIL*" value="<%=service.contact_email%>">
+      <input class="red-border new-activity-number" type="text" name="service[contact_number]" placeholder="CONTACT NUMBER*" value="<%=service.contact_number%>">
     </div>
 
     <div class="second-activity-new-price-info-container">
-      <input class="red-border second-activity-new-cost" type="text" name="activity[cost]" placeholder="PRICE*" value="<%=service.cost%>">
-      <input class="red-border second-activity-new-capacity" type="text" name="activity[capacity]" placeholder="MAX ATTENDEES*" value="<%=service.capacity%>">
+      <input class="red-border second-activity-new-cost" type="text" name="service[cost]" placeholder="PRICE*" value="<%=service.cost%>">
+      <input class="red-border second-activity-new-capacity" type="text" name="service[capacity]" placeholder="MAX ATTENDEES*" value="<%=service.capacity%>">
 
-        <select class="red-border second-activity-new-category" name="activity[category]">
+        <select class="red-border second-activity-new-category" name="service[category]">
           <option value="art">art*</option>
           <option value="music">music</option>
           <option value="food">food</option>
@@ -25,7 +25,7 @@
         </select>
 
       <label>
-        <select class="red-border second-activity-new-recurring" name="activity[recurring_schedule]">
+        <select class="red-border second-activity-new-recurring" name="service[recurring_schedule]">
           <option value="">One-Time*</option>
           <option value="weekly">Weekly</option>
           <option value="bi-weekly">Bi-Weekly</option>
@@ -34,15 +34,15 @@
     </div>
 
     <div class="red-border second-activity-new-about-container">
-      <textarea class="second-activity-new-about" name="activity[content]" placeholder="ABOUT SERVICE*"><%=service.content%></textarea>
-      <textarea class="second-activity-new-bring" name="activity[additional_info]" placeholder="WHAT TO BRING*"><%=service.additional_info%></textarea>
+      <textarea class="second-activity-new-about" name="service[content]" placeholder="ABOUT SERVICE*"><%=service.content%></textarea>
+      <textarea class="second-activity-new-bring" name="service[additional_info]" placeholder="WHAT TO BRING*"><%=service.additional_info%></textarea>
     </div>
 
     <div class="red-border second-activity-new-location-container">
-      <input class="second-activity-new-location-address" type="text" name="activity[addressLN1]" placeholder="ADDRESS*" value="<%=service.addressLN1%>">
-      <input class="second-activity-new-location-city" type="text" name="activity[city]" placeholder="CITY*" value="<%=service.city%>">
-      <input class="second-activity-new-location-state" type="text" name="activity[state]" placeholder="STATE*" value="<%=service.state%>">
-      <input class="second-activity-new-location-zip" type="text" name="activity[zip]" placeholder="ZIPCODE*" value="<%=service.zip%>">
+      <input class="second-activity-new-location-address" type="text" name="service[addressLN1]" placeholder="ADDRESS*" value="<%=service.addressLN1%>">
+      <input class="second-activity-new-location-city" type="text" name="service[city]" placeholder="CITY*" value="<%=service.city%>">
+      <input class="second-activity-new-location-state" type="text" name="service[state]" placeholder="STATE*" value="<%=service.state%>">
+      <input class="second-activity-new-location-zip" type="text" name="service[zip]" placeholder="ZIPCODE*" value="<%=service.zip%>">
     </div>
 
     <div class="second-activity-new-date-container">
@@ -59,7 +59,7 @@
           <div class="start-datetime datetime-input datetime-minute">00</div>
           <div class="start-datetime datetime-input datetime-ampm">AM</div>
         </div>
-        <input class="start-datetime-value start-date" type="hidden" name="activity[start_date]" value="">
+        <input class="start-datetime-value start-date" type="hidden" name="service[start_date]" value="">
       </label>
 
       <label>
@@ -75,7 +75,7 @@
           <div class="end-datetime datetime-input end-datetime-minute">00</div>
           <div class="end-datetime datetime-input end-datetime-ampm">AM</div>
         </div>
-        <input class="end-datetime-value end-date" type="hidden" name="activity[end_date]" value="">
+        <input class="end-datetime-value end-date" type="hidden" name="service[end_date]" value="">
       </label>
     </div>
 
@@ -84,13 +84,13 @@
         <div class="bold-it">Main Image*:</div>
         <input readonly type="text" class="red-border second-activity-new-image" placeholder="UPLOAD IMAGE"/>
         <div class="max-file-size">Max File Size 15MB</div>
-        <input class="dont-display-image" type="file" type="hidden" name="activity[image]" value="" multiple="multiple">
+        <input class="dont-display-image" type="file" type="hidden" name="service[image]" value="" multiple="multiple">
       </div>
       <label>
         <div class="Make-normal">Other Images:</div>
         <input readonly type="text" class="red-border second-activity-new-images" placeholder="UPLOAD IMAGES"/>
         <div class="max-file-size">Max File Size 15MB</div>
-        <input class="dont-display-images" type="file" name="activity[images][]" value="" multiple="multiple">
+        <input class="dont-display-images" type="file" name="service[images][]" value="" multiple="multiple">
       </label>
     </div>
 
