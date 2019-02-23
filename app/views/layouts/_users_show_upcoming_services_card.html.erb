@@ -1,7 +1,7 @@
 <div class="users-upcomingservices-outer-container">
   <div class="users-activities-container">
-    <%if services.any?%>
-      <%services.each do |service|%>
+    <%if upcoming_services.any?%>
+      <%upcoming_services.each do |service|%>
         <%=render "layouts/index_service_card", service: service, margTop: "give-marg-top"%>
       <%end%>
     <%else%>

@@ -88,7 +88,7 @@
       </div>
       <label>
         <div class="Make-normal">Other Images:</div>
-        <input readonly type="text" class="red-border second-activity-new-images" placeholder="UPLOAD IMAGES"/>
+        <input readonly type="text" class="red-border activity-new-images" placeholder="UPLOAD IMAGES"/>
         <div class="max-file-size">Max File Size 15MB</div>
         <input class="dont-display-images" type="file" name="activity[images][]" value="" multiple="multiple">
       </label>
@@ -115,11 +115,10 @@
     }
 
     function isImgsAttached() {
-      let inputText = document.querySelector(".second-activity-new-images")
+      let inputText = document.querySelector(".activity-new-images")
       let inputImg = document.querySelector(".dont-display-images")
       inputImg.addEventListener("change", (e) => {
         if(inputImg.value !== "") {
-          console.log(e)
           inputText.placeholder = "Images Attached"
         }
       })
@@ -134,10 +133,10 @@
     }
 
     function clickFileImages() {
-      let inputText = document.querySelector(".second-activity-new-images")
+      let inputText = document.querySelector(".activity-new-images")
       let inputImg = document.querySelector(".dont-display-images")
         inputText.addEventListener("click", e => {
-        inputImg.click()
+          inputImg.click()
       })
     }
   </script>

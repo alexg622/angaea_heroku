@@ -1,19 +1,19 @@
 <!-- display-it-none -->
-<div class="second-create-service-form-container">
-  <h1>Create Your Service</h1>
-  <form enctype="multipart/form-data" class="date-class second-create-activity-form-css" action="<%= services_path %>" method="post">
+<div class="update-service-form-container">
+  <h1>Update your Service</h1>
+  <form enctype="multipart/form-data" class="date-class second-create-activity-form-css" action="/services/<%=@service.id%>" method="post">
     <input class="" type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>"/>
-
+    <input type="hidden" name="_method" value="patch">
 
     <div class="second-activity-new-personal-info-container">
-      <input class="red-border new-activity-name" type="text" name="service[service_name]" placeholder="NAME*" value="<%=service.service_name%>">
-      <input class="red-border new-activity-email" type="email" name="service[contact_email]" placeholder="EMAIL*" value="<%=service.contact_email%>">
-      <input class="red-border new-activity-number" type="text" name="service[contact_number]" placeholder="CONTACT NUMBER*" value="<%=service.contact_number%>">
+      <input class="red-border new-activity-name" type="text" name="service[service_name]" placeholder="NAME*" value="<%=@service.service_name%>">
+      <input class="red-border new-activity-email" type="email" name="service[contact_email]" placeholder="EMAIL*" value="<%=@service.contact_email%>">
+      <input class="red-border new-activity-number" type="text" name="service[contact_number]" placeholder="CONTACT NUMBER*" value="<%=@service.contact_number%>">
     </div>
 
     <div class="second-activity-new-price-info-container">
-      <input class="red-border second-activity-new-cost" type="text" name="service[cost]" placeholder="PRICE*" value="<%=service.cost%>">
-      <input class="red-border second-activity-new-capacity" type="text" name="service[capacity]" placeholder="MAX PEOPLE*" value="<%=service.capacity%>">
+      <input class="red-border second-activity-new-cost" type="text" name="service[cost]" placeholder="PRICE*" value="<%=@service.cost%>">
+      <input class="red-border second-activity-new-capacity" type="text" name="service[capacity]" placeholder="MAX PEOPLE*" value="<%=@service.capacity%>">
 
         <select class="red-border second-activity-new-category" name="service[category]">
           <option value="art">art*</option>
@@ -34,8 +34,8 @@
     </div>
 
     <div class="red-border second-activity-new-about-container">
-      <textarea class="second-activity-new-about" name="service[content]" placeholder="ABOUT THIS SERVICE*"><%=service.content%></textarea>
-      <textarea class="second-activity-new-bring" name="service[additional_info]" placeholder="REQUIRED ITEMS*"><%=service.additional_info%></textarea>
+      <textarea class="second-activity-new-about" name="service[content]" placeholder="ABOUT THIS SERVICE*"><%=@service.content%></textarea>
+      <textarea class="second-activity-new-bring" name="service[additional_info]" placeholder="REQUIRED ITEMS*"><%=@service.additional_info%></textarea>
     </div>
 
     <div class="radio-buttons">
@@ -54,10 +54,10 @@
     </div>
 
     <div class="red-border second-activity-new-location-container">
-      <input class="second-activity-new-location-address" type="text" name="service[addressLN1]" placeholder="ADDRESS*" value="<%=service.addressLN1%>">
-      <input class="second-activity-new-location-city" type="text" name="service[city]" placeholder="CITY*" value="<%=service.city%>">
-      <input class="second-activity-new-location-state" type="text" name="service[state]" placeholder="STATE*" value="<%=service.state%>">
-      <input class="second-activity-new-location-zip" type="text" name="service[zip]" placeholder="ZIPCODE*" value="<%=service.zip%>">
+      <input class="second-activity-new-location-address" type="text" name="service[addressLN1]" placeholder="ADDRESS*" value="<%=@service.addressLN1%>">
+      <input class="second-activity-new-location-city" type="text" name="service[city]" placeholder="CITY*" value="<%=@service.city%>">
+      <input class="second-activity-new-location-state" type="text" name="service[state]" placeholder="STATE*" value="<%=@service.state%>">
+      <input class="second-activity-new-location-zip" type="text" name="service[zip]" placeholder="ZIPCODE*" value="<%=@service.zip%>">
     </div>
 
     <div class="availablity-container">
@@ -80,7 +80,7 @@
       </div>
       <div class="availability-lower-container">
         <div class="new-form-availablity-text">Time:</div>
-        <input class="second-activity-new-location-zip" type="text" name="service[availability_hours]" placeholder="EX: 9AM TO 5PM" value="<%=service.availability_hours%>">
+        <input class="second-activity-new-location-zip" type="text" name="service[availability_hours]" placeholder="EX: 9AM TO 5PM" value="<%=@service.availability_hours%>">
       </div>
     </div>
 
@@ -99,7 +99,7 @@
       </label>
     </div>
 
-    <input class="best-btn" type="submit" value="Create Service">
+    <input class="best-btn" type="submit" value="Update Service">
   </form>
   <script>
     document.addEventListener("DOMContentLoaded", () => {

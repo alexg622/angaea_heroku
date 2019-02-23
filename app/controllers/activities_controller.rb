@@ -38,7 +38,6 @@ class ActivitiesController < ApplicationController
  end
 
   def update
-    p activity_params
     @activity = current_user.activities.find(params[:id])
     if activity_params[:image]
       @activity.image.attach(activity_params[:image])

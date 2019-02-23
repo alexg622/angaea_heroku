@@ -64,7 +64,7 @@
   </div>
   <!-- Activities card -->
   <%= render "layouts/users_show_activity_card", activities: @activities, upcoming_activities: @upcoming_activities%>
-  <%= render "layouts/users_show_services_card", services: @services%>
+  <%= render "layouts/users_show_services_card", services: @services, upcoming_services: @upcoming_services%>
   <%= render 'layouts/new_service_form', service: @service%>
   <!-- Ratings card -->
   <%= render "layouts/user_show_rental_card", rentals: @rentals%>
