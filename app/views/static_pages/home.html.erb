@@ -10,7 +10,11 @@
       in the best way possible, by letting your passion
       choose you.
     </div>
-    <a class="best-btn widen" href="/login">Login/Create my Portfolio</a>
+    <%if current_user%>
+      <a class="best-btn widen" href="/users/<%=current_user.id%>">Go To My Portfolio</a>
+    <%else%>
+      <a class="best-btn widen" href="/login">Login/Create my Portfolio</a>
+    <%end%>
   </div>
 
   <div class="landing-second-container">
