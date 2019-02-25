@@ -6,6 +6,12 @@ Rails.application.routes.draw do
     resources :activity_tickets, only: [:new, :create, :destroy]
   end
 
+  resources :services, only: [:show] do
+    resources :service_tickets, only: [:new, :create, :destroy] 
+  end
+
+
+
   resources :rentals, only: [:show] do
     resources :rental_tickets, only: [:new, :create, :destroy]
   end

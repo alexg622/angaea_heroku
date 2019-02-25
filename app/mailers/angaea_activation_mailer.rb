@@ -14,6 +14,13 @@ class AngaeaActivationMailer < ApplicationMailer
     mail(to: @user.email, subject: "You are good to go!")
   end
 
+  def send_service_info(user, service, service_ticket)
+    @service = service
+    @user = user
+    @service_ticket = service_ticket
+    mail(to: @user.email, subject: "You are good to go!")
+  end
+
   def test_scheduler(user)
     @user = user
     mail(to: @user.email, subject: "Test Email for Scheduler Angaea Team")

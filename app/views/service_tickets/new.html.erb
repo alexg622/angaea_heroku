@@ -1,0 +1,132 @@
+<div class="new-activity-ticket-container">
+
+  <%if @service.cost == "0"%>
+    <form enctype='multipart/form-data' class='new-user-form' action='<%=activity_activity_tickets_path(@service)%>' method='post'>
+      <input class='' type='hidden' name='authenticity_token' value='<%=form_authenticity_token%>'/>
+      <label class="amount">
+        <div class="transaction-fee">
+
+          <div class="activity-checkout-text">Checkout</div>
+
+          <div class="service-purchased-container">
+            <div class="activity-text">Service Purchasing:</div>
+            <div class="activity-name"><%=@service.activity_name%></div>
+            <div class="spots-place-holder"></div>
+          </div>
+
+          <div class="amount-per-spot-container">
+            <div class="amount-per-spot-text">Price:</div>
+            <span class="activity-cost">$<%=(@service.cost.to_f)%></span>
+            <div class="spots-place-holder"></div>
+          </div>
+
+          <div class="service-fee-container">
+            <div class="service-fee-text">Service Fee:</div>
+            <div class="service-fee">$<%=(@service.cost.to_f*0.1 * 10**2).round.to_f / 10**2%></div>
+            <div class="spots-place-holder"></div>
+          </div>
+
+          <div class="activity-total-container">
+            <div class="activity-total-text">Total:</div>
+            <span class="activity-total-cost">$<%=(@service.cost.to_f * 10**2).round.to_f / 10**2%></span>
+            <div class="spots-place-holder"></div>
+          </div>
+
+          <input class="update-spots" type="hidden" name="spot_count[spots]" value="1"/>
+          <input class="best-btn" type="submit" value="Pay">
+      </form>
+  <%else%>
+
+    <%= form_tag service_service_tickets_path(@service) do %>
+      <article class="stripe-help-btn">
+        <% if flash[:error].present? %>
+        <div id="error_explanation">
+          <p><%= flash[:error] %></p>
+        </div>
+        <% end %>
+        <label class="amount">
+          <div class="transaction-fee">
+
+            <div class="activity-checkout-text">Checkout</div>
+
+            <div class="service-purchased-container">
+              <div class="activity-text">Service Purchasing:</div>
+              <div class="activity-name"><%=@service.service_name%></div>
+              <div class="spots-place-holder"></div>
+            </div>
+
+
+            <div class="amount-per-spot-container">
+              <div class="amount-per-spot-text">Price:</div>
+              <span class="activity-cost">$<%=(@service.cost.to_f)%></span>
+              <div class="spots-place-holder"></div>
+            </div>
+
+            <div class="service-fee-container">
+              <div class="service-fee-text">Service Fee:</div>
+              <div class="service-fee">$<%=(@service.cost.to_f*0.1 * 10**2).round.to_f / 10**2%></div>
+              <div class="spots-place-holder"></div>
+            </div>
+
+            <div class="activity-total-container">
+              <div class="activity-total-text">Total:</div>
+              <span class="activity-total-cost">$<%=(@service.cost.to_f * 10**2).round.to_f / 10**2%></span>
+              <div class="spots-place-holder"></div>
+            </div>
+
+            <meta name="description" content="Free Web tutorials">
+          </div>
+        </label>
+      </article>
+
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+      data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+      data-image='https://github.com/alexg622/angaea_heroku/blob/master/app/assets/images/the_angaea_final_symbol.png?raw=true'
+      data-name='Angaea'
+      data-description='Purchase Spots'
+      ></script>
+      <input class="update-spots" type="hidden" name="spot_count[spots]" value="1"/>
+
+    <% end %>
+    <%end%>
+
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // updateCost()
+        // updateAmount()
+      })
+      let spotsInput = document.querySelector(".spots-select")
+      let servFeeDiv = document.querySelector(".service-fee")
+      let totalDiv = document.querySelector(".activity-total-cost")
+      let costDiv = document.querySelector(".activity-cost")
+      let originalCost = parseFloat(costDiv.innerText.split("$")[1])
+      let serviceFeeDiv = document.querySelector(".service-fee")
+      let stripeButton = document.querySelector(".stripe-button")
+      let newCost = parseFloat(originalCost*parseFloat(spotsInput.value))
+      let serviceFee = (newCost*.1)
+      let total = ((serviceFee+newCost)*100);
+      let updateSpotsInput = document.querySelector(".update-spots")
+
+      window.stripeButton = stripeButton
+
+      function updateCost() {
+        spotsInput.addEventListener("change", e => {
+          newCost = parseFloat(originalCost*parseFloat(spotsInput.value))
+          serviceFee = (newCost*.1)
+          total = (serviceFee + newCost)
+          costDiv.innerText = "$" + String(Math.round(newCost*100)/100)
+          serviceFeeDiv.innerText = "$" + String(Math.round(serviceFee*100)/100)
+          totalDiv.innerText = "$" + String(Math.round(total*100)/100)
+          total = String((Math.round(total*100 * 100)/100))
+          updateSpotsInput.value = spotsInput.value
+        })
+      }
+
+      function updateAmount() {
+        document.querySelector("button").addEventListener("click", e => {
+          stripeButton.dataset["amount"] = total
+        })
+      }
+    </script>
+</div>

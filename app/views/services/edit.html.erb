@@ -99,6 +99,10 @@
       </label>
     </div>
 
+    <div class="edit-delete-btn">
+      <%= link_to "Delete Service" , service_path(@service), method: :delete, class: "no-black"%>
+    </div>
+
     <input class="best-btn" type="submit" value="Update Service">
   </form>
   <script>
