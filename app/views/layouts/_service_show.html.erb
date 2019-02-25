@@ -17,11 +17,24 @@
 
   <div class="second-show-activities-lower-mid-container">
     <div class="second-show-activities-where-container">
-      <div class="second-show-activities-where-text">Venue</div>
-      <div class="second-show-activities-city"><%=@service.format_location%></div>
+      <div class="second-show-activities-where-text">Place</div>
+      <%if @service.travel_options == "both"%>
+        <div class="service-travel-options">Available to host or travel to your address</div>
+      <%elsif @service.travel_options == "travels"%>
+        <div class="service-travel-options">Will travel to your address</div>
+      <%elsif @service.travel_options == "hosts"%>
+        <div class="service-travel-options">Will host</div>
+      <%end%>
     </div>
     <div class="second-show-activities-when-container">
-      <div class="second-show-activities-when-text">Date & Time</div>
+      <div class="second-show-activities-where-text">Availability</div>
+      <%if @service.availability_days == "both"%>
+        <div class="service-travel-options">Available Weekends and Weekdays</div>
+      <%elsif @service.availability_days == "weekends"%>
+        <div class="service-travel-options">Weekends Only</div>
+      <%elsif @service.availability_days == "weekdays"%>
+        <div class="service-travel-options">Weekdays Only</div>
+      <%end%>
     </div>
     <div class="second-show-activities-bring-container">
       <div class="second-show-activitites-bring-text">Policy</div>
