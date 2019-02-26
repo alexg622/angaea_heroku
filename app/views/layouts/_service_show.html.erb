@@ -56,24 +56,6 @@
     <%end%>
   </div>
 
-  <%if service.clients.any?%>
-    <div class="attendees-container">
-        <div class="attendees-text">Clients</div>
-        <div class="attendees-cards-container">
-          <%service.clients.each do |client|%>
-            <div class="attendees-card">
-              <div class="attendee-name"><a class="make-me-pretty" href="/users/<%=client.id%>"><%=client.name%></a></div>
-              <%if client.image.attached?%>
-                <div class="users-show-image-div"><%= image_tag(client.image, class: "users-show-image")%></div>
-              <%else%>
-                <div class="users-show-image-div"><%= gravatar_for client, id: "users-show-image" %></div>
-              <%end%>
-            </div>
-          <%end%>
-        </div>
-    </div>
-  <%end%>
-
   <%if service.images.length > 0%>
     <% for i in 0...service.images.length %>
       <%=image_tag(service.images[i], class: "activity-show-bottom-images")%>
