@@ -21,14 +21,12 @@
       <div class="no-data">Create an Experience</div>
     <%end%>
   </div>
-  <div class="users-show-upcomingactivity-title">Upcoming Experiences</div>
-  <div class="users-activities-container">
-    <%if upcoming_activities.any?%>
+  <%if upcoming_activities.any?%>
+    <div class="users-show-upcomingactivity-title">Upcoming Experiences</div>
+    <div class="users-activities-container">
       <%upcoming_activities.each do |activity|%>
         <%=render "layouts/home_activity_card", activity: activity, margTop: "give-marg-top"%>
       <%end%>
-    <%else%>
-      <div class="no-data">No Upcoming Experiences</div>
     <%end%>
   </div>
 </div>

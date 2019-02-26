@@ -17,10 +17,7 @@
       <%services.each do |service|%>
         <%=render "layouts/index_service_card", service: service, margTop: "give-marg-top"%>
       <%end%>
-    <%else%>
-      <div class="no-data">Create a Service</div>
     <%end%>
   </div>
-  <div class="upcoming-service-title">Upcoming Services</div>
   <%= render "layouts/users_show_upcoming_services_card", upcoming_services: upcoming_services %>
 </div>
