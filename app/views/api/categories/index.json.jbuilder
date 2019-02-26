@@ -1,4 +1,3 @@
-
 json.array! @categories do |category|
    json.category_name category.category_name
    json.id category.id
@@ -8,6 +7,7 @@ json.array! @categories do |category|
      json.content activity.content
      json.additional_info activity.additional_info
      json.cost activity.cost
+     json.id activity.id
      json.user do
        json.name activity.user.name
        json.id activity.user.id
