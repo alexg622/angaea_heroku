@@ -1,10 +1,10 @@
-App.activity_messages = App.cable.subscriptions.create('MessagesChannel', {
+App.messages = App.cable.subscriptions.create('MessagesChannel', {
   received: function(data) {
     document.querySelector("#messages").classList.remove('hidden')
-    return document.querySelector('#messages').innerHTML += this.renderMessage(data);
+    return document.querySelector('#messages').innerHTML = this.renderMessage(data) + document.querySelector('#messages').innerHTML;
   },
 
   renderMessage: function(data) {
-    return "<p> <b>" + data.user + ": </b>" + data.message + "</p>";
+    return "<div><p class='message-p'><a class='change-href user-activity-message' href=''>" + data.user + ":</a>" + " " + data.message + "</p><div style='display:none;' class='get-user-id'>"+ data.user_id +"</div></div>";
   }
 });

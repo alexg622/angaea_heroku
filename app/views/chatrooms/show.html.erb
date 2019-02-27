@@ -1,17 +1,29 @@
-<div class="row col-md-8 col-md-offset-2">
-  <h1><%= @chatroom.topic %></h1>
+<div class="chatroom-container">
+  <a class="chatroom-title" href="/activities/<%=@chatroom.activity.id%>"><%= @chatroom.topic %></a>
 
-<div class="panel panel-default">
+<div class="messages-container">
   <% if @chatroom.messages.any? %>
-    <div class="panel-body" id="messages">
+    <div class="messages-partial-container" id="messages">
       <%= render partial: 'messages/message', collection: @chatroom.messages%>
     </div>
   <%else%>
-    <div class="panel-body hidden" id="messages">
+    <div class="no-messages" id="messages">
     </div>
   <%end%>
 </div>
 
 
   <%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @chatroom}%>
+  <script>
+    let btn = document.querySelector(".best-btn")
+    if(btn) {
+      btn.addEventListener("click", () => {
+        setTimeout(() => {
+          let aTag = document.querySelector(".change-href")
+          let value = "/users/" + document.querySelector(".get-user-id").innerText
+          aTag.href = value
+        }, 2000)
+      })
+    }
+  </script>
 </div>

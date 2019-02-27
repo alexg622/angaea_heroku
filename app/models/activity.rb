@@ -206,4 +206,12 @@ has_many :messages,
    return email
  end
 
+ def is_attending
+   attendees = {}
+   self.attendees.each do |attendee|
+     attendees[attendee.id] = true
+   end
+   return attendees
+ end
+
 end

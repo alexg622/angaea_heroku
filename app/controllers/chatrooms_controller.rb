@@ -1,6 +1,5 @@
-
 class ChatroomsController < ApplicationController
-
+  before_action :user_logged_in?, only: [:show]
   def index
     @chatroom = Chatroom.new
     @chatrooms = Chatroom.all
