@@ -8,7 +8,10 @@
     <div class="second-home-card-location"><%=activity.format_location.split(",")[0]%></div>
     <div class="second-home-card-cost">By <a class="underline-username" href="/users/<%=activity.user.id%>"> <%=activity.user.name%></a></div>
     <%if current_user && current_user == activity.user%>
-    <a class="activity-edit-link" href="<%=edit_activity_path(activity)%>">edit</a>
+      <a class="activity-edit-link" href="<%=edit_activity_path(activity)%>">edit</a>
+    <%end%>
+    <%if activity.is_attending[current_user.id]%>
+      <a class="activity-edit-link" href="/activities/<%=activity.id%>/chatrooms/<%=activity.chatroom.id%>">Chatroom</a>
     <%end%>
   </div>
 </div>
