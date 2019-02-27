@@ -42,7 +42,7 @@ gem 'rack-cors'
 
 # run tasks everyday
 gem 'whenever', :require => false
-# gem 'redis', '~> 4.0'
+gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
