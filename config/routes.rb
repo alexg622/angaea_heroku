@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
 
   resources :services, only: [:show] do
-    resources :service_tickets, only: [:new, :create, :destroy] 
+    resources :service_tickets, only: [:new, :create, :destroy]
   end
 
 
@@ -79,6 +79,11 @@ Rails.application.routes.draw do
     resources :activities, only: [:index, :show]
     resources :categories, only: [:index, :show]
   end
+
+  mount ActionCable.server => '/cable'
+
+  resources :chatrooms, param: :slug
+  resources :messages
 
 
 end

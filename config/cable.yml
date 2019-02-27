@@ -6,5 +6,5 @@ test:
 
 production:
   adapter: redis
-  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
+  url: <%= ENV.fetch("REDIS_URL") { "redis://redistogo:0b7831e6b3a11f4f4531a8219d432051@dory.redistogo.com:10048/" } %>
   channel_prefix: angaea_heroku_production

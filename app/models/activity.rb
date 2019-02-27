@@ -6,7 +6,13 @@ class Activity < ApplicationRecord
  has_one_attached :image
 
  has_many :activity_tickets, dependent: :delete_all
- 
+
+has_one :chatroom
+
+has_many :messages,
+  through: :chatroom,
+  source: :chatroom
+
  has_many :attendees,
   through: :activity_tickets,
   source: :user

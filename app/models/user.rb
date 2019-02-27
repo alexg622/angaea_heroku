@@ -8,6 +8,9 @@ class User < ApplicationRecord
   has_many :cards, dependent: :delete_all
   has_one_attached :image
   has_many :services, dependent: :delete_all
+
+  has_many :messages
+  has_many :chatrooms, through: :messages
   # def thubmnail
     # exclamation forces resize
     # return self.image.variant(resize: "300x300").processed
