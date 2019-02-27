@@ -10,6 +10,7 @@
     startDatetimeValue()
     startDateinsertValue()
     startDateresetListeners()
+    console.log("here");
   })
 
   const startDateMonths = {
@@ -797,6 +798,7 @@
   function startDateinsertValue() {
     if(startDateForm !== null) {
       startDateForm.addEventListener("submit", e => {
+        console.log("here");
         startDatetimeInput.value = startDatetimeValue()
         // if (startDatetimeInput.value === "00 undefined 0000 undefined:00:00 UTC +00:00") startDatetimeInput.value = "17 Jan 2019 20:00:51 UTC +00:00"
       })

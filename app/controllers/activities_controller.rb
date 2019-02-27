@@ -10,6 +10,7 @@ class ActivitiesController < ApplicationController
     @category = Category.find_by(category_name: activity_params[:category])
     if @activity.save #&& @user.update_attributes(account_number: user_params[:account_number], routing_number: user_params[:routing_number])
       # @activity.image.attach(activity_params[:image])
+      @chatroom = Chatroom.create(activity_id: @activity.id, topic: @activity.activity_name)
       if activity_params[:image]
         @activity.image.attach(activity_params[:image])
       end

@@ -11,6 +11,7 @@
           <%if activity.attendees.length > 0%>
             <a class="a-tag-second-dash email-users" href="<%=activity.email_attendees%>" target="_blank">Email Attendees</a>
           <%end%>
+          <a class="dashboard-chatroom" href="/activities/<%=activity.id%>/chatrooms/<%=activity.chatroom.id%>">Chatroom</a>
         </div>
         <div class="second-dash-activity-scroll">
           <% if activity.attendees.length <= 0 %>

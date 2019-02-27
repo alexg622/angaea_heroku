@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :charges
   resources :activities, only: [:show] do
     resources :activity_tickets, only: [:new, :create, :destroy]
+    resources :chatrooms 
   end
 
   resources :services, only: [:show] do
