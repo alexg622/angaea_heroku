@@ -8,10 +8,10 @@
       <div class="second-dash-activity-container">
         <div class="second-dash-activity-name">
           <a class="a-tag-second-dash" href="<%=activity_path(activity)%>"><%=activity.activity_name%></a>
+          <a class="a-tag-second-dash email-users" href="/activities/<%=activity.id%>/chatrooms/<%=activity.chatroom.id%>"><img class="envelope-dash" src="https://github.com/alexg622/angaea_heroku/blob/master/app/assets/images/close-envelope.png?raw=true"/></a>
           <%if activity.attendees.length > 0%>
             <a class="a-tag-second-dash email-users" href="<%=activity.email_attendees%>" target="_blank">Email Attendees</a>
           <%end%>
-          <a class="a-tag-second-dash email-users" href="/activities/<%=activity.id%>/chatrooms/<%=activity.chatroom.id%>">Chatroom</a>
         </div>
         <div class="second-dash-activity-scroll">
           <% if activity.attendees.length <= 0 %>
