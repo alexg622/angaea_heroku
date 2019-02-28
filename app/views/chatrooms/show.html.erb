@@ -16,8 +16,10 @@
   <%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @chatroom}%>
   <script>
     let btn = document.querySelector(".best-btn")
+    let textArea = document.querySelector(".activity-message-form")
     if(btn) {
       btn.addEventListener("click", () => {
+        textArea.value = ""
         setTimeout(() => {
           let aTag = document.querySelector(".change-href")
           let value = "/users/" + document.querySelector(".get-user-id").innerText
@@ -25,5 +27,7 @@
         }, 2000)
       })
     }
+
+
   </script>
 </div>
