@@ -19,7 +19,10 @@
     let textArea = document.querySelector(".activity-message-form")
     if(btn) {
       btn.addEventListener("click", () => {
-        textArea.value = ""
+        setTimeout(() => {
+          let text = textArea.value
+          textArea.value = ""
+        })
         setTimeout(() => {
           let aTag = document.querySelector(".change-href")
           let value = "/users/" + document.querySelector(".get-user-id").innerText
