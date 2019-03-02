@@ -1,7 +1,7 @@
 App.messages = App.cable.subscriptions.create('MessagesChannel', {
   received: function(data) {
-    document.querySelector("#messages").classList.remove('hidden')
-    return document.querySelector('#messages').innerHTML = this.renderMessage(data) + document.querySelector('#messages').innerHTML;
+    // document.querySelector("#messages").classList.remove('hidden')
+    return document.querySelector('.lower-right-container').innerHTML = this.renderMessage(data) + document.querySelector('.lower-right-container').innerHTML;
   },
 
   renderMessage: function(data) {

@@ -41,6 +41,7 @@ class ChatroomsController < ApplicationController
   def show
     @chatroom = Chatroom.find(params[:id])
     @message = Message.new
+    render json: {activityName: @chatroom.activity.activity_name, chatroom: @chatroom, messages: @chatroom.returnMessages}
   end
 
   private

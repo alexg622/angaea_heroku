@@ -1,6 +1,6 @@
 <%= form_for message, class: "activity-form-container", remote: true, authenticity_token: true do |f| %>
   <%= f.text_area :content, class: "activity-message-form", data: {textarea: "message"} %>
 
-  <%= f.hidden_field :chatroom_id, value: chatroom.id %>
+  <%= f.hidden_field :chatroom_id, class: "chatroom-id", value: "" %>
   <%= f.submit "send", class: "best-btn margin-bottom", style: "", data: {send: "message"} %>
 <% end %>

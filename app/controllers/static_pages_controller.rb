@@ -68,6 +68,8 @@ class StaticPagesController < ApplicationController
   def dashboard
     @user = current_user
     @activities = @user.activities
+    # @chatroom = Chatroom.find(params[:id])
+    @message = Message.new
   end
 
   def email_users

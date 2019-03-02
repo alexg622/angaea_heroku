@@ -17,4 +17,18 @@ class Chatroom < ApplicationRecord
   def sanitize
     self.topic = self.topic.strip
   end
+
+  def returnMessages
+    messages = []
+    self.messages.each do |message|
+      mHash = {
+        user: message.user.name,
+        content: message.content,
+        messageId: message.id,
+        userId: message.user.id
+      }
+      messages.push(mHash)
+    end
+    return messages
+  end
 end
