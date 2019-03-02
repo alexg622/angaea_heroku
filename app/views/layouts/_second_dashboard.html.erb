@@ -143,14 +143,12 @@
       let ids = document.querySelector(".chat-activity-name").classList
       let activityId = ids[1]
       let chatId = ids[2]
-      console.log(activityId, chatId);
       $.ajax({
         type: "GET",
         url: "activities/" + activityId + "/chatrooms/" + chatId
       }).then(res => {
         let chatInputId = document.querySelector(".chatroom-id")
         chatInputId.value = res.chatroom.id
-        console.log(titleContainer);
         titleContainer.innerText = res.activityName
         if(res.messages.length > 0) {
           res.messages.forEach(message => {

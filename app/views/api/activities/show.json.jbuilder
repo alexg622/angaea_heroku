@@ -44,8 +44,9 @@ json.activity do
   json.attendees(@activity.attendees) do |attendee|
     json.name attendee.name
     json.id attendee.id
+    json.imageAttached attendee.image.attached?
     if attendee.image.attached?
-      json.image url_for(attendee.image)
+      json.imageUrl "http://localhost:3001" + url_for(attendee.image)
     end
   end
   json.category do
