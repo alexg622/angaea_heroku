@@ -8,7 +8,11 @@ class User < ApplicationRecord
   has_one_attached :image
   has_many :services, dependent: :delete_all
   has_many :messages
-  has_many :appointments, dependent: :delete_all
+  # has_many :appointments, dependent: :delete_all
+  has_many :appointments,
+    through: :services,
+    source: :appointments
+    
   has_many :chatrooms, through: :messages
   has_many :appointment_tickets, dependent: :delete_all
   has_many :upcoming_appointments,

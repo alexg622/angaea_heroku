@@ -1,122 +1,49 @@
 <div class="cal-a <%=month%>-cal-container <%=month_title%>-display-none">
-  <div class="<%=month%>-cal-upper-container">
-    <div class="<%=month%>-cal-left-clicker"><</div>
-    <div class="<%=month%>-cal-title"><%=month_title%></div>
-    <div class="<%=month%>-cal-right-clicker">></div>
-  </div>
   <div class="<%=month%>-cal-lower-container">
-    <div class="<%=month%>-week-container">
-      <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/1"><div class="<%=month%>-day-one-container <%=month%>-1">
-        <div class="<%=month%>-day">Sun</div>
-        <div class="<%=month%>-day-number">1</div>
+    <div class="<%=month%>-cal-upper-container">
+      <a><div class="day-container-top">
+        <div class="cal-clicker-holder"></div>
+        <div class="month-clicker-container"></div>
+        <div class="cal-clicker-holder cal-marg-bottom">Sun</div>
       </div></a>
-      <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/2"><div class="<%=month%>-day-container <%=month%>-2">
-        <div class="<%=month%>-day">Mon</div>
-        <div class="<%=month%>-day-number">2</div>
+      <a><div class="day-container-top">
+        <div class="cal-clicker-holder"></div>
+        <div class="month-clicker-container"></div>
+        <div class="cal-clicker-holder cal-marg-bottom">Mon</div>
       </div></a>
-      <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/3"><div class="<%=month%>-day-container <%=month%>-3">
-        <div class="<%=month%>-day">Tue</div>
-        <div class="<%=month%>-day-number">3</div>
+      <a><div class="day-container-top">
+        <div class="cal-clicker-holder"></div>
+        <div class="month-clicker-container"></div>
+        <div class="cal-clicker-holder cal-marg-bottom">Tue</div>
       </div></a>
-      <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/4"><div class="<%=month%>-day-container <%=month%>-4">
-        <div class="<%=month%>-day">Wed</div>
-        <div class="<%=month%>-day-number">4</div>
+      <a><div class="day-container-top">
+        <div class="cal-clicker-holder cal-marg-bottom"></div>
+        <div class="month-clicker-container">
+          <div class="<%=month%>-cal-left-clicker"><</div>
+          <div class="<%=month%>-cal-title"><%=month_title%></div>
+          <div class="<%=month%>-cal-right-clicker">></div>
+        </div>
+        <div class="cal-clicker-holder cal-marg-bottom">Wed</div>
       </div></a>
-      <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/5"><div class="<%=month%>-day-container <%=month%>-5">
-        <div class="<%=month%>-day">Thu</div>
-        <div class="<%=month%>-day-number">5</div>
+      <a><div class="day-container-top">
+        <div class="cal-clicker-holder"></div>
+        <div class="month-clicker-container"></div>
+        <div class="cal-clicker-holder cal-marg-bottom">Thu</div>
       </div></a>
-      <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/6"><div class="<%=month%>-day-container <%=month%>-6">
-        <div class="<%=month%>-day">Fri</div>
-        <div class="<%=month%>-day-number">6</div>
+      <a><div class="day-container-top">
+        <div class="cal-clicker-holder"></div>
+        <div class="month-clicker-container"></div>
+        <div class="cal-clicker-holder cal-marg-bottom">Fri</div>
       </div></a>
-      <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/7"><div class="<%=month%>-day-container <%=month%>-7">
-        <div class="<%=month%>-day">Sat</div>
-        <div class="<%=month%>-day-number">7</div>
-      </div></a>
-    </div>
-    <div class="<%=month%>-week-container">
-      <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/8"><div class="<%=month%>-day-one-container <%=month%>-8">
-        <div class="<%=month%>-day-number">8</div>
-      </div></a>
-      <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/9"><div class="<%=month%>-day-container <%=month%>-9">
-        <div class="<%=month%>-day-number">9</div>
-      </div></a>
-      <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/10"><div class="<%=month%>-day-container <%=month%>-10">
-        <div class="<%=month%>-day-number">10</div>
-      </div></a>
-      <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/11"><div class="<%=month%>-day-container <%=month%>-11">
-        <div class="<%=month%>-day-number">11</div>
-      </div></a>
-      <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/12"><div class="<%=month%>-day-container <%=month%>-12">
-        <div class="<%=month%>-day-number">12</div>
-      </div></a>
-      <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/13"><div class="<%=month%>-day-container <%=month%>-13">
-        <div class="<%=month%>-day-number">13</div>
-      </div></a>
-      <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/14"><div class="<%=month%>-day-container <%=month%>-14">
-        <div class="<%=month%>-day-number">14</div>
+      <a><div class="day-container-top">
+        <div class="cal-clicker-holder"></div>
+        <div class="month-clicker-container"></div>
+        <div class="cal-clicker-holder cal-marg-bottom">Sat</div>
       </div></a>
     </div>
-    <div class="<%=month%>-week-container">
-      <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/15"><div class="<%=month%>-day-one-container <%=month%>-15">
-        <div class="<%=month%>-day-number">15</div>
-      </div></a>
-      <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/16"><div class="<%=month%>-day-container <%=month%>-16">
-        <div class="<%=month%>-day-number">16</div>
-      </div></a>
-      <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/17"><div class="<%=month%>-day-container <%=month%>-17">
-        <div class="<%=month%>-day-number">17</div>
-      </div></a>
-      <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/18"><div class="<%=month%>-day-container <%=month%>-18">
-        <div class="<%=month%>-day-number">18</div>
-      </div></a>
-      <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/19"><div class="<%=month%>-day-container <%=month%>-19">
-        <div class="<%=month%>-day-number">19</div>
-      </div></a>
-      <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/20"><div class="<%=month%>-day-container <%=month%>-20">
-        <div class="<%=month%>-day-number">20</div>
-      </div></a>
-      <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/21"><div class="<%=month%>-day-container <%=month%>-21">
-        <div class="<%=month%>-day-number">21</div>
-      </div></a>
-    </div>
-    <%if month_title == "February"%>
-      <div class="<%=month%>-last-week-container">
-    <%else%>
+    <%if start_day == "fri"%>
       <div class="<%=month%>-week-container">
-    <%end%>
-      <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/22"><div class="<%=month%>-day-one-container <%=month%>-22">
-        <div class="<%=month%>-day-number">22</div>
-      </div></a>
-      <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/23"><div class="<%=month%>-day-container <%=month%>-23">
-        <div class="<%=month%>-day-number">23</div>
-      </div></a>
-      <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/24"><div class="<%=month%>-day-container <%=month%>-24">
-        <div class="<%=month%>-day-number">24</div>
-      </div></a>
-      <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/25"><div class="<%=month%>-day-container <%=month%>-25">
-        <div class="<%=month%>-day-number">25</div>
-      </div></a>
-      <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/26"><div class="<%=month%>-day-container <%=month%>-26">
-        <div class="<%=month%>-day-number">26</div>
-      </div></a>
-      <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/27"><div class="<%=month%>-day-container <%=month%>-27">
-        <div class="<%=month%>-day-number">27</div>
-      </div></a>
-      <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/28"><div class="<%=month%>-day-container <%=month%>-28">
-        <div class="<%=month%>-day-number">28</div>
-      </div></a>
-    </div>
-    <%if month_title == "April" || month_title == "June" || month_title == "September" || month_title == "November"%>
-      <div class="<%=month%>-last-week-container">
-        <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/29"><div class="<%=month%>-day-one-container <%=month%>-29">
-          <div class="<%=month%>-day-number">29</div>
-        </div></a>
-        <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/30"><div class="<%=month%>-day-container <%=month%>-30">
-          <div class="<%=month%>-day-number">30</div>
-        </div></a>
-        <a><div class="<%=month%>-day-container">
+        <a><div class="<%=month%>-day-one-container">
           <div class="<%=month%>-day-number"></div>
         </div></a>
         <a><div class="<%=month%>-day-container">
@@ -130,32 +57,159 @@
         </div></a>
         <a><div class="<%=month%>-day-container">
           <div class="<%=month%>-day-number"></div>
+        </div></a>
+        <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/1"><div class="<%=month%>-day-container <%=month%>-1">
+          <div class="<%=month%>-day-number">1</div>
+        </div></a>
+        <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/2"><div class="<%=month%>-day-container <%=month%>-2">
+          <div class="<%=month%>-day-number">2</div>
         </div></a>
       </div>
-    <%elsif month_title == "January" || month_title == "March" || month_title == "May" || month_title == "July" || month_title == "August" || month_title == "October" || month_title == "December"%>
-      <div class="<%=month%>-last-week-container">
-        <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/29"><div class="<%=month%>-day-one-container <%=month%>-29">
-          <div class="<%=month%>-day-number">29</div>
+      <div class="<%=month%>-week-container">
+        <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/3"><div class="<%=month%>-day-one-container <%=month%>-3">
+          <div class="<%=month%>-day-number">3</div>
         </div></a>
-        <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/30"><div class="<%=month%>-day-container <%=month%>-30">
-          <div class="<%=month%>-day-number">30</div>
+        <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/4"><div class="<%=month%>-day-container <%=month%>-4">
+          <div class="<%=month%>-day-number">4</div>
         </div></a>
-        <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/31"><div class="<%=month%>-day-container <%=month%>-31">
-          <div class="<%=month%>-day-number">31</div>
+        <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/5"><div class="<%=month%>-day-container <%=month%>-5">
+          <div class="<%=month%>-day-number">5</div>
         </div></a>
-        <a><div class="<%=month%>-day-container">
-          <div class="<%=month%>-day-number"></div>
+        <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/6"><div class="<%=month%>-day-container <%=month%>-6">
+          <div class="<%=month%>-day-number">6</div>
         </div></a>
-        <a><div class="<%=month%>-day-container">
-          <div class="<%=month%>-day-number"></div>
+        <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/7"><div class="<%=month%>-day-container <%=month%>-7">
+          <div class="<%=month%>-day-number">7</div>
         </div></a>
-        <a><div class="<%=month%>-day-container">
-          <div class="<%=month%>-day-number"></div>
+        <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/8"><div class="<%=month%>-day-container <%=month%>-8">
+          <div class="<%=month%>-day-number">8</div>
         </div></a>
-        <a><div class="<%=month%>-day-container">
-          <div class="<%=month%>-day-number"></div>
+        <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/9"><div class="<%=month%>-day-container <%=month%>-9">
+          <div class="<%=month%>-day-number">9</div>
         </div></a>
       </div>
+      <div class="<%=month%>-week-container">
+        <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/10"><div class="<%=month%>-day-one-container <%=month%>-10">
+          <div class="<%=month%>-day-number">10</div>
+        </div></a>
+        <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/11"><div class="<%=month%>-day-container <%=month%>-11">
+          <div class="<%=month%>-day-number">11</div>
+        </div></a>
+        <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/12"><div class="<%=month%>-day-container <%=month%>-12">
+          <div class="<%=month%>-day-number">12</div>
+        </div></a>
+        <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/13"><div class="<%=month%>-day-container <%=month%>-13">
+          <div class="<%=month%>-day-number">13</div>
+        </div></a>
+        <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/14"><div class="<%=month%>-day-container <%=month%>-14">
+          <div class="<%=month%>-day-number">14</div>
+        </div></a>
+        <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/15"><div class="<%=month%>-day-container <%=month%>-15">
+          <div class="<%=month%>-day-number">15</div>
+        </div></a>
+        <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/16"><div class="<%=month%>-day-container <%=month%>-16">
+          <div class="<%=month%>-day-number">16</div>
+        </div></a>
+      </div>
+      <%if month_title == "February"%>
+        <div class="<%=month%>-last-week-container">
+      <%else%>
+        <div class="<%=month%>-week-container">
+      <%end%>
+        <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/17"><div class="<%=month%>-day-one-container <%=month%>-17">
+          <div class="<%=month%>-day-number">17</div>
+        </div></a>
+        <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/18"><div class="<%=month%>-day-container <%=month%>-18">
+          <div class="<%=month%>-day-number">18</div>
+        </div></a>
+        <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/19"><div class="<%=month%>-day-container <%=month%>-19">
+          <div class="<%=month%>-day-number">19</div>
+        </div></a>
+        <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/20"><div class="<%=month%>-day-container <%=month%>-20">
+          <div class="<%=month%>-day-number">20</div>
+        </div></a>
+        <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/21"><div class="<%=month%>-day-container <%=month%>-21">
+          <div class="<%=month%>-day-number">21</div>
+        </div></a>
+        <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/22"><div class="<%=month%>-day-container <%=month%>-22">
+          <div class="<%=month%>-day-number">22</div>
+        </div></a>
+        <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/23"><div class="<%=month%>-day-container <%=month%>-23">
+          <div class="<%=month%>-day-number">23</div>
+        </div></a>
+      </div>
+      <%if month_title == "April" || month_title == "June" || month_title == "September" || month_title == "November"%>
+        <div class="<%=month%>-last-week-container">
+          <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/29"><div class="<%=month%>-day-one-container <%=month%>-29">
+            <div class="<%=month%>-day-number">29</div>
+          </div></a>
+          <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/30"><div class="<%=month%>-day-container <%=month%>-30">
+            <div class="<%=month%>-day-number">30</div>
+          </div></a>
+          <a><div class="<%=month%>-day-container">
+            <div class="<%=month%>-day-number"></div>
+          </div></a>
+          <a><div class="<%=month%>-day-container">
+            <div class="<%=month%>-day-number"></div>
+          </div></a>
+          <a><div class="<%=month%>-day-container">
+            <div class="<%=month%>-day-number"></div>
+          </div></a>
+          <a><div class="<%=month%>-day-container">
+            <div class="<%=month%>-day-number"></div>
+          </div></a>
+          <a><div class="<%=month%>-day-container">
+            <div class="<%=month%>-day-number"></div>
+          </div></a>
+        </div>
+      <%elsif month_title == "January" || month_title == "March" || month_title == "May" || month_title == "July" || month_title == "August" || month_title == "October" || month_title == "December"%>
+        <div class="<%=month%>-week-container">
+          <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/24"><div class="<%=month%>-day-one-container <%=month%>-24">
+            <div class="<%=month%>-day-number">24</div>
+          </div></a>
+          <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/25"><div class="<%=month%>-day-container <%=month%>-25">
+            <div class="<%=month%>-day-number">25</div>
+          </div></a>
+          <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/26"><div class="<%=month%>-day-container <%=month%>-26">
+            <div class="<%=month%>-day-number">26</div>
+          </div></a>
+          <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/27"><div class="<%=month%>-day-container <%=month%>-27">
+            <div class="<%=month%>-day-number">27</div>
+          </div></a>
+          <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/28"><div class="<%=month%>-day-container <%=month%>-28">
+            <div class="<%=month%>-day-number">28</div>
+          </div></a>
+          <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/29"><div class="<%=month%>-day-container <%=month%>-29">
+            <div class="<%=month%>-day-number">29</div>
+          </div></a>
+          <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/30"><div class="<%=month%>-day-container <%=month%>-30">
+            <div class="<%=month%>-day-number">30</div>
+          </div></a>
+        </div>
+        <div class="<%=month%>-last-week-container">
+          <a href="/users/<%=@user.id%>/months/<%=month_id%>/days/31"><div class="<%=month%>-day-one-container <%=month%>-31">
+            <div class="<%=month%>-day-number">31</div>
+          </div></a>
+          <a><div class="<%=month%>-day-container">
+            <div class="<%=month%>-day-number"></div>
+          </div></a>
+          <a><div class="<%=month%>-day-container">
+            <div class="<%=month%>-day-number"></div>
+          </div></a>
+          <a><div class="<%=month%>-day-container">
+            <div class="<%=month%>-day-number"></div>
+          </div></a>
+          <a><div class="<%=month%>-day-container">
+            <div class="<%=month%>-day-number"></div>
+          </div></a>
+          <a><div class="<%=month%>-day-container">
+            <div class="<%=month%>-day-number"></div>
+          </div></a>
+          <a><div class="<%=month%>-day-container">
+            <div class="<%=month%>-day-number"></div>
+          </div></a>
+        </div>
+      <%end%>
     <%end%>
   </div>
 </div>

@@ -8,12 +8,12 @@ class Service < ApplicationRecord
     source: :category
 
   has_many :service_tickets, dependent: :delete_all
-
+  has_many :appointments, dependent: :delete_all
   has_many :clients,
     through: :service_tickets,
     source: :user
 
-  validates :zip, :content, :service_name, :city, :state, :contact_number, :contact_email, :cost, :travel_options, :availability_days, :availability_hours, presence: true 
+  validates :zip, :content, :service_name, :city, :state, :contact_number, :contact_email, :cost, :travel_options, :availability_days, :availability_hours, presence: true
 
     def self.categorize_activities
       categories_hash = {

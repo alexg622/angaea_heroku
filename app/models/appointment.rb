@@ -1,11 +1,11 @@
 class Appointment < ApplicationRecord
-  belongs_to :user
+  belongs_to :service
   has_many :appointment_tickets, dependent: :delete_all
   has_many :clients,
     through: :appointment_tickets,
     source: :user
 
-  def Appointment.create_appointments(the_user_id, start_time, end_time, day_number, month_number)
+  def Appointment.create_appointments(the_service_id, start_time, end_time, day_number, month_number)
     months = {
       "0" => "Jan",
       "1" => "Feb",
@@ -21,8 +21,7 @@ class Appointment < ApplicationRecord
       "11" => "Dec"
     }
     p "montsa;lkfdjasl;dkfj"
-    p months[month_number.to_s]
-    p month_number
+    p the_service_id
     appointments_to_create = Appointment.create_times(start_time, end_time)
     if day_number.to_i < 10
       day_number = "0"+day_number.to_s
@@ -31,7 +30,7 @@ class Appointment < ApplicationRecord
       the_start_time = "#{day_number} #{months[month_number.to_s]} 2019 #{appointments_to_create[i]}:00:00 UTC +00:00"
       the_end_time = "#{day_number} #{months[month_number.to_s]} 2019 #{appointments_to_create[i+1]}:00:00 UTC +00:00"
       puts the_start_time
-      Appointment.create(user_id: the_user_id, start_time: the_start_time, end_time: the_end_time)
+      Appointment.create!(service_id: the_service_id, start_time: the_start_time, end_time: the_end_time)
     end
   end
   # "17 Jan 2019 20:00:51 UTC +00:00"
