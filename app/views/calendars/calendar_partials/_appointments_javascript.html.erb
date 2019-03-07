@@ -21,9 +21,10 @@
   function getNotBookedAppointments() {
     let notBookedHash = {}
     let userId = window.location.href.split("/")[4]
+
     $.ajax({
       method: "GET",
-      url: `http://localhost:3000/users/${userId}/calendars/appointments`
+      url: `https://www.angaea.com/users/${userId}/calendars/appointments`
     }).then(res => {
       let notBookedAppointments = res.notBookedAppointments
       for(let i=0; i<notBookedAppointments.length; i++) {
@@ -59,7 +60,7 @@
     let bookedHash = {}
     $.ajax({
       method: "GET",
-      url: `http://localhost:3000/users/${userId}/calendars/appointments`
+      url: `https://www.angaea.com/users/${userId}/calendars/appointments`
     }).then(res => {
       let bookedAppointments = res.bookedAppointments
       for(let i=0; i<bookedAppointments.length; i++) {
