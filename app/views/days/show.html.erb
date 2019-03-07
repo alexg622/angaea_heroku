@@ -1,0 +1,97 @@
+<div>
+  <%if current_user && current_user.id == @user.id%>
+    <div>Set Availability</div>
+  <%end%>
+  <div class="days-not-booked-container">
+    <div>Available appointments</div>
+    <%@not_booked.each do |appointment|%>
+      <div class="days-book-app-container">
+        <div><%=appointment.start_time%></div>
+        <%if current_user && @user.id != current_user.id%>
+          <form enctype="multipart/form-data" class="set-availability-form" action="/users/<%=current_user.id%>/appointments/<%=appointment.id%>/book" method="post">
+            <input class="" type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>"/>
+            <input type="submit" value="book"/>
+          </form>
+        <%elsif current_user && @user.id == current_user.id%>
+          <form enctype="multipart/form-data" class="set-availability-form" action="/users/<%=@user.id%>/appointments/<%=appointment.id%>" method="post">
+            <input class="" type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>"/>
+            <input type="hidden" name="_method" value="delete"/>
+            <input type="submit" value="delete"/>
+          </form>
+        <%end%>
+      </div>
+    <%end%>
+  </div>
+
+  <%if current_user && @user.id == current_user.id && @booked.length > 0%>
+    <div class="days-booked-container">
+      <form enctype="multipart/form-data" class="set-availability-form" action="/users/<%=@user.id%>/months/<%=@month_number%>/days/<%=@day_number%>" method="post">
+        <input class="" type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>"/>
+        <input type="submit" value="Book"
+      </form>
+      <div>Booked appointments</div>
+      <%@booked.each do |appointment|%>
+        <div><%=appointment.start_time%></div>
+      <%end%>
+    </div>
+  <%end%>
+
+  <%if current_user && current_user.id == @user.id%>
+    <form enctype="multipart/form-data" class="set-availability-form" action="/users/<%=@user.id%>/months/<%=@month_number%>/days/<%=@day_number%>" method="post">
+      <input class="" type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>"/>
+      <select class="" name="day[start_time]">
+        <option value="09">9AM</option>
+        <option value="10">10AM</option>
+        <option value="11">11AM</option>
+        <option value="12">12PM</option>
+        <option value="13">1PM</option>
+        <option value="14">2PM</option>
+        <option value="15">3PM</option>
+        <option value="16">4PM</option>
+        <option value="17">5PM</option>
+        <option value="18">6PM</option>
+        <option value="19">7PM</option>
+        <option value="20">8PM</option>
+        <option value="21">9PM</option>
+        <option value="22">10PM</option>
+        <option value="23">11PM</option>
+        <option value="00">12AM</option>
+        <option value="01">1AM</option>
+        <option value="02">2AM</option>
+        <option value="03">3AM</option>
+        <option value="04">4AM</option>
+        <option value="05">5AM</option>
+        <option value="06">6AM</option>
+        <option value="07">7AM</option>
+        <option value="08">8AM</option>
+      </select>
+      <select class="" name="day[end_time]">
+        <option value="09">9AM</option>
+        <option value="10">10AM</option>
+        <option value="11">11AM</option>
+        <option value="12">12PM</option>
+        <option value="13">1PM</option>
+        <option value="14">2PM</option>
+        <option value="15">3PM</option>
+        <option value="16">4PM</option>
+        <option value="17">5PM</option>
+        <option value="18">6PM</option>
+        <option value="19">7PM</option>
+        <option value="20">8PM</option>
+        <option value="21">9PM</option>
+        <option value="22">10PM</option>
+        <option value="23">11PM</option>
+        <option value="00">12AM</option>
+        <option value="01">1AM</option>
+        <option value="02">2AM</option>
+        <option value="03">3AM</option>
+        <option value="04">4AM</option>
+        <option value="05">5AM</option>
+        <option value="06">6AM</option>
+        <option value="07">7AM</option>
+        <option value="08">8AM</option>
+      </select>
+      <input type="submit" value="submit availability"/>
+    </form>
+  <%end%>
+</div>

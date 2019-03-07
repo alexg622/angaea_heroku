@@ -1,0 +1,109 @@
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    activateLeft()
+    startCal()
+    activateRight()
+  })
+  const Months = {
+    january: {
+      monthName: "jan",
+      monthContainer: document.querySelector(".jan-cal-container")
+    },
+    february: {
+      monthName: "feb",
+      monthContainer: document.querySelector(".feb-cal-container")
+    },
+    march: {
+      monthName: "mar",
+      monthContainer: document.querySelector(".mar-cal-container")
+    },
+    april: {
+      monthName: "apr",
+      monthContainer: document.querySelector(".apr-cal-container")
+    },
+    may: {
+      monthName: "may",
+      monthContainer: document.querySelector(".may-cal-container")
+    },
+    june: {
+      monthName: "jun",
+      monthContainer: document.querySelector(".jun-cal-container")
+    },
+    july: {
+      monthName: "jul",
+      monthContainer: document.querySelector(".jul-cal-container")
+    },
+    august: {
+      monthName: "aug",
+      monthContainer: document.querySelector(".aug-cal-container")
+    },
+    september: {
+      monthName: "sep",
+      monthContainer: document.querySelector(".sep-cal-container")
+    },
+    october: {
+      monthName: "oct",
+      monthContainer: document.querySelector(".oct-cal-container")
+    },
+    november: {
+      monthName: "nov",
+      monthContainer: document.querySelector(".nov-cal-container")
+    },
+    december: {
+      monthName: "dec",
+      monthContainer: document.querySelector(".dec-cal-container")
+    }
+
+  }
+
+  let cals = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"]
+
+  function carouselMonthsLeft(i) {
+    let theMonth = Months[cals[i]]
+    if(theMonth) {
+      let queryString = "."+Months[cals[i]].monthName + "-cal-left-clicker"
+      let leftClicker = document.querySelector(queryString)
+      leftClicker.addEventListener("click", () => {
+        Months[cals[i]].monthContainer.style.display = "none"
+        if(i === 0) {
+          Months[cals[11]].monthContainer.style.display = "flex"
+        } else {
+          Months[cals[i-1]].monthContainer.style.display = "flex"
+        }
+      })
+    }
+  }
+
+  function carouselMonthsRight(i) {
+    let theMonth = Months[cals[i]]
+    if(theMonth) {
+      let queryString = "."+Months[cals[i]].monthName + "-cal-right-clicker"
+      let leftClicker = document.querySelector(queryString)
+      leftClicker.addEventListener("click", () => {
+        Months[cals[i]].monthContainer.style.display = "none"
+        if(i === 11) {
+          Months[cals[0]].monthContainer.style.display = "flex"
+        } else {
+          Months[cals[i+1]].monthContainer.style.display = "flex"
+        }
+      })
+    }
+  }
+
+  function activateLeft() {
+    for(let i=0; i<cals.length; i++) {
+      carouselMonthsLeft(i)
+    }
+  }
+
+  function activateRight() {
+    for(let i=0; i<cals.length; i++) {
+      carouselMonthsRight(i)
+    }
+  }
+
+  function startCal() {
+    let newDate = new Date()
+    Months[cals[newDate.getMonth()]].monthContainer.style.display = "flex"
+  }
+</script>

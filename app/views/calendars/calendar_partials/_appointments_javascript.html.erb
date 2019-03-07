@@ -1,0 +1,93 @@
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // getBookedAppointments()
+    getNotBookedAppointments()
+  })
+  const MonthByNumber = {
+    "1": "jan",
+    "2": "feb",
+    "3": "mar",
+    "4": "apr",
+    "5": "may",
+    "6": "jun",
+    "7": "jul",
+    "8": "aug",
+    "9": "sep",
+    "10": "oct",
+    "11": "nov",
+    "12": "dec"
+  }
+
+  function getNotBookedAppointments() {
+    let notBookedHash = {}
+    let userId = window.location.href.split("/")[4]
+    $.ajax({
+      method: "GET",
+      url: `http://localhost:3000/users/${userId}/calendars/appointments`
+    }).then(res => {
+      let notBookedAppointments = res.notBookedAppointments
+      for(let i=0; i<notBookedAppointments.length; i++) {
+        let splitDate = notBookedAppointments[i].start_time.split("-")
+        let date = ""
+        let day = ""
+        if (splitDate[1][0] === "0") {
+          date = splitDate[1][1]
+        } else {
+          date = splitDate[1]
+        }
+        if (splitDate[2][0] === "0") {
+          day = splitDate[2][1]
+        } else {
+          day = splitDate[2][0] + splitDate[2][1]
+        }
+        let classSelector = "." + MonthByNumber[date] + "-" + day
+        notBookedHash[classSelector] = notBookedHash[classSelector] || 0
+        notBookedHash[classSelector] += 1
+      }
+      Object.keys(notBookedHash).forEach(key => {
+        let el = document.querySelector(key)
+        let div = document.createElement("div")
+        div.classList.add("not-booked-appointments")
+        div.innerText = String(notBookedHash[key]) + " available"
+        el.append(div)
+      })
+      getBookedAppointments(userId)
+    })
+  }
+
+  function getBookedAppointments(userId) {
+    let bookedHash = {}
+    $.ajax({
+      method: "GET",
+      url: `http://localhost:3000/users/${userId}/calendars/appointments`
+    }).then(res => {
+      let bookedAppointments = res.bookedAppointments
+      for(let i=0; i<bookedAppointments.length; i++) {
+        let splitDate = bookedAppointments[i].start_time.split("-")
+        let date = ""
+        let day = ""
+        if (splitDate[1][0] === "0") {
+          date = splitDate[1][1]
+        } else {
+          date = splitDate[1]
+        }
+        if (splitDate[2][0] === "0") {
+          day = splitDate[2][1]
+        } else {
+          day = splitDate[2][0] + splitDate[2][1]
+        }
+        let classSelector = "." + MonthByNumber[date] + "-" + day
+        bookedHash[classSelector] = bookedHash[classSelector] || 0
+        bookedHash[classSelector] += 1
+      }
+      Object.keys(bookedHash).forEach(key => {
+        let el = document.querySelector(key)
+        let div = document.createElement("div")
+        div.classList.add("booked-appointments")
+        div.innerText = String(bookedHash[key]) + " booked"
+        el.append(div)
+      })
+    })
+  }
+
+</script>

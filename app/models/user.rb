@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-
   attr_accessor :remember_token, :activation_token
   before_save :downcase_email
   has_one :stripe_connect
@@ -8,9 +7,13 @@ class User < ApplicationRecord
   has_many :cards, dependent: :delete_all
   has_one_attached :image
   has_many :services, dependent: :delete_all
-
   has_many :messages
+  has_many :appointments, dependent: :delete_all
   has_many :chatrooms, through: :messages
+  has_many :appointment_tickets, dependent: :delete_all
+  has_many :upcoming_appointments,
+    through: :appointment_tickets,
+    source: :appointment
   # def thubmnail
     # exclamation forces resize
     # return self.image.variant(resize: "300x300").processed
@@ -59,6 +62,46 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
   validates :city, :state, :zipcode, presence: true
+
+  def get_booked(month_number, day_number)
+    result = []
+    self.appointments.each do |appointment|
+      if appointment.start_time.month == month_number && appointment.start_time.day == day_number && appointment.booked == "true"
+        result.push(appointment)
+      end
+    end
+    return result.sort_by {|appointment| appointment.start_time}
+  end
+
+  def get_not_booked(month_number, day_number)
+    result = []
+    self.appointments.each do |appointment|
+      if appointment.start_time.month == month_number && appointment.start_time.day == day_number && appointment.booked != "true"
+        result.push(appointment)
+      end
+    end
+    return result.sort_by {|appointment| appointment.start_time}
+  end
+
+  def show_booked_appointments
+    result = []
+    self.appointments.each do |appointment|
+      if appointment.booked == "true"
+        result << appointment
+      end
+    end
+    return result
+  end
+
+  def show_unbooked_appointments
+    result = []
+    self.appointments.each do |appointment|
+      if appointment.booked != "true"
+        result << appointment
+      end
+    end
+    return result
+  end
 
   def show_location
     if self.city != "" && self.state != "" && self.zipcode != "" && self.zipcode != nil && self.city != nil && self.state != nil

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_27_054839) do
+ActiveRecord::Schema.define(version: 2019_03_04_070146) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,27 @@ ActiveRecord::Schema.define(version: 2019_02_27_054839) do
     t.integer "spots_buying"
     t.index ["activity_id"], name: "index_activity_tickets_on_activity_id"
     t.index ["user_id"], name: "index_activity_tickets_on_user_id"
+  end
+
+  create_table "appointment_tickets", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "appointment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "appointment_id"], name: "index_appointment_tickets_on_user_id_and_appointment_id"
+  end
+
+  create_table "appointments", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "client_contact_number"
+    t.string "client_contact_email"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.text "description"
+    t.string "booked"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_appointments_on_user_id"
   end
 
   create_table "cards", force: :cascade do |t|

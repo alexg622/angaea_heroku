@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :charges
   resources :activities, only: [:show] do
     resources :activity_tickets, only: [:new, :create, :destroy]
-    resources :chatrooms 
+    resources :chatrooms
   end
 
   resources :services, only: [:show] do
@@ -66,6 +66,12 @@ Rails.application.routes.draw do
   get '/email_users', to: 'static_pages#email_users'
   get '/categories/services', to: "categories#services_index"
   get '/categories/:id/services', to: "categories#show_services"
+  get '/users/:user_id/calendars', to: 'calendars#show'
+  get '/users/:user_id/months/:month_id/days/:day_id', to: 'days#show'
+  post '/users/:user_id/months/:month_id/days/:day_id', to: 'days#create'
+  get '/users/:user_id/calendars/appointments', to: 'calendars#show_appointments'
+  delete '/users/:user_id/appointments/:appointment_id', to: "days#destroy"
+  post '/users/:user_id/appointments/:appointment_id/book', to: "days#book_appointment"
 
   resources :users
   resources :account_activations, only: [:edit]

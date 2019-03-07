@@ -1,0 +1,90 @@
+.apr-cal-container {
+  width: 80%;
+  // height: 600px;
+  border: 3px solid black;
+  display:none;
+  flex-direction: column;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+.not-booked-appointments {
+  margin-top: 15px;
+  color: green;
+}
+
+.booked-appointments {
+  margin-top: 5px;
+  color: red;
+}
+
+.apr-cal-upper-container {
+  border-bottom: 3px solid black;
+  width: 100%;
+  height: 100px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.apr-cal-lower-container {
+  width: 100%;
+  display:flex;
+  flex-direction: column;
+}
+
+.apr-cal-left-clicker {
+  font-size: 25px;
+  font-weight: bold;
+  margin-right: 15px;
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+
+.apr-cal-title {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.apr-cal-right-clicker {
+  font-size: 25px;
+  font-weight: bold;
+  margin-left: 15px;
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+
+.apr-week-container {
+  width: 100%;
+  display:flex;
+  // border-top: 3px solid black;
+  border-bottom: 3px solid black;
+}
+
+.apr-last-week-container {
+  width: 100%;
+  display:flex;
+}
+
+.apr-day-container {
+  display:flex;
+  flex:1;
+  height: 110px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border-left: 3px solid black;
+}
+
+.apr-day-one-container {
+  display:flex;
+  flex:1;
+  height: 110px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
