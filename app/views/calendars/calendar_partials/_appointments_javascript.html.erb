@@ -21,8 +21,8 @@
   function getNotBookedAppointments() {
     let notBookedHash = {}
     let userId = window.location.href.split("/")[4]
-    // let url = `https://www.angaea.com/users/${userId}/calendars/appointments`
-    let url = `http://localhost:3000/users/${userId}/calendars/appointments`
+    let url = `https://www.angaea.com/users/${userId}/calendars/appointments`
+    // let url = `http://localhost:3000/users/${userId}/calendars/appointments`
     $.ajax({
       method: "GET",
       url: url
