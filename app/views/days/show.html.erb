@@ -36,7 +36,7 @@
     </div>
   <%end%>
 
-  <%if current_user && current_user.id == @user.id%>
+  <%if current_user && current_user.id == @services.length > 0%>
     <form enctype="multipart/form-data" class="set-availability-form" action="/users/<%=@user.id%>/months/<%=@month_number%>/days/<%=@day_number%>" method="post">
       <input class="" type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>"/>
       <select class="" name="day[start_time]">
