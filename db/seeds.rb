@@ -74,3 +74,7 @@ serviceTicket = ServiceTicket.create(user_id: User.first.id, service_id: newServ
 #     ActivityTicket.create(user_id: user.id, activity_id: Activity.all[i].id)
 #   end
 # end
+
+# newChat = UserChatroom.create(title: "Testing")
+# connectOne = ConnectUser.create(user_id: User.first.id, user_chatroom_id: newChat.id)
+# connectTwo = ConnectUser.create(user_id: User.last.id, user_chatroom_id: newChat.id)

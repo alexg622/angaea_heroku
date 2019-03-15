@@ -83,7 +83,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
     resource :session, only: [:create, :destroy]
     resources :users, only: [:show]
-    resources :activities, only: [:index, :show]
+    resources :activities, only: [:index, :show, :create]
     resources :categories, only: [:index, :show]
   end
 
@@ -91,6 +91,8 @@ Rails.application.routes.draw do
 
   resources :chatrooms, param: :slug
   resources :messages
+  resources :user_chatrooms
+  resources :user_messages
 
 
 end
