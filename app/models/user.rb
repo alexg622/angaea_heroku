@@ -79,7 +79,7 @@ class User < ApplicationRecord
     self.activities.each do |activity|
       sum += activity.chatroom.messages.length
     end
-    return sum - self.read_messages.length
+    sum - self.read_messages.length
   end
 
   def get_booked(month_number, day_number)
