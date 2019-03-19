@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :activities, dependent: :delete_all
   has_many :cards, dependent: :delete_all
   has_one_attached :image
+  has_many :read_messages
   has_many :services, dependent: :delete_all
   has_many :messages
   has_many :user_messages
@@ -72,6 +73,14 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
   validates :city, :state, :zipcode, presence: true
+
+  def unread_messages
+    sum = 0
+    self.activities.each do |activity|
+      sum += activity.chatroom.messages.length
+    end
+    return sum - self.read_messages.length
+  end
 
   def get_booked(month_number, day_number)
     result = []

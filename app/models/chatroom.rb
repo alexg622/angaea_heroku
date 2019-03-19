@@ -18,6 +18,32 @@ class Chatroom < ApplicationRecord
     self.topic = self.topic.strip
   end
 
+  def user_unread_messages(user)
+    user_read_messages = {}
+    result = 0
+    user.read_messages.each do |message|
+      user_read_messages[message.message_id.to_s] = true
+    end
+    self.messages.each do |message|
+      if !user_read_messages[message.id.to_s]
+        result += 1
+      end
+    end
+    result
+  end
+
+  def create_read_messages(user)
+    user_messages = {}
+    user.read_messages.each do |message|
+      user_messages[message.message_id.to_s] = true
+    end
+    self.messages.each do |message|
+      if !user_messages[message.id.to_s]
+        ReadMessage.create(user_id: user.id, message_id: message.id)
+      end
+    end
+  end
+
   def returnMessages
     messages = []
     self.messages.each do |message|

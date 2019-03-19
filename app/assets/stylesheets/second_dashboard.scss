@@ -35,7 +35,7 @@
 }
 
 .dash-chat-container {
-  display:none;
+  display:flex;
   width: 100%;
   min-height: 95vh;
   // display: flex;
@@ -72,7 +72,7 @@
 .chat-activity-name {
   cursor: pointer;
   padding-left: 15px;
-  border-bottom: 1px solid black;
+  // border-bottom: 1px solid black;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -99,6 +99,14 @@
 
 .chat-experience-clicker {
   margin-bottom: 15px;
+}
+
+.inbox-lower-left-activity-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid black;
 }
 
 .dash-icons-container {

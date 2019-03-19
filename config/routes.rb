@@ -72,6 +72,7 @@ Rails.application.routes.draw do
   get '/users/:user_id/calendars/appointments', to: 'calendars#show_appointments'
   delete '/users/:user_id/appointments/:appointment_id', to: "days#destroy"
   post '/users/:user_id/appointments/:appointment_id/book', to: "days#book_appointment"
+  get '/users/:user_id/inbox', to: 'users#inbox'
 
   resources :users
   resources :account_activations, only: [:edit]

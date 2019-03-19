@@ -143,6 +143,7 @@
       let ids = document.querySelector(".chat-activity-name").classList
       let activityId = ids[1]
       let chatId = ids[2]
+      console.log("activities/" + activityId + "/chatrooms/" + chatId);
       $.ajax({
         type: "GET",
         url: "activities/" + activityId + "/chatrooms/" + chatId

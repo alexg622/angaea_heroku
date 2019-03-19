@@ -1,0 +1,132 @@
+<div class="second-dash-container">
+  <div class="dash-chat-container">
+    <div class=dash-mid-container>
+      <div style="opacity:0;" class="dash-icons-container">
+        <img class="chat-experience-clicker" height="50px" width="50px" src="https://github.com/alexg622/angaea_heroku/blob/master/app/assets/images/four-squares-with-frame-shape.png?raw=true"/>
+        <img class="chat-message-clicker" height="50px" width="50px" src="https://github.com/alexg622/angaea_heroku/blob/master/app/assets/images/iconfinder_ic_message_48px_352541.png?raw=true"/>
+      </div>
+      <div class="second-dash-upper-container">
+        <div class="second-dash-your-services">Your Chats</div>
+        <div class="second-dash-people-attending chat-message-title">Messages</div>
+      </div>
+      <div class="dash-space-holder"></div>
+    </div>
+    <div class="chat-lower-container">
+      <div class="chat-left-container">
+        <% @activities.each do |activity| %>
+          <div class="lower-left-container">
+            <div class="inbox-lower-left-activity-container">
+              <div class="chat-activity-name <%=activity.id%> <%=activity.chatroom.id%>"><%=activity.activity_name%></div>
+              <%if activity.chatroom.user_unread_messages(current_user) == 1%>
+                <div style="color:red; margin-bottom:5px;"><%=activity.chatroom.user_unread_messages(current_user)%> unread message</div>
+              <%elsif activity.chatroom.user_unread_messages(current_user) > 1%>
+                <div style="color:red; margin-bottom:5px;"><%=activity.chatroom.user_unread_messages(current_user)%> unread messages</div>
+              <%end%>
+            </div>
+          </div>
+        <% end %>
+    </div>
+      <div class="lower-right-container"></div>
+    </div>
+    <%= render 'messages/message_form', message: @message%>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      let btn = document.querySelector(".best-btn")
+      let textArea = document.querySelector(".activity-message-form")
+      if(btn) {
+        btn.addEventListener("click", () => {
+          setTimeout(() => {
+            let text = textArea.value
+            textArea.value = ""
+          })
+          setTimeout(() => {
+            let aTag = document.querySelector(".change-href")
+            let value = "/users/" + document.querySelector(".get-user-id").innerText
+            aTag.href = value
+          }, 2000)
+        })
+      }
+
+      let chatbox = document.querySelector(".dash-chat-container")
+      // let experienceContainer = document.querySelector(".dash-experience-container")
+      // let experienceClicker = document.querySelector(".experience-clicker")
+      // let chatExperienceClicker = document.querySelector(".chat-experience-clicker")
+      // let chatMessageClicker = document.querySelector(".chat-message-clicker")
+      getChatroom()
+      eventChatroom()
+    })
+
+    function getChatroom() {
+      let titleContainer = document.querySelector(".chat-message-title")
+      let chatroom = document.querySelector(".lower-right-container")
+      chatroom.innerHTML = ""
+      let ids = document.querySelector(".chat-activity-name").classList
+      let activityId = ids[1]
+      let chatId = ids[2]
+      $.ajax({
+        type: "GET",
+        url: "http://localhost:3001/activities/" + activityId + "/chatrooms/" + chatId
+      }).then(res => {
+        let chatInputId = document.querySelector(".chatroom-id")
+        chatInputId.value = res.chatroom.id
+        titleContainer.innerText = res.activityName
+        if(res.messages.length > 0) {
+          res.messages.forEach(message => {
+            let pTag = document.createElement("p")
+            let aTag = document.createElement("a")
+            aTag.href = "/users/" + String(message.userId)
+            aTag.innerText = message.user + ": "
+            aTag.classList.add("user-activity-message")
+            pTag.classList.add("message-p")
+            pTag.append(aTag)
+            pTag.innerHTML += message.content
+            chatroom.append(pTag)
+          })
+        }
+      })
+    }
+
+    function getChatroomWithData(activityId, chatId) {
+      let titleContainer = document.querySelector(".chat-message-title")
+      let chatroom = document.querySelector(".lower-right-container")
+      chatroom.innerHTML = ""
+      $.ajax({
+        type: "GET",
+        url: "http://localhost:3001/activities/" + activityId + "/chatrooms/" + chatId
+      }).then(res => {
+        titleContainer.innerText = res.activityName
+        if(res.messages.length > 0) {
+          res.messages.forEach(message => {
+            let pTag = document.createElement("p")
+            let aTag = document.createElement("a")
+            aTag.href = "/users/" + String(message.userId)
+            aTag.innerText = message.user + ": "
+            aTag.classList.add("user-activity-message")
+            pTag.classList.add("message-p")
+            pTag.append(aTag)
+            pTag.innerHTML += message.content
+            chatroom.append(pTag)
+          })
+        }
+      })
+    }
+
+    function eventChatroom() {
+      let activities = document.querySelectorAll(".chat-activity-name")
+      activities.forEach(activity => {
+        let activityIds = activity.classList
+        let theActivityId = activityIds[1]
+        let theChatId = activityIds[2]
+        activity.addEventListener("click", (e) => {
+          window.e = e
+          console.log(e.target.parentNode.clildren);
+          if (e.target.parentNode.children.length > 1) {
+            e.target.parentNode.children[1].style.display = "none"
+          }
+          getChatroomWithData(theActivityId, theChatId)
+        })
+      })
+    }
+  </script>
+</div>

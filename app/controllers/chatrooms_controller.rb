@@ -41,12 +41,12 @@ class ChatroomsController < ApplicationController
   def show
     @chatroom = Chatroom.find(params[:id])
     @message = Message.new
+    @chatroom.create_read_messages(current_user)
     render json: {activityName: @chatroom.activity.activity_name, chatroom: @chatroom, messages: @chatroom.returnMessages}
   end
 
   private
-
-    def chatroom_params
-      params.require(:chatroom).permit(:topic)
-    end
+  def chatroom_params
+    params.require(:chatroom).permit(:topic)
+  end
 end

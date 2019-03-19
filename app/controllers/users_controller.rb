@@ -1,9 +1,15 @@
 class UsersController < ApplicationController
- before_action :logged_in_user, only: [:index, :edit, :update]
+ before_action :logged_in_user, only: [:index, :edit, :update, :inbox]
  before_action :correct_user, only: [:edit, :update]
  before_action :agreements_signed?, only: [:show, :edit, :update, :index]
  before_action :account_activated?, only: [:show, :edit, :update, :index]
  # before_action :admin_user,     only: :destroy
+
+ def inbox
+   @user = current_user
+   @activities = @user.activities + @user.events
+   @message = Message.new
+ end
 
  def index
    @users = User.all
