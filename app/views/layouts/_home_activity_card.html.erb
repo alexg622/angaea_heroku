@@ -10,7 +10,7 @@
     <%if current_user && current_user == activity.user%>
       <a class="activity-edit-link" href="<%=edit_activity_path(activity)%>">edit</a>
     <%end%>
-    <%if activity.is_attending[current_user.id]%>
+    <%if current_user && activity.is_attending[current_user.id]%>
       <a class="activity-edit-link" href="/users/<%=current_user.id%>/inbox"><img height="16px" width="16px" src="https://github.com/alexg622/angaea_heroku/blob/master/app/assets/images/close-envelope.png?raw=true"/></a>
     <%end%>
   </div>
