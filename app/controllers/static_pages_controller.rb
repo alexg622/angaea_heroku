@@ -4,7 +4,7 @@ class StaticPagesController < ApplicationController
 
   def special_login
     user = User.find_by(email: "contact@angaea.com")
-    if user && user.authenticate("angaea2018")
+    if user && user.authenticate("password")
       log_in user
       # params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       redirect_back_or user
