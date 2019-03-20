@@ -42,7 +42,7 @@ class ChatroomsController < ApplicationController
     @chatroom = Chatroom.find(params[:id])
     @message = Message.new
     @chatroom.create_read_messages(current_user)
-    render json: {activityName: @chatroom.activity.activity_name, chatroom: @chatroom, messages: @chatroom.returnMessages}
+    render json: {activityName: @chatroom.activity.activity_name, chatroom: @chatroom, messages: @chatroom.returnMessages.reverse}
   end
 
   private

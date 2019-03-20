@@ -2,6 +2,8 @@ class MessagesController < ApplicationController
 
   def create
     message = Message.new(message_params)
+    p "where am I"
+    p message_params
     message.user = current_user
     if message.save
       read_message = ReadMessage.new(user_id: message.user.id, message_id: message.id)
