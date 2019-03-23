@@ -90,7 +90,6 @@
     function getChatroomWithData(activityId, chatId) {
       let titleContainer = document.querySelector(".chat-message-title")
       let chatroom = document.querySelector(".lower-right-container")
-      console.log("http://localhost:3001/activities/" + activityId + "/chatrooms/" + chatId)
       chatroom.innerHTML = ""
       $.ajax({
         type: "GET",
@@ -121,7 +120,6 @@
         let theChatId = activityIds[2]
         activity.addEventListener("click", (e) => {
           window.e = e
-          console.log(e.target.parentNode.clildren);
           if (e.target.parentNode.children.length > 1) {
             e.target.parentNode.children[1].style.display = "none"
           }
