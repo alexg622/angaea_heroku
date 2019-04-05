@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_19_003151) do
+ActiveRecord::Schema.define(version: 2019_04_05_062422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,18 @@ ActiveRecord::Schema.define(version: 2019_03_19_003151) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["service_id"], name: "index_appointments_on_service_id"
+  end
+
+  create_table "booking_venues", force: :cascade do |t|
+    t.integer "activity_id"
+    t.integer "venue_id"
+    t.datetime "start_time", null: false
+    t.datetime "end_time", null: false
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_id"], name: "index_booking_venues_on_activity_id"
+    t.index ["venue_id"], name: "index_booking_venues_on_venue_id"
   end
 
   create_table "cards", force: :cascade do |t|
@@ -334,7 +346,22 @@ ActiveRecord::Schema.define(version: 2019_03_19_003151) do
     t.string "zipcode"
     t.string "reset_password_secret"
     t.string "email_list"
+    t.string "locked"
     t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
+  create_table "venues", force: :cascade do |t|
+    t.string "venue_name", null: false
+    t.string "address", null: false
+    t.string "city", null: false
+    t.string "state", null: false
+    t.string "zip", null: false
+    t.integer "user_id"
+    t.integer "price", null: false
+    t.string "capacity", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_venues_on_user_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

@@ -5,6 +5,12 @@ class Activity < ApplicationRecord
  has_many_attached :images
  has_one_attached :image
 
+ has_many :booking_venues
+
+ has_many :venues,
+  through: :booking_venues,
+  source: :venue
+
  has_many :activity_tickets, dependent: :delete_all
 
 has_one :chatroom

@@ -3,9 +3,47 @@
 #
 # Examples:
 #
+# Venue.create!(
+#   venue_name: "test venue",
+#   price: 400,
+#   capacity: 30,
+#   address: "123 test st",
+#   city: "San Francisco",
+#   state: "CA",
+#   zip: "94132",
+#   user_id: User.first.id,
+# )
+#
+# Venue.create!(
+#   venue_name: "test venue 2",
+#   price: 800,
+#   capacity: 60,
+#   address: "12000 test st",
+#   city: "San Francisco",
+#   state: "CA",
+#   zip: "94132",
+#   user_id: User.first.id,
+# )
+
+BookingVenue.create!(
+  activity_id: Activity.last.id,
+  price: 400,
+  venue_id: Venue.first.id,
+  start_time: DateTime.now,
+  end_time: DateTime.now
+)
+
+BookingVenue.create!(
+  activity_id: Activity.first.id,
+  price: 600,
+  venue_id: Venue.first.id,
+  start_time: DateTime.now,
+  end_time: DateTime.now
+)
+
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-user1 = User.create(name: "Angaea", email: "contact@angaea.com", profession: "Computer Engineer", skills: "CSS, HTML, JavaScript, Python, Ruby, React/Redux", about_me: "Making connections", password: "angaea2018!")
+# user1 = User.create(name: "Angaea", email: "contact@angaea.com", profession: "Computer Engineer", skills: "CSS, HTML, JavaScript, Python, Ruby, React/Redux", about_me: "Making connections", password: "angaea2018!")
 # user2 = User.create(name: "Jill", email: "Jill@mail.com", password: "password")
 # user3 = User.create(name: "Joe", email: "Joe@mail.com", password: "password")
 # user4 = User.create(name: "Henry", email: "Henry@mail.com", password: "password")
@@ -27,18 +65,18 @@ user1 = User.create(name: "Angaea", email: "contact@angaea.com", profession: "Co
 #  User.create(name: name, skills: Faker::ChuckNorris.fact, profession: Faker::Job.title, email: (name.split(" ")[0]+counter.to_s+"@mail.com"), about_me: Faker::GameOfThrones.quote, password: "password")
 # end
 
-art = Category.create(category_name: "art", user_id: User.first.id)
-music = Category.create(category_name: "music", user_id: User.first.id)
-dance = Category.create(category_name: "dance", user_id: User.first.id)
-theatre = Category.create(category_name: "theatre", user_id: User.first.id)
-food = Category.create(category_name: "food", user_id: User.first.id)
-others = Category.create(category_name: "others", user_id: User.first.id)
-comedy = Category.create(category_name: "comedy", user_id: User.first.id)
+# art = Category.create(category_name: "art", user_id: User.first.id)
+# music = Category.create(category_name: "music", user_id: User.first.id)
+# dance = Category.create(category_name: "dance", user_id: User.first.id)
+# theatre = Category.create(category_name: "theatre", user_id: User.first.id)
+# food = Category.create(category_name: "food", user_id: User.first.id)
+# others = Category.create(category_name: "others", user_id: User.first.id)
+# comedy = Category.create(category_name: "comedy", user_id: User.first.id)
 # categories = [art, music, dance]
 #
-newService = Service.create!(content: "really cool", service_name: "First service", additional_info: "more info", user_id: User.first.id, cost: "1000", addressLN1: "131 Lake Merced Hills", city: "SF", state: "CA", zip: "94132", capacity: "100", contact_number: "415-909-0164", contact_email: "mail@mail.com", start_date: DateTime.now, end_date: DateTime.now, recurring_schedule: "weekly", travel_options: "both", availability_days: "Every Day", availability_hours: "9-10am")
-serviceTag = ServiceTag.create!(service_id: newService.id, category_id: art.id)
-serviceTicket = ServiceTicket.create(user_id: User.first.id, service_id: newService.id, service_time: DateTime.now, day: "Mon", time: "9:00PM")
+# newService = Service.create!(content: "really cool", service_name: "First service", additional_info: "more info", user_id: User.first.id, cost: "1000", addressLN1: "131 Lake Merced Hills", city: "SF", state: "CA", zip: "94132", capacity: "100", contact_number: "415-909-0164", contact_email: "mail@mail.com", start_date: DateTime.now, end_date: DateTime.now, recurring_schedule: "weekly", travel_options: "both", availability_days: "Every Day", availability_hours: "9-10am")
+# serviceTag = ServiceTag.create!(service_id: newService.id, category_id: art.id)
+# serviceTicket = ServiceTicket.create(user_id: User.first.id, service_id: newService.id, service_time: DateTime.now, day: "Mon", time: "9:00PM")
 # 10.times do
 #  content = Faker::Lorem.sentence(5)
 #  User.all.each do |user|

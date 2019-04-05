@@ -14,7 +14,7 @@ class User < ApplicationRecord
   has_many :user_chatrooms,
     through: :connect_users,
     source: :user_chatroom
-
+  has_many :venues, dependent: :delete_all
   # has_many :appointments, dependent: :delete_all
   has_many :appointments,
     through: :services,
