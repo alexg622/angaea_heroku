@@ -77,7 +77,9 @@ class User < ApplicationRecord
   def unread_messages
     sum = 0
     self.activities.each do |activity|
-      sum += activity.chatroom.messages.length
+      if activity.chatroom
+        sum += activity.chatroom.messages.length
+      end
     end
     sum - self.read_messages.length
   end

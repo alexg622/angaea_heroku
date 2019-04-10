@@ -69,7 +69,7 @@
   align-items: center;
   font-size: 14px;
   width: 306px;
-  height: 160px;
+  min-height: 160px;
 }
 
 .second-home-carousel-top {
@@ -147,7 +147,7 @@
 }
 
 .second-home-card-holder {
-  height: 386px;
+  min-height: 386px;
   border-width:0 0 0 0;
   margin-right: 25px;
   // margin-top: 10px;

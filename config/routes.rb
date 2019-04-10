@@ -74,6 +74,9 @@ Rails.application.routes.draw do
   post '/users/:user_id/appointments/:appointment_id/book', to: "days#book_appointment"
   get '/users/:user_id/inbox', to: 'users#inbox'
   get '/demo_login', to: 'static_pages#special_login'
+  get '/how_it_works/one', to: "static_pages#how_one"
+  get '/how_it_works/two', to: "static_pages#how_two"
+  get '/how_it_works/three', to: "static_pages#how_three"
 
   resources :users
   resources :account_activations, only: [:edit]

@@ -1,0 +1,79 @@
+.how-it-works-outer-container {
+  width: 100%;
+  min-height: 90vh;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.how-it-works-container {
+  width: 700px;
+  height: 500px;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border: 4px solid black;
+}
+
+.how-it-works {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.how-it-works-image {
+  width: 25%;
+  height: 30%;
+  max-width: 25%;
+  max-height: 30%;
+}
+
+.how-it-works-message {
+  text-align: center;
+  width: 66%;
+}
+
+.progress-icons {
+  width: 25%;
+  height: 5%;
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.blue-square-one {
+  height: 100%;
+  width: 100%;
+  background: lightblue;
+  grid-column-start: 1;
+  border-radius: 5px;
+}
+
+.blue-square-two {
+  height: 100%;
+  width: 100%;
+  background: lightblue;
+  grid-column-start: 4;
+  border-radius: 5px;
+}
+
+.blue-square-three {
+  height: 100%;
+  width: 100%;
+  background: lightblue;
+  grid-column-start: 7;
+  border-radius: 5px;
+}
+
+.how-works-create-cont {
+  width: 90%;
+  display:flex;
+  justify-content: flex-end;
+}
+
+.bold-blue {
+  background: darkblue;
+}
+
+.no-hov:hover {
+  color: white !important;
+}
