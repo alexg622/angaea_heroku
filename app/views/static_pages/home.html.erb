@@ -1,5 +1,9 @@
 <div class="landing-container">
-
+  <div style="display:none;" class="landing-modal">
+    <%= render "how_one"%>
+    <%= render "how_two"%>
+    <%= render "how_three"%>
+  </div>
   <div class="landing-first-container">
     <div class="landing-title">Welcome to Angaea</div>
     <div class="landing-first-text">
@@ -10,7 +14,7 @@
     <%if current_user%>
       <a class="best-btn widen" href="/users/<%=current_user.id%>">Go To My Portfolio</a>
     <%else%>
-      <a class="best-btn widen" href="/login">Login/Create my Portfolio</a>
+      <a class="best-btn create-btn widen" href="/login">Login/Create my Portfolio</a>
     <%end%>
   </div>
 
@@ -112,6 +116,48 @@
     if (error) {
       error.style.marginTop = "50px"
       document.querySelector("body").style.background = "#273e74"
+    }
+
+    let createBtn = document.querySelector(".create-btn")
+    let landingModal = document.querySelector(".landing-modal")
+    let howOneCont = document.querySelector(".how-one-display")
+    let howTwoCont = document.querySelector(".how-two-display")
+    let howThreeCont = document.querySelector(".how-three-display")
+
+    if(createBtn) {
+      createBtn.addEventListener("click", e => {
+        e.preventDefault()
+        landingModal.style.display = "flex"
+        howOneCont.style.display = "flex"
+        landingModal.addEventListener("click", e => {
+          if(e.target === howOneCont || e.target === howTwoCont || e.target === howThreeCont) {
+            landingModal.style.display = "none"
+            howOneCont.style.display = "none"
+            howTwoCont.style.display = "none"
+            howThreeCont.style.display = "none"
+          }
+        })
+      })
+    }
+
+    let howOneBtn = document.querySelector(".how-works-btn-one")
+
+    if(howOneBtn) {
+      howOneBtn.addEventListener("click", e => {
+        e.preventDefault()
+        howOneCont.style.display = "none"
+        howTwoCont.style.display = "flex"
+      })
+    }
+
+    let howTwoBtn = document.querySelector(".how-works-btn-two")
+
+    if(howTwoBtn) {
+      howTwoBtn.addEventListener("click", e => {
+        e.preventDefault()
+        howTwoCont.style.display = "none"
+        howThreeCont.style.display = "flex"
+      })
     }
   </script>
 </div>
