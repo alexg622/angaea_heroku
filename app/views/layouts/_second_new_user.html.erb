@@ -3,7 +3,7 @@
   <form enctype="multipart/form-data" class="new-user-form" action="<%= users_path %>" method="post">
     <input class="" type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>"/>
 
-    <input class="second-new-user-name" type="text" name="user[name]" placeholder="NAME*" value="<%=user.name%>">
+    <input class="second-new-user-name" type="text" name="user[name]" placeholder="FULL NAME*" value="<%=user.name%>">
 
     <div class="new-user-email-city-container">
       <input class="second-new-user-email" type="email" name="user[email]" placeholder="EMAIL*" value="<%=user.email%>">
@@ -25,14 +25,43 @@
     </div>
 
     <textarea class="second-new-user-about" type="text" placeholder="ABOUT YOURSELF" name="user[about]"></textarea>
-
+    <div class="social-media-outer-container">
+      <div class="social-media-left-container">
+        <div class="social-image-text">
+          Connect your online world for review
+        </div>
+        <div class="social-inner-container">
+          <img class="social-inner-image" src="/review.png"/>
+          <div class="social-inner-text">
+            Connecting your social media will help us
+            review your work faster and more efficiently!
+          </div>
+        </div>
+        <div class="social-inner-container">
+          <img class="social-inner-image" src="/positive.png"/>
+          <div class="social-inner-text">
+            Don't worry if you haven't posted anything
+            there, you can send us a link of your work  on
+            any other website by posting it here.
+          </div>
+        </div>
+        <div class="social-inner-container bottom-social-inner-container">
+          <img class="social-inner-image" src="/testimonial.png"/>
+          <div class="social-inner-text">
+            This will also help the users see all of your
+            work before booking your experiences.
+          </div>
+        </div>
+      </div>
+      <div class="social-media-right-container">
+        <input class="second-new-user-facebook set-width-50" placeholder="FACEBOOK" type="text" name="user[facebook]" value="<%=user.facebook%>">
+        <input class="second-new-user-instagram set-width-50" placeholder="INSTAGRAM" type="text" name="user[instagram]" value="<%=user.instagram%>">
+        <input class="second-new-user-youtube set-width-50" placeholder="YOUTUBE" type="text" name="user[youtube]" value="<%=user.youtube%>">
+        <input class="second-new-user-twitter set-width-50" placeholder="TWITTER" type="text" name="user[twitter]" value="<%=user.twitter%>">
+        <input class="second-new-user-pinterest set-width-50" placeholder="PINTEREST" type="text" name="user[pinterest]" value="<%=user.pinterest%>">
+      </div>
+    </div>
     <div class="new-user-social-media-container">
-      <div class="new-user-social-media-text">Connect Your Online World!</div>
-      <input class="second-new-user-facebook" placeholder="FACEBOOK" type="text" name="user[facebook]" value="<%=user.facebook%>">
-      <input class="second-new-user-instagram" placeholder="INSTAGRAM" type="text" name="user[instagram]" value="<%=user.instagram%>">
-      <input class="second-new-user-youtube" placeholder="YOUTUBE" type="text" name="user[youtube]" value="<%=user.youtube%>">
-      <input class="second-new-user-twitter" placeholder="TWITTER" type="text" name="user[twitter]" value="<%=user.twitter%>">
-      <input class="second-new-user-pinterest" placeholder="PINTEREST" type="text" name="user[pinterest]" value="<%=user.pinterest%>">
       <div class="new-user-social-media-text" style="margin-top:15px;">Would you like to be on our mailing list?</div>
       <select class="red-border second-activity-new-category" name="user[email_list]">
         <option value="yes">Yes</option>
