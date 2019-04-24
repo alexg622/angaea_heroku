@@ -14,6 +14,13 @@ class AngaeaActivationMailer < ApplicationMailer
     mail(to: @user.email, subject: "You are good to go!")
   end
 
+  def send_api_activity_info(activity, spots, email)
+    @activity = activity
+    @spots = spots
+    @spot_num = spots.to_i > 1 ? "spots" : "spot"
+    mail(to: email, subject: "You are good to go!")
+  end
+
   def send_service_info(user, service, service_ticket)
     @service = service
     @user = user

@@ -78,6 +78,7 @@ Rails.application.routes.draw do
   get '/how_it_works/two', to: "static_pages#how_two"
   get '/how_it_works/three', to: "static_pages#how_three"
 
+
   resources :users
   resources :account_activations, only: [:edit]
   resources :categories, only: [:index, :show]
@@ -87,9 +88,13 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: {format: :json} do
     resource :session, only: [:create, :destroy]
-    resources :users, only: [:show]
+    resources :users, only: [:show, :create]
     resources :activities, only: [:index, :show, :create]
     resources :categories, only: [:index, :show]
+    resources :activities do
+      resources :activity_tickets, only: [:create]
+    end 
+    # post '/activities/:id/activity_tickets', to: 'activity_tickets#create'
   end
 
   mount ActionCable.server => '/cable'

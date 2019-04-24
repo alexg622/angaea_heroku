@@ -90,7 +90,7 @@ class ActivityTicketsController < ApplicationController
       flash[:error] = "I'm sorry your payment did not go through"
       render :new
     end
-  rescue Stripe::CardError => e
+    rescue Stripe::CardError => e
     flash[:error] = e.message
     return redirect_to :root
   end
