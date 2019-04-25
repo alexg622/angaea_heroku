@@ -93,7 +93,10 @@ Rails.application.routes.draw do
     resources :categories, only: [:index, :show]
     resources :activities do
       resources :activity_tickets, only: [:create]
-    end 
+    end
+
+    post "/stripe/:user_id/create", to: "stripes#create_stripe_account"
+
     # post '/activities/:id/activity_tickets', to: 'activity_tickets#create'
   end
 
