@@ -96,7 +96,9 @@ Rails.application.routes.draw do
     end
 
     post "/stripe/:user_id/create", to: "stripes#create_stripe_account"
-
+    post "/stripe/:user_id/terms/create", to: "stripes#create_agree_stripe_terms"
+    post "/stripe/:user_id/stripe_acct_details", to: "stripes#stripe_acct_details_create"
+    delete '/stripe/:user_id/delete_stripe_acct', to: "stripes#delete_stripe_acct"
     # post '/activities/:id/activity_tickets', to: 'activity_tickets#create'
   end
 

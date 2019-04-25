@@ -5,10 +5,26 @@ json.currentUser do
   :email_list
   json.showLocation @user.show_location
   json.imageAttached @user.image.attached?
+  if @user.stripe_connect.accountId.present?
+    json.stripe_connect true
+  else
+    json.stripe_connect false
+  end
+
+  if @user.stripe_connect.account_number.present? && @user.stripe_connect.routing_number.present?
+    json.stripe_complete true
+  else
+    json.stripe_complete false
+  end
+
+  json.stripe_account_number "**** **** **** " + @user.stripe_connect.account_number[-4..-1]
+  json.stripe_routing_number @user.stripe_connect.routing_number
+
   if @user.image.attached?
     json.imageUrl "http://localhost:3001" + url_for(@user.image)
     json.imageReal @user.image
   end
+
   json.activities(@user.activities) do |activity|
     json.user do
       json.name activity.user.name

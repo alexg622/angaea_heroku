@@ -98,8 +98,8 @@ class StripeConnectCustomsController < ApplicationController
       acct.legal_entity.last_name = stripe_connect_params[:last_name]
       acct.legal_entity.ssn_last_4 = stripe_connect_params[:ssn_last_4]
       acct.legal_entity.type = stripe_connect_params[:entity_type]
-      acct.legal_entity.business_name = stripe_connect_params[:business_name]
-      acct.legal_entity.business_tax_id = stripe_connect_params[:business_tax_id]
+      acct.legal_entity.business_name = stripe_connect_params[:business_name].present? ? stripe_connect_params[:business_name] : nil
+      acct.legal_entity.business_tax_id = stripe_connect_params[:business_tax_id].present? ? stripe_connect_params[:business_tax_id] : nil
       acct.metadata.activity_creator_id = @user.id
       acct.save
 
