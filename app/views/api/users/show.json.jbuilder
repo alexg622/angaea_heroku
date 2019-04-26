@@ -2,7 +2,7 @@ json.currentUser do
   json.extract! @user, :name, :email, :id, :profession, :skills, :about, :facebook,
   :instagram, :youtube, :pinterest, :twitter, :agree_to_terms, :agree_to_privacy,
   :routing_number, :account_number, :city, :state, :zipcode, :address, :account_activated,
-  :email_list
+  :email_list, :agree_to_terms, :agree_to_privacy, :locked
   json.showLocation @user.show_location
   json.imageAttached @user.image.attached?
   if @user.stripe_connect.accountId.present?
