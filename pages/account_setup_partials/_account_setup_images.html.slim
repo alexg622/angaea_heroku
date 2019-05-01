@@ -1,0 +1,178 @@
+.good-box.mb-4
+  .good-box__header.p-4
+    h2.font-md.font-light Account Setup
+  .good-box__content.p-4.d-flex.flex-column.align-items-center
+    = render "pages/account_setup_partials/account_progress_bar", marg_right_ten: "margin-right:10%;", blue_circle: true, left_verify: "ENTER VEHICLE INFO", right_verify: "PUBLISH", make_blue: "", blue_words: "blue-words", none_left: "display:none;", none_right: "display:none;"
+    .upper-photos-container.d-flex.justify-content-between.align-items-center
+      img.camera-blue src="/camera_blue.png"
+      .upper-photo-text Add Your Vehicle Photos
+    a.photo-tips href="https://www.trusted.sale/videos/#videos-verify-identity" target="_blank" See Vehicle Photo Tips
+    .photo-tips-text Hint: You can add photos now, or skip and add/edit/delete at any time.
+    .select-photos-div Select Photos
+    input.hidden-photo-input multiple="true" style="display:none;" type="file" accept="image/*"
+    .images-preview-container
+      .preview-images-container
+      .preview-image-actions-container.d-flex.justify-content-around.align-items-center
+        .sel-all-cont.d-flex.align-items-center
+          input.checkbox-inp type="checkbox"
+          .select-all-text Select All
+        .prev-img-remove-div Remove
+    .prev-img-submit-div style="display:none;" Submit
+
+
+javascript:
+  let imgSelectDiv = document.querySelector(".select-photos-div")
+  let imgInput = document.querySelector(".hidden-photo-input")
+  let prevImgContainer = document.querySelector(".images-preview-container")
+  let submitBtn = document.querySelector(".prev-img-submit-div")
+  let showImgContainer = document.querySelector(".preview-images-container")
+  let checkbox = document.querySelector(".checkbox-inp")
+  let formData = new FormData()
+  let removeBtn = document.querySelector(".prev-img-remove-div")
+  let imgId = 0
+  let filesForForm = {}
+  let imgIdsToDel = []
+
+  if(imgSelectDiv) {
+    imgSelectDiv.addEventListener("click", event => {
+      imgInput.click()
+      imgIdsToDel = []
+      if(checkbox.checked) {
+        checkbox.checked = false
+        checkbox.classList.remove("clicked")
+      }
+      setTimeout(() => {
+        let allImgs = document.querySelectorAll(".preview-image")
+        for(let i=0; i<allImgs.length; i++) {
+          let nowImg = allImgs[i]
+          if(nowImg.style.opacity === "0.4") nowImg.style.opacity = "1"
+        }
+      }, 1000)
+    })
+  }
+
+  const removeId = (arr, id) => {
+    for (let i=arr.length-1; i>=0; i--) {
+      if (arr[i] === id) {
+        arr.splice(i, 1);
+      }
+    }
+  }
+
+  const handleImgClick = (img) => {
+    img.addEventListener("click", event => {
+      if(img.classList.contains("clicked")) {
+        img.style.opacity = "1"
+        img.classList.remove("clicked")
+        let id = img.classList[1]
+        removeId(imgIdsToDel, id)
+      } else {
+        let id = img.classList[1]
+        img.classList.add("clicked")
+        imgIdsToDel.push(id)
+        img.style.opacity = ".4"
+      }
+    })
+  }
+
+  if(imgInput) {
+    imgInput.addEventListener("change", event => {
+      let files = imgInput.files
+      if(files.length > 0) {
+        prevImgContainer.style.display = "flex"
+        submitBtn.style.display = "flex"
+        for(let i=0; i<files.length; i++) {
+          let reader = new FileReader()
+          reader.onload = () => {
+            const img = new Image()
+            img.src = reader.result
+            showImgContainer.style.display = "flex"
+            img.classList.add("preview-image")
+            img.classList.add(String(imgId))
+            filesForForm[String(imgId)] = files[i]
+            imgId ++
+            handleImgClick(img)
+            showImgContainer.append(img)
+          }
+          reader.readAsDataURL(imgInput.files[i])
+        }
+      }
+    })
+  }
+
+  if(checkbox) {
+    checkbox.addEventListener("click", event => {
+      let allImgs = document.querySelectorAll(".preview-image")
+      if(!checkbox.classList.contains("clicked")) {
+        imgIdsToDel = []
+        for(let i=0; i<allImgs.length; i++) {
+          let theImg = allImgs[i]
+          checkbox.classList.add("clicked")
+          if(!theImg.classList.contains("clicked")) theImg.classList.add("clicked")
+          theImg.style.opacity = ".4"
+          let theId = theImg.classList[1]
+          imgIdsToDel.push(theId)
+        }
+      } else {
+        imgIdsToDel = []
+        for(let i=0; i<allImgs.length; i++) {
+          let theImg = allImgs[i]
+          if(theImg.classList.contains("clicked")) theImg.classList.remove("clicked")
+          theImg.style.opacity = "1"
+          checkbox.classList.remove("clicked")
+        }
+      }
+    })
+  }
+
+  const removeImgEls = (id) => {
+    let theImgs = document.querySelectorAll(".preview-image")
+    for(let i=0; i<theImgs.length; i++) {
+      let theImg = theImgs[i]
+      if(theImg.classList.contains(id)) theImg.remove()
+    }
+  }
+
+  if(removeBtn) {
+    removeBtn.addEventListener("click", event => {
+      if(imgIdsToDel.length > 0) {
+        imgIdsToDel.forEach(id => {
+          delete filesForForm[id]
+          removeImgEls(id)
+        })
+        imgIdsToDel = []
+        if(checkbox.classList.contains("clicked")) checkbox.classList.remove("clicked")
+        if(checkbox.checked === true) checkbox.checked = false
+      }
+    })
+  }
+
+  function addImages(formData) {
+    formData.append("authenticity_token", "#{form_authenticity_token}")
+    const config = {
+      headers: { 'content-type': 'multipart/form-data' }
+    }
+    const url = "/my_account/listings/#{current_user.listings.first.id}/images/add"
+    axios.post(url, formData, config)
+    .then(res => {
+      if(res.data.success === "true") {
+        window.location.replace("/")
+      } else {
+        window.location.replace("/")
+
+      }
+    })
+  }
+
+  if(submitBtn) {
+    submitBtn.addEventListener("click", event => {
+      let keysForForm = Object.keys(filesForForm)
+      if(keysForForm.length > 0) {
+        for(let i=0; i<keysForForm.length; i++) {
+          let key = keysForForm[i]
+          formData.append("images[]", filesForForm[key])
+        }
+        addImages(formData)
+      }
+    })
+  }

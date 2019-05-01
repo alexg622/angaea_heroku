@@ -1,0 +1,37 @@
+h3.font-md Special Offers
+.special-offers-detail-container.d-flex.justify-content-center
+  a.no-styles.fit-image href="https://www.nationaldetailpros.com/?aid=005009" target="_blank"
+    img.clean-detail-img src="detail_icon.png"
+  .detail-inner-container
+    a.no-styles href="https://www.nationaldetailpros.com/?aid=005009" target="_blank"
+      .detail-header-text Professional Clean & Detail
+    a.no-styles href="https://www.nationaldetailpros.com/?aid=005009" target="_blank"
+      .detail-inner-text Make your vehicle and wallet sparkle
+    a.detail-learn-more-text href="https://www.nationaldetailpros.com/?aid=005009" target="_blank" LEARN MORE & GET STARTED
+
+- if current_user.listings.present? && current_user.listings.first.is_live
+  - if current_user.listings.first.history_report.present?
+    .eight-rem.dash-hst-rep-container.d-flex.align-items-center.justify-content-center
+      a.no-styles.fit-image href="#{@history_report}" target="_blank"
+        img.dash-hst-rep-img src="/vhr_icon.png"
+      .dash-hst-rep-txt.d-flex.flex-column.align-items-center
+        a.no-styles href="#{@history_report}" target="_blank"
+          .good-news-text Good News!
+        a.no-styles href="#{@history_report}" target="_blank"
+          .vehicle-rep-text Your vehicle history report is available
+        a.hist-rep-link href="#{@history_report}" target="_blank" VIEW MY FREE REPORT
+  .eight-rem.dash-sticker-container.d-flex.justify-content-center
+    img.sticker-img src="/window_sticker_icon.png"
+    .dash-sticker-inner-container.d-flex.flex-column.align-items-center
+      .wind-stick-avail-text Window Sticker Available
+      .wind-stick-avail-para 100% transparency with buyers on how your vehicle is equipped
+      a.wind-stick-link href="https://s.instavin.com/site/images/build-data/stickers/jeep.jpg" target="_blank" VIEW SAMPLE WINDOW STICKER
+      a.wind-stick-buy.d-flex.flex-column.align-items-center href="#{url_for(current_user.first_listing_sticker_url)}" target="_blank"
+        .buy-wind-text Buy Window Sticker
+        .buy-wind-text-price Only $4.99
+  a.eight-rem.dash-insp-cert-container.d-flex.justify-content-center href="https://trustedcarsale.com/certify/seller" target="_blank"
+    img.dash-insp-cert-img src="trusted-sale-CPO-logo-large.png"
+    .dash-insp-cert-inner-container.d-flex.flex-column.align-items-center
+      .dash-insp-cert-text Inspect & Certify Your Vehicle
+      .dash-insp-cert-money Earn hundreds or thousands more $$$
+      .dash-insp-cert-more LEARN MORE & GET STARTED

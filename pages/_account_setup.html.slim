@@ -1,0 +1,35 @@
+.good-box.mb-4
+  .good-box__header.p-4
+    h2.font-md.font-light Account Setup
+  .good-box__content.p-4
+    - if current_user.is_buyer_only?
+      p
+        b  ATTENTION: THE SELLER REQUIRES YOU TO VERIFY YOUR EMAIL AND YOUR IDENTITY
+
+      p
+        b Step 1. 
+        | Check your email and click on “confirm my account” link
+        br
+        b Step 2.
+        | Click “Confirm ID” below
+        br
+        b Step 3.
+        | Once ID is confirmed, scroll down to “Recently Viewed Listings” and click on “View Listing”
+
+    - else
+      p
+        b  PLEASE COMPLETE EACH STEP BELOW TO PUBLISH & SHARE YOUR LISTING:
+      - unless current_user.is_confirmed?
+        p
+          b.text-success TO START: 
+          |  Check your email and click on  “confirm my account” link.
+    ul.todo-list
+      li
+        = link_to 'Verify Email', '', class: "#{current_user.confirmation_status}"
+
+      li
+        = link_to 'Confirm ID', verifications_new_path, class: "#{current_user.verification_status}"
+
+      - unless current_user.is_buyer_only?
+        li
+          = link_to @new_listing_title, new_listing_path(), class: "#{current_user.created_listing_status}"

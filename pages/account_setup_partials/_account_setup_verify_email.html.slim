@@ -1,0 +1,12 @@
+.good-box.mb-4
+  .good-box__header.p-4
+    h2.font-md.font-light Account Setup
+  .good-box__content.p-4.mail-conf-container
+    = render "pages/account_setup_partials/account_progress_bar", marg_right_ten: "", blue_circle: true, left_verify: "VERIFY EMAIL", right_verify: "VERIFY ID", make_blue: "", blue_words: "blue-words", none_left: "display:none;", none_right: "display:none;"
+    .sent-email-container
+      .sent-email-upper-container
+        img.mail-img src="/email-icon2.png"
+        .mail-upper-text We Sent You an Email
+      .sent-email-lower-container
+        .mail-lower-text Please check your email and confirm your account.
+        a.no-email-text href="#{new_confirmation_path("user")}" Didn't receive confirmation instructions?

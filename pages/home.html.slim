@@ -1,0 +1,105 @@
+.container.mt-4
+  = render 'pages/modals/sell_modal'
+  = render 'pages/modals/verify_buyer_modal'
+  = render 'pages/modals/delete_listing_modal'
+  - if !current_user
+    .text-center
+      = link_to "Log In", new_user_session_path, class: 'btn btn-primary'
+  - else
+    .row
+      .col-sm-8
+        - unless current_user.has_setup_complete?
+          - if !current_user.is_confirmed?
+            = render 'pages/account_setup_partials/account_setup_verify_email'
+          - elsif current_user.needs_verification?
+            = render 'pages/account_setup_partials/account_setup_evidentid'
+          - elsif !current_user.listings.present?
+            = render 'pages/account_setup_partials/account_setup_listing'
+        - if current_user.is_confirmed? && !current_user.needs_verification? && current_user.listings.length == 1 && !current_user.listings.first.images.attached?
+          = render 'pages/account_setup_partials/account_setup_images'
+        - if current_user.is_confirmed? && !current_user.needs_verification? && current_user.listings.length == 1 && current_user.listings.first.images.attached? && !current_user.listings.first.is_live
+          = render 'pages/account_setup_partials/account_setup_publish.html.slim'
+        - if current_user and current_user.verified_seller?
+          = render 'listings/listings_preview', title: 'My Listings', listings: current_user.listings
+
+        - if current_user.viewed_listings.present? and current_user.is_buyer_only?
+          .good-box.mb-4
+            .good-box__header.p-4
+              h2.font-md.font-light  Recently Viewed Listings
+            = render 'listings/listings', listings: current_user.viewed_listings
+
+      .col-sm-4
+        - if current_user and current_user.stripe_account
+          h3.font-md Payouts
+
+          .special-offer.mb-4.p-4
+            = link_to(StripeConnect::Account.new(current_user).dashboard_url, target: :_blank, class: '') do
+              .special-circle
+                = image_tag('payout.png')
+
+              h4.special-offer__title View Payouts
+              br
+
+        = render 'pages/special_offers'
+
+javascript:
+  $(function () {
+    var cookie = document.cookie.split('=')[1];
+    if (cookie == 'true') {
+      $('.myListingModal').modal('show')
+      $.ajax({
+        method: 'GET',
+        dataType: 'script',
+        url: '/my_account/listings'
+      })
+      document.cookie = 'stripe_redirect=' + ""
+    }
+  })
+
+  let sellerBtns = document.querySelectorAll(".sell-btn-div")
+  let sellerModal = document.querySelector(".seller-modal-container")
+  let sellerPrice = document.querySelector(".seller-price")
+
+  for(let i=0; i<sellerBtns.length; i++) {
+    let sellerBtn = sellerBtns[i]
+    sellerBtn.addEventListener("click", e => {
+      let price = e.target.parentElement.parentElement.children[1].children[1].innerText
+      let listingId = sellerBtn.classList[1]
+      sellerModal.style.display = "flex"
+      sellerPrice.value = price
+      document.querySelector(".get-listing-id").value = listingId
+      sellerModal.addEventListener("click", e => {
+        e.stopPropagation()
+        if(e.target === e.currentTarget) sellerModal.style.display = "none"
+      })
+    })
+  }
+
+  let verifyBuyerBtns = document.querySelectorAll(".verify-buy-btn")
+  let verifyBuyerModal = document.querySelector(".buyer-modal-container")
+
+  for(let i=0; i<verifyBuyerBtns.length; i++) {
+    let verifyBuyerBtn = verifyBuyerBtns[i]
+    let listingId = verifyBuyerBtn.classList[1]
+    verifyBuyerBtn.addEventListener("click", e => {
+      verifyBuyerModal.style.display = "flex"
+      document.querySelector(".verify-mod-listing-id").value = listingId
+      verifyBuyerModal.addEventListener("click", e => {
+        e.stopPropagation()
+        if(e.target === e.currentTarget) verifyBuyerModal.style.display = "none"
+      })
+    })
+  }
+
+  let delBtns = document.querySelectorAll(".del-btn-div")
+  let delModal = document.querySelector(".delete-listing-modal-container")
+
+  for(let i=0; i<delBtns.length; i++) {
+    let delBtn = delBtns[i]
+    let listingId = delBtn.classList[0]
+    delBtn.addEventListener("click", e => {
+      delModal.style.display = "flex"
+      let delForm = document.querySelector(".really-delete")
+      delForm.action = "/listings/" + listingId
+    })
+  }

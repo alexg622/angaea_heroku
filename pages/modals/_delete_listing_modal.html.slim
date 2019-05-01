@@ -1,0 +1,26 @@
+.delete-listing-modal-container
+  .delete-listing-modal-inner-container
+    .delete-listing-upper-container Delete Listing
+    .delete-listing-bottom-container
+      .delete-text Are you sure that you want to delete this listing? Once deleted it cannot be undone.
+      .delete-buttons-container
+        .cancel-button Cancel
+        form.really-delete action="/listings" method="post"
+          input name="_method" type="hidden" value="delete"
+          input type="hidden" name="authenticity_token" value="form_authenticity_token"
+          input.delete-listing-btn type="submit" value="Delete"
+
+javascript:
+  let cancelBtn = document.querySelector(".cancel-button")
+  let deleteModal = document.querySelector(".delete-listing-modal-container")
+  if(cancelBtn) {
+    cancelBtn.addEventListener("click", e => {
+      deleteModal.style.display = "none"
+    })
+  }
+
+  if(deleteModal) {
+    deleteModal.addEventListener("click", e => {
+      if(e.target === e.currentTarget) deleteModal.style.display = "none"
+    })
+  }

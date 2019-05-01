@@ -1,6 +1,12 @@
 class Api::UsersController < ApplicationController
   def show
-    @user = User.find(params[:id])
+    begin
+      p "inside the user part"
+      p @user 
+      @user = User.find(params[:id])
+    rescue => e
+      render json: e
+    end
   end
 
   def create

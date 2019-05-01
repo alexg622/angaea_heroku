@@ -1,0 +1,22 @@
+.progress-container
+  -if blue_circle
+    .circle-left-container.blue-circle
+      img.progress-checkmark style="#{none_left}" src="/green_checkmark.png"
+  -else
+    .circle-left-container
+      img.progress-checkmark style="#{none_left}" src="http://www.sclance.com/pngs/white-checkmark-png/white_checkmark_png_1506465.png"
+  div class="gray-line #{make_blue}"
+  .circle-right-container
+    img.progress-checkmark style="#{none_right}" src="http://www.sclance.com/pngs/white-checkmark-png/white_checkmark_png_1506465.png"
+.lower-progress-container
+  div class="left-words #{blue_words}" = left_verify
+  .right-words style="#{marg_right_ten}" = right_verify
+javascript:
+  let grayLine = document.querySelector(".gray-line")
+  let container = document.querySelector(".progress-container")
+  let width = String(parseInt(container.offsetWidth)*.43)
+  grayLine.style.width = width + "px"
+  window.addEventListener("resize", event => {
+    let newWidth = String(parseInt(container.offsetWidth)*.43)
+    grayLine.style.width = newWidth + "px"
+  })
