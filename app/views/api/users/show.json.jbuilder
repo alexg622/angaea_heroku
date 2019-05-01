@@ -21,7 +21,7 @@ json.currentUser do
   json.stripe_routing_number @user.stripe_connect.routing_number
 
   if @user.image.attached?
-    json.imageUrl "http://localhost:3001" + url_for(@user.image)
+    json.imageUrl "https://www.angaea.com" + url_for(@user.image)
     json.imageReal @user.image
   end
 
@@ -60,7 +60,7 @@ json.currentUser do
     json.imageAttached activity.image.attached?
     json.imagesAttached activity.images.attached?
     if activity.image.attached?
-      json.imageUrl "http://localhost:3001" + url_for(activity.image)
+      json.imageUrl "https://www.angaea.com" + url_for(activity.image)
       json.imageReal activity.image
     end
   end
@@ -99,7 +99,7 @@ json.currentUser do
     json.imageAttached activity.image.attached?
     json.imagesAttached activity.images.attached?
     if activity.image.attached?
-      json.imageUrl "http://localhost:3001" + url_for(activity.image)
+      json.imageUrl "https://www.angaea.com" + url_for(activity.image)
       json.imageReal activity.image
     end
   end

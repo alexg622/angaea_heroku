@@ -37,11 +37,11 @@ json.array! @categories do |category|
      json.imageAttached activity.image.attached?
      json.imagesAttached activity.images.attached?
      if activity.image.attached?
-       json.imageUrl "http://localhost:3001" + url_for(activity.image)
+       json.imageUrl "https://www.angaea.com" + url_for(activity.image)
      end
      if activity.images.attached?
        json.images(0...activity.images.length) do |num|
-         json.imageUrl "http://localhost:3001" + url_for(activity.images[num])
+         json.imageUrl "https://www.angaea.com" + url_for(activity.images[num])
        end
      end
    end

@@ -33,12 +33,12 @@ json.activity do
   json.imageAttached @activity.image.attached?
   json.imagesAttached @activity.images.attached?
   if @activity.image.attached?
-    json.imageUrl "http://localhost:3001" + url_for(@activity.image)
+    json.imageUrl "https://www.angaea.com" + url_for(@activity.image)
     json.imageReal @activity.image
   end
   if @activity.images.attached?
     json.images(0...@activity.images.length) do |num|
-      json.image "http://localhost:3001" + url_for(@activity.images[num])
+      json.image "https://www.angaea.com" + url_for(@activity.images[num])
     end
   end
   json.attendees(@activity.attendees) do |attendee|
@@ -46,7 +46,7 @@ json.activity do
     json.id attendee.id
     json.imageAttached attendee.image.attached?
     if attendee.image.attached?
-      json.imageUrl "http://localhost:3001" + url_for(attendee.image)
+      json.imageUrl "https://www.angaea.com" + url_for(attendee.image)
     end
   end
   json.category do
