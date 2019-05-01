@@ -1,8 +1,9 @@
 class Api::UsersController < ApplicationController
+  protect_from_forgery with: :null_session
   def show
     begin
       p "inside the user part"
-      p @user 
+      p @user
       @user = User.find(params[:id])
     rescue => e
       render json: e

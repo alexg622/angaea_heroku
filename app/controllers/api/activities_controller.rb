@@ -1,4 +1,6 @@
 class Api::ActivitiesController < ApplicationController
+  protect_from_forgery with: :null_session
+  
   def show
     @activity = Activity.find(params[:id])
   end
