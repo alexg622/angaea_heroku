@@ -16,9 +16,11 @@ json.currentUser do
   else
     json.stripe_complete false
   end
-
-  json.stripe_account_number "**** **** **** " + @user.stripe_connect.account_number[-4..-1]
-  json.stripe_routing_number @user.stripe_connect.routing_number
+  
+  if @user.stripe_connect.account_number.present? && @user.stripe_connect.routing_number.present?
+    json.stripe_account_number "**** **** **** " + @user.stripe_connect.account_number[-4..-1]
+    json.stripe_routing_number @user.stripe_connect.routing_number
+  end
 
   if @user.image.attached?
     json.imageUrl "https://www.angaea.com" + url_for(@user.image)
