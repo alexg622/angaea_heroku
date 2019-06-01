@@ -50,10 +50,10 @@ class AngaeaActivationMailer < ApplicationMailer
     mail(to: @user.email, subject: "Angaea Reset Password Link")
   end
 
-  def send_contact_email_to_ron(user_email, content) 
+  def send_contact_email_to_ron(user_email, content)
     @user_email = user_email
     @content = content
-    mail(to: "alex.gm62288@gmail.com", subject: "New Question!")
+    mail(to: "contact@angaea.com", subject: "New Question!")
   end
 
 end
