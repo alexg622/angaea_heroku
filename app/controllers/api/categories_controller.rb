@@ -1,5 +1,5 @@
 class Api::CategoriesController < ApplicationController
-
+  protect_from_forgery with: :null_session
   def index
     @categories = Category.sort_categories
     render "index"

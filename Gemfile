@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.3'
-
+gem 'rb-readline'
 # gem for stripe checkout
 gem 'stripe'
 gem "pry-rails"

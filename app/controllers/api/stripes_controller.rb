@@ -5,6 +5,7 @@
 # pass extra info throught meta data ex.
 # response["metadata"]["userId"]
 class Api::StripesController < ApplicationController
+  protect_from_forgery with: :null_session
   before_action :user_logged_in?
 
   def create_stripe_account

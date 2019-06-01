@@ -1,4 +1,6 @@
 class Api::ActivityTicketsController < ApplicationController
+  protect_from_forgery with: :null_session
+  
   def create
     @activity = Activity.find(params[:activity_id])
     @spots = params[:numberOfSpots]

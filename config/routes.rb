@@ -91,6 +91,7 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :create]
     resources :activities, only: [:index, :show, :create, :update]
     resources :categories, only: [:index, :show]
+    post '/contact_ron', to: 'emails#send_contact_email_and_text'
     resources :activities do
       resources :activity_tickets, only: [:create]
     end
