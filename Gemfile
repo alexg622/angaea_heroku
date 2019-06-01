@@ -36,7 +36,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt',         '3.1.12'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'rails-ujs', '~> 0.1.0'
-
+gem 'twilio-ruby'
 # enable cors for frontend api calls
 gem 'rack-cors'
 
